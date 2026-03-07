@@ -104,7 +104,7 @@ const Navbar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: 
     <nav className="bg-secondary text-white sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-24">
-          <div className="flex items-center gap-3 md:gap-4 cursor-pointer" onClick={() => setActiveTab('home')}>
+          <Link to="/" className="flex items-center gap-3 md:gap-4 cursor-pointer">
             <div className="w-12 h-12 md:w-16 md:h-16 bg-[#ebd6ac] rounded-xl md:rounded-2xl flex items-center justify-center p-0 shadow-xl border-2 border-primary/20 overflow-hidden transform hover:scale-105 transition-transform">
               <img 
                 src={LOGO_NAV_URL} 
@@ -121,20 +121,20 @@ const Navbar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: 
                 NO PAIN<br/>NO JERSEY
               </span>
             </div>
-          </div>
+          </Link>
           
           <div className="hidden lg:block">
             <div className="flex items-center space-x-2 bg-black/20 p-1.5 rounded-full">
               {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'].map((tab) => (
-                <button
+                <Link
                   key={tab}
-                  onClick={() => setActiveTab(tab)}
+                  to={tab === 'home' ? '/' : `/${tab}`}
                   className={`px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider transition-all ${
                     activeTab === tab ? 'bg-primary text-secondary shadow-lg' : 'text-white/70 hover:text-white'
                   }`}
                 >
                   {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : 'Contacto'}
-                </button>
+                </Link>
               ))}
             </div>
           </div>
@@ -158,15 +158,16 @@ const Navbar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: 
           >
             <div className="p-4 space-y-1">
               {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'].map((tab) => (
-                <button
+                <Link
                   key={tab}
-                  onClick={() => { setActiveTab(tab); setIsOpen(false); }}
+                  to={tab === 'home' ? '/' : `/${tab}`}
+                  onClick={() => setIsOpen(false)}
                   className={`block w-full text-center py-3 rounded-xl text-sm font-black uppercase tracking-widest transition-all ${
                     activeTab === tab ? 'bg-primary text-secondary' : 'text-accent/60 hover:text-primary'
                   }`}
                 >
                   {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : 'Contacto'}
-                </button>
+                </Link>
               ))}
             </div>
           </motion.div>
@@ -1061,8 +1062,8 @@ export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
   
-  // Map path to tab
-  const activeTab = location.pathname === '/' ? 'home' : location.pathname.substring(1);
+  // Map path to tab - robust parsing handling trailing slashes
+  const activeTab = location.pathname.split('/').filter(Boolean)[0] || 'home';
   
   const setActiveTab = (tab: string) => {
     navigate(tab === 'home' ? '/' : `/${tab}`);
@@ -1071,11 +1072,10 @@ export default function App() {
   // Redirect invalid routes to home
   useEffect(() => {
     const validTabs = ['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'];
-    const currentTab = location.pathname === '/' ? 'home' : location.pathname.substring(1);
-    if (!validTabs.includes(currentTab)) {
+    if (!validTabs.includes(activeTab)) {
       navigate('/', { replace: true });
     }
-  }, [location.pathname, navigate]);
+  }, [activeTab, navigate]);
 
   const [selectedJersey, setSelectedJersey] = useState<Jersey | null>(null);
   const [selectedEncargoJersey, setSelectedEncargoJersey] = useState<EncargoJersey | null>(null);
@@ -1182,37 +1182,37 @@ export default function App() {
                     
                     {/* Mobile Buttons - Narrower and below text */}
                     <div className="flex flex-col gap-2 lg:hidden mt-10">
-                      <button
-                        onClick={() => setActiveTab('stock')}
+                      <Link
+                        to="/stock"
                         className="pill-button bg-primary text-secondary shadow-xl shadow-primary/20 hover:scale-105 text-[10px] py-2.5 px-5 w-[160px] justify-center"
                       >
                         <Package className="w-4 h-4" />
                         Stock Disponible
-                      </button>
-                      <button
-                        onClick={() => setActiveTab('encargos')}
+                      </Link>
+                      <Link
+                        to="/encargos"
                         className="pill-button border-2 border-secondary text-secondary hover:bg-secondary hover:text-white text-[10px] py-2.5 px-5 w-[160px] justify-center"
                       >
                         <ClipboardList className="w-4 h-4" />
                         Hacer Encargo
-                      </button>
+                      </Link>
                     </div>
 
                     <div className="hidden lg:flex flex-col sm:flex-row gap-3 md:gap-4">
-                      <button
-                        onClick={() => setActiveTab('stock')}
+                      <Link
+                        to="/stock"
                         className="pill-button bg-primary text-secondary shadow-xl shadow-primary/20 hover:scale-105 text-xs md:text-base py-4 md:py-5"
                       >
                         <Package className="w-4 h-4 md:w-5 md:h-5" />
                         Ver Stock Disponible
-                      </button>
-                      <button
-                        onClick={() => setActiveTab('encargos')}
+                      </Link>
+                      <Link
+                        to="/encargos"
                         className="pill-button border-2 border-secondary text-secondary hover:bg-secondary hover:text-white text-xs md:text-base py-4 md:py-5"
                       >
                         <ClipboardList className="w-4 h-4 md:w-5 md:h-5" />
                         Hacer Encargo Personalizado
-                      </button>
+                      </Link>
                     </div>
                   </motion.div>
                 </div>
@@ -1482,12 +1482,12 @@ export default function App() {
                   <p className="text-secondary/60 text-sm md:text-lg mb-8 max-w-md mx-auto">
                     Si no encuentra la camiseta que desea puede encargarla directamente con nosotros.
                   </p>
-                  <button 
-                    onClick={() => setActiveTab('encargos')}
-                    className="bg-secondary text-primary px-6 py-3 md:px-10 md:py-4 rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest hover:bg-primary hover:text-secondary transition-all shadow-xl"
+                  <Link 
+                    to="/encargos"
+                    className="bg-secondary text-primary px-6 py-3 md:px-10 md:py-4 rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest hover:bg-primary hover:text-secondary transition-all shadow-xl inline-block"
                   >
                     Ir a la sección de encargos
-                  </button>
+                  </Link>
                   <div className="mt-8">
                     <button 
                       onClick={() => { setStockSearchQuery(''); setFilterSize('TODAS'); setFilterStyle('TODOS'); }}
@@ -1729,7 +1729,7 @@ export default function App() {
 
               <div className="bg-white p-6 md:p-12 rounded-3xl md:rounded-[3rem] shadow-2xl shadow-secondary/5 border border-secondary/5 space-y-6 md:space-y-10">
                 <p className="text-sm md:text-xl text-secondary/70 leading-relaxed max-w-2xl mx-auto font-medium">
-                  Si tienes alguna duda general, te recomendamos visitar primero nuestra sección de <button onClick={() => setActiveTab('preguntas')} className="text-primary font-black hover:underline">Preguntas Frecuentes</button>.
+                  Si tienes alguna duda general, te recomendamos visitar primero nuestra sección de <Link to="/preguntas" className="text-primary font-black hover:underline">Preguntas Frecuentes</Link>.
                 </p>
                 
                 <div className="h-px bg-secondary/5 w-16 md:w-24 mx-auto" />
@@ -1787,12 +1787,12 @@ export default function App() {
               <div className="text-left">
                 <h4 className="font-sans font-bold text-xs md:text-xl mb-4 md:mb-8 uppercase tracking-widest text-[#ebd6ac]">Enlaces</h4>
                 <ul className="space-y-3 md:space-y-4 text-white/70 font-medium text-[10px] md:text-base">
-                  <li><button onClick={() => setActiveTab('home')} className="hover:text-primary transition-colors">Inicio</button></li>
-                  <li><button onClick={() => setActiveTab('stock')} className="hover:text-primary transition-colors">Stock</button></li>
-                  <li><button onClick={() => setActiveTab('encargos')} className="hover:text-primary transition-colors">Encargos</button></li>
-                  <li><button onClick={() => setActiveTab('nosotros')} className="hover:text-primary transition-colors">Nosotros</button></li>
-                  <li><button onClick={() => setActiveTab('preguntas')} className="hover:text-primary transition-colors">Preguntas</button></li>
-                  <li><button onClick={() => setActiveTab('contacto')} className="hover:text-primary transition-colors">Contacto</button></li>
+                  <li><Link to="/" className="hover:text-primary transition-colors">Inicio</Link></li>
+                  <li><Link to="/stock" className="hover:text-primary transition-colors">Stock</Link></li>
+                  <li><Link to="/encargos" className="hover:text-primary transition-colors">Encargos</Link></li>
+                  <li><Link to="/nosotros" className="hover:text-primary transition-colors">Nosotros</Link></li>
+                  <li><Link to="/preguntas" className="hover:text-primary transition-colors">Preguntas</Link></li>
+                  <li><Link to="/contacto" className="hover:text-primary transition-colors">Contacto</Link></li>
                 </ul>
               </div>
 
