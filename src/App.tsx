@@ -897,7 +897,7 @@ Parche: *${form.patch}*`;
               <section>
                 <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-widest mb-4">Tipo de Manga</label>
                 <div className="grid grid-cols-2 gap-3">
-                  {form.version === 'Niño' ? (
+                  {form.version === 'Niño' || hideLongSleeves ? (
                     <button
                       className="py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 border-primary bg-primary/10 text-secondary shadow-lg col-span-2 cursor-default"
                     >
