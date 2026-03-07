@@ -1,0 +1,20 @@
+{
+  "name": "No Pain-No Jersey",
+  "short_name": "NoPainNoJersey",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "https://lh3.googleusercontent.com/d/11BBxuRfaiE9c4mQOKOc4xbn9WAxUH44h",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/11BBxuRfaiE9c4mQOKOc4xbn9WAxUH44h",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

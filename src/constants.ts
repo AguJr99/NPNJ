@@ -1479,6 +1479,193 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'Europa League', logo: 'https://drive.google.com/thumbnail?id=1ZarCFrV8n4V91OByElZ2qIItfIRS7aU5&sz=w200' },
       { name: 'Carabao Cup', logo: 'https://drive.google.com/thumbnail?id=1sPS69POXEpBmKjHcINobfpVKlpsNwg2h&sz=w200' }
     ]
+  },
+  // INTER DE MILÁN
+  {
+    id: 'int-home-25-custom',
+    name: 'Inter de Milán - Local - 25/26',
+    team: 'Inter',
+    league: 'Serie A',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1Je7WS3bvRRT73qIgrAsj3pvyVoCU7Lsi',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1jwkZdjEyHCqBaGBndb0alLMuTM6HVKp9',
+    playerImage: 'https://lh3.googleusercontent.com/d/1v64_XK_mPvFU4Rq-IvDv0sd0xn-8M1Y2',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1jwkZdjEyHCqBaGBndb0alLMuTM6HVKp9',
+    childImage: 'https://lh3.googleusercontent.com/d/1YomcWgCHdoJZcV9zI9cK6lGTWRz51Y1x',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/10_BO-4wgcA-7_5H2D2UdloHtHApx1sg7',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/10_BO-4wgcA-7_5H2D2UdloHtHApx1sg7',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Serie A', logo: 'https://lh3.googleusercontent.com/d/185ebTJPUy93BszobZgz3c2oc00R5dXql' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1QJ8OV9R_kkcwJ-GSintjGsVLZ6JFHlr5' }
+    ]
+  },
+  {
+    id: 'int-away-25-custom',
+    name: 'Inter de Milán - Visitante - 25/26',
+    team: 'Inter',
+    league: 'Serie A',
+    season: '25/26',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1C1W6y2j9MPFk3OljN8dF5qL3ueoY3_Xe',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1-mMvDrOG_MBReA4FBv58dTLqDp55jDFH',
+    playerImage: 'https://lh3.googleusercontent.com/d/14Ujm_o6WmEQcrRZda7Igj1B6yTdpwzvg',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1-mMvDrOG_MBReA4FBv58dTLqDp55jDFH',
+    childImage: 'https://lh3.googleusercontent.com/d/1niWmH2oN4yj2WvL6geH2A6tUXW-0NL3_',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/10_BO-4wgcA-7_5H2D2UdloHtHApx1sg7',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/10_BO-4wgcA-7_5H2D2UdloHtHApx1sg7',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Serie A', logo: 'https://lh3.googleusercontent.com/d/185ebTJPUy93BszobZgz3c2oc00R5dXql' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1QJ8OV9R_kkcwJ-GSintjGsVLZ6JFHlr5' }
+    ]
+  },
+  {
+    id: 'int-third-25-custom',
+    name: 'Inter de Milán - Tercera - 25/26',
+    team: 'Inter',
+    league: 'Serie A',
+    season: '25/26',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/15nFDLeyK-8ulkF2_7dc794B-mr77DK1e',
+    playerImage: 'https://lh3.googleusercontent.com/d/1iUknHeciYpbjlvGx0VcPQD1GqvyyDeUH',
+    childImage: 'https://lh3.googleusercontent.com/d/1eMXqd6H54OVDIOcpbySlq51VkIBjRUlm',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/10_BO-4wgcA-7_5H2D2UdloHtHApx1sg7',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/10_BO-4wgcA-7_5H2D2UdloHtHApx1sg7',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Serie A', logo: 'https://lh3.googleusercontent.com/d/185ebTJPUy93BszobZgz3c2oc00R5dXql' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1QJ8OV9R_kkcwJ-GSintjGsVLZ6JFHlr5' }
+    ]
+  },
+  {
+    id: 'int-retro-09-custom',
+    name: 'Inter de Milán - Local - 09/10',
+    team: 'Inter',
+    league: 'Serie A',
+    season: '09/10',
+    type: 'Local',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1G1zgzzptwGBz4BNUsn4KYUGp_f8ekqFB',
+    retroLongSleeveImage: 'https://lh3.googleusercontent.com/d/1g43j5vw5OZZ6J4W9i_XoLh-F62ctIWq7',
+    childImage: 'https://lh3.googleusercontent.com/d/1qdsh-IxgTCcdvYZH8iE1J31u3mnobtPp',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1fLh1ojfFkba0ZA35y3vMJadJsisqbSLe',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1fLh1ojfFkba0ZA35y3vMJadJsisqbSLe',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Final Champions', logo: 'https://lh3.googleusercontent.com/d/1b7nRJv2WBH5-GJzI-Oivl4nHb2ZNuwzo' }
+    ]
+  },
+  // JUVENTUS
+  {
+    id: 'juv-home-25-custom',
+    name: 'Juventus - Local - 25/26',
+    team: 'Juventus',
+    league: 'Serie A',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1wkTtjEdx4werjC0XTG4i9sJRd2309Wx6',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1sNlykkRnpSr3Nrs2eXkXmLr1d3XLHlcH',
+    playerImage: 'https://lh3.googleusercontent.com/d/1mm2UXNjkOH7afq79R5Uamm8ADOJC4T2Z',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1TpNvC8vZNW5Sy_4E-4N6l2Wu4lhLNs4f',
+    childImage: 'https://lh3.googleusercontent.com/d/1qCyxQLHzZNsU9xyY9hfkeABgEPYzhDQW',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1eynPxZbSQbre0EcecZZSt9CLuXBrT1eI',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1eynPxZbSQbre0EcecZZSt9CLuXBrT1eI',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Serie A', logo: 'https://lh3.googleusercontent.com/d/185ebTJPUy93BszobZgz3c2oc00R5dXql' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1QJ8OV9R_kkcwJ-GSintjGsVLZ6JFHlr5' }
+    ]
+  },
+  {
+    id: 'juv-third-25-custom',
+    name: 'Juventus - Tercera - 25/26',
+    team: 'Juventus',
+    league: 'Serie A',
+    season: '25/26',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1SpNB0JrAdj12u6aWFx7lCDsFhOKvSV_c',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1m3HlkkCdmc4enYFUA49kqTNn9VsqmU0z',
+    playerImage: 'https://lh3.googleusercontent.com/d/1Tj3gCB_-IXyc72ppGgaX4nLppZ3uID4u',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1m3HlkkCdmc4enYFUA49kqTNn9VsqmU0z',
+    childImage: 'https://lh3.googleusercontent.com/d/13c4LtykJN97LoeDLhduOm6o7nf5MxSXX',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1eynPxZbSQbre0EcecZZSt9CLuXBrT1eI',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1eynPxZbSQbre0EcecZZSt9CLuXBrT1eI',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Serie A', logo: 'https://lh3.googleusercontent.com/d/185ebTJPUy93BszobZgz3c2oc00R5dXql' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1QJ8OV9R_kkcwJ-GSintjGsVLZ6JFHlr5' }
+    ]
+  },
+  {
+    id: 'juv-fourth-25-custom',
+    name: 'Juventus - Cuarta - 25/26',
+    team: 'Juventus',
+    league: 'Serie A',
+    season: '25/26',
+    type: 'Cuarta',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/14K0bWD2wkcqnUPBp5iSYcUzJMFfrUE1A',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1BYdoQWcrVHNaE0N-6eBY2LPxHyvJ-Vxm',
+    playerImage: 'https://lh3.googleusercontent.com/d/1aa4SpOEP5bLtIJg6KbF5aMe_SmlZyZXD',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1BYdoQWcrVHNaE0N-6eBY2LPxHyvJ-Vxm',
+    childImage: 'https://lh3.googleusercontent.com/d/1lv0MGCj3dnEfZU8jo63L6O3tAqVcR-3R',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1cbphnNmg9aKfJKg6TqIIihDQFOrFG8xy',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1cbphnNmg9aKfJKg6TqIIihDQFOrFG8xy',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Serie A', logo: 'https://lh3.googleusercontent.com/d/185ebTJPUy93BszobZgz3c2oc00R5dXql' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1QJ8OV9R_kkcwJ-GSintjGsVLZ6JFHlr5' }
+    ]
+  },
+  {
+    id: 'juv-retro-19-custom',
+    name: 'Juventus - Local - 19/20',
+    team: 'Juventus',
+    league: 'Serie A',
+    season: '19/20',
+    type: 'Local',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1MMm4nJIFdtn3d4m_y67VH84FNF2JatPK',
+    retroLongSleeveImage: 'https://lh3.googleusercontent.com/d/1pbkCfpXaQFuyxOYGi4U-ycmNochkHEwF',
+    childImage: 'https://lh3.googleusercontent.com/d/1SdljtVWwQLWf-tB7A1sNTEfNPeguM514',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/13H3rLSPX3NR-X68mGOnDJm3k0e3hlHNE',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/13H3rLSPX3NR-X68mGOnDJm3k0e3hlHNE',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1d5HIqPGo6ZCOBUYTyQj27wynoqziRCh7' }
+    ]
   }
 ];
 

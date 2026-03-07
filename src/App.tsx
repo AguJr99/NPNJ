@@ -10,6 +10,9 @@ const LOGO_FOOTER_URL = "https://drive.google.com/thumbnail?id=17y8hAaeWVS3U659D
 const LOGO_ABOUT_URL = "https://drive.google.com/thumbnail?id=1fZ5zARjTmJOg96y7vKKR4IaC8BUNidqQ&sz=w600";
 const HERO_IMAGE = "https://drive.google.com/thumbnail?id=1Z1mGwwNTio8wQRP3cEEtn5eqiLZW6dZ0&sz=w1920"; 
 
+// Global cache for loaded images to prevent flickering
+const LOADED_IMAGES = new Set<string>();
+
 const LEAGUES_DATA = [
   {
     name: 'La Liga',
@@ -688,23 +691,6 @@ const EncargoOrderModal = ({ jersey, onClose, onZoom }: { jersey: EncargoJersey,
     patch: defaultPatch
   });
 
-  const [imagesLoaded, setImagesLoaded] = useState({
-    jersey: false,
-    sizeGuide: false,
-    numbering: false
-  });
-
-  // Hide body scroll when modal is open
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, []);
-
-  const basePrice = (jersey.isRetro || form.version === 'Player') ? 35 : 30;
-  const totalPrice = form.sleeves === 'Larga' ? basePrice + 3 : basePrice;
-
   const isBarcelonaCuarta = jersey.id === 'fcb-fourth-25-custom';
   const isRmaGk = jersey.id === 'rma-gk-third-25-custom';
   const isBarcelona26 = jersey.id === 'fcb-home-26-custom';
@@ -733,6 +719,70 @@ const EncargoOrderModal = ({ jersey, onClose, onZoom }: { jersey: EncargoJersey,
 
   const showSpecificStyle = (jersey.ligaNumberingImage && jersey.championsNumberingImage && jersey.ligaNumberingImage !== jersey.championsNumberingImage) || 
                            (jersey.europaNumberingImage && jersey.ligaNumberingImage && jersey.europaNumberingImage !== jersey.ligaNumberingImage);
+
+  const [imagesLoaded, setImagesLoaded] = useState({
+    jersey: LOADED_IMAGES.has(currentImage || ''),
+    sizeGuide: LOADED_IMAGES.has(currentSizeGuide || ''),
+    numbering: currentNumbering ? LOADED_IMAGES.has(currentNumbering) : true
+  });
+
+  // Preload all potential images for this jersey when modal opens
+  useEffect(() => {
+    const imagesToPreload = [
+      jersey.fanImage,
+      jersey.playerImage,
+      jersey.childImage,
+      jersey.fanLongSleeveImage,
+      jersey.playerLongSleeveImage,
+      jersey.retroLongSleeveImage,
+      jersey.fanSizeGuide,
+      jersey.playerSizeGuide,
+      jersey.retroSizeGuide,
+      jersey.childSizeGuide,
+      jersey.ligaNumberingImage,
+      jersey.championsNumberingImage,
+      jersey.europaNumberingImage,
+      ...PATCHES.map(p => p.logo).filter(Boolean) as string[]
+    ].filter(Boolean);
+
+    imagesToPreload.forEach(src => {
+      if (!LOADED_IMAGES.has(src)) {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => LOADED_IMAGES.add(src);
+      }
+    });
+  }, [jersey, PATCHES]);
+
+  // Update loading state when images change
+  useEffect(() => {
+    if (LOADED_IMAGES.has(currentImage)) {
+      setImagesLoaded(prev => ({ ...prev, jersey: true }));
+    }
+  }, [currentImage]);
+
+  useEffect(() => {
+    if (LOADED_IMAGES.has(currentSizeGuide)) {
+      setImagesLoaded(prev => ({ ...prev, sizeGuide: true }));
+    }
+  }, [currentSizeGuide]);
+
+  useEffect(() => {
+    if (currentNumbering && LOADED_IMAGES.has(currentNumbering)) {
+      setImagesLoaded(prev => ({ ...prev, numbering: true }));
+    }
+  }, [currentNumbering]);
+
+  // Hide body scroll when modal is open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
+  const basePrice = (jersey.isRetro || form.version === 'Player') ? 35 : 30;
+  const totalPrice = form.sleeves === 'Larga' ? basePrice + 3 : basePrice;
 
   const handleSend = () => {
     const text = `¡Hola! Quiero hacer un encargo personalizado:
@@ -795,11 +845,13 @@ Parche: *${form.patch}*`;
                   </div>
                 )}
                 <img 
-                  key={currentImage}
                   src={currentImage} 
                   alt="Jersey" 
                   className={`w-full max-h-[350px] md:max-h-[450px] object-contain transition-opacity duration-300 ${imagesLoaded.jersey ? 'opacity-100' : 'opacity-0'}`}
-                  onLoad={() => setImagesLoaded(prev => ({ ...prev, jersey: true }))}
+                  onLoad={() => {
+                    LOADED_IMAGES.add(currentImage);
+                    setImagesLoaded(prev => ({ ...prev, jersey: true }));
+                  }}
                   referrerPolicy="no-referrer" 
                 />
                 <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
@@ -817,18 +869,25 @@ Parche: *${form.patch}*`;
                   if (v === 'Niño') return !!jersey.childImage;
                   return true;
                 }).map(v => (
-                  <button
-                    key={v}
-                    onClick={() => {
-                      setForm({ ...form, version: v as any, sleeves: v === 'Niño' ? 'Corta' : form.sleeves });
-                      setImagesLoaded(prev => ({ ...prev, jersey: false, sizeGuide: false }));
-                    }}
-                    className={`py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 transition-all ${
-                      form.version === v ? 'border-primary bg-primary/10 text-secondary shadow-lg' : 'border-secondary/5 bg-white text-secondary/40'
-                    }`}
-                  >
-                    {v}
-                  </button>
+                    <button
+                      key={v}
+                      onClick={() => {
+                        const nextImage = v === 'Fan' ? jersey.fanImage : v === 'Player' ? jersey.playerImage : v === 'Retro' ? jersey.fanImage : jersey.childImage;
+                        const nextSizeGuide = v === 'Fan' ? jersey.fanSizeGuide : v === 'Player' ? jersey.playerSizeGuide : v === 'Retro' ? jersey.retroSizeGuide : jersey.childSizeGuide;
+                        
+                        setForm({ ...form, version: v as any, sleeves: v === 'Niño' ? 'Corta' : form.sleeves });
+                        setImagesLoaded(prev => ({ 
+                          ...prev, 
+                          jersey: LOADED_IMAGES.has(nextImage || ''), 
+                          sizeGuide: LOADED_IMAGES.has(nextSizeGuide || '') 
+                        }));
+                      }}
+                      className={`py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 transition-all ${
+                        form.version === v ? 'border-primary bg-primary/10 text-secondary shadow-lg' : 'border-secondary/5 bg-white text-secondary/40'
+                      }`}
+                    >
+                      {v}
+                    </button>
                 ))}
               </div>
             </section>
@@ -845,14 +904,23 @@ Parche: *${form.patch}*`;
                       Manga Corta
                     </button>
                   ) : (
-                    ['Corta', 'Larga'].map(m => (
-                      <button
-                        key={m}
-                        onClick={() => {
-                          setForm({ ...form, sleeves: m as any });
-                          setImagesLoaded(prev => ({ ...prev, jersey: false }));
-                        }}
-                        className={`py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 transition-all ${
+                      ['Corta', 'Larga'].map(m => (
+                        <button
+                          key={m}
+                          onClick={() => {
+                            let nextImage = currentImage;
+                            if (m === 'Larga') {
+                              if (form.version === 'Retro' && jersey.retroLongSleeveImage) nextImage = jersey.retroLongSleeveImage;
+                              else if (form.version === 'Fan' && jersey.fanLongSleeveImage) nextImage = jersey.fanLongSleeveImage;
+                              else if (form.version === 'Player' && jersey.playerLongSleeveImage) nextImage = jersey.playerLongSleeveImage;
+                            } else {
+                              nextImage = form.version === 'Fan' ? jersey.fanImage : form.version === 'Player' ? jersey.playerImage : form.version === 'Retro' ? jersey.fanImage : jersey.childImage;
+                            }
+                            
+                            setForm({ ...form, sleeves: m as any });
+                            setImagesLoaded(prev => ({ ...prev, jersey: LOADED_IMAGES.has(nextImage || '') }));
+                          }}
+                          className={`py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 transition-all ${
                           form.sleeves === m ? 'border-primary bg-primary/10 text-secondary shadow-lg' : 'border-secondary/5 bg-white text-secondary/40'
                         }`}
                       >
@@ -879,11 +947,13 @@ Parche: *${form.patch}*`;
                 <div className="relative cursor-zoom-in group shadow-lg rounded-2xl overflow-hidden max-w-[400px] mx-auto border border-secondary/5 bg-white" onClick={() => onZoom(currentSizeGuide)}>
                   {!imagesLoaded.sizeGuide && <div className="h-40 w-64 bg-white animate-pulse" />}
                   <img 
-                    key={currentSizeGuide}
                     src={currentSizeGuide} 
                     alt="Tallas" 
                     className={`max-w-full max-h-[200px] md:max-h-[300px] object-contain transition-opacity duration-300 ${imagesLoaded.sizeGuide ? 'opacity-100' : 'opacity-0'}`}
-                    onLoad={() => setImagesLoaded(prev => ({ ...prev, sizeGuide: true }))}
+                    onLoad={() => {
+                      LOADED_IMAGES.add(currentSizeGuide);
+                      setImagesLoaded(prev => ({ ...prev, sizeGuide: true }));
+                    }}
                     referrerPolicy="no-referrer" 
                   />
                   <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
@@ -954,17 +1024,17 @@ Parche: *${form.patch}*`;
                       key={p.name}
                       onClick={() => {
                         const nextNumbering = (p.name === 'Champions League' || p.name.includes('Champions')) ? jersey.championsNumberingImage : jersey.ligaNumberingImage;
-                        if (nextNumbering !== currentNumbering) {
-                          setImagesLoaded(prev => ({ ...prev, numbering: false }));
-                        }
                         setForm({ ...form, patch: p.name });
+                        setImagesLoaded(prev => ({ ...prev, numbering: LOADED_IMAGES.has(nextNumbering || '') }));
                       }}
-                      className={`flex flex-col items-center gap-2 md:gap-4 p-2 md:p-6 rounded-2xl md:rounded-3xl border-2 transition-all ${
+                      className={`flex flex-col items-center gap-2 md:gap-4 p-2 md:p-6 rounded-2xl md:rounded-3xl border-2 transition-all min-h-[100px] md:min-h-[180px] ${
                         form.patch === p.name ? 'border-primary bg-primary/10 text-secondary shadow-lg' : 'border-secondary/5 bg-white text-secondary/40'
                       }`}
                     >
                       {p.logo ? (
-                        <img src={p.logo} alt={p.name} className="w-10 h-10 md:w-20 md:h-20 object-contain" referrerPolicy="no-referrer" />
+                        <div className="w-10 h-10 md:w-20 md:h-20 flex items-center justify-center">
+                          <img src={p.logo} alt={p.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+                        </div>
                       ) : (
                         <div className="w-10 h-10 md:w-20 md:h-20 flex items-center justify-center border-2 border-dashed border-secondary/10 rounded-full">
                           <X className="w-4 h-4 md:w-6 md:h-6 opacity-20" />
@@ -993,14 +1063,20 @@ Parche: *${form.patch}*`;
                             : (form.patch === 'Supercopa de España' ? 'Estilo de Dorsal de Liga/Supercopa' : 'Estilo de Dorsal de Liga')
                     }
                   </label>
-                  <div className="relative cursor-zoom-in group shadow-lg rounded-2xl overflow-hidden max-w-[400px] mx-auto border border-secondary/5 bg-white h-auto" onClick={() => onZoom(currentNumbering)}>
-                    {!imagesLoaded.numbering && <div className="h-40 w-full bg-white animate-pulse" />}
+                  <div className="relative cursor-zoom-in group shadow-lg rounded-2xl overflow-hidden max-w-[400px] mx-auto border border-secondary/5 bg-white min-h-[150px] md:min-h-[220px] flex items-center justify-center" onClick={() => onZoom(currentNumbering)}>
+                    {!imagesLoaded.numbering && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-white animate-pulse">
+                        <Shirt className="w-8 h-8 text-secondary/10" />
+                      </div>
+                    )}
                     <img 
-                      key={currentNumbering}
                       src={currentNumbering} 
                       alt="Dorsal" 
-                      className={`w-full h-auto object-contain transition-opacity duration-300 ${imagesLoaded.numbering ? 'opacity-100' : 'opacity-0'}`}
-                      onLoad={() => setImagesLoaded(prev => ({ ...prev, numbering: true }))}
+                      className={`w-full max-h-[200px] md:max-h-[300px] object-contain transition-opacity duration-300 ${imagesLoaded.numbering ? 'opacity-100' : 'opacity-0'}`}
+                      onLoad={() => {
+                        LOADED_IMAGES.add(currentNumbering);
+                        setImagesLoaded(prev => ({ ...prev, numbering: true }));
+                      }}
                       referrerPolicy="no-referrer" 
                     />
                     <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
