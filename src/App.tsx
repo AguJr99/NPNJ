@@ -53,8 +53,8 @@ const LEAGUES_DATA = [
     logo: 'https://drive.google.com/thumbnail?id=1lhwq6p5531Q7LKoCqfGMOF-UYtzulk8M&sz=w200',
     teams: [
       { name: 'Bayern Munich', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg' },
-      { name: 'Dortmund', logo: 'https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg' },
-      { name: 'Leverkusen', logo: 'https://upload.wikimedia.org/wikipedia/en/5/59/Bayer_04_Leverkusen_logo.svg' },
+      { name: 'Borussia Dortmund', logo: 'https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg' },
+      { name: 'Bayer Leverkusen', logo: 'https://upload.wikimedia.org/wikipedia/en/5/59/Bayer_04_Leverkusen_logo.svg' },
       { name: 'Otros', logo: 'https://drive.google.com/thumbnail?id=1-BuZ9jOVI5Uduxg-9dXCrcnvgtK12F4y&sz=w200' }
     ]
   },

@@ -2159,6 +2159,207 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'Sin Parche', logo: null },
       { name: '125 Aniversario', logo: 'https://lh3.googleusercontent.com/d/1ehSErjjvoUDtjuziHtsRunjJuv9ITxkh' }
     ]
+  },
+  {
+    id: 'bvb-home-25-custom',
+    name: 'Borussia Dortmund - Local - 25/26',
+    team: 'Borussia Dortmund',
+    league: 'Bundesliga',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1g0ZUGDN8Z9Jkrk2Wfa21u6qBm59KIJU1',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1R4vWdTZHzQwCuSqrZDsgQdxvzkEuaq_Z',
+    playerImage: 'https://lh3.googleusercontent.com/d/10E1FKltSlzuMKlQNYpUH1Ireq3KRK8Ak',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1R4vWdTZHzQwCuSqrZDsgQdxvzkEuaq_Z',
+    childImage: 'https://lh3.googleusercontent.com/d/1TQK4SyQybiL1MPQ81_t45TrmjxTn1rPU',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1t4zsKc_qczHgkSnXm_-YuM-rPcIqlJ3E',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1t4zsKc_qczHgkSnXm_-YuM-rPcIqlJ3E',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://lh3.googleusercontent.com/d/1ngUyhnIcZlUu3Zqjp4oqUHLJslWh9Acy' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1cdfsywT71B75nx2OIWzDSIIcyltKo9i0' }
+    ]
+  },
+  {
+    id: 'bvb-home-26-custom',
+    name: 'Borussia Dortmund - Local - 26/27 (Filtración)',
+    team: 'Borussia Dortmund',
+    league: 'Bundesliga',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1qCnZ7of41kvO4Ob6j8-ygnideDtDxDFY',
+    playerImage: 'https://lh3.googleusercontent.com/d/1QebSU7GSMPl2BswlpT8xDNfaY64PP4Jw',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1t4zsKc_qczHgkSnXm_-YuM-rPcIqlJ3E',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1t4zsKc_qczHgkSnXm_-YuM-rPcIqlJ3E',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://lh3.googleusercontent.com/d/1ngUyhnIcZlUu3Zqjp4oqUHLJslWh9Acy' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1cdfsywT71B75nx2OIWzDSIIcyltKo9i0' }
+    ]
+  },
+  {
+    id: 'bvb-retro-12-custom',
+    name: 'Borussia Dortmund - Local - 12/13',
+    team: 'Borussia Dortmund',
+    league: 'Bundesliga',
+    season: '12/13',
+    type: 'Local',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1IJRbfOMdci9jHnDM9uGD1DBvBf5c_PsX',
+    childImage: 'https://lh3.googleusercontent.com/d/1HButSG_CjlEkiRUAHoT-nMI--5R5z_FF',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1IKYhjWBWxGgTX3tDLdKyecyLdqjkafHV',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1IKYhjWBWxGgTX3tDLdKyecyLdqjkafHV',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1XzLn81n0CGpQkVHNiiJ_9dIETXRqaL7N' }
+    ]
+  },
+  {
+    id: 'lev-home-25-custom',
+    name: 'Bayer Leverkusen - Local - 25/26',
+    team: 'Bayer Leverkusen',
+    league: 'Bundesliga',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1r_RANYCl_BrTJuJx6oeKFRNZb7MU9sFn',
+    playerImage: 'https://lh3.googleusercontent.com/d/12lA3mFAB6V1AywR67b8u63DR8Hm3eRaH',
+    childImage: 'https://lh3.googleusercontent.com/d/1cPay2U4MEoC6CIOXirtqCkzm21NotIt0',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/17vi1LqKRPGOqxUMiE7epHyyYhhuczc3k',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1_Gt9jOAYNk9AQLPdAvBdWu4M_1KVbQyW',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://lh3.googleusercontent.com/d/1ngUyhnIcZlUu3Zqjp4oqUHLJslWh9Acy' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1cdfsywT71B75nx2OIWzDSIIcyltKo9i0' }
+    ]
+  },
+  {
+    id: 'lev-away-25-custom',
+    name: 'Bayer Leverkusen - Visitante - 25/26',
+    team: 'Bayer Leverkusen',
+    league: 'Bundesliga',
+    season: '25/26',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1NudKGYoVCIimjolTXRN0tznPOhSA-Lqp',
+    playerImage: 'https://lh3.googleusercontent.com/d/1rv2GNpH2cRV-ZJUsqSAGcl6bsAUISn4r',
+    childImage: 'https://lh3.googleusercontent.com/d/1_WJgBN-MfUbD7iyYTQIjPV7blaLwWdhD',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/17vi1LqKRPGOqxUMiE7epHyyYhhuczc3k',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1_Gt9jOAYNk9AQLPdAvBdWu4M_1KVbQyW',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://lh3.googleusercontent.com/d/1ngUyhnIcZlUu3Zqjp4oqUHLJslWh9Acy' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1cdfsywT71B75nx2OIWzDSIIcyltKo9i0' }
+    ]
+  },
+  {
+    id: 'lev-third-25-custom',
+    name: 'Bayer Leverkusen - Tercera - 25/26',
+    team: 'Bayer Leverkusen',
+    league: 'Bundesliga',
+    season: '25/26',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1znTOCtCeMTqjzRHhe950sQpuzFIHhwNM',
+    playerImage: 'https://lh3.googleusercontent.com/d/1QpLuVy8oFE5EdtizZeRtKPn6AxsM7dbF',
+    childImage: 'https://lh3.googleusercontent.com/d/1sBPshUYjoiBSFrWdjh36wy4Gq5TvlHGA',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/17vi1LqKRPGOqxUMiE7epHyyYhhuczc3k',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1_Gt9jOAYNk9AQLPdAvBdWu4M_1KVbQyW',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://lh3.googleusercontent.com/d/1ngUyhnIcZlUu3Zqjp4oqUHLJslWh9Acy' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1cdfsywT71B75nx2OIWzDSIIcyltKo9i0' }
+    ]
+  },
+  {
+    id: 'fra-home-25-custom',
+    name: 'Eintracht Frankfurt - Local - 25/26',
+    team: 'Eintracht Frankfurt',
+    league: 'Bundesliga',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1mtN-DO1RPfBQkEzkiKPItSdfhIVUFIT5',
+    playerImage: 'https://lh3.googleusercontent.com/d/1HU-571SJNKGhtj1JyA7qxW2mXj76GIQg',
+    childImage: 'https://lh3.googleusercontent.com/d/1K8ACuvj5_RSqgwFpQYQR8OjhEbCgYgE-',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1Yd_zM5AvTXkE9zpLljdWzW8E3cVjPPlt',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1Yd_zM5AvTXkE9zpLljdWzW8E3cVjPPlt',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://lh3.googleusercontent.com/d/1ngUyhnIcZlUu3Zqjp4oqUHLJslWh9Acy' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1cdfsywT71B75nx2OIWzDSIIcyltKo9i0' }
+    ]
+  },
+  {
+    id: 'rbl-home-25-custom',
+    name: 'RB Leipzig - Local - 25/26',
+    team: 'RB Leipzig',
+    league: 'Bundesliga',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1OS6UROM5pbZixnaMJJmcvonk5Yg9Rm2a',
+    playerImage: 'https://lh3.googleusercontent.com/d/1qI74FKDW2hyzOJY_9gXB0NS0kbc3UYWO',
+    childImage: 'https://lh3.googleusercontent.com/d/1unmeuWHqlRUFZhn1pnPL1LAtJ5w6Rj7N',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1BmsOLkDipoTHkFZyKHoKJQ3EDkJh9vhD',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1BmsOLkDipoTHkFZyKHoKJQ3EDkJh9vhD',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://lh3.googleusercontent.com/d/1sUciBaFaZ7bXJVsmYdegXPTUhk3HcYNF' }
+    ]
+  },
+  {
+    id: 'rbl-away-25-custom',
+    name: 'RB Leipzig - Visitante - 25/26',
+    team: 'RB Leipzig',
+    league: 'Bundesliga',
+    season: '25/26',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1ozyx8eDjcRrtt_RgxNFh0Vj3Ah3cA89Z',
+    playerImage: 'https://lh3.googleusercontent.com/d/1falXd9zSmfjXbwiKT7e1xY-kYSa_lXcR',
+    childImage: 'https://lh3.googleusercontent.com/d/1m8d6lQ0Cybxh6rTypNrc4avM8lm11uxZ',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1BmsOLkDipoTHkFZyKHoKJQ3EDkJh9vhD',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1BmsOLkDipoTHkFZyKHoKJQ3EDkJh9vhD',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://lh3.googleusercontent.com/d/1sUciBaFaZ7bXJVsmYdegXPTUhk3HcYNF' }
+    ]
   }
 ];
 
@@ -2190,6 +2391,16 @@ export const LEAGUES_DATA = [
       { name: 'España', logo: 'https://drive.google.com/thumbnail?id=1SN6j0_ItHXTVteBqZCfYYZ8TXRNEHS9O&sz=w200' },
       { name: 'Alemania', logo: 'https://drive.google.com/thumbnail?id=1SN6j0_ItHXTVteBqZCfYYZ8TXRNEHS9O&sz=w200' },
       { name: 'Argentina', logo: 'https://drive.google.com/thumbnail?id=1SN6j0_ItHXTVteBqZCfYYZ8TXRNEHS9O&sz=w200' }
+    ]
+  },
+  {
+    name: 'Bundesliga',
+    logo: 'https://lh3.googleusercontent.com/d/15jxlLxTv65fTkgEUMyOx-LUIfkuV5TVO',
+    teams: [
+      { name: 'Bayern Munich', logo: 'https://lh3.googleusercontent.com/d/15jxlLxTv65fTkgEUMyOx-LUIfkuV5TVO' },
+      { name: 'Borussia Dortmund', logo: 'https://lh3.googleusercontent.com/d/1ngUyhnIcZlUu3Zqjp4oqUHLJslWh9Acy' },
+      { name: 'Bayer Leverkusen', logo: 'https://lh3.googleusercontent.com/d/1ngUyhnIcZlUu3Zqjp4oqUHLJslWh9Acy' },
+      { name: 'Otros', logo: 'https://drive.google.com/thumbnail?id=1-BuZ9jOVI5Uduxg-9dXCrcnvgtK12F4y&sz=w200' }
     ]
   }
 ];
