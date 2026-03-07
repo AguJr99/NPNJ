@@ -4,10 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NP-NJ</title>
-    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/11BBxuRfaiE9c4mQOKOc4xbn9WAxUH44h" media="(prefers-color-scheme: light)" />
-    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/14ikCftTeHdjUpPjryzogbe18Undx-s0o" media="(prefers-color-scheme: dark)" />
-    <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/11BBxuRfaiE9c4mQOKOc4xbn9WAxUH44h" />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/11BBxuRfaiE9c4mQOKOc4xbn9WAxUH44h" />
+    <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/11BBxuRfaiE9c4mQOKOc4xbn9WAxUH44h" media="(prefers-color-scheme: light)" />
+    <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/14ikCftTeHdjUpPjryzogbe18Undx-s0o" media="(prefers-color-scheme: dark)" />
+    <link id="manifest-link" rel="manifest" href="/manifest-light.json" />
+    <script>
+      const manifestLink = document.getElementById('manifest-link');
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        manifestLink.href = '/manifest-dark.json';
+      }
+    </script>
     <!-- Open Graph / Social Sharing -->
     <meta property="og:title" content="NP-NJ" />
     <meta property="og:description" content="Tu tienda de camisetas de fútbol de confianza." />
