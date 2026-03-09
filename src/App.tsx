@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, Link, Navigate } from 'react-router-dom';
 import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown } from 'lucide-react';
@@ -63,7 +63,7 @@ const LEAGUES_DATA = [
     logo: 'https://drive.google.com/thumbnail?id=1v7zORdUCbZ4e0ZqNTA6RlaEP9gzk322w&sz=w200',
     teams: [
       { name: 'PSG', logo: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg' },
-      { name: 'Monaco', logo: 'https://drive.google.com/thumbnail?id=1oLx-8tL1nhbIEcuqP9ks8X0tyobc-DYi&sz=w200' },
+      { name: 'Mónaco', logo: 'https://drive.google.com/thumbnail?id=1oLx-8tL1nhbIEcuqP9ks8X0tyobc-DYi&sz=w200' },
       { name: 'Marseille', logo: 'https://drive.google.com/thumbnail?id=1_zIK18FJVwkPZ1BB0s-8kgesiS5CrQWh&sz=w200' },
       { name: 'Otros', logo: 'https://drive.google.com/thumbnail?id=1-BuZ9jOVI5Uduxg-9dXCrcnvgtK12F4y&sz=w200' }
     ]
@@ -281,8 +281,10 @@ const JerseyCard = ({ jersey, onOrder }: { jersey: Jersey, onOrder: (j?: Jersey)
         </div>
         
         <div className="p-4 md:p-8 space-y-4 md:space-y-7 flex-grow flex flex-col items-center text-center">
-          <div className="space-y-1">
-            <h3 className="font-sans font-black text-secondary text-base md:text-xl leading-tight uppercase tracking-tight">{jersey.team}</h3>
+          <div className="space-y-1 w-full">
+            <h3 className="font-sans font-black text-secondary text-base md:text-xl leading-tight uppercase tracking-tight min-h-[2.5rem] md:min-h-[3.5rem] flex items-center justify-center text-center w-full">
+              {jersey.team}
+            </h3>
             <div className="flex items-center justify-center gap-2">
               <span className="text-[8px] md:text-[10px] font-bold text-secondary/50 uppercase tracking-[0.1em]">{jersey.season}</span>
               <span className="w-1 h-1 bg-primary rounded-full" />
@@ -679,7 +681,11 @@ const EncargoOrderModal = ({ jersey, onClose, onZoom }: { jersey: EncargoJersey,
     ? PATCHES[0].name 
     : PATCHES.find(p => p.name === 'Champions League') 
       ? 'Champions League' 
-      : PATCHES[0].name;
+      : PATCHES.find(p => p.name === 'Europa League')
+        ? 'Europa League'
+        : (PATCHES.length > 1 && PATCHES[0].name === 'Sin Parche')
+          ? PATCHES[1].name
+          : PATCHES[0].name;
 
   const [form, setForm] = useState<EncargoOrder>({
     jerseyId: jersey.id,
@@ -943,13 +949,17 @@ Parche: *${form.patch}*`;
             {/* 4. Size Guide Photo */}
             <section className="space-y-4">
               <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-widest mb-2">Guía de Tallas ({form.version})</label>
-              <div className="h-[200px] md:h-[300px] flex items-center justify-center">
-                <div className="relative cursor-zoom-in group shadow-lg rounded-2xl overflow-hidden max-w-[400px] mx-auto border border-secondary/5 bg-white" onClick={() => onZoom(currentSizeGuide)}>
-                  {!imagesLoaded.sizeGuide && <div className="h-40 w-64 bg-white animate-pulse" />}
+              <div className="flex items-center justify-center">
+                <div className="relative cursor-zoom-in group shadow-lg rounded-2xl overflow-hidden max-w-[400px] mx-auto border border-secondary/5 w-fit" onClick={() => onZoom(currentSizeGuide)}>
+                  {!imagesLoaded.sizeGuide && (
+                    <div className="h-[120px] w-[200px] bg-white animate-pulse flex items-center justify-center">
+                      <Shirt className="w-6 h-6 text-secondary/10" />
+                    </div>
+                  )}
                   <img 
                     src={currentSizeGuide} 
                     alt="Tallas" 
-                    className={`max-w-full max-h-[200px] md:max-h-[300px] object-contain transition-opacity duration-300 ${imagesLoaded.sizeGuide ? 'opacity-100' : 'opacity-0'}`}
+                    className={`block max-w-full max-h-[180px] md:max-h-[300px] h-auto transition-opacity duration-300 ${imagesLoaded.sizeGuide ? 'opacity-100' : 'opacity-0'}`}
                     onLoad={() => {
                       LOADED_IMAGES.add(currentSizeGuide);
                       setImagesLoaded(prev => ({ ...prev, sizeGuide: true }));
@@ -1054,25 +1064,31 @@ Parche: *${form.patch}*`;
                   <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-widest mb-2 text-center">
                     {!showSpecificStyle 
                       ? 'Estilo de Dorsal' 
-                      : (form.patch === 'Sin Parche' || form.patch === 'Champions League' || form.patch.includes('Champions'))
+                      : (form.patch === 'Champions League' || form.patch.includes('Champions'))
                         ? 'Estilo de Dorsal de Champions'
-                        : (jersey.league === 'Premier League' && form.patch === 'Carabao Cup')
-                          ? (jersey.team === 'Manchester United' ? 'Estilo de Dorsal de Copa' : 'Estilo de Dorsal de Champions')
-                          : (form.patch === 'Europa League' || form.patch.includes('Europa'))
-                            ? 'Estilo de Dorsal de Europa League'
-                            : (form.patch === 'Supercopa de España' ? 'Estilo de Dorsal de Liga/Supercopa' : 'Estilo de Dorsal de Liga')
+                        : (form.patch === 'Europa League' || form.patch.includes('Europa'))
+                          ? 'Estilo de Dorsal de Europa League'
+                          : (form.patch === 'Sin Parche')
+                            ? (PATCHES.find(p => p.name.includes('Champions')) 
+                                ? 'Estilo de Dorsal de Champions' 
+                                : PATCHES.find(p => p.name.includes('Europa'))
+                                  ? 'Estilo de Dorsal de Europa League'
+                                  : 'Estilo de Dorsal de Liga')
+                            : (jersey.league === 'Premier League' && form.patch === 'Carabao Cup')
+                              ? (jersey.team === 'Manchester United' ? 'Estilo de Dorsal de Copa' : 'Estilo de Dorsal de Champions')
+                              : (form.patch === 'Supercopa de España' ? 'Estilo de Dorsal de Liga/Supercopa' : 'Estilo de Dorsal de Liga')
                     }
                   </label>
-                  <div className="relative cursor-zoom-in group shadow-lg rounded-2xl overflow-hidden max-w-[400px] mx-auto border border-secondary/5 bg-white min-h-[150px] md:min-h-[220px] flex items-center justify-center" onClick={() => onZoom(currentNumbering)}>
+                  <div className="relative cursor-zoom-in group shadow-lg rounded-2xl overflow-hidden max-w-[400px] mx-auto border border-secondary/5 w-fit" onClick={() => onZoom(currentNumbering)}>
                     {!imagesLoaded.numbering && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-white animate-pulse">
+                      <div className="h-[120px] w-[200px] flex items-center justify-center bg-white animate-pulse">
                         <Shirt className="w-8 h-8 text-secondary/10" />
                       </div>
                     )}
                     <img 
                       src={currentNumbering} 
                       alt="Dorsal" 
-                      className={`w-full max-h-[200px] md:max-h-[300px] object-contain transition-opacity duration-300 ${imagesLoaded.numbering ? 'opacity-100' : 'opacity-0'}`}
+                      className={`block max-w-full max-h-[180px] md:max-h-[300px] h-auto transition-opacity duration-300 ${imagesLoaded.numbering ? 'opacity-100' : 'opacity-0'}`}
                       onLoad={() => {
                         LOADED_IMAGES.add(currentNumbering);
                         setImagesLoaded(prev => ({ ...prev, numbering: true }));
@@ -1185,45 +1201,140 @@ export default function App() {
     return matchesSearch && matchesSize && matchesStyle;
   });
 
-  const filteredEncargoJerseys = ENCARGO_JERSEYS.filter(j => {
-    const search = normalizeText(encargoSearchQuery);
-    const matchesSearch = encargoSearchQuery ? (normalizeText(j.team).includes(search) ||
-                         normalizeText(j.name).includes(search)) : true;
-    
-    const leagueData = LEAGUES_DATA.find(l => l.name === j.league);
-    const mainTeams = leagueData?.teams.filter(t => t.name !== 'Otros').map(t => t.name) || [];
-    
-    const matchesTeam = !selectedTeam || 
-                        (selectedTeam === 'Otros' ? !mainTeams.includes(j.team) : j.team === selectedTeam);
-    const matchesLeague = !selectedLeague || j.league === selectedLeague;
-    
-    return matchesSearch && matchesTeam && matchesLeague;
-  }).sort((a, b) => {
+  const filteredEncargoJerseys = useMemo(() => {
+    const baseFiltered = ENCARGO_JERSEYS.filter(j => {
+      const search = normalizeText(encargoSearchQuery);
+      const matchesSearch = encargoSearchQuery ? (normalizeText(j.team).includes(search) ||
+                           normalizeText(j.name).includes(search)) : true;
+      
+      const leagueData = LEAGUES_DATA.find(l => l.name === j.league);
+      const mainTeams = leagueData?.teams.filter(t => t.name !== 'Otros').map(t => t.name) || [];
+      
+      const matchesTeam = !selectedTeam || 
+                          (selectedTeam === 'Otros' ? !mainTeams.includes(j.team) : j.team === selectedTeam);
+      const matchesLeague = !selectedLeague || j.league === selectedLeague;
+      
+      return matchesSearch && matchesTeam && matchesLeague;
+    });
+
     const getYear = (season: string) => {
       const yearStr = season.split('/')[0];
       const year = parseInt(yearStr);
       if (isNaN(year)) return 0;
       return year > 40 ? 1900 + year : 2000 + year;
     };
-    
-    const yearA = getYear(a.season);
-    const yearB = getYear(b.season);
-    
-    if (yearB !== yearA) {
-      return yearB - yearA;
-    }
-    return a.team.localeCompare(b.team);
-  });
 
-  const bestSellerIds = [
-    'fcb-home-25-custom',
-    'rma-home-25-custom',
-    'fcb-away-25-custom',
-    'rma-away-25-custom',
-    'fcb-third-25-custom',
-    'rma-third-25-custom'
-  ];
-  const bestSellerEncargos = bestSellerIds.map(id => ENCARGO_JERSEYS.find(j => j.id === id)).filter(Boolean) as EncargoJersey[];
+    // Special logic for League View (only league selected)
+    if (selectedLeague && !selectedTeam && !encargoSearchQuery) {
+      const leagueData = LEAGUES_DATA.find(l => l.name === selectedLeague);
+      if (!leagueData) return baseFiltered;
+
+      const explicitTeams = leagueData.teams.filter(t => t.name !== 'Otros').map(t => t.name);
+      const otherTeamsInLeague = Array.from(new Set(
+        baseFiltered
+          .filter(j => !explicitTeams.includes(j.team))
+          .map(j => j.team)
+      )).sort();
+      const allTeamsOrdered = [...explicitTeams, ...otherTeamsInLeague];
+
+      const availableSeasons = Array.from(new Set(baseFiltered.map(j => j.season)))
+        .sort((a, b) => getYear(b) - getYear(a));
+
+      const result: EncargoJersey[] = [];
+      const addedIds = new Set<string>();
+      const typesOrdered: EncargoJersey['type'][] = ['Local', 'Visitante', 'Tercera', 'Cuarta', 'Especial', 'Portero'];
+
+      for (const season of availableSeasons) {
+        if (result.length >= 10) break;
+
+        // Pass 1: Locals of this season for all teams
+        for (const teamName of allTeamsOrdered) {
+          if (result.length >= 10) break;
+          const jersey = baseFiltered.find(j => 
+            j.season === season && 
+            j.team === teamName && 
+            j.type === 'Local' && 
+            !addedIds.has(j.id)
+          );
+          if (jersey) {
+            result.push(jersey);
+            addedIds.add(jersey.id);
+          }
+        }
+
+        // Pass 2: Visitantes of this season for all teams
+        if (result.length < 10) {
+          for (const teamName of allTeamsOrdered) {
+            if (result.length >= 10) break;
+            const jersey = baseFiltered.find(j => 
+              j.season === season && 
+              j.team === teamName && 
+              j.type === 'Visitante' && 
+              !addedIds.has(j.id)
+            );
+            if (jersey) {
+              result.push(jersey);
+              addedIds.add(jersey.id);
+            }
+          }
+        }
+
+        // Pass 3: Others of this season for all teams
+        if (result.length < 10) {
+          for (const type of typesOrdered.filter(t => t !== 'Local' && t !== 'Visitante')) {
+            if (result.length >= 10) break;
+            for (const teamName of allTeamsOrdered) {
+              if (result.length >= 10) break;
+              const jersey = baseFiltered.find(j => 
+                j.season === season && 
+                j.team === teamName && 
+                j.type === type && 
+                !addedIds.has(j.id)
+              );
+              if (jersey) {
+                result.push(jersey);
+                addedIds.add(jersey.id);
+              }
+            }
+          }
+        }
+      }
+
+      return result;
+    }
+
+    return baseFiltered.sort((a, b) => {
+      const yearA = getYear(a.season);
+      const yearB = getYear(b.season);
+      if (yearB !== yearA) return yearB - yearA;
+      return a.team.localeCompare(b.team);
+    });
+  }, [selectedLeague, selectedTeam, encargoSearchQuery]);
+
+  const featuredJerseys = useMemo(() => {
+    const today = new Date().toISOString().split('T')[0];
+    // Simple hash function for the date string to use as a seed
+    let seed = 0;
+    for (let i = 0; i < today.length; i++) {
+      seed = ((seed << 5) - seed) + today.charCodeAt(i);
+      seed |= 0;
+    }
+
+    // Seeded random function using the hash
+    const seededRandom = (s: number) => {
+      const x = Math.sin(s) * 10000;
+      return x - Math.floor(x);
+    };
+
+    // Create a copy and shuffle using the seeded random
+    const shuffled = [...ENCARGO_JERSEYS];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(seededRandom(seed + i) * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    
+    return shuffled.slice(0, 20);
+  }, []);
 
   const bestSellers = JERSEYS.filter(j => j.isBestSeller);
 
@@ -1452,7 +1563,7 @@ export default function App() {
                 {/* League Bubbles for Encargos */}
                 {activeTab === 'encargos' && !encargoSearchQuery && (
                   <div className="w-full space-y-8">
-                    <div className="grid grid-cols-4 md:flex md:flex-wrap justify-center gap-2 md:gap-6">
+                    <div className="grid grid-cols-4 md:flex md:flex-wrap justify-center gap-1.5 md:gap-6">
                       {LEAGUES_DATA.map((league) => (
                         <button
                           key={league.name}
@@ -1461,7 +1572,7 @@ export default function App() {
                             setSelectedTeam(null);
                             setEncargoSearchQuery('');
                           }}
-                          className={`flex flex-col items-center gap-1.5 md:gap-3 p-2 md:p-5 rounded-xl md:rounded-2xl border-2 transition-all duration-300 w-full md:w-[130px] ${
+                          className={`flex flex-col items-center gap-1 md:gap-3 p-1.5 md:p-5 rounded-xl md:rounded-2xl border-2 transition-all duration-300 w-full md:w-[130px] aspect-square md:aspect-auto ${
                             selectedLeague === league.name 
                               ? 'border-primary bg-primary/10 text-secondary shadow-lg shadow-primary/10' 
                               : 'border-secondary/5 bg-white text-secondary/60 hover:border-primary/30 hover:text-secondary'
@@ -1470,10 +1581,10 @@ export default function App() {
                           <img 
                             src={league.logo} 
                             alt={league.name} 
-                            className="w-6 h-6 md:w-14 md:h-14 object-contain"
+                            className="w-8 h-8 md:w-14 md:h-14 object-contain"
                             referrerPolicy="no-referrer"
                           />
-                          <span className="text-[7px] md:text-[11px] font-black uppercase tracking-wider text-center leading-tight">{league.name}</span>
+                          <span className="text-[6px] md:text-[11px] font-black uppercase tracking-wider text-center leading-tight">{league.name}</span>
                         </button>
                       ))}
                     </div>
@@ -1514,16 +1625,16 @@ export default function App() {
                       )}
                     </AnimatePresence>
 
-                    {/* Más Vendidas Section */}
-                    {!selectedTeam && !encargoSearchQuery && (
+                    {/* Destacadas de hoy Section */}
+                    {!selectedLeague && !selectedTeam && !encargoSearchQuery && (
                       <div className="pt-8 space-y-8">
                         <div className="flex items-center gap-4">
                           <div className="h-px bg-secondary/10 flex-grow" />
-                          <h2 className="text-xl md:text-3xl font-sans font-black text-secondary uppercase tracking-tighter">Más Vendidas</h2>
+                          <h2 className="text-xl md:text-3xl font-sans font-black text-secondary uppercase tracking-tighter">Destacadas de hoy</h2>
                           <div className="h-px bg-secondary/10 flex-grow" />
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                          {bestSellerEncargos.map(jersey => (
+                          {featuredJerseys.map(jersey => (
                             <EncargoJerseyCard
                               key={jersey.id}
                               jersey={jersey}
@@ -1576,7 +1687,7 @@ export default function App() {
               )
             ) : (
               <div className="space-y-12">
-                {(encargoSearchQuery || selectedTeam) && filteredEncargoJerseys.length > 0 && (
+                {(encargoSearchQuery || selectedTeam || selectedLeague) && filteredEncargoJerseys.length > 0 && (
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {filteredEncargoJerseys.map(jersey => (
                       <EncargoJerseyCard

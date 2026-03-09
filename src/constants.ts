@@ -268,7 +268,7 @@ export const JERSEYS: Jersey[] = [
   }
 ];
 
-export const LEAGUES = ['Premier League', 'La Liga', 'Serie A', 'Bundesliga', 'Selecciones'];
+export const LEAGUES = ['Premier League', 'La Liga', 'Serie A', 'Bundesliga', 'Ligue 1', 'Selecciones', 'Otras Ligas'];
 
 export const ENCARGO_JERSEYS: EncargoJersey[] = [
   // BARCELONA
@@ -2360,6 +2360,313 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'Sin Parche', logo: null },
       { name: 'Bundesliga', logo: 'https://lh3.googleusercontent.com/d/1sUciBaFaZ7bXJVsmYdegXPTUhk3HcYNF' }
     ]
+  },
+  {
+    id: 'psg-home-25-custom',
+    name: 'PSG - Local - 25/26',
+    team: 'PSG',
+    league: 'Ligue 1',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1_tYi5n0ioHwqq1RcEycE9CiSzOY6u06a',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1FUmSQLG5lvZZ2uDYcxI3tTWAbh1aLKxc',
+    playerImage: 'https://lh3.googleusercontent.com/d/1fgbCyUeoEscTPm0QW2lrjCxMElBHWHCk',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1ziDgbmg96DqBFjfUUGBFrPiWq_wuR01E',
+    childImage: 'https://lh3.googleusercontent.com/d/18Kt0OugHgJr3yNVrWWudGcYlu1mMgUwW',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/11ltdfnybG3rvHzgQSFWIGcHYZMwngbku',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/11ltdfnybG3rvHzgQSFWIGcHYZMwngbku',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/1HFZnDjgWY_JW_83ndj01oPGyZCMCc8mb' },
+      { name: 'Ligue 1 + Intercontinental', logo: 'https://lh3.googleusercontent.com/d/1YqX_HiY1NwxO2mY-45fiWNhxw13DXv4h' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1JIfl6mj6K4WLq4nl8T-vGUmvYGZeKMRM' },
+      { name: 'Champions + Intercontinental', logo: 'https://lh3.googleusercontent.com/d/1GMhGT42_kp7f5JcCEPuRz87p1PVS4hgt' }
+    ]
+  },
+  {
+    id: 'psg-third-25-custom',
+    name: 'PSG - Tercera - 25/26',
+    team: 'PSG',
+    league: 'Ligue 1',
+    season: '25/26',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1NGWfnvL797qLyUS2oVMnyyeMpx27YRCS',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1vu5e32jaVqJXUoQN1i4cWI0fPCrt9TNU',
+    playerImage: 'https://lh3.googleusercontent.com/d/1rxfGhePBOwjwPW98d49dQ5irUbYEuHz3',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1k0IlUZ3XFLNefd1hRz2Vch-hutkEW2gY',
+    childImage: 'https://lh3.googleusercontent.com/d/1TY2hJLP_S9g_-vYypS9XbiS97JGynhgs',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/11ltdfnybG3rvHzgQSFWIGcHYZMwngbku',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/11ltdfnybG3rvHzgQSFWIGcHYZMwngbku',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/1HFZnDjgWY_JW_83ndj01oPGyZCMCc8mb' },
+      { name: 'Ligue 1 + Intercontinental', logo: 'https://lh3.googleusercontent.com/d/1YqX_HiY1NwxO2mY-45fiWNhxw13DXv4h' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1JIfl6mj6K4WLq4nl8T-vGUmvYGZeKMRM' },
+      { name: 'Champions + Intercontinental', logo: 'https://lh3.googleusercontent.com/d/1GMhGT42_kp7f5JcCEPuRz87p1PVS4hgt' }
+    ]
+  },
+  {
+    id: 'psg-fourth-25-custom',
+    name: 'PSG - Cuarta - 25/26',
+    team: 'PSG',
+    league: 'Ligue 1',
+    season: '25/26',
+    type: 'Cuarta',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1gBgkdbHbFjSdPyhyjzKkIp3_kyOpxGnS',
+    playerImage: 'https://lh3.googleusercontent.com/d/1kx17z3yVbMI5WDJGnRFlY9fELLhML9Zs',
+    childImage: 'https://lh3.googleusercontent.com/d/1f0jAJaOYCr-gCMafq8yDwYbTc-P4nr85',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/11ltdfnybG3rvHzgQSFWIGcHYZMwngbku',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/11ltdfnybG3rvHzgQSFWIGcHYZMwngbku',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/1HFZnDjgWY_JW_83ndj01oPGyZCMCc8mb' },
+      { name: 'Ligue 1 + Intercontinental', logo: 'https://lh3.googleusercontent.com/d/1YqX_HiY1NwxO2mY-45fiWNhxw13DXv4h' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1JIfl6mj6K4WLq4nl8T-vGUmvYGZeKMRM' },
+      { name: 'Champions + Intercontinental', logo: 'https://lh3.googleusercontent.com/d/1GMhGT42_kp7f5JcCEPuRz87p1PVS4hgt' }
+    ]
+  },
+  {
+    id: 'monaco-home-25-custom',
+    name: 'Mónaco - Local - 25/26',
+    team: 'Mónaco',
+    league: 'Ligue 1',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1CfQgKXQAKN9QMClXwwggHv2BN-nv6U03',
+    playerImage: 'https://lh3.googleusercontent.com/d/1SX8inTbv7Vx0FBQ7udg4sAf6y0jcpTt7',
+    childImage: 'https://lh3.googleusercontent.com/d/1uZyeIJ8S1FQOrnHh0KfTiBrtrSB3KNIA',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1xVR9hyqBrAe-W2Gdlh-M9YJqqpr6mJ55',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1W7OZa88ZhxBZvwJkrXbIwHVc2R3dp49e',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/1DU52PWMUh6fkKNRb-ppaMk0paG1DtT5t' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1ShOekIf7Kt-XIHh6pp3LL5cetXWAo5LX' }
+    ]
+  },
+  {
+    id: 'monaco-away-25-custom',
+    name: 'Mónaco - Visitante - 25/26',
+    team: 'Mónaco',
+    league: 'Ligue 1',
+    season: '25/26',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1AU_0ZgpZB0ZDeCvd2CGDn95auvW3QTuq',
+    playerImage: 'https://lh3.googleusercontent.com/d/1Zv12Kqen33jthPw_vwwcfk11WasLuy5e',
+    childImage: 'https://lh3.googleusercontent.com/d/1jD8P5yJ-PYEgAx3o7-EGYPWNmCnRkEEU',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1xVR9hyqBrAe-W2Gdlh-M9YJqqpr6mJ55',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1W7OZa88ZhxBZvwJkrXbIwHVc2R3dp49e',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/1DU52PWMUh6fkKNRb-ppaMk0paG1DtT5t' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1ShOekIf7Kt-XIHh6pp3LL5cetXWAo5LX' }
+    ]
+  },
+  {
+    id: 'monaco-third-25-custom',
+    name: 'Mónaco - Tercera - 25/26',
+    team: 'Mónaco',
+    league: 'Ligue 1',
+    season: '25/26',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1Shdb0DU2NXLwlSdT_NRcBWyohdFzQeZk',
+    playerImage: 'https://lh3.googleusercontent.com/d/1d8V_hl9L0A65_LcoWQQzhktJzPJiAJey',
+    childImage: 'https://lh3.googleusercontent.com/d/1BvG4tSYlG8rafY-I_h7ppImPhdlsJTH3',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1xVR9hyqBrAe-W2Gdlh-M9YJqqpr6mJ55',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1W7OZa88ZhxBZvwJkrXbIwHVc2R3dp49e',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/1DU52PWMUh6fkKNRb-ppaMk0paG1DtT5t' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1ShOekIf7Kt-XIHh6pp3LL5cetXWAo5LX' }
+    ]
+  },
+  {
+    id: 'marseille-home-25-custom',
+    name: 'Marseille - Local - 25/26',
+    team: 'Marseille',
+    league: 'Ligue 1',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1kCNJKf6zGhil-jbV5muHB2vsc5eO52RF',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1gLgHIRqpzPMlkPauHC4lOzIZ4p0ilRyL',
+    playerImage: 'https://lh3.googleusercontent.com/d/15Af9kLmM1xQlO6we99R5pIHaWhAfUGie',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1gLgHIRqpzPMlkPauHC4lOzIZ4p0ilRyL',
+    childImage: 'https://lh3.googleusercontent.com/d/1xIj2Xrha0EmDRBRPmDXqLn_WfMq_dZBK',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1WqxoeEU9EbkYreuN0bWIAmvY4o0g_SRQ',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1j9D5gZwOP5xKLrRKq7Oi1_9xC8GYBctx',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/1DU52PWMUh6fkKNRb-ppaMk0paG1DtT5t' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1ShOekIf7Kt-XIHh6pp3LL5cetXWAo5LX' }
+    ]
+  },
+  {
+    id: 'marseille-away-25-custom',
+    name: 'Marseille - Visitante - 25/26',
+    team: 'Marseille',
+    league: 'Ligue 1',
+    season: '25/26',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1ex-3pLsZThQIx7y4ehn0BSdDm00cdT2x',
+    playerImage: 'https://lh3.googleusercontent.com/d/12z6yfy7rIeQPXn6HBq0-5TWT1eot8nIc',
+    childImage: 'https://lh3.googleusercontent.com/d/1wmu0Uh-tdguW5JNK0kgVycZhOkf0mvz5',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1WqxoeEU9EbkYreuN0bWIAmvY4o0g_SRQ',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1j9D5gZwOP5xKLrRKq7Oi1_9xC8GYBctx',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/1DU52PWMUh6fkKNRb-ppaMk0paG1DtT5t' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1ShOekIf7Kt-XIHh6pp3LL5cetXWAo5LX' }
+    ]
+  },
+  {
+    id: 'marseille-third-25-custom',
+    name: 'Marseille - Tercera - 25/26',
+    team: 'Marseille',
+    league: 'Ligue 1',
+    season: '25/26',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1dqTx3-KFpyFiLlZ9XqA-8tFybONHm0uD',
+    playerImage: 'https://lh3.googleusercontent.com/d/1NMSJ9I38wmz3cUTc2-7yLNDj7nUULJAV',
+    childImage: 'https://lh3.googleusercontent.com/d/1Gr4y-Ul9kS48SdgH4xL1wnbFbfmXWyOh',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1WqxoeEU9EbkYreuN0bWIAmvY4o0g_SRQ',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1j9D5gZwOP5xKLrRKq7Oi1_9xC8GYBctx',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/1DU52PWMUh6fkKNRb-ppaMk0paG1DtT5t' },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1ShOekIf7Kt-XIHh6pp3LL5cetXWAo5LX' }
+    ]
+  },
+  {
+    id: 'ol-home-25-custom',
+    name: 'Olympique de Lyon - Local - 25/26',
+    team: 'Olympique de Lyon',
+    league: 'Ligue 1',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1BhMrEq3pIBFrtbFhHqwSiV7AMpu7v6VO',
+    playerImage: 'https://lh3.googleusercontent.com/d/1Mz5GLCdGrgjLcQmV6PWVR_Ks3aDKPz1P',
+    childImage: 'https://lh3.googleusercontent.com/d/1KhHI545DjE_lRmcFPufHom7mMaOQoEnd',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1jESouBlHjiFGXtkj67VD0dwzKr97CCPi',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1CQXhNSMciAgOBACV-V9IUuLa2iok5OLv',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/13jBt-IqQyjHto-34ebXkReiUHzw70LMZ' },
+      { name: 'Europa League', logo: 'https://lh3.googleusercontent.com/d/1QMKLrsjVAJ2XuY2XEro89ZGv7P0TvQRT' }
+    ]
+  },
+  {
+    id: 'ol-away-25-custom',
+    name: 'Olympique de Lyon - Visitante - 25/26',
+    team: 'Olympique de Lyon',
+    league: 'Ligue 1',
+    season: '25/26',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1FMi-FzPavUGb0h5W9Xj3QXclJAABCxNr',
+    playerImage: 'https://lh3.googleusercontent.com/d/16_lyLmX9AWBKVmpX9P1NaxqwQxNHFqSW',
+    childImage: 'https://lh3.googleusercontent.com/d/1vsatqxRtCCv7E41v4rsaueVJF7oWEaVL',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1jESouBlHjiFGXtkj67VD0dwzKr97CCPi',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1CQXhNSMciAgOBACV-V9IUuLa2iok5OLv',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/13jBt-IqQyjHto-34ebXkReiUHzw70LMZ' },
+      { name: 'Europa League', logo: 'https://lh3.googleusercontent.com/d/1QMKLrsjVAJ2XuY2XEro89ZGv7P0TvQRT' }
+    ]
+  },
+  {
+    id: 'ol-special-24-custom',
+    name: 'Olympique de Lyon - Especial (75 aniversario) - 24/25',
+    team: 'Olympique de Lyon',
+    league: 'Ligue 1',
+    season: '24/25',
+    type: 'Especial',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1-cuwAFNz6SaiGBSlbdgc7miTbi3z-pS7',
+    playerImage: 'https://lh3.googleusercontent.com/d/1E4A0OfOugl4ERTNDTAeaFSFVwpYA1b5P',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1xrVbeqeh7yN2xaLxIA8EuqEcZ1OkM8qh',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1xrVbeqeh7yN2xaLxIA8EuqEcZ1OkM8qh',
+    noLongSleeve: true,
+    noChild: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/13jBt-IqQyjHto-34ebXkReiUHzw70LMZ' },
+      { name: 'Europa League', logo: 'https://lh3.googleusercontent.com/d/1QMKLrsjVAJ2XuY2XEro89ZGv7P0TvQRT' }
+    ]
+  },
+  {
+    id: 'lille-home-25-custom',
+    name: 'Lille - Local - 25/26',
+    team: 'Lille',
+    league: 'Ligue 1',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1Zj0nPlLOCL5goUX14kqQpwSR9q0h2-qo',
+    playerImage: 'https://lh3.googleusercontent.com/d/1pvZA5azWpjiqR7A1rza_Q800YaBNtkgd',
+    childImage: 'https://lh3.googleusercontent.com/d/1HglgxT98f5B1Ovoo1nk3hzJqJmDfY_N3',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1e5HvU7fLMjMiPj2eX8bA0odSu9tGF8Tl',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1e5HvU7fLMjMiPj2eX8bA0odSu9tGF8Tl',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/13jBt-IqQyjHto-34ebXkReiUHzw70LMZ' },
+      { name: 'Europa League', logo: 'https://lh3.googleusercontent.com/d/1QMKLrsjVAJ2XuY2XEro89ZGv7P0TvQRT' }
+    ]
   }
 ];
 
@@ -2400,6 +2707,16 @@ export const LEAGUES_DATA = [
       { name: 'Bayern Munich', logo: 'https://lh3.googleusercontent.com/d/15jxlLxTv65fTkgEUMyOx-LUIfkuV5TVO' },
       { name: 'Borussia Dortmund', logo: 'https://lh3.googleusercontent.com/d/1ngUyhnIcZlUu3Zqjp4oqUHLJslWh9Acy' },
       { name: 'Bayer Leverkusen', logo: 'https://lh3.googleusercontent.com/d/1ngUyhnIcZlUu3Zqjp4oqUHLJslWh9Acy' },
+      { name: 'Otros', logo: 'https://drive.google.com/thumbnail?id=1-BuZ9jOVI5Uduxg-9dXCrcnvgtK12F4y&sz=w200' }
+    ]
+  },
+  {
+    name: 'Ligue 1',
+    logo: 'https://drive.google.com/thumbnail?id=1v7zORdUCbZ4e0ZqNTA6RlaEP9gzk322w&sz=w200',
+    teams: [
+      { name: 'PSG', logo: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg' },
+      { name: 'Mónaco', logo: 'https://drive.google.com/thumbnail?id=1oLx-8tL1nhbIEcuqP9ks8X0tyobc-DYi&sz=w200' },
+      { name: 'Marseille', logo: 'https://drive.google.com/thumbnail?id=1_zIK18FJVwkPZ1BB0s-8kgesiS5CrQWh&sz=w200' },
       { name: 'Otros', logo: 'https://drive.google.com/thumbnail?id=1-BuZ9jOVI5Uduxg-9dXCrcnvgtK12F4y&sz=w200' }
     ]
   }
