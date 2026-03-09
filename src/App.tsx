@@ -817,7 +817,7 @@ Parche: *${form.patch}*`;
               <X className="w-6 h-6 text-secondary" />
             </button>
             <div>
-              <h2 className="text-xl md:text-3xl font-sans font-black text-secondary uppercase tracking-tighter leading-none">Personalizar</h2>
+              <h2 className="text-xl md:text-3xl font-sans font-black text-secondary uppercase tracking-wider leading-none">Personalizar</h2>
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-widest">
                 {jersey.id === 'rma-gk-third-25-custom' ? 'Real Madrid - Portero (Tercera) - 25/26' : jersey.name}
               </p>
@@ -1037,7 +1037,7 @@ Parche: *${form.patch}*`;
                         setForm({ ...form, patch: p.name });
                         setImagesLoaded(prev => ({ ...prev, numbering: LOADED_IMAGES.has(nextNumbering || '') }));
                       }}
-                      className={`flex flex-col items-center gap-2 md:gap-4 p-2 md:p-6 rounded-2xl md:rounded-3xl border-2 transition-all min-h-[100px] md:min-h-[180px] ${
+                      className={`flex flex-col items-center gap-2 md:gap-4 p-2 md:p-6 rounded-2xl md:rounded-3xl border-2 transition-all min-h-0 md:min-h-[180px] ${
                         form.patch === p.name ? 'border-primary bg-primary/10 text-secondary shadow-lg' : 'border-secondary/5 bg-white text-secondary/40'
                       }`}
                     >
@@ -1562,7 +1562,7 @@ export default function App() {
 
                 {/* League Bubbles for Encargos */}
                 {activeTab === 'encargos' && !encargoSearchQuery && (
-                  <div className="w-full space-y-8">
+                  <div className="w-full space-y-2 md:space-y-8">
                     <div className="grid grid-cols-4 md:flex md:flex-wrap justify-center gap-1.5 md:gap-6">
                       {LEAGUES_DATA.map((league) => (
                         <button
@@ -1572,7 +1572,7 @@ export default function App() {
                             setSelectedTeam(null);
                             setEncargoSearchQuery('');
                           }}
-                          className={`flex flex-col items-center gap-1 md:gap-3 p-1.5 md:p-5 rounded-xl md:rounded-2xl border-2 transition-all duration-300 w-full md:w-[130px] aspect-square md:aspect-auto ${
+                          className={`flex flex-col items-center gap-1 md:gap-3 p-1.5 md:p-5 rounded-xl md:rounded-2xl border-2 transition-all duration-300 w-full md:w-[130px] h-auto md:aspect-auto ${
                             selectedLeague === league.name 
                               ? 'border-primary bg-primary/10 text-secondary shadow-lg shadow-primary/10' 
                               : 'border-secondary/5 bg-white text-secondary/60 hover:border-primary/30 hover:text-secondary'
@@ -1589,14 +1589,15 @@ export default function App() {
                       ))}
                     </div>
 
-                    {/* Teams for Selected League */}
+                    {/* Teams for Selected League or Destacadas */}
                     <AnimatePresence mode="wait">
-                      {selectedLeague && (
+                      {selectedLeague ? (
                         <motion.div
-                          key={selectedLeague}
+                          key={`teams-${selectedLeague}`}
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                           className="grid grid-cols-4 md:flex md:flex-wrap justify-center gap-2 md:gap-4"
                         >
                           {LEAGUES_DATA.find(l => l.name === selectedLeague)?.teams.map((team) => (
@@ -1622,28 +1623,32 @@ export default function App() {
                             </button>
                           ))}
                         </motion.div>
-                      )}
+                      ) : (!selectedTeam && !encargoSearchQuery) ? (
+                        <motion.div
+                          key="destacadas"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                          className="pt-1 md:pt-8 space-y-4 md:space-y-8"
+                        >
+                          <div className="flex items-center gap-4">
+                            <div className="h-px bg-secondary/10 flex-grow" />
+                            <h2 className="text-xl md:text-3xl font-sans font-black text-secondary uppercase tracking-tighter">Destacadas de hoy</h2>
+                            <div className="h-px bg-secondary/10 flex-grow" />
+                          </div>
+                          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                            {featuredJerseys.map(jersey => (
+                              <EncargoJerseyCard
+                                key={jersey.id}
+                                jersey={jersey}
+                                onOrder={setSelectedEncargoJersey}
+                              />
+                            ))}
+                          </div>
+                        </motion.div>
+                      ) : null}
                     </AnimatePresence>
-
-                    {/* Destacadas de hoy Section */}
-                    {!selectedLeague && !selectedTeam && !encargoSearchQuery && (
-                      <div className="pt-8 space-y-8">
-                        <div className="flex items-center gap-4">
-                          <div className="h-px bg-secondary/10 flex-grow" />
-                          <h2 className="text-xl md:text-3xl font-sans font-black text-secondary uppercase tracking-tighter">Destacadas de hoy</h2>
-                          <div className="h-px bg-secondary/10 flex-grow" />
-                        </div>
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                          {featuredJerseys.map(jersey => (
-                            <EncargoJerseyCard
-                              key={jersey.id}
-                              jersey={jersey}
-                              onOrder={setSelectedEncargoJersey}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    )}
                   </div>
                 )}
               </div>
@@ -1687,25 +1692,42 @@ export default function App() {
               )
             ) : (
               <div className="space-y-12">
-                {(encargoSearchQuery || selectedTeam || selectedLeague) && filteredEncargoJerseys.length > 0 && (
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {filteredEncargoJerseys.map(jersey => (
-                      <EncargoJerseyCard
-                        key={jersey.id}
-                        jersey={jersey}
-                        onOrder={setSelectedEncargoJersey}
-                      />
-                    ))}
-                  </div>
-                )}
-
-                {(encargoSearchQuery || selectedTeam || selectedLeague) && (
-                  <div className="text-center py-6 md:py-10 bg-white rounded-3xl md:rounded-[2rem] border border-secondary/5 shadow-sm px-6 max-w-3xl mx-auto">
+                <AnimatePresence mode="popLayout">
+                  {(encargoSearchQuery || selectedTeam || selectedLeague) && filteredEncargoJerseys.length > 0 && (
                     <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="space-y-4 md:space-y-6"
+                      key="results-grid"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                      className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
                     >
+                      {filteredEncargoJerseys.map(jersey => (
+                        <EncargoJerseyCard
+                          key={jersey.id}
+                          jersey={jersey}
+                          onOrder={setSelectedEncargoJersey}
+                        />
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <AnimatePresence>
+                  {(encargoSearchQuery || selectedTeam || selectedLeague) && (
+                    <motion.div
+                      key="whatsapp-cta"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                      className="text-center py-6 md:py-10 bg-white rounded-3xl md:rounded-[2rem] border border-secondary/5 shadow-sm px-6 max-w-3xl mx-auto"
+                    >
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="space-y-4 md:space-y-6"
+                      >
                       <h3 className="text-base md:text-xl font-sans font-black text-secondary uppercase tracking-tight">
                         ¿No encuentra la camiseta que busca?
                       </h3>
@@ -1728,8 +1750,9 @@ export default function App() {
                         Consultar por WhatsApp
                       </button>
                     </motion.div>
-                  </div>
+                  </motion.div>
                 )}
+                </AnimatePresence>
               </div>
             )}
           </div>

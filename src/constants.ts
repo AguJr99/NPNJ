@@ -2667,6 +2667,336 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/13jBt-IqQyjHto-34ebXkReiUHzw70LMZ' },
       { name: 'Europa League', logo: 'https://lh3.googleusercontent.com/d/1QMKLrsjVAJ2XuY2XEro89ZGv7P0TvQRT' }
     ]
+  },
+  // SELECCIONES - ESPAÑA
+  {
+    id: 'esp-home-2026-custom',
+    name: 'España - Local - 2026',
+    team: 'España',
+    league: 'Selecciones',
+    season: '2026',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1ltemjirbHi3V1MRUFDN6yISJj_3iOreg',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1dp9YgBE4_SX-G090KIF7CPoEAyJNWRn1',
+    playerImage: 'https://lh3.googleusercontent.com/d/1xTGLWxHdlr71Qe7YUAMU9B3bHo1kvlBh',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/12ja6gmzxI76QtJKEeVofwO7XPJyJk53W',
+    childImage: 'https://lh3.googleusercontent.com/d/1Nu60udFzxA5uTahfdR0CsoTJ8Zm7GRsq',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1JULbLZbibmu1EUBmwYv3nmoYP-v_VWVa',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1EMHldl6Qz5lPb7jj_eBQIPGQaLRWEdoB' }
+    ]
+  },
+  {
+    id: 'esp-away-2026-custom',
+    name: 'España - Visitante - 2026',
+    team: 'España',
+    league: 'Selecciones',
+    season: '2026',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1KEBGh5bY3imfzrH2To3U8YloKgD7oqt5',
+    playerImage: 'https://lh3.googleusercontent.com/d/1JrSDVKHTcVdtPamBpwKqF82R6DFpLzos',
+    childImage: 'https://lh3.googleusercontent.com/d/1epwKc0p5MnfsOZ7hvR-XvhhDiPZxGJvr',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1JULbLZbibmu1EUBmwYv3nmoYP-v_VWVa',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1EMHldl6Qz5lPb7jj_eBQIPGQaLRWEdoB' }
+    ]
+  },
+  {
+    id: 'esp-away-2025-custom',
+    name: 'España - Visitante - 2025',
+    team: 'España',
+    league: 'Selecciones',
+    season: '2025',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1yfrluNd38Q3FjCa5It7nR8OlT7H_PVfr',
+    playerImage: 'https://lh3.googleusercontent.com/d/1zwhBT9XpWZVdU-RBVaJYs2zLwoIEBDf3',
+    childImage: 'https://lh3.googleusercontent.com/d/1w7uBepblxDaIrki2XnguLLj3JD9WPiQj',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1ojLxEpNTw6wDVrRiZLkxfEj03stubqYA',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1EMHldl6Qz5lPb7jj_eBQIPGQaLRWEdoB' }
+    ]
+  },
+  {
+    id: 'esp-home-2024-custom',
+    name: 'España - Local - 2024',
+    team: 'España',
+    league: 'Selecciones',
+    season: '2024',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/19IWz-xHPZp5PkbS3StdUAaiH_rFirMWu',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1pVLtotUOUp6c8ItX8ie2ISOXrUQKjZs8',
+    playerImage: 'https://lh3.googleusercontent.com/d/1mVy1w8-AxsfwWijxtugwkEZa2aFHiHNL',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1pVLtotUOUp6c8ItX8ie2ISOXrUQKjZs8',
+    childImage: 'https://lh3.googleusercontent.com/d/1HoI-zDE_vqIx8N47XCAi47bFCStxcVot',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1p_R2DCtIA_3gBqg7hLOE59q71ZGQxSkO',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Eurocopa', logo: 'https://lh3.googleusercontent.com/d/1hXnPPaC5jUTZzTHmhw3evcAoGc8o3iF0' }
+    ]
+  },
+  {
+    id: 'esp-home-2010-custom',
+    name: 'España - Local - 2010',
+    team: 'España',
+    league: 'Selecciones',
+    season: '2010',
+    type: 'Local',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/18Lp45SdWBV6jbwjbYCV6Pc1VIC8padqc',
+    retroLongSleeveImage: 'https://lh3.googleusercontent.com/d/1OV9_pLRAkkkjZWIxKGFNcZU3IZ97G7W_',
+    childImage: 'https://lh3.googleusercontent.com/d/1WO1DddInUKg2tuVIhuA6Mc8tK_OgCNLU',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1hv9YaMveKC7S5yx8Y-kKvnurm9Rw4AyM',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1xKyRFCWf6dunvhjYzj3BdH8-9KfYgXiq' }
+    ]
+  },
+  {
+    id: 'esp-away-2010-custom',
+    name: 'España - Visitante - 2010',
+    team: 'España',
+    league: 'Selecciones',
+    season: '2010',
+    type: 'Visitante',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/11TxC-1s_ZFoNV5w7th-JfJriwDdbgOJV',
+    retroLongSleeveImage: 'https://lh3.googleusercontent.com/d/1NtqEoMhn9OBemIJDT5IqcaJlFrzZq-Jd',
+    childImage: 'https://lh3.googleusercontent.com/d/10lFIrT9oQEu9DEvD92YTESiweH03z0I4',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1hv9YaMveKC7S5yx8Y-kKvnurm9Rw4AyM',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Final Mundial', logo: 'https://lh3.googleusercontent.com/d/1lF-Z0WnjlIxnUTFXi49F3QzY2DV-vWCY' }
+    ]
+  },
+  // SELECCIONES - ARGENTINA
+  {
+    id: 'arg-home-2026-custom',
+    name: 'Argentina - Local - 2026',
+    team: 'Argentina',
+    league: 'Selecciones',
+    season: '2026',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1cktCjnRKbVBZsiIqTKBPXtCY9JrS_A4-',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1Pv91c3RcegbEwz27RhZuuiPZQ0LcO-b7',
+    playerImage: 'https://lh3.googleusercontent.com/d/1eCVL5U908EqNg28lKJ51jm7ZjfJ-OBZd',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1LVnsaEpZAVT21P9ttkztzoj3DXvg-IPR',
+    childImage: 'https://lh3.googleusercontent.com/d/1dhJfTGliiw6wNIS0TVMc7lvLMl7l5yst',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1QSaL4SQxrQMJVqCWW9_flfT3saejt-up',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/129bt9nIM_KWlQIr91d0aEKU_xwaIHGag' }
+    ]
+  },
+  {
+    id: 'arg-special-50-2025-custom',
+    name: 'Argentina - Especial (50 aniversario) - 2025',
+    team: 'Argentina',
+    league: 'Selecciones',
+    season: '2025',
+    type: 'Especial',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1edZvaCRN5SnhGBljMs19fcfFi4tpdUdF',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1CjiUahNNQl6uR7Jp5DVIZOHSk7Vx7jST',
+    playerImage: 'https://lh3.googleusercontent.com/d/1SV4adIDva-X4gjfKhNkkOJov3uDpI3cB',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1N9qo_PbOFCiDGH3ww8Ysr3g8hxVXxsvR',
+    childImage: 'https://lh3.googleusercontent.com/d/1nxcXQRpeSrqUT9Yvz6KhFTo7QeUHVtOf',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/19rYLKKnB7IaRXtavZHfZMWvBS5UCjIRN',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/129bt9nIM_KWlQIr91d0aEKU_xwaIHGag' }
+    ]
+  },
+  {
+    id: 'arg-away-2026-custom',
+    name: 'Argentina - Visitante - 2026',
+    team: 'Argentina',
+    league: 'Selecciones',
+    season: '2026',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1BtZ6fmkOr9MQIH7Q4GeeTbSnjvD-TN53',
+    playerImage: 'https://lh3.googleusercontent.com/d/1qhWa2Y4T1eTHQrp8WkMwP3aEhIY5FfDo',
+    childImage: 'https://lh3.googleusercontent.com/d/1S00DkqBZMTpLIy9Ucxu8cfH844Vtlp3W',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1QSaL4SQxrQMJVqCWW9_flfT3saejt-up',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/129bt9nIM_KWlQIr91d0aEKU_xwaIHGag' }
+    ]
+  },
+  {
+    id: 'arg-home-2022-custom',
+    name: 'Argentina - Local - 2022',
+    team: 'Argentina',
+    league: 'Selecciones',
+    season: '2022',
+    type: 'Local',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1gQxx_UvZkfPre8jClCi2f_HhhVuyElT8',
+    retroLongSleeveImage: 'https://lh3.googleusercontent.com/d/1NrtDPaofZHKK0jYrl6tNJjWfbNyRlMS9',
+    childImage: 'https://lh3.googleusercontent.com/d/1-YDuzixFSQ7HmLILeDGNZcZf_wcWLle4',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1ZQFXvGo69JgmrUbWCVDZglo9X56xJkn9',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Final Mundial', logo: 'https://lh3.googleusercontent.com/d/1E0FAphrT2nEd9y_v-ce1IzmibmfmHndo' }
+    ]
+  },
+  {
+    id: 'arg-away-1994-custom',
+    name: 'Argentina - Visitante - 1994',
+    team: 'Argentina',
+    league: 'Selecciones',
+    season: '1994',
+    type: 'Visitante',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1i5f0Yo5k6LXju0xYIZrdWI0h7a6NIwtu',
+    retroLongSleeveImage: 'https://lh3.googleusercontent.com/d/1ROY2QzfESNu88PALK3AiIvJoK4yi9hw-',
+    childImage: 'https://lh3.googleusercontent.com/d/1kBsdwWy7HgFO570DhxbEn8j1GRDcTfH-',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1STmFl2bjL022UAw1OWTtHC7r0PANHPtc',
+    noPatches: true
+  },
+  // SELECCIONES - BRASIL
+  {
+    id: 'bra-home-2026-custom',
+    name: 'Brasil - Local - 2026',
+    team: 'Brasil',
+    league: 'Selecciones',
+    season: '2026',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1wHgBYHuUeCz5pCv2Qw3hahLIXW3gkQ0R',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/12r2pr5eqDltgYhE2d2aaRFPqDV8EPTgV',
+    playerImage: 'https://lh3.googleusercontent.com/d/12r2pr5eqDltgYhE2d2aaRFPqDV8EPTgV',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/12r2pr5eqDltgYhE2d2aaRFPqDV8EPTgV',
+    childImage: 'https://lh3.googleusercontent.com/d/1MhRBReHeup5Qr_yNtUdHo92kgtMD_zqX',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1kBISYh2RgXg3ZGu9GGCyxCSsRz-qFxHp',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1ZuDqAyUmvR27uUbsaolimI7UOJADXzL6' }
+    ]
+  },
+  {
+    id: 'bra-away-2026-custom',
+    name: 'Brasil - Visitante - 2026',
+    team: 'Brasil',
+    league: 'Selecciones',
+    season: '2026',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1p8hQ4J_hS5tChtUcYYPiP-PhhMlksV65',
+    playerImage: 'https://lh3.googleusercontent.com/d/1B04IDxzD75P-gkVUWdL877auFVKUH3JV',
+    childImage: 'https://lh3.googleusercontent.com/d/1F3zeRE3jQHEfUH8rv309prpCQsXduF6K',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1kBISYh2RgXg3ZGu9GGCyxCSsRz-qFxHp',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1ZuDqAyUmvR27uUbsaolimI7UOJADXzL6' }
+    ]
+  },
+  {
+    id: 'bra-home-2024-custom',
+    name: 'Brasil - Local - 2024',
+    team: 'Brasil',
+    league: 'Selecciones',
+    season: '2024',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1fm1JRXchfTuf0w_ehgfNGpfsr_B7YXNW',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1KBZFqrxUQvPDNHbTLeM6yQBz4-QbuB5y',
+    playerImage: 'https://lh3.googleusercontent.com/d/1r3YROTUYzrk8XCrFhDCsEdjCsDMQdUMp',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1KBZFqrxUQvPDNHbTLeM6yQBz4-QbuB5y',
+    childImage: 'https://lh3.googleusercontent.com/d/1PvfnYCkEA18KYYvYgWLk7Fd0ikAHLOyp',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1faJH4s4yzqtDNI0J3_arW5Oyz0MQaxpO',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Copa America', logo: 'https://lh3.googleusercontent.com/d/1Xop8eOHLnnq9wQp-V8KERkdCX1bbyy84' }
+    ]
+  },
+  {
+    id: 'bra-home-2004-custom',
+    name: 'Brasil - Local - 2004',
+    team: 'Brasil',
+    league: 'Selecciones',
+    season: '2004',
+    type: 'Local',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1qMTs25IlDjimgJLqK0Cu_3vCBODnHYfc',
+    retroLongSleeveImage: 'https://lh3.googleusercontent.com/d/1wirqS23J09dKZUjrMK80NG42P43k3Xbr',
+    childImage: 'https://lh3.googleusercontent.com/d/1MGRKuqNdJ1XTun7X3jB9flSlmSNMpLSf',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1DjsEXOn3_0BmjjmgrjAgHo1r5QqPlVVg',
+    noPatches: true
+  },
+  {
+    id: 'bra-home-2002-custom',
+    name: 'Brasil - Local - 2002',
+    team: 'Brasil',
+    league: 'Selecciones',
+    season: '2002',
+    type: 'Local',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1tD4_uTmvnirlOOFvvIgUR_u3J9D_0EgU',
+    retroLongSleeveImage: 'https://lh3.googleusercontent.com/d/1exHlkiO40eal7m8rZidL01CZzyOHTA9m',
+    childImage: 'https://lh3.googleusercontent.com/d/1Yb0n25w9ocTIVfNW6jKMiEYq4ky2NeoW',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1ajmDy_1EVXJNa10Ji5tV5jVFvqVeA8nl',
+    noPatches: true
   }
 ];
 
