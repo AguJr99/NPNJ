@@ -89,10 +89,7 @@ const LEAGUES_DATA = [
     teams: [
       { name: 'Al-Nassr', logo: 'https://drive.google.com/thumbnail?id=14U4pAalr6YGNqlVOKXZtBMG0kIJJDnCe&sz=w200' },
       { name: 'Inter Miami', logo: 'https://upload.wikimedia.org/wikipedia/en/5/5c/Inter_Miami_CF_logo.svg' },
-      { name: 'Benfica', logo: 'https://upload.wikimedia.org/wikipedia/en/a/a2/SL_Benfica_logo.svg' },
-      { name: 'Porto', logo: 'https://drive.google.com/thumbnail?id=1cOjRnS4KUIRbYGprTOFFhjzJtfBoDjkr&sz=w200' },
       { name: 'Ajax', logo: 'https://upload.wikimedia.org/wikipedia/en/7/79/Ajax_Amsterdam.svg' },
-      { name: 'PSV', logo: 'https://drive.google.com/thumbnail?id=1ZbJcz0h232oWUPTssvEIaRbkrcLNocDs&sz=w200' },
       { name: 'Boca Juniors', logo: 'https://drive.google.com/thumbnail?id=1EsL37gO3-DECj-LTxfGIYDKrwrWD8tED&sz=w200' },
       { name: 'River Plate', logo: 'https://drive.google.com/thumbnail?id=1ngxtQwJwwS5-uwLAMG4P2himv_xIMWz1&sz=w200' },
       { name: 'Otros', logo: 'https://drive.google.com/thumbnail?id=1-BuZ9jOVI5Uduxg-9dXCrcnvgtK12F4y&sz=w200' }
@@ -1312,7 +1309,14 @@ export default function App() {
   }, [selectedLeague, selectedTeam, encargoSearchQuery]);
 
   const featuredJerseys = useMemo(() => {
-    const today = new Date().toISOString().split('T')[0];
+    // Get date in New York time (YYYY-MM-DD)
+    const today = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'America/New_York',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).format(new Date());
+
     // Simple hash function for the date string to use as a seed
     let seed = 0;
     for (let i = 0; i < today.length; i++) {
