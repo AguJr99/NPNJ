@@ -4292,6 +4292,142 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'Sin Parche', logo: null },
       { name: 'Liga MX', logo: 'https://drive.google.com/thumbnail?id=1pt6uLBhFrmfxkNCfuwQae72JTuSIzckf&sz=w200' }
     ]
+  },
+  // BENFICA
+  {
+    id: 'benfica-home-25-26-custom',
+    name: 'Benfica - Local - 25/26',
+    team: 'Benfica',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1pHb8gqoS0zYfu9gBWmLEJySrgkr5AV2r&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=1GdcogHbBAnJ_h07CIInnNYeECoMqUf7Z&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1vV5iVI762F6258xjUB3y0ByvGCJSLEm3&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=1GdcogHbBAnJ_h07CIInnNYeECoMqUf7Z&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1PbeeGqi4EOi28xTfvcOQlGdAducvCXSx&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1WdzJApJMzdl2Xd9MKqrUpGUl8WDTref0&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1DSzP5vcPZ2gfszLrqXVg9zEPqk6psF-B&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Primeira Liga', logo: 'https://drive.google.com/thumbnail?id=1O44HzXlO7bNoaofdxtz7jxC-7St-FreF&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=126tvJKUF6nXdOsQqqwBVQklqXHuqDd5d&sz=w200' }
+    ]
+  },
+  {
+    id: 'benfica-away-25-26-custom',
+    name: 'Benfica - Visitante - 25/26',
+    team: 'Benfica',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1_n5FfIdE23cMFzBXwSA9XRY4zztbEHvV&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1CF9Vr9NhaTkN1rqwL8J5DDp9nJoudAk-&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1-72Eso5_qHfPw2CqNopIbyZEltsqBcPW&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1WdzJApJMzdl2Xd9MKqrUpGUl8WDTref0&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1DSzP5vcPZ2gfszLrqXVg9zEPqk6psF-B&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Primeira Liga', logo: 'https://drive.google.com/thumbnail?id=1O44HzXlO7bNoaofdxtz7jxC-7St-FreF&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=126tvJKUF6nXdOsQqqwBVQklqXHuqDd5d&sz=w200' }
+    ]
+  },
+  // PORTO
+  {
+    id: 'porto-home-25-26-custom',
+    name: 'Porto - Local - 25/26',
+    team: 'Porto',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=136WYQ88TpplnMa9CY-vU4KJDsBmhqbZ1&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1e7gG-JwdnTnLbB5X4LtWu8GPkHHeOt24&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1m-AC9t6yRX4a5AIBSkJaDpQw02g1WSkX&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1F8ILQzfj-TAyeduzsyGshSy7V9ofEniB&sz=w800',
+    europaNumberingImage: 'https://drive.google.com/thumbnail?id=13GqfWz2H-7loi1y_3iEFuv-PB4idW6F1&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Primeira Liga', logo: 'https://drive.google.com/thumbnail?id=1uxLbA-EXw8LgROc7GrSZlveCc_WGBFAv&sz=w200' },
+      { name: 'Europa League', logo: 'https://drive.google.com/thumbnail?id=1ywlPlX0XU8fObJ_b8AVKNfU9hYlhnbAF&sz=w200' }
+    ]
+  },
+  {
+    id: 'porto-third-25-26-custom',
+    name: 'Porto - Tercera - 25/26',
+    team: 'Porto',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1hNs3edPI4e0t4SRFMRkxt37soQSDnCqC&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1KOO_rjt8ZrkKvrsIrwfLIySwmaKwwKDl&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1OoQtt-E13c1MJ9CW7wmprm-_xxnVE2TX&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1F8ILQzfj-TAyeduzsyGshSy7V9ofEniB&sz=w800',
+    europaNumberingImage: 'https://drive.google.com/thumbnail?id=13GqfWz2H-7loi1y_3iEFuv-PB4idW6F1&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Primeira Liga', logo: 'https://drive.google.com/thumbnail?id=1uxLbA-EXw8LgROc7GrSZlveCc_WGBFAv&sz=w200' },
+      { name: 'Europa League', logo: 'https://drive.google.com/thumbnail?id=1ywlPlX0XU8fObJ_b8AVKNfU9hYlhnbAF&sz=w200' }
+    ]
+  },
+  // SPORTING LISBOA
+  {
+    id: 'sporting-home-25-26-custom',
+    name: 'Sporting Lisboa - Local - 25/26',
+    team: 'Sporting Lisboa',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1tau1dDivODJmkQXNjkxAJw9hjkNB9v4Y&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=16Z3-n31f6d6XnpAROP8Npoo7FH9Ucsvq&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1gZsjOOa1wuMpdJ745LNRWYOP-Y1VExhz&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1K0ro1ZeEC-DCjOuc9j6hkcgCnyxVUG3b&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1H-mbYRzA_o5LM16_xQWrh174v2nAHu8L&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Primeira Liga', logo: 'https://drive.google.com/thumbnail?id=1CNoGcn7t1qHl_zsz9mnrTT0s0TF5ewfC&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1sQvpvR894WBKPUZHB4d4KawFi0hCgYi6&sz=w200' }
+    ]
+  },
+  {
+    id: 'sporting-home-01-02-custom',
+    name: 'Sporting Lisboa - Local - 01/02',
+    team: 'Sporting Lisboa',
+    league: 'Otras Ligas',
+    season: '01/02',
+    type: 'Local',
+    price: 30,
+    isRetro: true,
+    fanImage: 'https://drive.google.com/thumbnail?id=1CqK7CB3_V1ASIUt1Eal5qHqTfdc7LrUs&sz=w800',
+    retroLongSleeveImage: 'https://drive.google.com/thumbnail?id=1npyIhb_uiiD-VnvHNwkjdoQhUtzq8fxm&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1T1hXNhg_M0BF0XnfxkowzkSBjR1GEBSK&sz=w800',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1ymi2-RZEJSkK1um9_BDZKZzJN5X10taF&sz=w800',
+    noPatches: true
   }
 ];
 
