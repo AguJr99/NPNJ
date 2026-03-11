@@ -1186,7 +1186,7 @@ export default function App() {
   const [filterStyle, setFilterStyle] = useState('TODOS');
 
   const normalizeText = (text: string) => 
-    text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/-/g, " ");
 
   const filteredJerseys = JERSEYS.filter(j => {
     const search = normalizeText(stockSearchQuery);

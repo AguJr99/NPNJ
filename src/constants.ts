@@ -3815,6 +3815,483 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'Sin Parche', logo: null },
       { name: 'MLS', logo: 'https://drive.google.com/thumbnail?id=1ajI01BxmtA3ESEDloGFADR_wHp7_mdXY&sz=w200' }
     ]
+  },
+  // AJAX
+  {
+    id: 'ajax-home-25-26-custom',
+    name: 'Ajax - Local - 25/26',
+    team: 'Ajax',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1VXrlaz9i1rx87QzCEPRm-ZGDAPFk77N0&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1j8gB-sBVAGdCn_XjmP2TXeKF9hTGtoLR&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=15hSu6lVUQWNNUprhu4PtQVYzn0mg2CIn&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1gQySMjQZSehIUHjm4WjUNdf1NvlTZ0RI&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Eredivisie', logo: 'https://drive.google.com/thumbnail?id=16SOjnKRH_a3Uj1CCv0Lk2JnRmfrrnpiz&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1JBIKZjtCg6fiaNKahg7tuqlGVKW93V_C&sz=w200' }
+    ]
+  },
+  {
+    id: 'ajax-away-25-26-custom',
+    name: 'Ajax - Visitante - 25/26',
+    team: 'Ajax',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=14Qus9CAwK6309-LXDy-aB-rXcM8PhEzc&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1Q5AgEFgqVq218F5hBtLB1bKYZBqRq1SU&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1_5HiQzrn1PYt9h5RsewiiJgGHYDUbS-a&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1gQySMjQZSehIUHjm4WjUNdf1NvlTZ0RI&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Eredivisie', logo: 'https://drive.google.com/thumbnail?id=16SOjnKRH_a3Uj1CCv0Lk2JnRmfrrnpiz&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1JBIKZjtCg6fiaNKahg7tuqlGVKW93V_C&sz=w200' }
+    ]
+  },
+  {
+    id: 'ajax-third-25-26-custom',
+    name: 'Ajax - Tercera - 25/26',
+    team: 'Ajax',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1gwyFn-7jKTkpRox3rzU27BtN1wqncD3T&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1WqyohgT3w_t-w3LfAtClT88sHqAkh98H&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1DFJGqtqygj07TIqO4XBVhJskUrc8uSjg&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1gQySMjQZSehIUHjm4WjUNdf1NvlTZ0RI&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Eredivisie', logo: 'https://drive.google.com/thumbnail?id=16SOjnKRH_a3Uj1CCv0Lk2JnRmfrrnpiz&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1JBIKZjtCg6fiaNKahg7tuqlGVKW93V_C&sz=w200' }
+    ]
+  },
+  {
+    id: 'ajax-special-24-25-custom',
+    name: 'Ajax - Especial (125 Aniversario) - 24/25',
+    team: 'Ajax',
+    league: 'Otras Ligas',
+    season: '24/25',
+    type: 'Especial',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1XEpyhXkUy5r_2bbJ7Bvx7Li9ewR56YF_&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=1N54xeRH7OUz4gwaLYoRu_tAT95S2c50G&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1BmrjE4RBJ-MPeOoklqnLpLbVzTh_w_o2&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=1QvcA7b10Ue_Gzk9uya94961wSbFxG1PB&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1yxaoeeqxT7rVnxU80QeFRHdWVUT7gbrX&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1g5yHZ-H8zmaGHbXFoLBurs1ptmf2zgNP&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Eredivisie', logo: 'https://drive.google.com/thumbnail?id=1dRDM6i-k5pjwJwecIxoGkaxcVsnR8kAx&sz=w200' }
+    ]
+  },
+  // BOCA JUNIORS
+  {
+    id: 'bj-home-25-26-custom',
+    name: 'Boca Juniors - Local - 25/26',
+    team: 'Boca Juniors',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1DDz-l6Gx8p0Wt0pBynarKQJ5-a4EoG7h&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=16qBHz56-6oS14Ja5uLlOi9haxnnwJj0s&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1qVxrrWkEtJAgi3vMy9UE5K7CZcngFiLz&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=16qBHz56-6oS14Ja5uLlOi9haxnnwJj0s&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1TVCLUcOWl704UClFTJPzfHA93_J51ESP&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1-t1u9wgzF_zxN6gB0qn7XDvEBVzbgYt-&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'LPF', logo: 'https://drive.google.com/thumbnail?id=1beVImwS4XAFzEF7G73sMPA4RmyS9W9Rs&sz=w200' }
+    ]
+  },
+  {
+    id: 'bj-away-25-26-custom',
+    name: 'Boca Juniors - Visitante - 25/26',
+    team: 'Boca Juniors',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1DLophnB_GEtPFAHz4oEqJsnVwIOw-_Jb&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=10uzLmcJ-VjnXSXIqgteS2lrZEHeitlD4&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=19W1Vh_OeDU0WbFXt5k9viiPJ0U_R0kGY&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1-t1u9wgzF_zxN6gB0qn7XDvEBVzbgYt-&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'LPF', logo: 'https://drive.google.com/thumbnail?id=1beVImwS4XAFzEF7G73sMPA4RmyS9W9Rs&sz=w200' }
+    ]
+  },
+  {
+    id: 'bj-third-25-26-custom',
+    name: 'Boca Juniors - Tercera - 25/26',
+    team: 'Boca Juniors',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1MuJvzW3tJp835Z8_idJ95CBbOnrUTta7&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1X-pU1umQ9-u4Kv-oZF8qyZMny0__ZbgZ&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=13NWi8cgZnpJwjUg3gm_5n-hBaKCK3Ajh&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1-t1u9wgzF_zxN6gB0qn7XDvEBVzbgYt-&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'LPF', logo: 'https://drive.google.com/thumbnail?id=1beVImwS4XAFzEF7G73sMPA4RmyS9W9Rs&sz=w200' }
+    ]
+  },
+  // RIVER PLATE
+  {
+    id: 'rp-home-25-26-custom',
+    name: 'River Plate - Local - 25/26',
+    team: 'River Plate',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1CszaI1sIPd-4jMnuM2zJoWfn69fkcK-M&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=1p1PrLtNNA8i1BwD8vUOBeFvJW3EKWKGp&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=14WlGeFXlsDiuY993tEy7_EPjXaq4awcp&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=1p1PrLtNNA8i1BwD8vUOBeFvJW3EKWKGp&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1AvHSjS7ZFSZzXluz3krqP80qfph6AU-p&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1vkl7m32uioBEEOVhcMfHERmpcbXKEff3&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'LPF', logo: 'https://drive.google.com/thumbnail?id=18CQm6lB1UU9SNKd5UjaStxo1jru7ejRm&sz=w200' }
+    ]
+  },
+  {
+    id: 'rp-away-25-26-custom',
+    name: 'River Plate - Visitante - 25/26',
+    team: 'River Plate',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=19q9GsCsFcRvbzKTBdto7AQuHmOBdLdpt&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=1ROBjslyS0T9H2ZAdAAnGJznUPLa4GQ8Y&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1gIx35cr0iom_v6Xl9DuFF7_xQfLcsPWG&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=1ROBjslyS0T9H2ZAdAAnGJznUPLa4GQ8Y&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1ysV4JokTZhJBUueT8Xm91V2kSdoheRm2&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1vkl7m32uioBEEOVhcMfHERmpcbXKEff3&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'LPF', logo: 'https://drive.google.com/thumbnail?id=18CQm6lB1UU9SNKd5UjaStxo1jru7ejRm&sz=w200' }
+    ]
+  },
+  {
+    id: 'rp-third-25-26-custom',
+    name: 'River Plate - Tercera - 25/26',
+    team: 'River Plate',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1Sy_69fLzFeZVEAwxVxxS6LFokhsgxElf&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=112xkJ_3gobOOeyJk3ZiNg6vbZiAKQkBp&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1S3FPJv3Ng0TyckiASL7FPG3DRT36QmlX&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1vkl7m32uioBEEOVhcMfHERmpcbXKEff3&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'LPF', logo: 'https://drive.google.com/thumbnail?id=18CQm6lB1UU9SNKd5UjaStxo1jru7ejRm&sz=w200' }
+    ]
+  },
+  // FLAMENGO
+  {
+    id: 'flamengo-home-25-26-custom',
+    name: 'Flamengo - Local - 25/26',
+    team: 'Flamengo',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1VZfn3qA9XHIXhbKGcoul_-QrH9dR7AGY&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=1VQx35CZi-53q16mWMnqwMSksAXFUHbOL&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1SYrkF-x3wqP8-eUgh56mnimcCtDV9u_z&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=1qWYv0bNl-6zfaXslVf7qQ5GKXrDFjFvk&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=12U7s6xB2-NFtJP4pgEcY7PNBvF9cfpeO&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1fpIbnzJrKfL8s_027u7-9s3Qvqc4EEo_&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Brasileirao', logo: 'https://drive.google.com/thumbnail?id=1_5bQUyTVeWg1S4u1TMXRmVkJTaB09cWv&sz=w200' },
+      { name: 'Libertadores', logo: 'https://drive.google.com/thumbnail?id=1XHYZfqxNioP4Ja4TsBP8fm5jev6sjKSO&sz=w200' }
+    ]
+  },
+  {
+    id: 'flamengo-third-25-26-custom',
+    name: 'Flamengo - Tercera - 25/26',
+    team: 'Flamengo',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1ZFwzyebnIlvZXGqB_tSsQ3oDUbVxB-zM&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1MlKZ6FCHP76Z3SA2dtmmP0jwd60uzuB4&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1rTiXI4OZjKH7sFX8ziW0pQptmADEXN8d&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1fpIbnzJrKfL8s_027u7-9s3Qvqc4EEo_&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Brasileirao', logo: 'https://drive.google.com/thumbnail?id=1_5bQUyTVeWg1S4u1TMXRmVkJTaB09cWv&sz=w200' },
+      { name: 'Libertadores', logo: 'https://drive.google.com/thumbnail?id=1XHYZfqxNioP4Ja4TsBP8fm5jev6sjKSO&sz=w200' }
+    ]
+  },
+  // PALMEIRAS
+  {
+    id: 'palmeiras-home-25-26-custom',
+    name: 'Palmeiras - Local - 25/26',
+    team: 'Palmeiras',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1BXcQJUKNQh1wGkUNPN3VKismfQ_0xzbg&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=13x5jfmwuUfsGnYfpDc8Hg5aybxKT9P7I&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1jnw60jQlArb7ZwxUpo7Z4c1plX9FDDyl&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=13x5jfmwuUfsGnYfpDc8Hg5aybxKT9P7I&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1S0a1M2E4QAISxl4v0MtuxT9wQNhRJeuC&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1jU3WJSap7axwsrBSOeJ7tgrftAU6Y4Vw&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Brasileirao', logo: 'https://drive.google.com/thumbnail?id=1pvDuuzzfp6ZQXmH3Lr78CQNvswXHofKj&sz=w200' },
+      { name: 'Libertadores', logo: 'https://drive.google.com/thumbnail?id=1XmHXPCKw99k90u4MWitL8ddGCyfZXLpx&sz=w200' }
+    ]
+  },
+  {
+    id: 'palmeiras-away-25-26-custom',
+    name: 'Palmeiras - Visitante - 25/26',
+    team: 'Palmeiras',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1C3fLjAFV3RI4GMDy2r9xQ2F4t8rQvtn4&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=1xb8r4uyaKI5In-hsvPHTC5Z-dfaHrnCq&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1KiO9fYx2PUvM2Yiko-3V_6IJekPtLm0_&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=1xb8r4uyaKI5In-hsvPHTC5Z-dfaHrnCq&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1AFmAbqxi5Kx793AiPHCPh5PZ2uSvqw0V&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1jU3WJSap7axwsrBSOeJ7tgrftAU6Y4Vw&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Brasileirao', logo: 'https://drive.google.com/thumbnail?id=1pvDuuzzfp6ZQXmH3Lr78CQNvswXHofKj&sz=w200' },
+      { name: 'Libertadores', logo: 'https://drive.google.com/thumbnail?id=1XmHXPCKw99k90u4MWitL8ddGCyfZXLpx&sz=w200' }
+    ]
+  },
+  // CORINTHIANS
+  {
+    id: 'corinthians-third-25-26-custom',
+    name: 'Corinthians - Tercera - 25/26',
+    team: 'Corinthians',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=18-MpuHpkSM8t1ql0Pc7YmY76_hD5yCXV&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1ousX2N5sr0R-Dh_EvN4Uvt_nmMA4rMIw&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1R3C9OspArXuI5KWRc2fNdHEYflfY3Yqn&sz=w800',
+    noLongSleeve: true,
+    noChild: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Brasileirao', logo: 'https://drive.google.com/thumbnail?id=1sjcloE45vHbStztd2M561K9A1Wt9XdSn&sz=w200' }
+    ]
+  },
+  {
+    id: 'corinthians-away-24-25-custom',
+    name: 'Corinthians - Visitante - 24/25',
+    team: 'Corinthians',
+    league: 'Otras Ligas',
+    season: '24/25',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1M9aqlPNv4fBsqV7dB_1P9IO2TkF__Ru_&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=1K1IAusbRLjPt8548TrKGFRFwLeviWFit&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1zfS96Ak13k2OwrmYtbQ5s4Ao7T86JUM1&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=1K1IAusbRLjPt8548TrKGFRFwLeviWFit&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1svU3nm_Ri6mon01i7qaDkK5wfd5_BKb-&sz=w800',
+    noChild: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Brasileirao', logo: 'https://drive.google.com/thumbnail?id=1sjcloE45vHbStztd2M561K9A1Wt9XdSn&sz=w200' }
+    ]
+  },
+  // SANTOS
+  {
+    id: 'santos-home-25-26-custom',
+    name: 'Santos - Local - 25/26',
+    team: 'Santos',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1QSn-goOdguXeVZvQ-m6kq1ek9_FH9Xb_&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1YrBgKrCGMfc9MnFgZjjvgaDB-uyu46Vc&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1_TXmZNHG9FQaGkdlmN5_TN-bEH1bO_Lw&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1j34KQzc8uDJimgWRPOBM1rq9RWwwFYu3&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Brasileirao', logo: 'https://drive.google.com/thumbnail?id=1vG0nw5_n9FY2TSi_oe2OBTRsXqO6569x&sz=w200' }
+    ]
+  },
+  {
+    id: 'santos-third-25-26-custom',
+    name: 'Santos - Tercera - 25/26',
+    team: 'Santos',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1mzRIoXGPsxr8YlHHFaFaM9FrdSddyu5L&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1CQzo3itCAnKZnHLTMPWteIBOkfS4NZ9x&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1j34KQzc8uDJimgWRPOBM1rq9RWwwFYu3&sz=w800',
+    noLongSleeve: true,
+    noChild: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Brasileirao', logo: 'https://drive.google.com/thumbnail?id=1vG0nw5_n9FY2TSi_oe2OBTRsXqO6569x&sz=w200' }
+    ]
+  },
+  {
+    id: 'santos-home-12-13-custom',
+    name: 'Santos - Local - 12/13',
+    team: 'Santos',
+    league: 'Otras Ligas',
+    season: '12/13',
+    type: 'Local',
+    price: 30,
+    isRetro: true,
+    fanImage: 'https://drive.google.com/thumbnail?id=1oZoxHSoI-L12QhcecCMGecKvK63RDMNL&sz=w800',
+    retroLongSleeveImage: 'https://drive.google.com/thumbnail?id=10bzv5nouU2RAAmkvR22jvL6YCLKzVgYv&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1mbSSeHPnH5IkehSvziyaCo2IbqMIuFAH&sz=w800',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1Mb3UZ51Cva7L_1Tcls_0J22qLL6-yVFF&sz=w800',
+    noPatches: true
+  },
+  {
+    id: 'santos-third-12-13-custom',
+    name: 'Santos - Tercera - 12/13',
+    team: 'Santos',
+    league: 'Otras Ligas',
+    season: '12/13',
+    type: 'Tercera',
+    price: 30,
+    isRetro: true,
+    fanImage: 'https://drive.google.com/thumbnail?id=1ql4X91s_6g6htMv9yB1H7hwIWxEWjlAS&sz=w800',
+    retroLongSleeveImage: 'https://drive.google.com/thumbnail?id=1Pf9VN54WABYxFIIvluc8PGBx07huKQqp&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1RwkGm0VN0461v09ALG_8fOeXnimOCCDx&sz=w800',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1gVb-5zVW4XyEp0Ta7qThoiPVqCC46y2m&sz=w800',
+    noPatches: true
+  },
+  // MONTERREY
+  {
+    id: 'monterrey-special-2025-custom',
+    name: 'Monterrey - Especial (Mundial de Clubes) - 2025',
+    team: 'Monterrey',
+    league: 'Otras Ligas',
+    season: '2025',
+    type: 'Especial',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1liFDBtQs6hQonJcabMbfyQ3bRzwK11ez&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=15JuT9xxhWmVMMKeDAPb23f2SK6I4sWoO&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1xDRIGFUcCUFE9EW7z0dfRDMsDa27ZXBl&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=15JuT9xxhWmVMMKeDAPb23f2SK6I4sWoO&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1j8jvI5bD-JsV4otxdK_LH93OvkqTsfdh&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=13uSIkFc3oNXlfAM6hHQ8kEcmOi7Q5282&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Mundial de Clubes', logo: 'https://drive.google.com/thumbnail?id=1O4HyMsUq-4Smx0vWWxxk5bPEpiaFqZ2E&sz=w200' }
+    ]
+  },
+  // CHIVAS
+  {
+    id: 'chivas-home-25-26-custom',
+    name: 'Chivas Guadalajara - Local - 25/26',
+    team: 'Chivas Guadalajara',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1hhadJMmHTuZOtgj8aNx2Z7p4i9uOeL_w&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=1BK-TZLINkT2ZrIHe6quOqDT7VryMa-QJ&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1epSLiOYGPNIa2Oh-VVqxBUPhOhiLnexO&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=1BK-TZLINkT2ZrIHe6quOqDT7VryMa-QJ&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1jThCtXP_JWam8EptoORQI8r-tJtPmhOg&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=14Kov8gXDgDpEEvfH6Ae7ENweQAMh20Ch&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Liga MX', logo: 'https://drive.google.com/thumbnail?id=1pt6uLBhFrmfxkNCfuwQae72JTuSIzckf&sz=w200' }
+    ]
   }
 ];
 
