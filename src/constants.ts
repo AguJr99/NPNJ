@@ -3728,6 +3728,91 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'AFC Champions', logo: 'https://lh3.googleusercontent.com/d/1_0JzdRz4CCbGRLWzgnBP0oMcFtYAaVAu' }
     ]
   },
+  // AL-HILAL
+  {
+    id: 'al-hilal-home-25-26-custom',
+    name: 'Al-Hilal - Local - 25/26',
+    team: 'Al-Hilal',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1Uko0uMdwp2UZkW7Z1oaUr3as6csBrTvK&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1RHd4L2-34FBBnCjLeDjRzVEXwGIhqmw1&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1XZgbDOmyDwMK3XSeGZ12rtkcBHsuRjuL&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1dEc5U9n1OtD9Q654zjgI06uGRjjBq8mh&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Roshn Saudi League', logo: 'https://lh3.googleusercontent.com/d/1EVj9Tit-qrYXmp3LmV45Wlw8WKwTGSL8' },
+      { name: 'AFC Champions', logo: 'https://lh3.googleusercontent.com/d/1_0JzdRz4CCbGRLWzgnBP0oMcFtYAaVAu' }
+    ]
+  },
+  {
+    id: 'al-hilal-away-25-26-custom',
+    name: 'Al-Hilal - Visitante - 25/26',
+    team: 'Al-Hilal',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1cNBWAfVrUMQdGogQc3AdDBhXr02k9wfA&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=17rw-Fuv34J2LaPm2i_fEuwM60FugBZ-3&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1XZgbDOmyDwMK3XSeGZ12rtkcBHsuRjuL&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1dEc5U9n1OtD9Q654zjgI06uGRjjBq8mh&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Roshn Saudi League', logo: 'https://lh3.googleusercontent.com/d/1EVj9Tit-qrYXmp3LmV45Wlw8WKwTGSL8' },
+      { name: 'AFC Champions', logo: 'https://lh3.googleusercontent.com/d/1_0JzdRz4CCbGRLWzgnBP0oMcFtYAaVAu' }
+    ]
+  },
+  // GALATASARAY
+  {
+    id: 'galatasaray-home-25-26-custom',
+    name: 'Galatasaray - Local - 25/26',
+    team: 'Galatasaray',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1wxtcstaC9NFLZs9xcPyvZ1GHef3ORhd1&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=15JgXeq3eSOfAkZttCPxGFSBQNjQG6Nsr&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1slUGAQ50lzeELxlHyPg91xB5Q5red0L_&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1slUGAQ50lzeELxlHyPg91xB5Q5red0L_&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1oYJbwR-A9Doi0vHzGHi-1PQi6BF8NSEO&sz=w800' }
+    ]
+  },
+  {
+    id: 'galatasaray-away-25-26-custom',
+    name: 'Galatasaray - Visitante - 25/26',
+    team: 'Galatasaray',
+    league: 'Otras Ligas',
+    season: '25/26',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=138LE_31D1ts2E2OwOTD7b417BiY8ahjF&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=123A-U_ACVpxXDBCST37nM31qLFcRQoA5&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=155fuz6bqAEyJCXJGopfIlQnDfTpcYM-T&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=123A-U_ACVpxXDBCST37nM31qLFcRQoA5&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1slUGAQ50lzeELxlHyPg91xB5Q5red0L_&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1slUGAQ50lzeELxlHyPg91xB5Q5red0L_&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1oYJbwR-A9Doi0vHzGHi-1PQi6BF8NSEO&sz=w800' }
+    ]
+  },
   // INTER MIAMI
   {
     id: 'im-home-25-26-custom',
@@ -4249,11 +4334,11 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
   },
   // MONTERREY
   {
-    id: 'monterrey-special-2025-custom',
-    name: 'Monterrey - Especial (Mundial de Clubes) - 2025',
+    id: 'monterrey-special-24-25-custom',
+    name: 'Monterrey - Especial (Mundial de Clubes) - 24/25',
     team: 'Monterrey',
     league: 'Otras Ligas',
-    season: '2025',
+    season: '24/25',
     type: 'Especial',
     price: 30,
     fanImage: 'https://drive.google.com/thumbnail?id=1liFDBtQs6hQonJcabMbfyQ3bRzwK11ez&sz=w800',

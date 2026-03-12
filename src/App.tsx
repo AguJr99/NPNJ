@@ -125,7 +125,7 @@ const Navbar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: 
           
           <div className="hidden lg:block">
             <div className="flex items-center space-x-2 bg-black/20 p-1.5 rounded-full">
-              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'].map((tab) => (
+              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto', 'sorteo'].map((tab) => (
                 <Link
                   key={tab}
                   to={tab === 'home' ? '/' : `/${tab}`}
@@ -133,7 +133,7 @@ const Navbar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: 
                     activeTab === tab ? 'bg-primary text-secondary shadow-lg' : 'text-white/70 hover:text-white'
                   }`}
                 >
-                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : 'Contacto'}
+                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : tab === 'contacto' ? 'Contacto' : 'Sorteo'}
                 </Link>
               ))}
             </div>
@@ -157,7 +157,7 @@ const Navbar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: 
             className="lg:hidden absolute top-16 left-4 right-4 bg-secondary/95 backdrop-blur-xl rounded-[1.5rem] border border-primary/20 shadow-2xl z-[60] overflow-hidden"
           >
             <div className="p-4 space-y-1">
-              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'].map((tab) => (
+              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto', 'sorteo'].map((tab) => (
                 <Link
                   key={tab}
                   to={tab === 'home' ? '/' : `/${tab}`}
@@ -166,7 +166,7 @@ const Navbar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: 
                     activeTab === tab ? 'bg-primary text-secondary' : 'text-accent/60 hover:text-primary'
                   }`}
                 >
-                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : 'Contacto'}
+                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : tab === 'contacto' ? 'Contacto' : 'Sorteo'}
                 </Link>
               ))}
             </div>
@@ -1147,6 +1147,48 @@ const ImageZoomModal = ({ src, onClose }: { src: string, onClose: () => void }) 
   );
 };
 
+const Countdown = ({ targetDate }: { targetDate: string }) => {
+  const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
+
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const difference = +new Date(targetDate) - +new Date();
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        });
+      } else {
+        setTimeLeft(null);
+      }
+    };
+
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+    return () => clearInterval(timer);
+  }, [targetDate]);
+
+  if (!timeLeft) return <span className="text-secondary font-black uppercase text-[10px] tracking-widest">¡Sorteo finalizado!</span>;
+
+  return (
+    <div className="flex gap-3 md:gap-4">
+      {[
+        { label: 'Días', value: timeLeft.days },
+        { label: 'Hrs', value: timeLeft.hours },
+        { label: 'Min', value: timeLeft.minutes },
+        { label: 'Seg', value: timeLeft.seconds },
+      ].map((item, i) => (
+        <div key={i} className="flex flex-col items-center min-w-[40px]">
+          <span className="text-lg md:text-2xl font-black leading-none">{String(item.value).padStart(2, '0')}</span>
+          <span className="text-[7px] md:text-[9px] uppercase font-black opacity-40 tracking-tighter">{item.label}</span>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -1160,7 +1202,7 @@ export default function App() {
 
   // Redirect invalid routes to home
   useEffect(() => {
-    const validTabs = ['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'];
+    const validTabs = ['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto', 'sorteo'];
     if (!validTabs.includes(activeTab)) {
       navigate('/', { replace: true });
     }
@@ -1170,6 +1212,8 @@ export default function App() {
   const [selectedEncargoJersey, setSelectedEncargoJersey] = useState<EncargoJersey | null>(null);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   const [selectedLeague, setSelectedLeague] = useState<string | null>(null);
+  const [participantName, setParticipantName] = useState('');
+  const [participantPhone, setParticipantPhone] = useState('');
 
   // Scroll to top when path changes
   useEffect(() => {
@@ -1981,6 +2025,189 @@ export default function App() {
             </motion.div>
           </div>
         )}
+
+        {activeTab === 'sorteo' && (
+          <div className="max-w-4xl mx-auto px-4 pt-8 pb-12 md:py-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-8 md:space-y-16"
+            >
+              {/* Header Section */}
+              <div className="space-y-2 md:space-y-4 text-center">
+                <h1 className="text-2xl md:text-6xl font-sans font-black text-secondary tracking-tighter uppercase">Gran Sorteo</h1>
+                <p className="text-primary text-xs md:text-xl font-black italic uppercase tracking-widest">¡Gana una camiseta gratis!</p>
+              </div>
+
+              {/* Banner Section */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="bg-primary p-6 md:p-10 rounded-3xl md:rounded-[3rem] border-4 border-secondary shadow-2xl text-center space-y-4"
+              >
+                <h2 className="text-xl md:text-3xl font-black text-secondary uppercase tracking-tight">¡Sorteamos una Camiseta por Encargo!</h2>
+                <p className="text-secondary/80 font-bold text-sm md:text-lg max-w-2xl mx-auto">
+                  El premio de este sorteo es la posibilidad de elegir cualquier camiseta de nuestro catálogo de encargos totalmente gratis. Los encargos demoran en llegar alrededor de un mes.
+                </p>
+                <div className="pt-2">
+                  <Link 
+                    to="/encargos" 
+                    className="inline-flex items-center gap-2 bg-secondary text-primary px-6 py-3 rounded-xl font-black text-xs md:text-sm uppercase tracking-widest hover:bg-secondary/90 transition-all"
+                  >
+                    Ver Camisetas Disponibles <Shirt className="w-4 h-4" />
+                  </Link>
+                </div>
+              </motion.div>
+
+              <div className="grid md:grid-cols-2 gap-6 md:gap-10">
+                {/* Rules Card */}
+                <div className="bg-white p-6 md:p-10 rounded-3xl md:rounded-[3rem] shadow-2xl shadow-secondary/5 border border-secondary/5 space-y-6 md:space-y-8">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center">
+                      <Award className="w-6 h-6 text-primary" />
+                    </div>
+                    <h2 className="text-xl md:text-2xl font-black text-secondary uppercase tracking-tight">Cómo Participar</h2>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="flex gap-4 items-start">
+                      <span className="text-primary font-black text-lg leading-none pt-1">1-</span>
+                      <div className="space-y-2">
+                        <p className="text-secondary/70 font-bold text-sm md:text-lg leading-tight">Participar en nuestro grupo de WhatsApp.</p>
+                        <a 
+                          href="https://chat.whatsapp.com/H3iHglLv0YDInSZsupsb8W" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-primary font-black text-xs uppercase hover:underline"
+                        >
+                          Unirse al Grupo <Phone className="w-3 h-3" />
+                        </a>
+                      </div>
+                    </div>
+                    <div className="flex gap-4 items-start">
+                      <span className="text-primary font-black text-lg leading-none pt-1">2-</span>
+                      <p className="text-secondary/70 font-bold text-sm md:text-lg leading-tight">Añadir a 3 personas al grupo de WhatsApp.</p>
+                    </div>
+                    <div className="flex gap-4 items-start">
+                      <span className="text-primary font-black text-lg leading-none pt-1">3-</span>
+                      <div className="space-y-2">
+                        <p className="text-secondary/70 font-bold text-sm md:text-lg leading-tight">Seguirnos en Instagram (@no_pain_no_jersey).</p>
+                        <a 
+                          href="https://www.instagram.com/no_pain_no_jersey" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-primary font-black text-xs uppercase hover:underline"
+                        >
+                          Seguir en Instagram <Instagram className="w-3 h-3" />
+                        </a>
+                      </div>
+                    </div>
+                    <div className="flex gap-4 items-start">
+                      <span className="text-primary font-black text-lg leading-none pt-1">4-</span>
+                      <p className="text-secondary/70 font-bold text-sm md:text-lg leading-tight">Llenar tu nombre y tu número de Whatsapp y enviarnoslo por WhatsApp.</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 pt-4">
+                    <div className="space-y-2">
+                      <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-[0.2em] ml-2">Tu Nombre</label>
+                      <input 
+                        type="text" 
+                        value={participantName}
+                        onChange={(e) => setParticipantName(e.target.value)}
+                        placeholder="Ej: Juan"
+                        className="w-full bg-secondary/5 border border-secondary/10 rounded-xl px-4 py-3 text-secondary font-bold focus:outline-none focus:border-primary transition-colors"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-[0.2em] ml-2">Tu Número de WhatsApp</label>
+                      <input 
+                        type="tel" 
+                        value={participantPhone}
+                        onChange={(e) => setParticipantPhone(e.target.value)}
+                        placeholder="Ej: 55565758"
+                        className="w-full bg-secondary/5 border border-secondary/10 rounded-xl px-4 py-3 text-secondary font-bold focus:outline-none focus:border-primary transition-colors"
+                      />
+                    </div>
+                    <button 
+                      onClick={() => {
+                        if (!participantName || !participantPhone) {
+                          alert("Por favor, completa tu nombre y número para participar.");
+                          return;
+                        }
+                        const message = `Hola, quiero participar en el sorteo\nMi nombre es: ${participantName}\nMi número es: ${participantPhone}\nDebajo adjunto las capturas de los pasos seguidos`;
+                        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+                      }}
+                      className="w-full bg-secondary text-primary py-4 rounded-xl font-black text-xs uppercase tracking-[0.2em] hover:bg-primary hover:text-secondary transition-all shadow-xl flex items-center justify-center gap-3"
+                    >
+                      Participar por WhatsApp <Phone className="w-4 h-4" />
+                    </button>
+                  </div>
+
+                  <div className="bg-secondary/5 p-4 md:p-6 rounded-2xl space-y-3">
+                    <p className="text-xs md:text-sm font-black text-secondary uppercase tracking-widest flex items-center gap-2">
+                      <Phone className="w-4 h-4 text-primary" /> Importante
+                    </p>
+                    <p className="text-[10px] md:text-sm text-secondary/60 font-medium leading-relaxed">
+                      Toma captura de pantalla de cada paso y envíalas a nuestro WhatsApp para validar tu participación.
+                    </p>
+                  </div>
+
+                  <div className="pt-4">
+                    <div className="flex flex-col md:flex-row items-center justify-between p-4 md:p-6 bg-primary rounded-2xl text-secondary gap-4">
+                      <div className="flex items-center gap-3">
+                        <Clock className="w-5 h-5" />
+                        <div className="flex flex-col">
+                          <span className="font-black text-[10px] md:text-xs uppercase tracking-widest">Anuncio del Ganador</span>
+                          <span className="font-black text-sm md:text-lg tracking-tighter">28 de Marzo</span>
+                        </div>
+                      </div>
+                      <Countdown targetDate="2026-03-28T12:00:00-04:00" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Participants Card */}
+                <div className="bg-secondary p-6 md:p-10 rounded-3xl md:rounded-[3rem] shadow-2xl shadow-primary/10 border border-white/5 flex flex-col">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center">
+                      <ClipboardList className="w-6 h-6 text-primary" />
+                    </div>
+                    <h2 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight">Participantes</h2>
+                  </div>
+
+                  <div className="space-y-1 pr-2">
+                    {[].map((name, i) => (
+                      <div key={i} className="flex items-center justify-between p-2 md:p-3 bg-white/5 rounded-xl border border-white/5">
+                        <div className="flex items-center gap-3">
+                          <span className="text-[10px] font-black text-primary/50">#{String(i + 1).padStart(2, '0')}</span>
+                          <span className="text-xs md:text-sm font-bold text-white/90">{name}</span>
+                        </div>
+                        <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(235,214,172,0.5)]" />
+                      </div>
+                    ))}
+                    {[].length === 0 && (
+                      <div className="text-center py-12 space-y-3">
+                        <div className="flex justify-center">
+                          <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center">
+                            <ClipboardList className="w-6 h-6 text-white/20" />
+                          </div>
+                        </div>
+                        <p className="text-white/30 font-bold text-xs md:text-sm italic">Esperando primeros participantes...</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="mt-8 pt-6 border-t border-white/10">
+                    <p className="text-[10px] md:text-xs text-white/40 font-black uppercase tracking-[0.2em] text-center">
+                      Total Participantes: <span className="text-primary">0</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
       </main>
 
       <footer className="bg-secondary text-white py-12 md:py-24 border-t-4 border-primary">
@@ -2007,6 +2234,7 @@ export default function App() {
                   <li><Link to="/nosotros" className="hover:text-primary transition-colors">Nosotros</Link></li>
                   <li><Link to="/preguntas" className="hover:text-primary transition-colors">Preguntas</Link></li>
                   <li><Link to="/contacto" className="hover:text-primary transition-colors">Contacto</Link></li>
+                  <li><Link to="/sorteo" className="hover:text-primary transition-colors">Sorteo</Link></li>
                 </ul>
               </div>
 
