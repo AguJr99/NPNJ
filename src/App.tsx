@@ -2177,7 +2177,10 @@ export default function App() {
                   </div>
 
                   <div className="space-y-1 pr-2">
-                    {[].map((name, i) => (
+                    {[
+                      "Williams", "José Miguel", "Steffanie", "Moreira", "Aismelis", 
+                      "Jose Luis", "Cristian", "Yosvel", "Antoine", "Anthony"
+                    ].map((name, i) => (
                       <div key={i} className="flex items-center justify-between p-2 md:p-3 bg-white/5 rounded-xl border border-white/5">
                         <div className="flex items-center gap-3">
                           <span className="text-[10px] font-black text-primary/50">#{String(i + 1).padStart(2, '0')}</span>
@@ -2186,7 +2189,10 @@ export default function App() {
                         <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(235,214,172,0.5)]" />
                       </div>
                     ))}
-                    {[].length === 0 && (
+                    {[
+                      "Williams", "José Miguel", "Steffanie", "Moreira", "Aismelis", 
+                      "Jose Luis", "Cristian", "Yosvel", "Antoine", "Anthony"
+                    ].length === 0 && (
                       <div className="text-center py-12 space-y-3">
                         <div className="flex justify-center">
                           <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center">
@@ -2200,7 +2206,7 @@ export default function App() {
 
                   <div className="mt-8 pt-6 border-t border-white/10">
                     <p className="text-[10px] md:text-xs text-white/40 font-black uppercase tracking-[0.2em] text-center">
-                      Total Participantes: <span className="text-primary">0</span>
+                      Total Participantes: <span className="text-primary">10</span>
                     </p>
                   </div>
                 </div>
