@@ -2231,7 +2231,8 @@ export default function App() {
                       "Williams", "José Miguel", "Steffanie", "Moreira", "Aismelis", 
                       "Jose Luis", "Cristian", "Yosvel", "Antoine", "Anthony",
                       "Maricel", "Aliandys", "Lía", "Gabriel", "Enzo", "Yahinilin",
-                      "Adrián", "Alejandro", "Ana Leidys"
+                      "Adrián", "Alejandro", "Ana Leidys", "Pedro", "John", "Samuel",
+                      "Nuria", "Diana", "Robert"
                     ].map((name, i) => (
                       <div key={i} className="flex items-center justify-between p-2 md:p-3 bg-white/5 rounded-xl border border-white/5">
                         <div className="flex items-center gap-3">
@@ -2245,7 +2246,8 @@ export default function App() {
                       "Williams", "José Miguel", "Steffanie", "Moreira", "Aismelis", 
                       "Jose Luis", "Cristian", "Yosvel", "Antoine", "Anthony",
                       "Maricel", "Aliandys", "Lía", "Gabriel", "Enzo", "Yahinilin",
-                      "Adrián", "Alejandro", "Ana Leidys"
+                      "Adrián", "Alejandro", "Ana Leidys", "Pedro", "John", "Samuel",
+                      "Nuria", "Diana", "Robert"
                     ].length === 0 && (
                       <div className="text-center py-12 space-y-3">
                         <div className="flex justify-center">
@@ -2260,7 +2262,7 @@ export default function App() {
 
                   <div className="mt-8 pt-6 border-t border-white/10">
                     <p className="text-[10px] md:text-xs text-white/40 font-black uppercase tracking-[0.2em] text-center">
-                      Total Participantes: <span className="text-primary">19</span>
+                      Total Participantes: <span className="text-primary">25</span>
                     </p>
                   </div>
                 </div>
