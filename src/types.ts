@@ -13,6 +13,8 @@ export interface Jersey {
   playerName?: string;
   number?: string;
   patch?: string;
+  originalPrice?: number;
+  discountEndDate?: string;
 }
 
 export interface EncargoJersey {

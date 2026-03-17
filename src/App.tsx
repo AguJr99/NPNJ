@@ -235,13 +235,16 @@ const JerseyCard = ({ jersey, onOrder }: { jersey: Jersey, onOrder: (j?: Jersey)
     ? `https://drive.google.com/thumbnail?id=${jersey.image.split('/d/')[1]}&sz=w600` 
     : jersey.image;
 
+  const hasDiscount = jersey.discountEndDate && new Date(jersey.discountEndDate) > new Date();
+  const discountPercentage = jersey.originalPrice ? Math.round(((jersey.originalPrice - jersey.price) / jersey.originalPrice) * 100) : 0;
+
   return (
     <>
       <motion.div
         layout
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white rounded-[3rem] overflow-hidden shadow-2xl shadow-secondary/5 group border border-secondary/5 flex flex-col hover:shadow-primary/10 transition-all duration-500"
+        className={`bg-white rounded-[3rem] overflow-hidden shadow-2xl shadow-secondary/5 group border flex flex-col hover:shadow-primary/10 transition-all duration-500 ${hasDiscount ? 'border-red-500/30 ring-2 ring-red-500/10' : 'border-secondary/5'}`}
       >
         <div 
           className="relative overflow-hidden bg-accent/30 cursor-zoom-in"
@@ -270,9 +273,15 @@ const JerseyCard = ({ jersey, onOrder }: { jersey: Jersey, onOrder: (j?: Jersey)
             <Search className="text-white w-8 h-8 drop-shadow-lg" />
           </div>
           
-          {jersey.isBestSeller && (
-            <div className="hidden">
-              Edición Limitada
+          {hasDiscount && (
+            <div className="absolute top-2 left-2 md:top-4 md:left-4 z-10 flex flex-col gap-1 items-start">
+              <div className="bg-red-600 text-white font-black text-[8px] md:text-xs px-2 py-1 rounded-full shadow-lg uppercase tracking-widest flex items-center gap-1">
+                <Clock className="w-2.5 h-2.5 md:w-3 h-3" />
+                <span>EN OFERTA</span>
+              </div>
+              <div className="bg-white/95 backdrop-blur-sm text-red-600 font-black text-[7px] md:text-[9px] px-2 py-0.5 rounded-full shadow-sm uppercase tracking-widest border border-red-600/20">
+                TERMINA EN <Countdown targetDate={jersey.discountEndDate!} variant="daysOnly" />
+              </div>
             </div>
           )}
         </div>
@@ -316,9 +325,19 @@ const JerseyCard = ({ jersey, onOrder }: { jersey: Jersey, onOrder: (j?: Jersey)
           </div>
 
           <div className="pt-4 md:pt-5 mt-auto border-t border-secondary/5 w-full space-y-4 md:space-y-5">
-            <div className="flex items-center justify-center gap-2">
-              <span className="text-[8px] md:text-[10px] font-bold text-secondary/40 uppercase tracking-[0.2em]">Precio</span>
-              <span className="text-xl md:text-3xl font-sans font-black text-secondary tracking-tighter leading-none">${jersey.price}</span>
+            <div className="flex flex-col items-center justify-center gap-2">
+              {hasDiscount && (
+                <span className="bg-red-600 text-white text-[10px] md:text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">-{discountPercentage}% DE DESCUENTO</span>
+              )}
+              <div className="flex items-center justify-center gap-2 md:gap-3">
+                <span className="text-[8px] md:text-[10px] font-bold text-secondary/40 uppercase tracking-[0.2em]">Precio</span>
+                <div className="flex items-center gap-2">
+                  {hasDiscount && (
+                    <span className="text-xs md:text-lg font-black text-red-600 line-through decoration-red-600/50 decoration-2 tracking-tighter leading-none pt-1 md:pt-2">${jersey.originalPrice}</span>
+                  )}
+                  <span className="text-xl md:text-4xl font-sans font-black text-secondary tracking-tighter leading-none">${jersey.price}</span>
+                </div>
+              </div>
             </div>
             
             <button
@@ -1147,18 +1166,25 @@ const ImageZoomModal = ({ src, onClose }: { src: string, onClose: () => void }) 
   );
 };
 
-const Countdown = ({ targetDate }: { targetDate: string }) => {
-  const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
+const Countdown = ({ targetDate, finishMessage = "¡Finalizado!", variant = "full" }: { targetDate: string, finishMessage?: string, variant?: "full" | "compact" | "daysOnly" }) => {
+  const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number; totalHours: number } | null>(null);
 
   useEffect(() => {
     const calculateTimeLeft = () => {
       const difference = +new Date(targetDate) - +new Date();
       if (difference > 0) {
+        const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const h = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const m = Math.floor((difference / 1000 / 60) % 60);
+        const s = Math.floor((difference / 1000) % 60);
+        const totalH = Math.floor(difference / (1000 * 60 * 60));
+
         setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
+          days: d,
+          hours: h,
+          minutes: m,
+          seconds: s,
+          totalHours: totalH
         });
       } else {
         setTimeLeft(null);
@@ -1170,7 +1196,23 @@ const Countdown = ({ targetDate }: { targetDate: string }) => {
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  if (!timeLeft) return <span className="text-secondary font-black uppercase text-[10px] tracking-widest">¡Sorteo finalizado!</span>;
+  if (!timeLeft) return <span className="text-secondary font-black uppercase text-[10px] tracking-widest">{finishMessage}</span>;
+
+  if (variant === "compact") {
+    return (
+      <span className="font-black tabular-nums">
+        {String(timeLeft.totalHours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}
+      </span>
+    );
+  }
+
+  if (variant === "daysOnly") {
+    return (
+      <span className="font-black tabular-nums">
+        {timeLeft.days} {timeLeft.days === 1 ? 'DÍA' : 'DÍAS'}
+      </span>
+    );
+  }
 
   return (
     <div className="flex gap-3 md:gap-4">
@@ -1232,15 +1274,23 @@ export default function App() {
   const normalizeText = (text: string) => 
     text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/-/g, " ");
 
-  const filteredJerseys = JERSEYS.filter(j => {
-    const search = normalizeText(stockSearchQuery);
-    const matchesSearch = normalizeText(j.team).includes(search) ||
-                         (j.playerName && normalizeText(j.playerName).includes(search));
-    const matchesSize = filterSize === 'TODAS' || j.size === filterSize;
-    const matchesStyle = filterStyle === 'TODOS' || j.style.toUpperCase() === filterStyle;
-    
-    return matchesSearch && matchesSize && matchesStyle;
-  });
+  const filteredJerseys = useMemo(() => {
+    return JERSEYS.filter(j => {
+      const search = normalizeText(stockSearchQuery);
+      const matchesSearch = normalizeText(j.team).includes(search) ||
+                           (j.playerName && normalizeText(j.playerName).includes(search));
+      const matchesSize = filterSize === 'TODAS' || j.size === filterSize;
+      const matchesStyle = filterStyle === 'TODOS' || j.style.toUpperCase() === filterStyle;
+      
+      return matchesSearch && matchesSize && matchesStyle;
+    }).sort((a, b) => {
+      const aHasDiscount = a.discountEndDate && new Date(a.discountEndDate) > new Date();
+      const bHasDiscount = b.discountEndDate && new Date(b.discountEndDate) > new Date();
+      if (aHasDiscount && !bHasDiscount) return -1;
+      if (!aHasDiscount && bHasDiscount) return 1;
+      return 0;
+    });
+  }, [stockSearchQuery, filterSize, filterStyle]);
 
   const filteredEncargoJerseys = useMemo(() => {
     const baseFiltered = ENCARGO_JERSEYS.filter(j => {
@@ -2162,7 +2212,7 @@ export default function App() {
                           <span className="font-black text-sm md:text-lg tracking-tighter">28 de Marzo</span>
                         </div>
                       </div>
-                      <Countdown targetDate="2026-03-28T12:00:00-04:00" />
+                      <Countdown targetDate="2026-03-28T12:00:00-04:00" finishMessage="¡Sorteo finalizado!" />
                     </div>
                   </div>
                 </div>
@@ -2180,7 +2230,8 @@ export default function App() {
                     {[
                       "Williams", "José Miguel", "Steffanie", "Moreira", "Aismelis", 
                       "Jose Luis", "Cristian", "Yosvel", "Antoine", "Anthony",
-                      "Maricel", "Aliandys", "Lía", "Gabriel", "Enzo", "Yahinilin"
+                      "Maricel", "Aliandys", "Lía", "Gabriel", "Enzo", "Yahinilin",
+                      "Adrián", "Alejandro", "Ana Leidys"
                     ].map((name, i) => (
                       <div key={i} className="flex items-center justify-between p-2 md:p-3 bg-white/5 rounded-xl border border-white/5">
                         <div className="flex items-center gap-3">
@@ -2193,7 +2244,8 @@ export default function App() {
                     {[
                       "Williams", "José Miguel", "Steffanie", "Moreira", "Aismelis", 
                       "Jose Luis", "Cristian", "Yosvel", "Antoine", "Anthony",
-                      "Maricel", "Aliandys", "Lía", "Gabriel", "Enzo", "Yahinilin"
+                      "Maricel", "Aliandys", "Lía", "Gabriel", "Enzo", "Yahinilin",
+                      "Adrián", "Alejandro", "Ana Leidys"
                     ].length === 0 && (
                       <div className="text-center py-12 space-y-3">
                         <div className="flex justify-center">
@@ -2208,7 +2260,7 @@ export default function App() {
 
                   <div className="mt-8 pt-6 border-t border-white/10">
                     <p className="text-[10px] md:text-xs text-white/40 font-black uppercase tracking-[0.2em] text-center">
-                      Total Participantes: <span className="text-primary">16</span>
+                      Total Participantes: <span className="text-primary">19</span>
                     </p>
                   </div>
                 </div>
