@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, Link, Navigate } from 'react-router-dom';
-import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown } from 'lucide-react';
+import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown, Trophy } from 'lucide-react';
 import { JERSEYS, ENCARGO_JERSEYS, WHATSAPP_NUMBER, LEAGUES } from './constants';
 import { Jersey, EncargoJersey, EncargoOrder } from './types';
 
@@ -2085,138 +2085,46 @@ export default function App() {
             >
               {/* Header Section */}
               <div className="space-y-2 md:space-y-4 text-center">
-                <h1 className="text-2xl md:text-6xl font-sans font-black text-secondary tracking-tighter uppercase">Gran Sorteo</h1>
-                <p className="text-primary text-xs md:text-xl font-black italic uppercase tracking-widest">¡Gana una camiseta gratis!</p>
+                <h1 className="text-2xl md:text-6xl font-sans font-black text-secondary tracking-tighter uppercase">Resultado del Sorteo</h1>
+                <p className="text-primary text-xs md:text-xl font-black italic uppercase tracking-widest">¡Ya tenemos ganador!</p>
               </div>
 
-              {/* Banner Section */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-primary p-6 md:p-10 rounded-3xl md:rounded-[3rem] border-4 border-secondary shadow-2xl text-center space-y-4"
-              >
-                <h2 className="text-xl md:text-3xl font-black text-secondary uppercase tracking-tight">¡Sorteamos una Camiseta por Encargo!</h2>
-                <p className="text-secondary/80 font-bold text-sm md:text-lg max-w-2xl mx-auto">
-                  El premio de este sorteo es la posibilidad de elegir cualquier camiseta de nuestro catálogo de encargos totalmente gratis. Los encargos demoran en llegar alrededor de un mes.
-                </p>
-                <div className="pt-2">
-                  <Link 
-                    to="/encargos" 
-                    className="inline-flex items-center gap-2 bg-secondary text-primary px-6 py-3 rounded-xl font-black text-xs md:text-sm uppercase tracking-widest hover:bg-secondary/90 transition-all"
-                  >
-                    Ver Camisetas Disponibles <Shirt className="w-4 h-4" />
-                  </Link>
-                </div>
-              </motion.div>
-
-              <div className="grid md:grid-cols-2 gap-6 md:gap-10">
-                {/* Rules Card */}
-                <div className="bg-white p-6 md:p-10 rounded-3xl md:rounded-[3rem] shadow-2xl shadow-secondary/5 border border-secondary/5 space-y-6 md:space-y-8">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center">
-                      <Award className="w-6 h-6 text-primary" />
-                    </div>
-                    <h2 className="text-xl md:text-2xl font-black text-secondary uppercase tracking-tight">Cómo Participar</h2>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div className="flex gap-4 items-start">
-                      <span className="text-primary font-black text-lg leading-none pt-1">1-</span>
-                      <div className="space-y-2">
-                        <p className="text-secondary/70 font-bold text-sm md:text-lg leading-tight">Participar en nuestro grupo de WhatsApp.</p>
-                        <a 
-                          href="https://chat.whatsapp.com/H3iHglLv0YDInSZsupsb8W" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-primary font-black text-xs uppercase hover:underline"
-                        >
-                          Unirse al Grupo <Phone className="w-3 h-3" />
-                        </a>
-                      </div>
-                    </div>
-                    <div className="flex gap-4 items-start">
-                      <span className="text-primary font-black text-lg leading-none pt-1">2-</span>
-                      <p className="text-secondary/70 font-bold text-sm md:text-lg leading-tight">Añadir a 3 personas al grupo de WhatsApp.</p>
-                    </div>
-                    <div className="flex gap-4 items-start">
-                      <span className="text-primary font-black text-lg leading-none pt-1">3-</span>
-                      <div className="space-y-2">
-                        <p className="text-secondary/70 font-bold text-sm md:text-lg leading-tight">Seguirnos en Instagram (@no_pain_no_jersey).</p>
-                        <a 
-                          href="https://www.instagram.com/no_pain_no_jersey" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-primary font-black text-xs uppercase hover:underline"
-                        >
-                          Seguir en Instagram <Instagram className="w-3 h-3" />
-                        </a>
-                      </div>
-                    </div>
-                    <div className="flex gap-4 items-start">
-                      <span className="text-primary font-black text-lg leading-none pt-1">4-</span>
-                      <p className="text-secondary/70 font-bold text-sm md:text-lg leading-tight">Llenar tu nombre y tu número de Whatsapp y enviarnoslo por WhatsApp.</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4 pt-4">
-                    <div className="space-y-2">
-                      <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-[0.2em] ml-2">Tu Nombre</label>
-                      <input 
-                        type="text" 
-                        value={participantName}
-                        onChange={(e) => setParticipantName(e.target.value)}
-                        placeholder="Ej: Juan"
-                        className="w-full bg-secondary/5 border border-secondary/10 rounded-xl px-4 py-3 text-secondary font-bold focus:outline-none focus:border-primary transition-colors"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-[0.2em] ml-2">Tu Número de WhatsApp</label>
-                      <input 
-                        type="tel" 
-                        value={participantPhone}
-                        onChange={(e) => setParticipantPhone(e.target.value)}
-                        placeholder="Ej: 55565758"
-                        className="w-full bg-secondary/5 border border-secondary/10 rounded-xl px-4 py-3 text-secondary font-bold focus:outline-none focus:border-primary transition-colors"
-                      />
-                    </div>
-                    <button 
-                      onClick={() => {
-                        if (!participantName || !participantPhone) {
-                          alert("Por favor, completa tu nombre y número para participar.");
-                          return;
-                        }
-                        const message = `Hola, quiero participar en el sorteo\nMi nombre es: ${participantName}\nMi número es: ${participantPhone}\nDebajo adjunto las capturas de los pasos seguidos`;
-                        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
-                      }}
-                      className="w-full bg-secondary text-primary py-4 rounded-xl font-black text-xs uppercase tracking-[0.2em] hover:bg-primary hover:text-secondary transition-all shadow-xl flex items-center justify-center gap-3"
-                    >
-                      Participar por WhatsApp <Phone className="w-4 h-4" />
-                    </button>
-                  </div>
-
-                  <div className="bg-secondary/5 p-4 md:p-6 rounded-2xl space-y-3">
-                    <p className="text-xs md:text-sm font-black text-secondary uppercase tracking-widest flex items-center gap-2">
-                      <Phone className="w-4 h-4 text-primary" /> Importante
-                    </p>
-                    <p className="text-[10px] md:text-sm text-secondary/60 font-medium leading-relaxed">
-                      Toma captura de pantalla de cada paso y envíalas a nuestro WhatsApp para validar tu participación.
-                    </p>
-                  </div>
-
-                  <div className="pt-4">
-                    <div className="flex flex-col md:flex-row items-center justify-between p-4 md:p-6 bg-primary rounded-2xl text-secondary gap-4">
-                      <div className="flex items-center gap-3">
-                        <Clock className="w-5 h-5" />
-                        <div className="flex flex-col">
-                          <span className="font-black text-[10px] md:text-xs uppercase tracking-widest">Anuncio del Ganador</span>
-                          <span className="font-black text-sm md:text-lg tracking-tighter">28 de Marzo</span>
-                        </div>
-                      </div>
-                      <Countdown targetDate="2026-03-28T12:00:00-04:00" finishMessage="¡Sorteo finalizado!" />
-                    </div>
-                  </div>
+              {/* Video Section */}
+              <div className="space-y-8">
+                <div className="aspect-[9/16] max-w-sm mx-auto w-full rounded-3xl overflow-hidden border-4 border-primary shadow-2xl bg-secondary/10 relative group">
+                  <iframe 
+                    src="https://drive.google.com/file/d/1E3FaoI6bDzviYAiPdX5rGCvucFdrXjvJ/preview" 
+                    className="w-full h-full"
+                    allow="autoplay"
+                    title="Resultado del Sorteo"
+                  ></iframe>
                 </div>
 
+                {/* Winner Message Card */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="bg-white p-8 md:p-12 rounded-3xl md:rounded-[3rem] shadow-2xl border border-primary/10 space-y-6 text-center"
+                >
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-full mb-4">
+                    <Trophy className="w-10 h-10 text-primary" />
+                  </div>
+                  <h2 className="text-2xl md:text-4xl font-black text-secondary uppercase tracking-tight leading-tight">
+                    ¡Muchas felicidades al <span className="text-primary">#54 Michel</span> por ser el ganador!
+                  </h2>
+                  <div className="space-y-6 text-secondary/70 font-bold text-sm md:text-lg leading-relaxed max-w-2xl mx-auto">
+                    <p>
+                      Queremos agradecer también a todas las personas que participaron, compartieron y estuvieron pendientes del sorteo. De verdad valoramos mucho el apoyo que le dan a No Pain-No Jersey.
+                    </p>
+                    <p>
+                      Esto sigue, así que no se desconecten y sigan pendientes de nuestras novedades, próximos sorteos, camisetas en stock y encargos. Se vienen más cosas buenas por No Pain-No Jersey. Gracias a todos por estar ahí y por seguir apoyándonos.
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+
+              <div className="grid md:grid-cols-1 gap-6 md:gap-10">
                 {/* Participants Card */}
                 <div className="bg-secondary p-6 md:p-10 rounded-3xl md:rounded-[3rem] shadow-2xl shadow-primary/10 border border-white/5 flex flex-col">
                   <div className="flex items-center gap-4 mb-8">
