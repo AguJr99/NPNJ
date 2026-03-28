@@ -2234,7 +2234,8 @@ export default function App() {
                       "Adrián", "Alejandro", "Ana Leidys", "Pedro", "John", "Samuel",
                       "Nuria", "Diana", "Robert", "Marialis", "Valen",
                       "David", "Daimarys", "Luis Daniel", "Maxdiel", "Miguel Alejandro", "Leynier", "Bastian", "Melody", "Alberto Alejandro", "Davisito", "Liz Anette", "Bruno",
-                      "Jonathan", "Brayan", "Robert", "Dayana", "Natsumy", "Idianelys", "Robin"
+                      "Jonathan", "Brayan", "Robert", "Dayana", "Natsumy", "Idianelys", "Robin",
+                      "Cleidy", "Alejandro", "Yancarlos", "Karla Alejandra", "Cristopher", "Iván", "Yarianny", "Michel", "Adrian", "Fabio", "Yanko", "Irian", "Eric", "Ale", "Masbel", "Leo"
                     ].map((name, i) => (
                       <div key={i} className="flex items-center justify-between p-2 md:p-3 bg-white/5 rounded-xl border border-white/5">
                         <div className="flex items-center gap-3">
@@ -2251,7 +2252,8 @@ export default function App() {
                       "Adrián", "Alejandro", "Ana Leidys", "Pedro", "John", "Samuel",
                       "Nuria", "Diana", "Robert", "Marialis", "Valen",
                       "David", "Daimarys", "Luis Daniel", "Maxdiel", "Miguel Alejandro", "Leynier", "Bastian", "Melody", "Alberto Alejandro", "Davisito", "Liz Anette", "Bruno",
-                      "Jonathan", "Brayan", "Robert", "Dayana", "Natsumy", "Idianelys", "Robin"
+                      "Jonathan", "Brayan", "Robert", "Dayana", "Natsumy", "Idianelys", "Robin",
+                      "Cleidy", "Alejandro", "Yancarlos", "Karla Alejandra", "Cristopher", "Iván", "Yarianny", "Michel", "Adrian", "Fabio", "Yanko", "Irian", "Eric", "Ale", "Masbel", "Leo"
                     ].length === 0 && (
                       <div className="text-center py-12 space-y-3">
                         <div className="flex justify-center">
@@ -2266,7 +2268,7 @@ export default function App() {
 
                   <div className="mt-8 pt-6 border-t border-white/10">
                     <p className="text-[10px] md:text-xs text-white/40 font-black uppercase tracking-[0.2em] text-center">
-                      Total Participantes: <span className="text-primary">46</span>
+                      Total Participantes: <span className="text-primary">62</span>
                     </p>
                   </div>
                 </div>
