@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, Link, Navigate } from 'react-router-dom';
-import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown, Trophy } from 'lucide-react';
+import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown } from 'lucide-react';
 import { JERSEYS, ENCARGO_JERSEYS, WHATSAPP_NUMBER, LEAGUES } from './constants';
 import { Jersey, EncargoJersey, EncargoOrder } from './types';
 
@@ -125,7 +125,7 @@ const Navbar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: 
           
           <div className="hidden lg:block">
             <div className="flex items-center space-x-2 bg-black/20 p-1.5 rounded-full">
-              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto', 'sorteo'].map((tab) => (
+              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'].map((tab) => (
                 <Link
                   key={tab}
                   to={tab === 'home' ? '/' : `/${tab}`}
@@ -133,7 +133,7 @@ const Navbar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: 
                     activeTab === tab ? 'bg-primary text-secondary shadow-lg' : 'text-white/70 hover:text-white'
                   }`}
                 >
-                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : tab === 'contacto' ? 'Contacto' : 'Sorteo'}
+                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : 'Contacto'}
                 </Link>
               ))}
             </div>
@@ -157,7 +157,7 @@ const Navbar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: 
             className="lg:hidden absolute top-16 left-4 right-4 bg-secondary/95 backdrop-blur-xl rounded-[1.5rem] border border-primary/20 shadow-2xl z-[60] overflow-hidden"
           >
             <div className="p-4 space-y-1">
-              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto', 'sorteo'].map((tab) => (
+              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'].map((tab) => (
                 <Link
                   key={tab}
                   to={tab === 'home' ? '/' : `/${tab}`}
@@ -166,7 +166,7 @@ const Navbar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: 
                     activeTab === tab ? 'bg-primary text-secondary' : 'text-accent/60 hover:text-primary'
                   }`}
                 >
-                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : tab === 'contacto' ? 'Contacto' : 'Sorteo'}
+                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : 'Contacto'}
                 </Link>
               ))}
             </div>
@@ -707,11 +707,13 @@ const EncargoOrderModal = ({ jersey, onClose, onZoom }: { jersey: EncargoJersey,
     jerseyId: jersey.id,
     version: jersey.isRetro ? 'Retro' : 'Fan',
     size: 'M',
-    sleeves: 'Corta',
+    sleeves: (jersey.noShortSleeve && !jersey.noLongSleeve) ? 'Larga' : 'Corta',
     name: '',
     number: '',
     patch: defaultPatch
   });
+
+  const hideShortSleeves = jersey.noShortSleeve;
 
   const isBarcelonaCuarta = jersey.id === 'fcb-fourth-25-custom';
   const isRmaGk = jersey.id === 'rma-gk-third-25-custom';
@@ -722,6 +724,12 @@ const EncargoOrderModal = ({ jersey, onClose, onZoom }: { jersey: EncargoJersey,
 
   let currentImage = form.version === 'Fan' ? jersey.fanImage : form.version === 'Player' ? jersey.playerImage : form.version === 'Retro' ? jersey.fanImage : jersey.childImage;
   if (form.sleeves === 'Larga' && !hideLongSleeves) {
+    if (form.version === 'Retro' && jersey.retroLongSleeveImage) currentImage = jersey.retroLongSleeveImage;
+    else if (form.version === 'Fan' && jersey.fanLongSleeveImage) currentImage = jersey.fanLongSleeveImage;
+    else if (form.version === 'Player' && jersey.playerLongSleeveImage) currentImage = jersey.playerLongSleeveImage;
+  }
+  if (form.sleeves === 'Corta' && hideShortSleeves) {
+    // If somehow it's Corta but hidden, we should show the long sleeve image if available
     if (form.version === 'Retro' && jersey.retroLongSleeveImage) currentImage = jersey.retroLongSleeveImage;
     else if (form.version === 'Fan' && jersey.fanLongSleeveImage) currentImage = jersey.fanLongSleeveImage;
     else if (form.version === 'Player' && jersey.playerLongSleeveImage) currentImage = jersey.playerLongSleeveImage;
@@ -897,7 +905,9 @@ Parche: *${form.patch}*`;
                         const nextImage = v === 'Fan' ? jersey.fanImage : v === 'Player' ? jersey.playerImage : v === 'Retro' ? jersey.fanImage : jersey.childImage;
                         const nextSizeGuide = v === 'Fan' ? jersey.fanSizeGuide : v === 'Player' ? jersey.playerSizeGuide : v === 'Retro' ? jersey.retroSizeGuide : jersey.childSizeGuide;
                         
-                        setForm({ ...form, version: v as any, sleeves: v === 'Niño' ? 'Corta' : form.sleeves });
+                        const nextSleeves = v === 'Niño' ? 'Corta' : (hideShortSleeves ? 'Larga' : form.sleeves);
+                        
+                        setForm({ ...form, version: v as any, sleeves: nextSleeves as any });
                         setImagesLoaded(prev => ({ 
                           ...prev, 
                           jersey: LOADED_IMAGES.has(nextImage || ''), 
@@ -915,15 +925,21 @@ Parche: *${form.patch}*`;
             </section>
 
             {/* 3. Sleeve Selection */}
-            {!hideLongSleeves && (
+            {(!hideLongSleeves || !hideShortSleeves) && (
               <section>
                 <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-widest mb-4">Tipo de Manga</label>
                 <div className="grid grid-cols-2 gap-3">
-                  {form.version === 'Niño' || hideLongSleeves ? (
+                  {form.version === 'Niño' || (hideLongSleeves && !hideShortSleeves) ? (
                     <button
                       className="py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 border-primary bg-primary/10 text-secondary shadow-lg col-span-2 cursor-default"
                     >
                       Manga Corta
+                    </button>
+                  ) : (!hideLongSleeves && hideShortSleeves) ? (
+                    <button
+                      className="py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 border-primary bg-primary/10 text-secondary shadow-lg col-span-2 cursor-default"
+                    >
+                      Manga Larga
                     </button>
                   ) : (
                       ['Corta', 'Larga'].map(m => (
@@ -2075,115 +2091,6 @@ export default function App() {
             </motion.div>
           </div>
         )}
-
-        {activeTab === 'sorteo' && (
-          <div className="max-w-4xl mx-auto px-4 pt-8 pb-12 md:py-20">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-8 md:space-y-16"
-            >
-              {/* Header Section */}
-              <div className="space-y-2 md:space-y-4 text-center">
-                <h1 className="text-2xl md:text-6xl font-sans font-black text-secondary tracking-tighter uppercase">Resultado del Sorteo</h1>
-                <p className="text-primary text-xs md:text-xl font-black italic uppercase tracking-widest">¡Ya tenemos ganador!</p>
-              </div>
-
-              {/* Video Section */}
-              <div className="space-y-8">
-                <div className="aspect-[9/16] max-w-sm mx-auto w-full rounded-3xl overflow-hidden border-4 border-primary shadow-2xl bg-secondary/10 relative group">
-                  <iframe 
-                    src="https://drive.google.com/file/d/1E3FaoI6bDzviYAiPdX5rGCvucFdrXjvJ/preview" 
-                    className="w-full h-full"
-                    allow="autoplay"
-                    title="Resultado del Sorteo"
-                  ></iframe>
-                </div>
-
-                {/* Winner Message Card */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="bg-white p-8 md:p-12 rounded-3xl md:rounded-[3rem] shadow-2xl border border-primary/10 space-y-6 text-center"
-                >
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-full mb-4">
-                    <Trophy className="w-10 h-10 text-primary" />
-                  </div>
-                  <h2 className="text-2xl md:text-4xl font-black text-secondary uppercase tracking-tight leading-tight">
-                    ¡Muchas felicidades al <span className="text-primary">#54 Michel</span> por ser el ganador!
-                  </h2>
-                  <div className="space-y-6 text-secondary/70 font-bold text-sm md:text-lg leading-relaxed max-w-2xl mx-auto">
-                    <p>
-                      Queremos agradecer también a todas las personas que participaron, compartieron y estuvieron pendientes del sorteo. De verdad valoramos mucho el apoyo que le dan a No Pain-No Jersey.
-                    </p>
-                    <p>
-                      Esto sigue, así que no se desconecten y sigan pendientes de nuestras novedades, próximos sorteos, camisetas en stock y encargos. Se vienen más cosas buenas por No Pain-No Jersey. Gracias a todos por estar ahí y por seguir apoyándonos.
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
-
-              <div className="grid md:grid-cols-1 gap-6 md:gap-10">
-                {/* Participants Card */}
-                <div className="bg-secondary p-6 md:p-10 rounded-3xl md:rounded-[3rem] shadow-2xl shadow-primary/10 border border-white/5 flex flex-col">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center">
-                      <ClipboardList className="w-6 h-6 text-primary" />
-                    </div>
-                    <h2 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight">Participantes</h2>
-                  </div>
-
-                  <div className="space-y-1 pr-2">
-                    {[
-                      "Williams", "José Miguel", "Steffanie", "Moreira", "Aismelis", 
-                      "Jose Luis", "Cristian", "Yosvel", "Antoine", "Anthony",
-                      "Maricel", "Aliandys", "Lía", "Gabriel", "Enzo", "Yahinilin",
-                      "Adrián", "Alejandro", "Ana Leidys", "Pedro", "John", "Samuel",
-                      "Nuria", "Diana", "Robert", "Marialis", "Valen",
-                      "David", "Daimarys", "Luis Daniel", "Maxdiel", "Miguel Alejandro", "Leynier", "Bastian", "Melody", "Alberto Alejandro", "Davisito", "Liz Anette", "Bruno",
-                      "Jonathan", "Brayan", "Robert", "Dayana", "Natsumy", "Idianelys", "Robin",
-                      "Cleidy", "Alejandro", "Yancarlos", "Karla Alejandra", "Cristopher", "Iván", "Yarianny", "Michel", "Adrian", "Fabio", "Yanko", "Irian", "Eric", "Ale", "Masbel", "Leo"
-                    ].map((name, i) => (
-                      <div key={i} className="flex items-center justify-between p-2 md:p-3 bg-white/5 rounded-xl border border-white/5">
-                        <div className="flex items-center gap-3">
-                          <span className="text-[10px] font-black text-primary/50">#{String(i + 1).padStart(2, '0')}</span>
-                          <span className="text-xs md:text-sm font-bold text-white/90">{name}</span>
-                        </div>
-                        <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(235,214,172,0.5)]" />
-                      </div>
-                    ))}
-                    {[
-                      "Williams", "José Miguel", "Steffanie", "Moreira", "Aismelis", 
-                      "Jose Luis", "Cristian", "Yosvel", "Antoine", "Anthony",
-                      "Maricel", "Aliandys", "Lía", "Gabriel", "Enzo", "Yahinilin",
-                      "Adrián", "Alejandro", "Ana Leidys", "Pedro", "John", "Samuel",
-                      "Nuria", "Diana", "Robert", "Marialis", "Valen",
-                      "David", "Daimarys", "Luis Daniel", "Maxdiel", "Miguel Alejandro", "Leynier", "Bastian", "Melody", "Alberto Alejandro", "Davisito", "Liz Anette", "Bruno",
-                      "Jonathan", "Brayan", "Robert", "Dayana", "Natsumy", "Idianelys", "Robin",
-                      "Cleidy", "Alejandro", "Yancarlos", "Karla Alejandra", "Cristopher", "Iván", "Yarianny", "Michel", "Adrian", "Fabio", "Yanko", "Irian", "Eric", "Ale", "Masbel", "Leo"
-                    ].length === 0 && (
-                      <div className="text-center py-12 space-y-3">
-                        <div className="flex justify-center">
-                          <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center">
-                            <ClipboardList className="w-6 h-6 text-white/20" />
-                          </div>
-                        </div>
-                        <p className="text-white/30 font-bold text-xs md:text-sm italic">Esperando primeros participantes...</p>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="mt-8 pt-6 border-t border-white/10">
-                    <p className="text-[10px] md:text-xs text-white/40 font-black uppercase tracking-[0.2em] text-center">
-                      Total Participantes: <span className="text-primary">62</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
       </main>
 
       <footer className="bg-secondary text-white py-12 md:py-24 border-t-4 border-primary">
@@ -2210,7 +2117,6 @@ export default function App() {
                   <li><Link to="/nosotros" className="hover:text-primary transition-colors">Nosotros</Link></li>
                   <li><Link to="/preguntas" className="hover:text-primary transition-colors">Preguntas</Link></li>
                   <li><Link to="/contacto" className="hover:text-primary transition-colors">Contacto</Link></li>
-                  <li><Link to="/sorteo" className="hover:text-primary transition-colors">Sorteo</Link></li>
                 </ul>
               </div>
 

@@ -40,6 +40,7 @@ export interface EncargoJersey {
   championsNumberingImage?: string;
   europaNumberingImage?: string;
   noLongSleeve?: boolean;
+  noShortSleeve?: boolean;
   noChild?: boolean;
   noCustomization?: boolean;
   noPatches?: boolean;

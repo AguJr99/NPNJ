@@ -1,0 +1,126 @@
+/* 
+  GIVEAWAY SECTION BACKUP - 2026-04-06
+  This file contains the code for the "Sorteo" (Giveaway) section that was removed from App.tsx.
+  You can use this to restore the section in the future.
+*/
+
+/* 
+  NAVIGATION TABS:
+  ['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto', 'sorteo']
+  
+  NAVIGATION LABELS:
+  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : tab === 'contacto' ? 'Contacto' : 'Sorteo'}
+*/
+
+/*
+  GIVEAWAY CONTENT BLOCK:
+
+        {activeTab === 'sorteo' && (
+          <div className="max-w-4xl mx-auto px-4 pt-8 pb-12 md:py-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-8 md:space-y-16"
+            >
+              {/* Header Section */}
+              <div className="space-y-2 md:space-y-4 text-center">
+                <h1 className="text-2xl md:text-6xl font-sans font-black text-secondary tracking-tighter uppercase">Resultado del Sorteo</h1>
+                <p className="text-primary text-xs md:text-xl font-black italic uppercase tracking-widest">¡Ya tenemos ganador!</p>
+              </div>
+
+              {/* Video Section */}
+              <div className="space-y-8">
+                <div className="aspect-[9/16] max-w-sm mx-auto w-full rounded-3xl overflow-hidden border-4 border-primary shadow-2xl bg-secondary/10 relative group">
+                  <iframe 
+                    src="https://drive.google.com/file/d/1E3FaoI6bDzviYAiPdX5rGCvucFdrXjvJ/preview" 
+                    className="w-full h-full"
+                    allow="autoplay"
+                    title="Resultado del Sorteo"
+                  ></iframe>
+                </div>
+
+                {/* Winner Message Card */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="bg-white p-8 md:p-12 rounded-3xl md:rounded-[3rem] shadow-2xl border border-primary/10 space-y-6 text-center"
+                >
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-full mb-4">
+                    <Trophy className="w-10 h-10 text-primary" />
+                  </div>
+                  <h2 className="text-2xl md:text-4xl font-black text-secondary uppercase tracking-tight leading-tight">
+                    ¡Muchas felicidades al <span className="text-primary">#54 Michel</span> por ser el ganador!
+                  </h2>
+                  <div className="space-y-6 text-secondary/70 font-bold text-sm md:text-lg leading-relaxed max-w-2xl mx-auto">
+                    <p>
+                      Queremos agradecer también a todas las personas que participaron, compartieron y estuvieron pendientes del sorteo. De verdad valoramos mucho el apoyo que le dan a No Pain-No Jersey.
+                    </p>
+                    <p>
+                      Esto sigue, así que no se desconecten y sigan pendientes de nuestras novedades, próximos sorteos, camisetas en stock y encargos. Se vienen más cosas buenas por No Pain-No Jersey. Gracias a todos por estar ahí y por seguir apoyándonos.
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+
+              <div className="grid md:grid-cols-1 gap-6 md:gap-10">
+                {/* Participants Card */}
+                <div className="bg-secondary p-6 md:p-10 rounded-3xl md:rounded-[3rem] shadow-2xl shadow-primary/10 border border-white/5 flex flex-col">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center">
+                      <ClipboardList className="w-6 h-6 text-primary" />
+                    </div>
+                    <h2 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight">Participantes</h2>
+                  </div>
+
+                  <div className="space-y-1 pr-2">
+                    {[
+                      "Williams", "José Miguel", "Steffanie", "Moreira", "Aismelis", 
+                      "Jose Luis", "Cristian", "Yosvel", "Antoine", "Anthony",
+                      "Maricel", "Aliandys", "Lía", "Gabriel", "Enzo", "Yahinilin",
+                      "Adrián", "Alejandro", "Ana Leidys", "Pedro", "John", "Samuel",
+                      "Nuria", "Diana", "Robert", "Marialis", "Valen",
+                      "David", "Daimarys", "Luis Daniel", "Maxdiel", "Miguel Alejandro", "Leynier", "Bastian", "Melody", "Alberto Alejandro", "Davisito", "Liz Anette", "Bruno",
+                      "Jonathan", "Brayan", "Robert", "Dayana", "Natsumy", "Idianelys", "Robin",
+                      "Cleidy", "Alejandro", "Yancarlos", "Karla Alejandra", "Cristopher", "Iván", "Yarianny", "Michel", "Adrian", "Fabio", "Yanko", "Irian", "Eric", "Ale", "Masbel", "Leo"
+                    ].map((name, i) => (
+                      <div key={i} className="flex items-center justify-between p-2 md:p-3 bg-white/5 rounded-xl border border-white/5">
+                        <div className="flex items-center gap-3">
+                          <span className="text-[10px] font-black text-primary/50">#{String(i + 1).padStart(2, '0')}</span>
+                          <span className="text-xs md:text-sm font-bold text-white/90">{name}</span>
+                        </div>
+                        <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(235,214,172,0.5)]" />
+                      </div>
+                    ))}
+                    {[
+                      "Williams", "José Miguel", "Steffanie", "Moreira", "Aismelis", 
+                      "Jose Luis", "Cristian", "Yosvel", "Antoine", "Anthony",
+                      "Maricel", "Aliandys", "Lía", "Gabriel", "Enzo", "Yahinilin",
+                      "Adrián", "Alejandro", "Ana Leidys", "Pedro", "John", "Samuel",
+                      "Nuria", "Diana", "Robert", "Marialis", "Valen",
+                      "David", "Daimarys", "Luis Daniel", "Maxdiel", "Miguel Alejandro", "Leynier", "Bastian", "Melody", "Alberto Alejandro", "Davisito", "Liz Anette", "Bruno",
+                      "Jonathan", "Brayan", "Robert", "Dayana", "Natsumy", "Idianelys", "Robin",
+                      "Cleidy", "Alejandro", "Yancarlos", "Karla Alejandra", "Cristopher", "Iván", "Yarianny", "Michel", "Adrian", "Fabio", "Yanko", "Irian", "Eric", "Ale", "Masbel", "Leo"
+                    ].length === 0 && (
+                      <div className="text-center py-12 space-y-3">
+                        <div className="flex justify-center">
+                          <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center">
+                            <ClipboardList className="w-6 h-6 text-white/20" />
+                          </div>
+                        </div>
+                        <p className="text-white/30 font-bold text-xs md:text-sm italic">Esperando primeros participantes...</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="mt-8 pt-6 border-t border-white/10">
+                    <p className="text-[10px] md:text-xs text-white/40 font-black uppercase tracking-[0.2em] text-center">
+                      Total Participantes: <span className="text-primary">62</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+*/
