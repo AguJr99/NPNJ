@@ -908,6 +908,69 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     championsNumberingImage: 'https://drive.google.com/thumbnail?id=1CBplkqWX259k1qMk6peJBaNQ_YPzNeQH&sz=w800'
   },
   {
+    id: 'rma-retro-17-third-custom',
+    name: 'Real Madrid - Tercera - 17/18',
+    team: 'Real Madrid',
+    league: 'La Liga',
+    season: '17/18',
+    type: 'Tercera',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1hLuuIAWIAZbtYydiDQJm-wJvZXEyOA_i',
+    childImage: 'https://lh3.googleusercontent.com/d/1mO5fhYcGFgCZK7ByL531sgRZqOowiRsa',
+    retroLongSleeveImage: 'https://lh3.googleusercontent.com/d/1GV_KhY-trZQJM69RUO3bwEdTOjF_NggP',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/10N2yWjmHLChPTZ8uE3G02YVKaHeyHEVG',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/10N2yWjmHLChPTZ8uE3G02YVKaHeyHEVG',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1kMvIn9Y38eIpfWahndyyrewz0ShwsUiV' }
+    ]
+  },
+  {
+    id: 'rma-retro-16-home-custom',
+    name: 'Real Madrid - Local - 16/17',
+    team: 'Real Madrid',
+    league: 'La Liga',
+    season: '16/17',
+    type: 'Local',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1-VIqsJ6moPpKAZ_msoXQC2igvfkqm899',
+    childImage: 'https://lh3.googleusercontent.com/d/1swEMyC-hGvyVFFPhkwh347WNjspH4PN5',
+    retroLongSleeveImage: 'https://lh3.googleusercontent.com/d/1Bmn1VZ1xtoOcXHnbTvUCeyL6tpFc-KWu',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1BY946iyLfdnZBXG5_ErvWhG4hk0CGM7w',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1BY946iyLfdnZBXG5_ErvWhG4hk0CGM7w',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1Rs3yXuPPdSVngZQnGu3AM68e5hLcSVu5' }
+    ]
+  },
+  {
+    id: 'rma-retro-16-away-custom',
+    name: 'Real Madrid - Visitante - 16/17',
+    team: 'Real Madrid',
+    league: 'La Liga',
+    season: '16/17',
+    type: 'Visitante',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1GazCFqHx_GL1FhEN-GIci5QF0d_2E3q6',
+    childImage: 'https://lh3.googleusercontent.com/d/1TUrn3EyPktyg-1eyIxe2WkKzy_7_Xi6E',
+    retroLongSleeveImage: 'https://lh3.googleusercontent.com/d/1vbtZxDK_oY56puHjzMf-aBkftIpBYG79',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1EVtQNHAHf5HRDRDP_9gzDv84o4Syt6Sf',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1EVtQNHAHf5HRDRDP_9gzDv84o4Syt6Sf',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1Rs3yXuPPdSVngZQnGu3AM68e5hLcSVu5' }
+    ]
+  },
+  {
     id: 'rma-retro-14-away-custom',
     name: 'Real Madrid - Visitante - 14/15',
     team: 'Real Madrid',
@@ -940,6 +1003,48 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
     ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1Tq9bhCEwyBuu_5syGIxIQNCwWE3gkPS2&sz=w800',
     championsNumberingImage: 'https://drive.google.com/thumbnail?id=1Tq9bhCEwyBuu_5syGIxIQNCwWE3gkPS2&sz=w800'
+  },
+  {
+    id: 'rma-retro-12-custom',
+    name: 'Real Madrid - Local - 12/13',
+    team: 'Real Madrid',
+    league: 'La Liga',
+    season: '12/13',
+    type: 'Local',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1GKv1nt3QkIfAP4QwjOXk0h7qO-KxA_2D',
+    childImage: 'https://lh3.googleusercontent.com/d/14zbYF6pVV_S3jhNDrsCzqvReeFbJkuOF',
+    retroLongSleeveImage: 'https://lh3.googleusercontent.com/d/1hwX2nFMxwlrOHS7M6EOiBDZliM9MYBK4',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1G5r8vTHE2POG22ycBbOp-MXMGBnEJXz3',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1G5r8vTHE2POG22ycBbOp-MXMGBnEJXz3',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1nIdmDyD4ADPn6mF-0VJdMX946Er-y50K' }
+    ]
+  },
+  {
+    id: 'rma-retro-08-custom',
+    name: 'Real Madrid - Local - 08/09',
+    team: 'Real Madrid',
+    league: 'La Liga',
+    season: '08/09',
+    type: 'Local',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1V0tMRA2DrBlC_f8mdUpe6Y6NNYrtxozh',
+    childImage: 'https://lh3.googleusercontent.com/d/1NHMS4qZPaLUsH9afyDjn3QYvrnls3kAa',
+    retroLongSleeveImage: 'https://lh3.googleusercontent.com/d/1RcKDDRJsSRJehVHNfper6bsc7BasW8do',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1NOoUWtqMbT9ij9PSwNCU5fLxLXkSm4cJ',
+    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1NOoUWtqMbT9ij9PSwNCU5fLxLXkSm4cJ',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1ixWeh_xeqrc4srrrTGv2cfFGCNgLh3As' }
+    ]
   },
   {
     id: 'rma-retro-06-custom',
@@ -1222,6 +1327,30 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     ]
   },
   {
+    id: 'mci-fourth-25-custom',
+    name: 'Manchester City - Cuarta - 25/26',
+    team: 'Manchester City',
+    league: 'Premier League',
+    season: '25/26',
+    type: 'Cuarta',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1Jb9qcheiHDkDtr5yGypltkeRT07y6lYl',
+    playerImage: 'https://lh3.googleusercontent.com/d/1uSORAex869e5a7jMxJd5oXJjZk8tMalN',
+    childImage: 'https://lh3.googleusercontent.com/d/18aFdENCXuhIUXb6fj78fJ2jrILNoX7jm',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1c3nCRs8x451TnNwX9ikwU90DX5wUap6H&sz=w400',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1pR7fAXv9GbpiyrRlbQP6oZK64b646XLK&sz=w400',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Premier League', logo: 'https://drive.google.com/thumbnail?id=190EchHgYlGglLIRF_Vthsg2gYunPGM9K&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=139en5zTjE-x9LtyVwDMJNXeWN46Tty-P&sz=w200' },
+      { name: 'Carabao Cup', logo: 'https://drive.google.com/thumbnail?id=1sPS69POXEpBmKjHcINobfpVKlpsNwg2h&sz=w200' }
+    ]
+  },
+  {
     id: 'mci-home-26-custom',
     name: 'Manchester City - Local - 26/27 (Filtración)',
     team: 'Manchester City',
@@ -1241,6 +1370,45 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'Premier League', logo: 'https://drive.google.com/thumbnail?id=190EchHgYlGglLIRF_Vthsg2gYunPGM9K&sz=w200' },
       { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=139en5zTjE-x9LtyVwDMJNXeWN46Tty-P&sz=w200' },
       { name: 'Carabao Cup', logo: 'https://drive.google.com/thumbnail?id=1sPS69POXEpBmKjHcINobfpVKlpsNwg2h&sz=w200' }
+    ]
+  },
+  {
+    id: 'mci-retro-13-away-custom',
+    name: 'Manchester City - Visitante - 13/14',
+    team: 'Manchester City',
+    league: 'Premier League',
+    season: '13/14',
+    type: 'Visitante',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1abn0vWeEVqc_2GM2eeMiOg3qJCxA71VU',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1iks-MIYPLrTIsGyDbEwFwWUYMMM9RmLL',
+    noLongSleeve: true,
+    noChild: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Premier League', logo: 'https://lh3.googleusercontent.com/d/1qxU0_ihRlEVDup5V2_8gw3SFtGRMp-C4' }
+    ]
+  },
+  {
+    id: 'mci-retro-11-home-custom',
+    name: 'Manchester City - Local - 11/12',
+    team: 'Manchester City',
+    league: 'Premier League',
+    season: '11/12',
+    type: 'Local',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1IIFnshZxl-fpoyXJEFVDnQbM7-DY6PbX',
+    retroLongSleeveImage: 'https://lh3.googleusercontent.com/d/1NpR25vBs6uqkb0tl-x7LqL4lyWOTgYZr',
+    childImage: 'https://lh3.googleusercontent.com/d/1NpR25vBs6uqkb0tl-x7LqL4lyWOTgYZr',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1mLP_FWVECw9J1Rbs6U19IMMoUte9QT3U',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Premier League', logo: 'https://lh3.googleusercontent.com/d/1qxU0_ihRlEVDup5V2_8gw3SFtGRMp-C4' }
     ]
   },
   {
@@ -2015,6 +2183,22 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'Sin Parche', logo: null },
       { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1TwbpDXQeeMjg3EtGyat2UmE5VJ1uO5Mc' }
     ]
+  },
+  {
+    id: 'mil-retro-97-fourth-custom',
+    name: 'Milan - Cuarta - 97/98',
+    team: 'Milan',
+    league: 'Serie A',
+    season: '97/98',
+    type: 'Cuarta',
+    price: 35,
+    isRetro: true,
+    fanImage: 'https://lh3.googleusercontent.com/d/1AShaDniOy9BHslZLQFtW_3ZpqCqOEXw4',
+    retroSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1TZ3wEqogqULjXW0PR048-a07y_Sg9D77',
+    noLongSleeve: true,
+    noChild: true,
+    noPatches: true
   },
   {
     id: 'nap-home-25-custom',
@@ -2952,7 +3136,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1EMHldl6Qz5lPb7jj_eBQIPGQaLRWEdoB' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -2975,7 +3159,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1EMHldl6Qz5lPb7jj_eBQIPGQaLRWEdoB' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3082,7 +3266,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/129bt9nIM_KWlQIr91d0aEKU_xwaIHGag' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1q3C9wvhvuVLel-ffabqnm47BruquDin5' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1uzClUDkMMaxVyeChfVVR7GqezVmsG_bW' }
     ]
   },
   {
@@ -3115,19 +3299,19 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     season: '2026',
     type: 'Visitante',
     price: 30,
-    fanImage: 'https://lh3.googleusercontent.com/d/1AgglQSFUAdXtAsxzWc2gKTY9iaW7F3qe',
+    fanImage: 'https://lh3.googleusercontent.com/d/1LMRkobKpA45doWcy0GKy9YcC55yBeu22',
     fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1XaP-8OnFbykKtdGOUr3zozaPEDzc3kfq',
     playerImage: 'https://lh3.googleusercontent.com/d/17VnVMP6bgxboscV1viQGMsoVYJPqq0Wt',
     playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1XaP-8OnFbykKtdGOUr3zozaPEDzc3kfq',
     childImage: 'https://lh3.googleusercontent.com/d/1S00DkqBZMTpLIy9Ucxu8cfH844Vtlp3W',
     fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
     playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
-    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXvaF1vKXQC&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
     ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1QSaL4SQxrQMJVqCWW9_flfT3saejt-up',
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/129bt9nIM_KWlQIr91d0aEKU_xwaIHGag' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1q3C9wvhvuVLel-ffabqnm47BruquDin5' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1FvwY-Fwz9ZxABqbUU23bGcztqi6NJOv9' }
     ]
   },
   {
@@ -3188,7 +3372,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1ZuDqAyUmvR27uUbsaolimI7UOJADXzL6' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3211,7 +3395,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1ZuDqAyUmvR27uUbsaolimI7UOJADXzL6' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3290,7 +3474,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1O1cYJUgZlxFXMvSzCrpCxTZSXA2Wj1FA' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3313,7 +3497,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1O1cYJUgZlxFXMvSzCrpCxTZSXA2Wj1FA' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3400,7 +3584,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria al mundial', logo: 'https://lh3.googleusercontent.com/d/1JsKHawpzMKbbORhPNCYWAspxifR6Ecoq' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3423,7 +3607,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria al mundial', logo: 'https://lh3.googleusercontent.com/d/1JsKHawpzMKbbORhPNCYWAspxifR6Ecoq' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3616,7 +3800,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1FfF3SP16_nmmAFDsJeAiAXv135-V0FvQ' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3639,7 +3823,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1FfF3SP16_nmmAFDsJeAiAXv135-V0FvQ' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3703,7 +3887,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1YzwKIbI27I-HxetzZM7i4_H20s10mqz8' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3726,7 +3910,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1YzwKIbI27I-HxetzZM7i4_H20s10mqz8' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3835,7 +4019,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/10YIZN8582FCCTinLJcfm9oR94n-VGnO0' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3856,7 +4040,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/10YIZN8582FCCTinLJcfm9oR94n-VGnO0' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3878,7 +4062,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/10YIZN8582FCCTinLJcfm9oR94n-VGnO0' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3899,7 +4083,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/10YIZN8582FCCTinLJcfm9oR94n-VGnO0' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
     ]
   },
   {
@@ -3922,7 +4106,30 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/10YIZN8582FCCTinLJcfm9oR94n-VGnO0' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1JP2ncDqj787lDFb8ryxUyQXfkpBgySBr' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
+    ]
+  },
+  {
+    id: 'col-home-2026-custom',
+    name: 'Colombia - Local - 2026',
+    team: 'Colombia',
+    league: 'Selecciones',
+    season: '2026',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1EiLdOJ_Zr4A9MXZB0JAuBb82dWVK4HiO',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1I-F2zVo1c_XP2MNe2QyOZD0Ugn_0H-YC',
+    playerImage: 'https://lh3.googleusercontent.com/d/1MQrehAI8YiVSOGsRNZ6e-0JhsN5vY3TX',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1reTcS5SX3WM2RqRdXRPwhxuvPkEPXvdG',
+    childImage: 'https://lh3.googleusercontent.com/d/1YR29TdOz1Uf-gKUVqmDCwm7PNesf-NGh',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1wqKoxDgZwtuxwfzSgaG97g0e2EsEXpDi',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1ZiQPDuYvGubH9P0l963hX3cIlQC7sHl6' },
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/1zymgZELewa7LHhpcF_GKDJJvvC8jEBcv' }
     ]
   },
   // AL-NASSR
