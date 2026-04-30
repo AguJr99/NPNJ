@@ -2,16 +2,32 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, Link, Navigate } from 'react-router-dom';
 import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown } from 'lucide-react';
-import { JERSEYS, ENCARGO_JERSEYS, WHATSAPP_NUMBER, LEAGUES } from './constants';
+import { JERSEYS, ENCARGO_JERSEYS, WHATSAPP_NUMBER, WHATSAPP_NUMBER_USA, LEAGUES } from './constants';
 import { Jersey, EncargoJersey, EncargoOrder } from './types';
 
 const LOGO_NAV_URL = "https://drive.google.com/thumbnail?id=1QDifBYZdIrmOZ1C8Hr-EEchd9d5PElN_&sz=w200";
 const LOGO_FOOTER_URL = "https://drive.google.com/thumbnail?id=17y8hAaeWVS3U659DmYeCgN52GPQPbNT2&sz=w200";
 const LOGO_ABOUT_URL = "https://drive.google.com/thumbnail?id=1fZ5zARjTmJOg96y7vKKR4IaC8BUNidqQ&sz=w600";
-const HERO_IMAGE = "https://drive.google.com/thumbnail?id=1Z1mGwwNTio8wQRP3cEEtn5eqiLZW6dZ0&sz=w1920"; 
+const HERO_IMAGE = "https://lh3.googleusercontent.com/d/1-tckvMKDgxUNcgAJR62AfRVF6EKTWRqc=s2500"; 
 
 // Global cache for loaded images to prevent flickering
 const LOADED_IMAGES = new Set<string>();
+
+let COUNTRY_CODE = '';
+try {
+  fetch('https://ipapi.co/json/')
+    .then(res => res.json())
+    .then(data => {
+      if (data && data.country_code) {
+        COUNTRY_CODE = data.country_code;
+      }
+    })
+    .catch(() => {});
+} catch (e) {}
+
+const getWhatsAppNumber = () => {
+  return COUNTRY_CODE === 'US' ? WHATSAPP_NUMBER_USA : WHATSAPP_NUMBER;
+};
 
 const LEAGUES_DATA = [
   {
@@ -343,7 +359,7 @@ const JerseyCard = ({ jersey, onOrder }: { jersey: Jersey, onOrder: (j?: Jersey)
             <button
               onClick={() => {
                 const text = `¡Hola! Me interesa la camiseta en stock del ${jersey.team} - ${jersey.type} - ${jersey.season} - Versión ${jersey.style.toLowerCase()} - Talla ${jersey.size} - ${jersey.playerName ? `${jersey.playerName} (${jersey.number})` : 'Sin dorsal'}`;
-                window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+                window.open(`https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(text)}`, '_blank');
               }}
               className="w-full bg-secondary text-primary py-2 md:py-4 rounded-lg md:rounded-2xl font-black text-[8px] md:text-[11px] hover:bg-primary hover:text-secondary transition-all shadow-xl flex items-center justify-center gap-2 md:gap-3 uppercase tracking-[0.15em]"
             >
@@ -468,7 +484,7 @@ const CustomOrderModal = ({ jersey, onClose }: { jersey: Jersey, onClose: () => 
 🔢 Dorsal: ${form.number || 'Sin número'}
     
 ¿Cómo procedemos con el pago?`;
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(text)}`, '_blank');
     onClose();
   };
 
@@ -823,7 +839,7 @@ Mangas: *${hideLongSleeves ? 'Corta' : form.sleeves}*
 Nombre: *${form.name || 'Sin nombre'}*
 Dorsal: *${form.number || 'Sin número'}*
 Parche: *${form.patch}*`;
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(text)}`, '_blank');
     onClose();
   };
 
@@ -1454,7 +1470,7 @@ export default function App() {
 
   const handleStockOrder = (jersey: Jersey) => {
     const text = `¡Hola! Me interesa la camiseta en stock del ${jersey.team} - ${jersey.type} - ${jersey.season} - Versión ${jersey.style.toLowerCase()} - Talla ${jersey.size} - ${jersey.playerName ? `${jersey.playerName} (${jersey.number})` : 'Sin dorsal'}`;
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
@@ -1854,7 +1870,7 @@ export default function App() {
                           const message = query 
                             ? `¡Hola! Quiero consultar disponibilidad para la camiseta de: ${query}. ¿Me podrían dar más información?`
                             : `¡Hola! Quiero consultar disponibilidad de modelos que no están en el catálogo. ¿Qué otros modelos tienen?`;
-                          window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+                          window.open(`https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(message)}`, '_blank');
                         }}
                         className="bg-secondary text-primary px-5 py-2.5 md:px-7 md:py-3.5 rounded-xl md:rounded-2xl font-black text-[9px] md:text-xs uppercase tracking-widest hover:bg-primary hover:text-secondary transition-all shadow-lg flex items-center gap-2.5 mx-auto"
                       >
@@ -2064,7 +2080,7 @@ export default function App() {
 
                 <div className="pt-2 md:pt-4">
                   <button 
-                    onClick={() => window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank')}
+                    onClick={() => window.open(`https://wa.me/${getWhatsAppNumber()}`, '_blank')}
                     className="w-full md:w-auto inline-flex items-center justify-center gap-3 bg-secondary text-primary px-8 md:px-12 py-4 md:py-5 rounded-xl md:rounded-2xl font-sans font-black text-[9px] md:text-[11px] hover:bg-primary hover:text-secondary transition-all shadow-xl uppercase tracking-[0.15em] group"
                   >
                     <svg className="w-4 h-4 mb-0.5 group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="currentColor">
@@ -2159,7 +2175,7 @@ export default function App() {
                   <ul className="space-y-3 md:space-y-4 text-white/70 font-medium text-[10px] md:text-base">
                     <li>
                       <a 
-                        href={`https://wa.me/${WHATSAPP_NUMBER}`} 
+                        href={`https://wa.me/${getWhatsAppNumber()}`} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="flex items-center justify-start gap-2 md:gap-3 hover:text-primary transition-all"

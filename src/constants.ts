@@ -1,6 +1,7 @@
 import { Jersey, EncargoJersey } from './types';
 
 export const WHATSAPP_NUMBER = '+5355859998';
+export const WHATSAPP_NUMBER_USA = '+17863440052';
 
 export const JERSEYS: Jersey[] = [
   // Temporada 25/26
@@ -1319,6 +1320,30 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
     ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1c3nCRs8x451TnNwX9ikwU90DX5wUap6H&sz=w400',
     championsNumberingImage: 'https://drive.google.com/thumbnail?id=1pR7fAXv9GbpiyrRlbQP6oZK64b646XLK&sz=w400',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Premier League', logo: 'https://drive.google.com/thumbnail?id=190EchHgYlGglLIRF_Vthsg2gYunPGM9K&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=139en5zTjE-x9LtyVwDMJNXeWN46Tty-P&sz=w200' },
+      { name: 'Carabao Cup', logo: 'https://drive.google.com/thumbnail?id=1sPS69POXEpBmKjHcINobfpVKlpsNwg2h&sz=w200' }
+    ]
+  },
+  {
+    id: 'mci-fourth-25-custom',
+    name: 'Manchester City - Cuarta - 25/26',
+    team: 'Manchester City',
+    league: 'Premier League',
+    season: '25/26',
+    type: 'Cuarta',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1Jb9qcheiHDkDtr5yGypltkeRT07y6lYl',
+    playerImage: 'https://lh3.googleusercontent.com/d/1uSORAex869e5a7jMxJd5oXJjZk8tMalN',
+    childImage: 'https://lh3.googleusercontent.com/d/18aFdENCXuhIUXb6fj78fJ2jrILNoX7jm',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1c3nCRs8x451TnNwX9ikwU90DX5wUap6H&sz=w400',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1pR7fAXv9GbpiyrRlbQP6oZK64b646XLK&sz=w400',
+    noLongSleeve: true,
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Premier League', logo: 'https://drive.google.com/thumbnail?id=190EchHgYlGglLIRF_Vthsg2gYunPGM9K&sz=w200' },
