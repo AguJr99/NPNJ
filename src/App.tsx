@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, Link, Navigate } from 'react-router-dom';
-import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown } from 'lucide-react';
-import { JERSEYS, ENCARGO_JERSEYS, WHATSAPP_NUMBER, WHATSAPP_NUMBER_USA, LEAGUES } from './constants';
-import { Jersey, EncargoJersey, EncargoOrder } from './types';
+import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown, Check } from 'lucide-react';
+import { JERSEYS, ENCARGO_JERSEYS, WHATSAPP_NUMBER, LEAGUES } from './constants';
+import { Jersey, EncargoJersey, EncargoOrder, CartItem } from './types';
+import { CartDrawer } from './components/CartDrawer';
 
 const LOGO_NAV_URL = "https://drive.google.com/thumbnail?id=1QDifBYZdIrmOZ1C8Hr-EEchd9d5PElN_&sz=w200";
 const LOGO_FOOTER_URL = "https://drive.google.com/thumbnail?id=17y8hAaeWVS3U659DmYeCgN52GPQPbNT2&sz=w200";
@@ -12,22 +13,6 @@ const HERO_IMAGE = "https://lh3.googleusercontent.com/d/1-tckvMKDgxUNcgAJR62AfRV
 
 // Global cache for loaded images to prevent flickering
 const LOADED_IMAGES = new Set<string>();
-
-let COUNTRY_CODE = '';
-try {
-  fetch('https://ipapi.co/json/')
-    .then(res => res.json())
-    .then(data => {
-      if (data && data.country_code) {
-        COUNTRY_CODE = data.country_code;
-      }
-    })
-    .catch(() => {});
-} catch (e) {}
-
-const getWhatsAppNumber = () => {
-  return COUNTRY_CODE === 'US' ? WHATSAPP_NUMBER_USA : WHATSAPP_NUMBER;
-};
 
 const LEAGUES_DATA = [
   {
@@ -88,7 +73,7 @@ const LEAGUES_DATA = [
     name: 'Selecciones',
     logo: 'https://drive.google.com/thumbnail?id=1oYgHnDKjpIlAuHAQTxyNG8FVnfOfyaZd&sz=w200',
     teams: [
-      { name: 'España', logo: 'https://drive.google.com/thumbnail?id=1R5K6bxXtNL7TG3yK3CcTtAQiwACfYhU9&sz=w200' },
+      { name: 'España', logo: 'https://drive.google.com/thumbnail?id=1-n1x8vEhYMmf7v2xkz0YNAWIU2dLOPWd&sz=w200' },
       { name: 'Argentina', logo: 'https://drive.google.com/thumbnail?id=12p0dm2-Rnw7SQnYqhhoVgpAb7iNaFSdA&sz=w200' },
       { name: 'Brasil', logo: 'https://drive.google.com/thumbnail?id=1VGKyeMQfFUcIvA0YBWz1RdTxUZzEt8eZ&sz=w200' },
       { name: 'Francia', logo: 'https://drive.google.com/thumbnail?id=19r5O2FF0RRE2g6GsPeoB7CcujerZZzbM&sz=w200' },
@@ -113,7 +98,17 @@ const LEAGUES_DATA = [
   }
 ];
 
-const Navbar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (t: string) => void }) => {
+const Navbar = ({ 
+  activeTab, 
+  setActiveTab,
+  cartCount,
+  onOpenCart
+}: { 
+  activeTab: string, 
+  setActiveTab: (t: string) => void,
+  cartCount: number,
+  onOpenCart: () => void
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -139,7 +134,7 @@ const Navbar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: 
             </div>
           </Link>
           
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-4">
             <div className="flex items-center space-x-2 bg-black/20 p-1.5 rounded-full">
               {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'].map((tab) => (
                 <Link
@@ -153,10 +148,39 @@ const Navbar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: 
                 </Link>
               ))}
             </div>
+
+            {/* Desktop Cart Button */}
+            <button
+              onClick={onOpenCart}
+              className="relative flex items-center gap-2 bg-primary text-secondary px-5 py-2.5 rounded-full font-black text-xs uppercase tracking-wider hover:bg-primary/90 transition-all shadow-md active:scale-95 group"
+              title="Abrir Carrito de Compra"
+            >
+              <ShoppingCart className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              <span>Carrito</span>
+              {cartCount > 0 && (
+                <span className="bg-secondary text-primary text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center -mr-1 shadow-sm">
+                  {cartCount}
+                </span>
+              )}
+            </button>
           </div>
 
           <div className="lg:hidden flex items-center gap-2">
-            <span className="text-[10px] font-black uppercase tracking-widest text-primary/80">Secciones</span>
+            {/* Mobile Cart Button */}
+            <button
+              onClick={onOpenCart}
+              className="relative p-2.5 rounded-xl bg-primary text-secondary flex items-center justify-center active:scale-95 shadow-md"
+              title="Ver Carrito"
+            >
+              <ShoppingCart className="w-4 h-4" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 bg-secondary text-primary text-[9px] font-black w-4 h-4 rounded-full flex items-center justify-center border-2 border-primary shadow">
+                  {cartCount}
+                </span>
+              )}
+            </button>
+
+            <span className="text-[10px] font-black uppercase tracking-widest text-primary/80 ml-1">Secciones</span>
             <button onClick={() => setIsOpen(!isOpen)} className="p-2 rounded-xl bg-white/5 text-primary hover:bg-white/10 transition-colors">
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -242,9 +266,10 @@ const FAQItem: React.FC<{ question: string, answer: React.ReactNode, index: numb
   );
 };
 
-const JerseyCard = ({ jersey, onOrder }: { jersey: Jersey, onOrder: (j?: Jersey) => void, key?: string }) => {
+const JerseyCard = ({ jersey, onAddToCart }: { jersey: Jersey, onAddToCart: (j: Jersey) => void, key?: string }) => {
   const [showFullImage, setShowFullImage] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [justAdded, setJustAdded] = useState(false);
   
   // Optimized thumbnail URL for Google Drive
   const thumbnailUrl = jersey.image.includes('googleusercontent.com/d/') 
@@ -253,6 +278,12 @@ const JerseyCard = ({ jersey, onOrder }: { jersey: Jersey, onOrder: (j?: Jersey)
 
   const hasDiscount = jersey.discountEndDate && new Date(jersey.discountEndDate) > new Date();
   const discountPercentage = jersey.originalPrice ? Math.round(((jersey.originalPrice - jersey.price) / jersey.originalPrice) * 100) : 0;
+
+  const handleAdd = () => {
+    onAddToCart(jersey);
+    setJustAdded(true);
+    setTimeout(() => setJustAdded(false), 1800);
+  };
 
   return (
     <>
@@ -357,16 +388,24 @@ const JerseyCard = ({ jersey, onOrder }: { jersey: Jersey, onOrder: (j?: Jersey)
             </div>
             
             <button
-              onClick={() => {
-                const text = `¡Hola! Me interesa la camiseta en stock del ${jersey.team} - ${jersey.type} - ${jersey.season} - Versión ${jersey.style.toLowerCase()} - Talla ${jersey.size} - ${jersey.playerName ? `${jersey.playerName} (${jersey.number})` : 'Sin dorsal'}`;
-                window.open(`https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(text)}`, '_blank');
-              }}
-              className="w-full bg-secondary text-primary py-2 md:py-4 rounded-lg md:rounded-2xl font-black text-[8px] md:text-[11px] hover:bg-primary hover:text-secondary transition-all shadow-xl flex items-center justify-center gap-2 md:gap-3 uppercase tracking-[0.15em]"
+              onClick={handleAdd}
+              className={`w-full py-2.5 md:py-4 rounded-lg md:rounded-2xl font-black text-[8px] md:text-[11px] transition-all shadow-xl flex items-center justify-center gap-2 md:gap-3 uppercase tracking-[0.15em] active:scale-95 ${
+                justAdded 
+                  ? 'bg-[#25D366] text-white shadow-green-500/20' 
+                  : 'bg-secondary text-primary hover:bg-primary hover:text-secondary'
+              }`}
             >
-              <svg className="w-3.5 h-3.5 md:w-4 md:h-4 mb-0.5 ml-1" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.396.015 12.03c0 2.12.553 4.189 1.606 6.06L0 24l6.104-1.601a11.803 11.803 0 005.943 1.603h.005c6.634 0 12.032-5.396 12.035-12.03a11.85 11.85 0 00-3.529-8.511z"/>
-              </svg>
-              Comprar por WhatsApp
+              {justAdded ? (
+                <>
+                  <Check className="w-3.5 h-3.5 md:w-4 md:h-4 mb-0.5" />
+                  <span>¡Añadido al Carrito!</span>
+                </>
+              ) : (
+                <>
+                  <ShoppingCart className="w-3.5 h-3.5 md:w-4 md:h-4 mb-0.5" />
+                  <span>Añadir al Carrito</span>
+                </>
+              )}
             </button>
           </div>
         </div>
@@ -467,7 +506,7 @@ const EncargoJerseyCard = ({ jersey, onOrder }: { jersey: EncargoJersey, onOrder
   );
 };
 
-const CustomOrderModal = ({ jersey, onClose }: { jersey: Jersey, onClose: () => void }) => {
+const CustomOrderModal = ({ jersey, onClose, onAddToCart }: { jersey: Jersey, onClose: () => void, onAddToCart: (item: CartItem) => void }) => {
   const [form, setForm] = useState({
     size: 'M',
     patches: 'Ninguno',
@@ -475,16 +514,25 @@ const CustomOrderModal = ({ jersey, onClose }: { jersey: Jersey, onClose: () => 
     number: ''
   });
 
-  const handleSend = () => {
-    const text = `¡Hola! Quiero encargar esta camiseta:
-👕 *${jersey.name}*
-📏 Talla: ${form.size}
-🛡️ Parches: ${form.patches}
-👤 Nombre: ${form.name || 'Sin nombre'}
-🔢 Dorsal: ${form.number || 'Sin número'}
-    
-¿Cómo procedemos con el pago?`;
-    window.open(`https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(text)}`, '_blank');
+  const handleAdd = () => {
+    const cartItem: CartItem = {
+      id: `${jersey.id}-${form.size}-${form.patches}-${form.name}-${form.number}-${Date.now()}`,
+      itemType: 'stock',
+      jerseyId: jersey.id,
+      name: jersey.name,
+      team: jersey.team,
+      season: jersey.season,
+      type: jersey.type,
+      version: jersey.style,
+      size: form.size,
+      playerName: form.name || undefined,
+      number: form.number || undefined,
+      patch: form.patches,
+      price: jersey.price,
+      image: jersey.image,
+      quantity: 1
+    };
+    onAddToCart(cartItem);
     onClose();
   };
 
@@ -562,13 +610,11 @@ const CustomOrderModal = ({ jersey, onClose }: { jersey: Jersey, onClose: () => 
           </div>
 
           <button
-            onClick={handleSend}
-            className="w-full mt-8 bg-secondary text-primary py-4 rounded-2xl font-sans font-bold text-lg hover:bg-primary hover:text-secondary transition-all shadow-lg shadow-secondary/20 flex items-center justify-center gap-3"
+            onClick={handleAdd}
+            className="w-full mt-8 bg-secondary text-primary py-4 rounded-2xl font-sans font-bold text-base hover:bg-primary hover:text-secondary transition-all shadow-lg shadow-secondary/20 flex items-center justify-center gap-3 active:scale-[0.99]"
           >
-            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.396.015 12.03c0 2.12.553 4.189 1.606 6.06L0 24l6.104-1.601a11.803 11.803 0 005.943 1.603h.005c6.634 0 12.032-5.396 12.035-12.03a11.85 11.85 0 00-3.529-8.511z"/>
-            </svg>
-            Comprar por WhatsApp
+            <ShoppingCart className="w-5 h-5" />
+            <span>Añadir al Carrito • ${jersey.price}</span>
           </button>
         </div>
       </motion.div>
@@ -576,7 +622,17 @@ const CustomOrderModal = ({ jersey, onClose }: { jersey: Jersey, onClose: () => 
   );
 };
 
-const EncargoOrderModal = ({ jersey, onClose, onZoom }: { jersey: EncargoJersey, onClose: () => void, onZoom: (src: string) => void }) => {
+const EncargoOrderModal = ({ 
+  jersey, 
+  onClose, 
+  onZoom,
+  onAddToCart 
+}: { 
+  jersey: EncargoJersey, 
+  onClose: () => void, 
+  onZoom: (src: string) => void,
+  onAddToCart: (item: CartItem) => void 
+}) => {
   const getPatches = () => {
     if (jersey.patches && jersey.patches.length > 0) {
       return jersey.patches;
@@ -733,10 +789,9 @@ const EncargoOrderModal = ({ jersey, onClose, onZoom }: { jersey: EncargoJersey,
 
   const isBarcelonaCuarta = jersey.id === 'fcb-fourth-25-custom';
   const isRmaGk = jersey.id === 'rma-gk-third-25-custom';
-  const isBarcelona26 = jersey.id === 'fcb-home-26-custom';
   const isTravisScott = jersey.id === 'fcb-special-travis-24-custom';
   const isBarcelona125 = jersey.id === 'fcb-special-125-24-custom';
-  const hideLongSleeves = jersey.noLongSleeve || isBarcelonaCuarta || isRmaGk || isBarcelona26 || isTravisScott || isBarcelona125;
+  const hideLongSleeves = jersey.noLongSleeve || isBarcelonaCuarta || isRmaGk || isTravisScott || isBarcelona125;
 
   let currentImage = form.version === 'Fan' ? jersey.fanImage : form.version === 'Player' ? jersey.playerImage : form.version === 'Retro' ? jersey.fanImage : jersey.childImage;
   if (form.sleeves === 'Larga' && !hideLongSleeves) {
@@ -830,16 +885,34 @@ const EncargoOrderModal = ({ jersey, onClose, onZoom }: { jersey: EncargoJersey,
   const basePrice = (jersey.isRetro || form.version === 'Player') ? 35 : 30;
   const totalPrice = form.sleeves === 'Larga' ? basePrice + 3 : basePrice;
 
-  const handleSend = () => {
-    const text = `¡Hola! Quiero hacer un encargo personalizado:
-Camiseta: *${jersey.name}*
-Versión: *${form.version}*
-Talla: *${form.size}*
-Mangas: *${hideLongSleeves ? 'Corta' : form.sleeves}*
-Nombre: *${form.name || 'Sin nombre'}*
-Dorsal: *${form.number || 'Sin número'}*
-Parche: *${form.patch}*`;
-    window.open(`https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(text)}`, '_blank');
+  const handleAddToCart = () => {
+    const selectedPatch = jersey.id === 'fcb-special-travis-24-custom' 
+      ? 'Sin Parche' 
+      : form.patch;
+    const selectedName = jersey.noCustomization ? '' : form.name;
+    const selectedNumber = jersey.noCustomization ? '' : form.number;
+    const finalSleeves = hideLongSleeves ? 'Corta' : form.sleeves;
+
+    const cartItem: CartItem = {
+      id: `${jersey.id}-${form.version}-${form.size}-${finalSleeves}-${selectedName}-${selectedNumber}-${selectedPatch}-${Date.now()}`,
+      itemType: 'encargo',
+      jerseyId: jersey.id,
+      name: jersey.name,
+      team: jersey.team,
+      season: jersey.season,
+      type: jersey.type,
+      version: form.version,
+      size: form.size,
+      sleeves: finalSleeves,
+      playerName: selectedName || undefined,
+      number: selectedNumber || undefined,
+      patch: selectedPatch,
+      price: totalPrice,
+      image: currentImage,
+      quantity: 1
+    };
+
+    onAddToCart(cartItem);
     onClose();
   };
 
@@ -861,11 +934,6 @@ Parche: *${form.patch}*`;
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-widest">
                 {jersey.id === 'rma-gk-third-25-custom' ? 'Real Madrid - Portero (Tercera) - 25/26' : jersey.name}
               </p>
-              {jersey.season === '26/27' && (
-                <p className="text-secondary/40 font-bold text-[8px] md:text-[9px] uppercase tracking-wider mt-1 max-w-[200px] md:max-w-none">
-                  * Modelo basado en filtraciones fiables, puede sufrir modificaciones.
-                </p>
-              )}
             </div>
           </div>
           <div className="text-right flex flex-col justify-center min-h-[48px] md:min-h-[64px]">
@@ -1154,15 +1222,13 @@ Parche: *${form.patch}*`;
             </section>
 
             {/* Submit Button */}
-                      <button
-                        onClick={handleSend}
-                        className="w-full bg-secondary text-primary py-6 rounded-3xl font-black text-sm uppercase tracking-[0.25em] hover:bg-primary hover:text-secondary transition-all duration-500 shadow-2xl shadow-secondary/20 flex items-center justify-center gap-4 group"
-                      >
-                        <svg className="w-6 h-6 group-hover:rotate-12 transition-transform ml-1" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.396.015 12.03c0 2.12.553 4.189 1.606 6.06L0 24l6.104-1.601a11.803 11.803 0 005.943 1.603h.005c6.634 0 12.032-5.396 12.035-12.03a11.85 11.85 0 00-3.529-8.511z"/>
-                        </svg>
-                        Encargar por WhatsApp
-                      </button>
+            <button
+              onClick={handleAddToCart}
+              className="w-full bg-secondary text-primary py-5 md:py-6 rounded-3xl font-black text-xs md:text-sm uppercase tracking-[0.25em] hover:bg-primary hover:text-secondary transition-all duration-300 shadow-2xl shadow-secondary/20 flex items-center justify-center gap-3 group active:scale-[0.99]"
+            >
+              <ShoppingCart className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <span>Añadir al Carrito • ${totalPrice}</span>
+            </button>
           </div>
         </div>
       </motion.div>
@@ -1288,6 +1354,97 @@ export default function App() {
   const [selectedLeague, setSelectedLeague] = useState<string | null>(null);
   const [participantName, setParticipantName] = useState('');
   const [participantPhone, setParticipantPhone] = useState('');
+
+  // Cart State & Persistence
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    try {
+      const saved = localStorage.getItem('no_pain_cart');
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      return [];
+    }
+  });
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('no_pain_cart', JSON.stringify(cartItems));
+    } catch (e) {}
+  }, [cartItems]);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 2500);
+  };
+
+  const addToCart = (item: CartItem) => {
+    setCartItems(prev => {
+      const existingIndex = prev.findIndex(i => 
+        i.jerseyId === item.jerseyId &&
+        i.version === item.version &&
+        i.size === item.size &&
+        (i.sleeves || 'Corta') === (item.sleeves || 'Corta') &&
+        (i.playerName || '') === (item.playerName || '') &&
+        (i.number || '') === (item.number || '') &&
+        (i.patch || '') === (item.patch || '')
+      );
+
+      if (existingIndex > -1) {
+        const copy = [...prev];
+        copy[existingIndex] = {
+          ...copy[existingIndex],
+          quantity: copy[existingIndex].quantity + (item.quantity || 1)
+        };
+        return copy;
+      }
+      return [...prev, item];
+    });
+    showToast(`¡"${item.team} ${item.type}" añadido al carrito!`);
+  };
+
+  const addStockJerseyToCart = (jersey: Jersey) => {
+    const cartItem: CartItem = {
+      id: `${jersey.id}-${jersey.size}-${jersey.playerName || ''}-${jersey.number || ''}-${Date.now()}`,
+      itemType: 'stock',
+      jerseyId: jersey.id,
+      name: jersey.name,
+      team: jersey.team,
+      season: jersey.season,
+      type: jersey.type,
+      version: jersey.style,
+      size: jersey.size,
+      playerName: jersey.playerName,
+      number: jersey.number,
+      patch: jersey.patch,
+      price: jersey.price,
+      image: jersey.image,
+      quantity: 1
+    };
+    addToCart(cartItem);
+  };
+
+  const updateCartQuantity = (id: string, delta: number) => {
+    setCartItems(prev => prev.map(item => {
+      if (item.id === id) {
+        const newQ = item.quantity + delta;
+        return newQ > 0 ? { ...item, quantity: newQ } : null;
+      }
+      return item;
+    }).filter(Boolean) as CartItem[]);
+  };
+
+  const removeCartItem = (id: string) => {
+    setCartItems(prev => prev.filter(i => i.id !== id));
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
+  const totalCartCount = useMemo(() => {
+    return cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  }, [cartItems]);
 
   // Scroll to top when path changes
   useEffect(() => {
@@ -1468,14 +1625,14 @@ export default function App() {
 
   const bestSellers = JERSEYS.filter(j => j.isBestSeller);
 
-  const handleStockOrder = (jersey: Jersey) => {
-    const text = `¡Hola! Me interesa la camiseta en stock del ${jersey.team} - ${jersey.type} - ${jersey.season} - Versión ${jersey.style.toLowerCase()} - Talla ${jersey.size} - ${jersey.playerName ? `${jersey.playerName} (${jersey.number})` : 'Sin dorsal'}`;
-    window.open(`https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(text)}`, '_blank');
-  };
-
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Navbar 
+        activeTab={activeTab} 
+        setActiveTab={setActiveTab} 
+        cartCount={totalCartCount}
+        onOpenCart={() => setIsCartOpen(true)}
+      />
 
       <main className="flex-grow">
         {activeTab === 'home' && (
@@ -1791,7 +1948,7 @@ export default function App() {
                     <JerseyCard
                       key={jersey.id}
                       jersey={jersey}
-                      onOrder={handleStockOrder}
+                      onAddToCart={addStockJerseyToCart}
                     />
                   ))}
                 </div>
@@ -1870,7 +2027,7 @@ export default function App() {
                           const message = query 
                             ? `¡Hola! Quiero consultar disponibilidad para la camiseta de: ${query}. ¿Me podrían dar más información?`
                             : `¡Hola! Quiero consultar disponibilidad de modelos que no están en el catálogo. ¿Qué otros modelos tienen?`;
-                          window.open(`https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(message)}`, '_blank');
+                          window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
                         }}
                         className="bg-secondary text-primary px-5 py-2.5 md:px-7 md:py-3.5 rounded-xl md:rounded-2xl font-black text-[9px] md:text-xs uppercase tracking-widest hover:bg-primary hover:text-secondary transition-all shadow-lg flex items-center gap-2.5 mx-auto"
                       >
@@ -2080,7 +2237,7 @@ export default function App() {
 
                 <div className="pt-2 md:pt-4">
                   <button 
-                    onClick={() => window.open(`https://wa.me/${getWhatsAppNumber()}`, '_blank')}
+                    onClick={() => window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank')}
                     className="w-full md:w-auto inline-flex items-center justify-center gap-3 bg-secondary text-primary px-8 md:px-12 py-4 md:py-5 rounded-xl md:rounded-2xl font-sans font-black text-[9px] md:text-[11px] hover:bg-primary hover:text-secondary transition-all shadow-xl uppercase tracking-[0.15em] group"
                   >
                     <svg className="w-4 h-4 mb-0.5 group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="currentColor">
@@ -2175,7 +2332,7 @@ export default function App() {
                   <ul className="space-y-3 md:space-y-4 text-white/70 font-medium text-[10px] md:text-base">
                     <li>
                       <a 
-                        href={`https://wa.me/${getWhatsAppNumber()}`} 
+                        href={`https://wa.me/${WHATSAPP_NUMBER}`} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="flex items-center justify-start gap-2 md:gap-3 hover:text-primary transition-all"
@@ -2205,10 +2362,61 @@ export default function App() {
         </div>
       </footer>
 
+      {/* Floating Cart Button */}
+      <AnimatePresence>
+        {totalCartCount > 0 && !isCartOpen && (
+          <motion.button
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsCartOpen(true)}
+            className="fixed bottom-6 right-6 z-40 bg-primary text-secondary p-3.5 md:p-4 rounded-full shadow-2xl flex items-center gap-3 border-2 border-secondary font-black group cursor-pointer"
+            title="Ver carrito de compras"
+          >
+            <div className="relative">
+              <ShoppingCart className="w-5 h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform" />
+              <span className="absolute -top-2 -right-2 bg-secondary text-primary text-[9px] md:text-[10px] font-black w-4 h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center border-2 border-primary shadow">
+                {totalCartCount}
+              </span>
+            </div>
+            <span className="hidden sm:inline font-black text-xs uppercase tracking-wider pr-1">Ver Carrito</span>
+          </motion.button>
+        )}
+      </AnimatePresence>
+
+      {/* Cart Drawer */}
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        items={cartItems}
+        onUpdateQuantity={updateCartQuantity}
+        onRemoveItem={removeCartItem}
+        onClearCart={clearCart}
+        onNavigateToTab={setActiveTab}
+      />
+
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {toastMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-secondary text-white px-5 py-3 md:px-6 md:py-3.5 rounded-2xl shadow-2xl border border-primary/30 flex items-center gap-3 text-xs md:text-sm font-black uppercase tracking-wider"
+          >
+            <span className="w-2 h-2 rounded-full bg-primary animate-ping" />
+            <span>{toastMessage}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {selectedJersey && (
         <CustomOrderModal
           jersey={selectedJersey}
           onClose={() => setSelectedJersey(null)}
+          onAddToCart={addToCart}
         />
       )}
 
@@ -2217,6 +2425,7 @@ export default function App() {
           jersey={selectedEncargoJersey}
           onClose={() => setSelectedEncargoJersey(null)}
           onZoom={setZoomedImage}
+          onAddToCart={addToCart}
         />
       )}
 

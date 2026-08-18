@@ -47,6 +47,25 @@ export interface EncargoJersey {
   patches?: { name: string; logo: string | null }[];
 }
 
+export interface CartItem {
+  id: string;
+  itemType: 'stock' | 'encargo';
+  jerseyId: string;
+  name: string;
+  team: string;
+  season: string;
+  type: string;
+  version: string;
+  size: string;
+  sleeves?: 'Corta' | 'Larga';
+  playerName?: string;
+  number?: string;
+  patch?: string;
+  price: number;
+  image: string;
+  quantity: number;
+}
+
 export interface EncargoOrder {
   jerseyId: string;
   version: 'Fan' | 'Player' | 'Niño' | 'Retro';

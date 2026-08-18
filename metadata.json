@@ -1,5 +1,6 @@
 {
   "name": "No Pain-No Jersey",
-  "description": "Tienda online de camisetas de fútbol con catálogos de stock y encargos personalizados.",
-  "requestFramePermissions": []
+  "description": "Tienda online de camisetas de fútbol con catálogo en stock, encargos personalizados y carrito de compras para WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

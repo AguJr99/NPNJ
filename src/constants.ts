@@ -1,7 +1,7 @@
 import { Jersey, EncargoJersey } from './types';
 
-export const WHATSAPP_NUMBER = '+5355859998';
-export const WHATSAPP_NUMBER_USA = '+17863440052';
+export const WHATSAPP_NUMBER = '19379821877';
+export const WHATSAPP_NUMBER_DISPLAY = '+1 (937) 982-1877';
 
 export const JERSEYS: Jersey[] = [
   // Temporada 25/26
@@ -283,18 +283,97 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
   // BARCELONA
   {
     id: 'fcb-home-26-custom',
-    name: 'Barcelona - Local - 26/27 (Filtración)',
+    name: 'Barcelona - Local - 26/27',
     team: 'Barcelona',
     league: 'La Liga',
     season: '26/27',
     type: 'Local',
     price: 30,
-    fanImage: 'https://drive.google.com/thumbnail?id=1aKTFWdSR3FthIdAHsL299SO_mPeNHAg8&sz=w800',
-    playerImage: 'https://drive.google.com/thumbnail?id=1Z_k2m1fA-SPTNIFHo9eJKS9CvOOFrrwh&sz=w800',
+    fanImage: 'https://drive.google.com/thumbnail?id=1gmryokzI9OX1ROD-5uW5TrecUkOron7I&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1J9hW9JJukPM4qWaEsqZybQDZax7ucZPY&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1AnuNURfavzMaemh_d0c8A94NFZeNpnxz&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=147WScKp4BJw_0ae_dl-aWWpn9VBZfgPK&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=1OIUbV6G1CvMJ6opOG4acnHv3BQaWmsZg&sz=w800',
     fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
     playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
-    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1C1VNTWVz0rKx-mKXlDl-iXGXRkfR6cVY&sz=w800',
-    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1VPcgeHFRmnTNSjkBzS6K05ihBilIFzu5&sz=w800'
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1CAZrx3-9lOw3cp8IqQYl6RYlgEg0y-mm&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1nRl5685vdOlJrHqobPmx2ZTHVjdJ733G&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'La Liga', logo: 'https://drive.google.com/thumbnail?id=1AfS24tRLp5ia68jDgE5OAkT5DbgmRpKD&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1xfmHXjm0UZtRPU5o0yka-D0X1rjFWQaE&sz=w200' }
+    ]
+  },
+  {
+    id: 'fcb-away-26-custom',
+    name: 'Barcelona - Visitante - 26/27',
+    team: 'Barcelona',
+    league: 'La Liga',
+    season: '26/27',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=12zWhSmQmumnPCx5KmntUxFeg-ly5MN9L&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1BDgD_G77vepzcLvgMXryE7qUETB6mSTm&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1OdJhO36Trk6W7nfGWCVphTJvLtAuRTKg&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=1L5MMiK2lGpJkAycMlK7FXyuJaISZKGdm&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=1XqzZu87UoZJ5m5PiVb1rJonr11hJOQip&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1CAZrx3-9lOw3cp8IqQYl6RYlgEg0y-mm&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1kN4R2vacIKFUa04q59DXSLdLjGxTyWBq&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'La Liga', logo: 'https://drive.google.com/thumbnail?id=1AfS24tRLp5ia68jDgE5OAkT5DbgmRpKD&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1xfmHXjm0UZtRPU5o0yka-D0X1rjFWQaE&sz=w200' }
+    ]
+  },
+  {
+    id: 'fcb-third-26-custom',
+    name: 'Barcelona - Tercera - 26/27',
+    team: 'Barcelona',
+    league: 'La Liga',
+    season: '26/27',
+    type: 'Tercera',
+    price: 30,
+    noLongSleeve: true,
+    fanImage: 'https://drive.google.com/thumbnail?id=1cMn_LQVgLdCWsmmUUa8w9reqju2X8Nhq&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1wG_3XQM5s5IZSRguhijtGRnbUPKW-ty6&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1TxiEu5CGTeqUfx0xdWIzvIQMOVsvBiFM&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1CAZrx3-9lOw3cp8IqQYl6RYlgEg0y-mm&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1nRl5685vdOlJrHqobPmx2ZTHVjdJ733G&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'La Liga', logo: 'https://drive.google.com/thumbnail?id=1AfS24tRLp5ia68jDgE5OAkT5DbgmRpKD&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1xfmHXjm0UZtRPU5o0yka-D0X1rjFWQaE&sz=w200' }
+    ]
+  },
+  {
+    id: 'fcb-fourth-26-custom',
+    name: 'Barcelona - Cuarta - 26/27',
+    team: 'Barcelona',
+    league: 'La Liga',
+    season: '26/27',
+    type: 'Cuarta',
+    price: 30,
+    noLongSleeve: true,
+    fanImage: 'https://drive.google.com/thumbnail?id=1S4Bs6p0XpG0BTFhtt8GGi1133r9IxT0E&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1bCxrq-DvW-PAlGwb-dDHuh6Eku6EXmQd&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1wbAjH2gImyBoaZ52NAAQ_4L8Op1cB-t2&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1CAZrx3-9lOw3cp8IqQYl6RYlgEg0y-mm&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1nRl5685vdOlJrHqobPmx2ZTHVjdJ733G&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'La Liga', logo: 'https://drive.google.com/thumbnail?id=1AfS24tRLp5ia68jDgE5OAkT5DbgmRpKD&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1xfmHXjm0UZtRPU5o0yka-D0X1rjFWQaE&sz=w200' }
+    ]
   },
   {
     id: 'fcb-home-25-custom',
@@ -703,7 +782,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
   // REAL MADRID
   {
     id: 'rma-home-26-custom',
-    name: 'Real Madrid - Local - 26/27 (Filtración)',
+    name: 'Real Madrid - Local - 26/27',
     team: 'Real Madrid',
     league: 'La Liga',
     season: '26/27',
@@ -722,7 +801,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
   },
   {
     id: 'rma-special-125-26-custom',
-    name: 'Real Madrid - Especial (125 Aniversario) - 26/27 (Filtración)',
+    name: 'Real Madrid - Especial (125 Aniversario) - 26/27',
     team: 'Real Madrid',
     league: 'La Liga',
     season: '26/27',
@@ -1377,7 +1456,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
   },
   {
     id: 'mci-home-26-custom',
-    name: 'Manchester City - Local - 26/27 (Filtración)',
+    name: 'Manchester City - Local - 26/27',
     team: 'Manchester City',
     league: 'Premier League',
     season: '26/27',
@@ -1463,7 +1542,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
   },
   {
     id: 'ars-home-26-custom',
-    name: 'Arsenal - Local - 26/27 (Filtración)',
+    name: 'Arsenal - Local - 26/27',
     team: 'Arsenal',
     league: 'Premier League',
     season: '26/27',
@@ -2080,7 +2159,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
   },
   {
     id: 'mil-home-26-custom',
-    name: 'Milan - Local - 26/27 (Filtración)',
+    name: 'Milan - Local - 26/27',
     team: 'Milan',
     league: 'Serie A',
     season: '26/27',
@@ -2656,7 +2735,7 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
   },
   {
     id: 'bvb-home-26-custom',
-    name: 'Borussia Dortmund - Local - 26/27 (Filtración)',
+    name: 'Borussia Dortmund - Local - 26/27',
     team: 'Borussia Dortmund',
     league: 'Bundesliga',
     season: '26/27',
@@ -3142,6 +3221,48 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
   },
   // SELECCIONES - ESPAÑA
   {
+    id: 'esp-home-2026-two-stars-custom',
+    name: 'España - Local (Dos Estrellas) - 2026',
+    team: 'España',
+    league: 'Selecciones',
+    season: '2026',
+    type: 'Local',
+    price: 30,
+    noLongSleeve: true,
+    fanImage: 'https://drive.google.com/thumbnail?id=1DIfqqLl-APLQWe-8yH9soV_ouDN7lcH7&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1Y7Bn-jPhstcqhy3UYucXGvnJ2r_6Z7NK&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1yuVuqUgJJWcB9Y26hKbGigJjVzwyCgB0&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1JULbLZbibmu1EUBmwYv3nmoYP-v_VWVa',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Nations League', logo: 'https://drive.google.com/thumbnail?id=1jXQa0X5NZuxUejhyUzZNH2RhuLCppHed&sz=w200' }
+    ]
+  },
+  {
+    id: 'esp-away-2026-two-stars-custom',
+    name: 'España - Visitante (Dos Estrellas) - 2026',
+    team: 'España',
+    league: 'Selecciones',
+    season: '2026',
+    type: 'Visitante',
+    price: 30,
+    noLongSleeve: true,
+    fanImage: 'https://drive.google.com/thumbnail?id=17kjw5RsHEPJwKcm5so5i6vsYc6-xxX4S&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=15_DEEg_ovjgPhvwRt0Q9MO7Nd0b1GDLp&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1zNyajh1NkbOs-a-hf4HKIsUW2Q9NzPMu&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1JULbLZbibmu1EUBmwYv3nmoYP-v_VWVa',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Nations League', logo: 'https://drive.google.com/thumbnail?id=1jXQa0X5NZuxUejhyUzZNH2RhuLCppHed&sz=w200' }
+    ]
+  },
+  {
     id: 'esp-home-2026-custom',
     name: 'España - Local - 2026',
     team: 'España',
@@ -3161,7 +3282,8 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria Mundial', logo: 'https://lh3.googleusercontent.com/d/1EMHldl6Qz5lPb7jj_eBQIPGQaLRWEdoB' },
-      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
+      { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' },
+      { name: 'Final Mundial', logo: 'https://drive.google.com/thumbnail?id=1MaiP43TZLipjS-Q4GBh5IK7Buqws_Yj-&sz=w200' }
     ]
   },
   {
@@ -5063,7 +5185,7 @@ export const LEAGUES_DATA = [
     name: 'Selecciones',
     logo: 'https://drive.google.com/thumbnail?id=1SN6j0_ItHXTVteBqZCfYYZ8TXRNEHS9O&sz=w200',
     teams: [
-      { name: 'España', logo: 'https://drive.google.com/thumbnail?id=1SN6j0_ItHXTVteBqZCfYYZ8TXRNEHS9O&sz=w200' },
+      { name: 'España', logo: 'https://drive.google.com/thumbnail?id=1-n1x8vEhYMmf7v2xkz0YNAWIU2dLOPWd&sz=w200' },
       { name: 'Alemania', logo: 'https://drive.google.com/thumbnail?id=1SN6j0_ItHXTVteBqZCfYYZ8TXRNEHS9O&sz=w200' },
       { name: 'Argentina', logo: 'https://drive.google.com/thumbnail?id=1SN6j0_ItHXTVteBqZCfYYZ8TXRNEHS9O&sz=w200' },
       { name: 'Brasil', logo: 'https://drive.google.com/thumbnail?id=1SN6j0_ItHXTVteBqZCfYYZ8TXRNEHS9O&sz=w200' },
