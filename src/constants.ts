@@ -2928,6 +2928,51 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     noPatches: true
   },
   {
+    id: 'nap-home-26-custom',
+    name: 'Napoli - Local - 26/27',
+    team: 'Napoli',
+    league: 'Serie A',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1Q7OYz-JsRd1Flv9SqIwUPZzbcjIheOkJ&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1VYhLf-UNMNOjLcjyR6x8i4HyjXsXfA9Z&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=19zr072zt4yt_PK_uCkKvCKbP89bPq4I8&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1xOs7ya1mGY8rm2Zk1jC9Eq-JlE2D4Te2&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1xOs7ya1mGY8rm2Zk1jC9Eq-JlE2D4Te2&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Serie A', logo: 'https://drive.google.com/thumbnail?id=1o1Fq7WwpJMkk6ZEBuPkNL2qRNQs_FUkn&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1iQEzwStxKWiyIoKpOxyi93hqlTvLodfZ&sz=w200' }
+    ]
+  },
+  {
+    id: 'nap-away-26-custom',
+    name: 'Napoli - Visitante - 26/27',
+    team: 'Napoli',
+    league: 'Serie A',
+    season: '26/27',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1UOtJThO3YSLzw2nCwvvb9jKzffdS51rU&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1tpceFFeeymkznk-7wX9nsxumAnjHnIdS&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1xOs7ya1mGY8rm2Zk1jC9Eq-JlE2D4Te2&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1xOs7ya1mGY8rm2Zk1jC9Eq-JlE2D4Te2&sz=w800',
+    noLongSleeve: true,
+    noChild: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Serie A', logo: 'https://drive.google.com/thumbnail?id=1o1Fq7WwpJMkk6ZEBuPkNL2qRNQs_FUkn&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1iQEzwStxKWiyIoKpOxyi93hqlTvLodfZ&sz=w200' }
+    ]
+  },
+  {
     id: 'nap-home-25-custom',
     name: 'Napoli - Local - 25/26',
     team: 'Napoli',
@@ -3014,6 +3059,51 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     championsNumberingImage: 'https://lh3.googleusercontent.com/d/1ew83L9P979I1fzJk6bPxKP7sJzlp4NQL',
     patches: [
       { name: 'Sin Parche', logo: null }
+    ]
+  },
+  {
+    id: 'rom-home-26-custom',
+    name: 'Roma - Local - 26/27',
+    team: 'Roma',
+    league: 'Serie A',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1JmoXEx-jMi0VDzW55CepC4QvkkHOMVLS&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1vAOjSDlxNOaqoElT68W4lxKm5SSswOTW&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1dfNiUM1_F0iicJBpQyyJIIZVTk0bSKP4&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1hvDu0NfBbjB3eFUilVrbDPWn-W5F3ypn&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1hvDu0NfBbjB3eFUilVrbDPWn-W5F3ypn&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Serie A', logo: 'https://drive.google.com/thumbnail?id=1o1Fq7WwpJMkk6ZEBuPkNL2qRNQs_FUkn&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1iQEzwStxKWiyIoKpOxyi93hqlTvLodfZ&sz=w200' }
+    ]
+  },
+  {
+    id: 'rom-away-26-custom',
+    name: 'Roma - Visitante - 26/27',
+    team: 'Roma',
+    league: 'Serie A',
+    season: '26/27',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=15KTs8HpNhkSu1yz96RIJ7kdbj7op65Lo&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1rqUQWs6J2cATlgrBS09aGSk4OPqZh6xl&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1hvDu0NfBbjB3eFUilVrbDPWn-W5F3ypn&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1hvDu0NfBbjB3eFUilVrbDPWn-W5F3ypn&sz=w800',
+    noLongSleeve: true,
+    noChild: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Serie A', logo: 'https://drive.google.com/thumbnail?id=1o1Fq7WwpJMkk6ZEBuPkNL2qRNQs_FUkn&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1iQEzwStxKWiyIoKpOxyi93hqlTvLodfZ&sz=w200' }
     ]
   },
   {
@@ -3214,6 +3304,54 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     ]
   },
   {
+    id: 'bay-home-26-custom',
+    name: 'Bayern Munich - Local - 26/27',
+    team: 'Bayern Munich',
+    league: 'Bundesliga',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1pvrQ75c8Y6ytSeO7g2BsLIt1xzmIdroo&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=12J6MRAuDJRDIswCfpi9ID4g1BzNNUbxL&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1SsfDlAFbLVVbw30h2y9GFS8iyAFsKZyT&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=1gwDjC5u82m5J1Snb3C7W32yVN_9awE7A&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1IHN9_aoVjYE6yD3Yft6tGf_qErTbRTu9&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1EGJ9yacJoOkbY-c_bWIQpDESrwu-5Emx&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1EGJ9yacJoOkbY-c_bWIQpDESrwu-5Emx&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://drive.google.com/thumbnail?id=13r_MAjbaGw-na06OjhKI6g36Fd3sKNtG&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1twVdRRnHVQ1QGRxQYOKomOv8br-gePfE&sz=w200' }
+    ]
+  },
+  {
+    id: 'bay-away-26-custom',
+    name: 'Bayern Munich - Visitante - 26/27',
+    team: 'Bayern Munich',
+    league: 'Bundesliga',
+    season: '26/27',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1Bry3w3nA4VUPKQ_SsLGTXmcfwUrfEhkO&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=1JlBljB0VXTojDrFbCLlSYISyvWkUbCQU&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1FkpEY_jt6H7_SYDShxuh3ydxK4bhCmVQ&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=1JlBljB0VXTojDrFbCLlSYISyvWkUbCQU&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1rwgsAAIExJTimae8yzoKk34b-FFKZTQj&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1vckfss4EsbM7yfNIRu8UClhc6q2qK6Cg&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1vckfss4EsbM7yfNIRu8UClhc6q2qK6Cg&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://drive.google.com/thumbnail?id=13r_MAjbaGw-na06OjhKI6g36Fd3sKNtG&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1twVdRRnHVQ1QGRxQYOKomOv8br-gePfE&sz=w200' }
+    ]
+  },
+  {
     id: 'bay-home-25-custom',
     name: 'Bayern Munich - Local - 25/26',
     team: 'Bayern Munich',
@@ -3364,18 +3502,42 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     season: '26/27',
     type: 'Local',
     price: 30,
-    fanImage: 'https://lh3.googleusercontent.com/d/1qCnZ7of41kvO4Ob6j8-ygnideDtDxDFY',
-    playerImage: 'https://lh3.googleusercontent.com/d/1QebSU7GSMPl2BswlpT8xDNfaY64PP4Jw',
+    fanImage: 'https://drive.google.com/thumbnail?id=1E618PLdkrJVKTJtetSW3gDsUM-nsF0IV&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=1Jkk97X6ryzLySEq5eDxT8K9jzXaXuljK&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1l2SEoVX-0LXvZxZMkbcTPJMc02eeXQ_t&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=19QdGrJQ_U40zz28Pxr3AztUTZLPF-xJ8&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1567aYTjut8QTQMXYxTAFS8XcoQf9LlJP&sz=w800',
     fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
     playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
-    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1t4zsKc_qczHgkSnXm_-YuM-rPcIqlJ3E',
-    championsNumberingImage: 'https://lh3.googleusercontent.com/d/1t4zsKc_qczHgkSnXm_-YuM-rPcIqlJ3E',
-    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1Qf1meckHVo8wQxAj1_rfehOuJ9hGPetf',
-    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1Qf1meckHVo8wQxAj1_rfehOuJ9hGPetf',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1lUD-xg91Nkuge8y6kk-ZYOxeSunOuTA8&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1lUD-xg91Nkuge8y6kk-ZYOxeSunOuTA8&sz=w800',
     patches: [
       { name: 'Sin Parche', logo: null },
-      { name: 'Bundesliga', logo: 'https://lh3.googleusercontent.com/d/1ngUyhnIcZlUu3Zqjp4oqUHLJslWh9Acy' },
-      { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1cdfsywT71B75nx2OIWzDSIIcyltKo9i0' }
+      { name: 'Bundesliga', logo: 'https://drive.google.com/thumbnail?id=1ltYmthYCHQGmCSDOHLpjGG8aEC7B7aNQ&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=19WpIwOslat-3ITgeL-OhHkHiyiwZ9I0z&sz=w200' }
+    ]
+  },
+  {
+    id: 'bvb-away-26-custom',
+    name: 'Borussia Dortmund - Visitante - 26/27',
+    team: 'Borussia Dortmund',
+    league: 'Bundesliga',
+    season: '26/27',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=18PI4B0BkjrsCFTQ0Z8WcE_q7aclEcC4v&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1G-1fC4-EGkjWlGdJ_5rFdQaU6Bp3IRVD&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1lUD-xg91Nkuge8y6kk-ZYOxeSunOuTA8&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1lUD-xg91Nkuge8y6kk-ZYOxeSunOuTA8&sz=w800',
+    noLongSleeve: true,
+    noChild: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://drive.google.com/thumbnail?id=1ltYmthYCHQGmCSDOHLpjGG8aEC7B7aNQ&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=19WpIwOslat-3ITgeL-OhHkHiyiwZ9I0z&sz=w200' }
     ]
   },
   {
@@ -3397,6 +3559,51 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1XzLn81n0CGpQkVHNiiJ_9dIETXRqaL7N' }
+    ]
+  },
+  {
+    id: 'lev-home-26-custom',
+    name: 'Bayer Leverkusen - Local - 26/27',
+    team: 'Bayer Leverkusen',
+    league: 'Bundesliga',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1I2wiV4zNg5cxQM0QjNAbh0a-0t4zlrAU&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1JNfSgHNq7rNr_FSuAwaoPNP74nADEaFg&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1NxCRDOHinRydIcR390QPJZ6-VLks-Q9w&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=16CFoaOSLwrJTJ1_dqXIWIoTf5AHgCIvN&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=16CFoaOSLwrJTJ1_dqXIWIoTf5AHgCIvN&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://drive.google.com/thumbnail?id=1ZLE_N1LjmFbzm3j5n5PMKmQwGJzbpKwX&sz=w200' },
+      { name: 'Europa League', logo: 'https://drive.google.com/thumbnail?id=1-ztSy4R3NdowLfb-gKXpxK55fZ-EX7ai&sz=w200' }
+    ]
+  },
+  {
+    id: 'lev-away-26-custom',
+    name: 'Bayer Leverkusen - Visitante - 26/27',
+    team: 'Bayer Leverkusen',
+    league: 'Bundesliga',
+    season: '26/27',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1yC32WXCGzuHdwC0SkoAIAbIsWCZUDMWE&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1lv87JSbckd16gwrE1C-t6Uvr0YcXheOG&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=16CFoaOSLwrJTJ1_dqXIWIoTf5AHgCIvN&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=16CFoaOSLwrJTJ1_dqXIWIoTf5AHgCIvN&sz=w800',
+    noLongSleeve: true,
+    noChild: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://drive.google.com/thumbnail?id=1ZLE_N1LjmFbzm3j5n5PMKmQwGJzbpKwX&sz=w200' },
+      { name: 'Europa League', logo: 'https://drive.google.com/thumbnail?id=1-ztSy4R3NdowLfb-gKXpxK55fZ-EX7ai&sz=w200' }
     ]
   },
   {
@@ -3469,6 +3676,69 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     ]
   },
   {
+    id: 'fra-home-26-custom',
+    name: 'Eintracht Frankfurt - Local - 26/27',
+    team: 'Eintracht Frankfurt',
+    league: 'Bundesliga',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1UycZjR6IuP2r-wBSONAjz2KINDahoKiQ&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1I8EBFkRiV7PJebO0tCVH_2MnzIPGvxmO&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1Dctx3f-gnQLemsE9MsObpYlPZQU7rllM&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1Dctx3f-gnQLemsE9MsObpYlPZQU7rllM&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://drive.google.com/thumbnail?id=1lr3yNK_sYOmRNg6uJ1SDXr6hh8CU_7If&sz=w200' }
+    ]
+  },
+  {
+    id: 'fra-away-26-custom',
+    name: 'Eintracht Frankfurt - Visitante - 26/27',
+    team: 'Eintracht Frankfurt',
+    league: 'Bundesliga',
+    season: '26/27',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1SgSppgzfFRVFmiUqef8pUSQRrVSfus4H&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1pRB9bMUNzKHLa6zxAfs5hpNfJWB6LBGL&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1Dctx3f-gnQLemsE9MsObpYlPZQU7rllM&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1Dctx3f-gnQLemsE9MsObpYlPZQU7rllM&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://drive.google.com/thumbnail?id=1lr3yNK_sYOmRNg6uJ1SDXr6hh8CU_7If&sz=w200' }
+    ]
+  },
+  {
+    id: 'rbl-home-26-custom',
+    name: 'RB Leipzig - Local - 26/27',
+    team: 'RB Leipzig',
+    league: 'Bundesliga',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1RM8g73XimFvrG5V_rdkGeaKyaapOcVaY&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=11aIOWO7vbaeI_E_6xY8qOddCLQBfoOyj&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1KYGQk7PFYyLUYquyIcgpgWiopHBSM0z7&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1dPp-eemTLTXHgh48em25QypeJEOZWSAK&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1dPp-eemTLTXHgh48em25QypeJEOZWSAK&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Bundesliga', logo: 'https://drive.google.com/thumbnail?id=1ltYmthYCHQGmCSDOHLpjGG8aEC7B7aNQ&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=19WpIwOslat-3ITgeL-OhHkHiyiwZ9I0z&sz=w200' }
+    ]
+  },
+  {
     id: 'fra-home-25-custom',
     name: 'Eintracht Frankfurt - Local - 25/26',
     team: 'Eintracht Frankfurt',
@@ -3532,6 +3802,54 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     patches: [
       { name: 'Sin Parche', logo: null },
       { name: 'Bundesliga', logo: 'https://lh3.googleusercontent.com/d/1sUciBaFaZ7bXJVsmYdegXPTUhk3HcYNF' }
+    ]
+  },
+  {
+    id: 'psg-home-26-custom',
+    name: 'PSG - Local - 26/27',
+    team: 'PSG',
+    league: 'Ligue 1',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1OTYGrTgbudFxJbbseDIj9JWqdaSJhU8b&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=1QON8vF3v5cNDo74z9wby_R1ijqrENArU&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=10pdAXzgFm88mjyKkqSV1LGqagPJ7554Y&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=1RXYE9YuhChyXyHtAv4JILvF9KB3Rpmes&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1nd7JqM50KH7qsdoUcYzz3qY7gFJG1rVp&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1voWffCM_fc1Mm8rGBczSC2PaBva3bIwv&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1-N3bXRQeEfwF4iGW_uYIr-PKDMUSiB5H&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://drive.google.com/thumbnail?id=1H3p-J7jUn9l9DA-HSIzIutV2E_7fvyDd&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1C361ui0Lww24tk1GU9L3P2l4IoPOKzGo&sz=w200' }
+    ]
+  },
+  {
+    id: 'psg-away-26-custom',
+    name: 'PSG - Visitante - 26/27',
+    team: 'PSG',
+    league: 'Ligue 1',
+    season: '26/27',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1kHshFOyE7fT_ijA9LaOx97rYOHLIAPW8&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=1KwqBx98EkfHOl-OawCitL9uPwhXO2Rg1&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1GkwJSnCOPVbia_uai-Vp_o1Ao7HVvl2Q&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=17j4uGJTA6OTAqcfRz6DyLf74S1sb-Olq&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1iK0CPf4pmlTJvFynzGs72YP2x7pbFeKl&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1e1NqEJf84krcH7yv0I1fxsmS_2kpUPwg&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1LMjNj-KV_0mdWMQNgpAcZralbB0ky41c&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://drive.google.com/thumbnail?id=1H3p-J7jUn9l9DA-HSIzIutV2E_7fvyDd&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1C361ui0Lww24tk1GU9L3P2l4IoPOKzGo&sz=w200' }
     ]
   },
   {
@@ -3613,6 +3931,29 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     ]
   },
   {
+    id: 'monaco-home-26-custom',
+    name: 'Mónaco - Local - 26/27',
+    team: 'Mónaco',
+    league: 'Ligue 1',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1zK9YIl3edYRB0arHFRCo-B1t6qbQUw1R&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1LP8ieW6VhEwM35tB4sDWhF6n_VAez3u4&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1o8rVm4zDTMdxN29RSQSFB25OV-Y-A8ww&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=14DQO2a5cd4xmqoCEW8aVwrLwimSm6SSs&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=14DQO2a5cd4xmqoCEW8aVwrLwimSm6SSs&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://drive.google.com/thumbnail?id=1wJOgrFvHELCNJokmQigqJd7fuE6wW1CT&sz=w200' },
+      { name: 'Conference League', logo: 'https://drive.google.com/thumbnail?id=1hDMt76r3kak13vn97TLOd8Ha0NHcJrUi&sz=w200' }
+    ]
+  },
+  {
     id: 'monaco-home-25-custom',
     name: 'Mónaco - Local - 25/26',
     team: 'Mónaco',
@@ -3679,6 +4020,52 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'Sin Parche', logo: null },
       { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/1DU52PWMUh6fkKNRb-ppaMk0paG1DtT5t' },
       { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1ShOekIf7Kt-XIHh6pp3LL5cetXWAo5LX' }
+    ]
+  },
+  {
+    id: 'marseille-home-26-custom',
+    name: 'Marseille - Local - 26/27',
+    team: 'Marseille',
+    league: 'Ligue 1',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1pTplPS5wzuAnidQ3uNL-jbUDgeIfgmfk&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1ivrBJGvts_fxEsi3bi3kYyka8jVVE8Mo&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1S81RROVFXZ3IBtXhODjOF8NrKYW1PEx2&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1skgDQH8Q1kOjr9F23YtHQnoPqqpT_8Zr&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1NwQGACPnqvDNcUmXM14CtPlqJmPuHEId&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://drive.google.com/thumbnail?id=1BhPaNz2jk7S1b67boHk9mNC5q8kZa6wJ&sz=w200' },
+      { name: 'Europa League', logo: 'https://drive.google.com/thumbnail?id=1e4qEyOQR1BTywDZMCIYRpVDDboFq0sQo&sz=w200' }
+    ]
+  },
+  {
+    id: 'marseille-away-26-custom',
+    name: 'Marseille - Visitante - 26/27',
+    team: 'Marseille',
+    league: 'Ligue 1',
+    season: '26/27',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1_w_oOanApSbMp_naSRRJDx-H8jSMan-Y&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1EZ8pzE6h5J3B-ZB_6bcJkxSO0nOVMON_&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1qLc8X0aOJwGg-hl6l-ZMxAsTk-CSJ0b8&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1skgDQH8Q1kOjr9F23YtHQnoPqqpT_8Zr&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1NwQGACPnqvDNcUmXM14CtPlqJmPuHEId&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://drive.google.com/thumbnail?id=1BhPaNz2jk7S1b67boHk9mNC5q8kZa6wJ&sz=w200' },
+      { name: 'Europa League', logo: 'https://drive.google.com/thumbnail?id=1e4qEyOQR1BTywDZMCIYRpVDDboFq0sQo&sz=w200' }
     ]
   },
   {
@@ -3749,6 +4136,94 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'Sin Parche', logo: null },
       { name: 'Ligue 1', logo: 'https://lh3.googleusercontent.com/d/1DU52PWMUh6fkKNRb-ppaMk0paG1DtT5t' },
       { name: 'Champions League', logo: 'https://lh3.googleusercontent.com/d/1ShOekIf7Kt-XIHh6pp3LL5cetXWAo5LX' }
+    ]
+  },
+  {
+    id: 'ol-home-26-custom',
+    name: 'Olympique de Lyon - Local - 26/27',
+    team: 'Olympique de Lyon',
+    league: 'Ligue 1',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1rCuNCZfEk1xTijR8IQ1DY8v6RnksqX0u&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1ymm4a4Qf_9aG_aWdlUwJjjEmRmRgRl8D&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1txzppm6D8c0QKmcLAju0tLOhGf03A9WU&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=13QluSRK8REfW9-gwZHakzqdq6ul0DigF&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1ZP3qIJhs8pw94UjdwdJnRpb_TpmH32AP&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://drive.google.com/thumbnail?id=1BhPaNz2jk7S1b67boHk9mNC5q8kZa6wJ&sz=w200' },
+      { name: 'Europa League', logo: 'https://drive.google.com/thumbnail?id=1e4qEyOQR1BTywDZMCIYRpVDDboFq0sQo&sz=w200' }
+    ]
+  },
+  {
+    id: 'ol-away-26-custom',
+    name: 'Olympique de Lyon - Visitante - 26/27',
+    team: 'Olympique de Lyon',
+    league: 'Ligue 1',
+    season: '26/27',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1iBlaXZcEiuyWmaewNH-wznwEj6W0MDIL&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1JXP2yxIScUMZNHUp_-sUKQVPH762Hr-O&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=13QluSRK8REfW9-gwZHakzqdq6ul0DigF&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1ZP3qIJhs8pw94UjdwdJnRpb_TpmH32AP&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://drive.google.com/thumbnail?id=1BhPaNz2jk7S1b67boHk9mNC5q8kZa6wJ&sz=w200' },
+      { name: 'Europa League', logo: 'https://drive.google.com/thumbnail?id=1e4qEyOQR1BTywDZMCIYRpVDDboFq0sQo&sz=w200' }
+    ]
+  },
+  {
+    id: 'ol-third-26-custom',
+    name: 'Olympique de Lyon - Tercera - 26/27',
+    team: 'Olympique de Lyon',
+    league: 'Ligue 1',
+    season: '26/27',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=17m9pzqTO_4EjWc6N-_m9gocPXkJfef2I&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1QR3VKpBJ6FO10ZuT-c5E0I_a5RfwEdrd&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=13QluSRK8REfW9-gwZHakzqdq6ul0DigF&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1ZP3qIJhs8pw94UjdwdJnRpb_TpmH32AP&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://drive.google.com/thumbnail?id=1BhPaNz2jk7S1b67boHk9mNC5q8kZa6wJ&sz=w200' },
+      { name: 'Europa League', logo: 'https://drive.google.com/thumbnail?id=1e4qEyOQR1BTywDZMCIYRpVDDboFq0sQo&sz=w200' }
+    ]
+  },
+  {
+    id: 'lille-home-26-custom',
+    name: 'Lille - Local - 26/27',
+    team: 'Lille',
+    league: 'Ligue 1',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1h0gDbPPZ_H3li2ahot3GiLqe7qt-Ujgf&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1z-lRMLSpLfXSjJyG9bCdTit7mga-0qHK&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1JHWSdSH_HDP0qzPZGyH3Vi1FCOTwFc22&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1lyQlHglEdlu4T54OpPkiManw3o3MTx-B&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1lyQlHglEdlu4T54OpPkiManw3o3MTx-B&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Ligue 1', logo: 'https://drive.google.com/thumbnail?id=1Pwb2JEfl8MdnkO0fUsos2qOt1BrOkB9Y&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1WDkSjtRwqEX6jqraSBOtxbz1Jb3idK2n&sz=w200' }
     ]
   },
   {
@@ -5082,6 +5557,70 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
   },
   // INTER MIAMI
   {
+    id: 'im-home-26-27-custom',
+    name: 'Inter Miami - Local - 26/27',
+    team: 'Inter Miami',
+    league: 'Otras Ligas',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1C2tsTauGhi9nQShmcTNEysj_digd3eVF&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1FDDWWVqP0iUREmstzkpq7ytX8Hew0Lz1&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1j2Culc3akKYG4aHIk8ssG7SCkSHc88Il&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1j2Culc3akKYG4aHIk8ssG7SCkSHc88Il&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'MLS', logo: 'https://drive.google.com/thumbnail?id=1WSzevdaZn_Borbj4SYRgup-V78TokUvO&sz=w200' }
+    ]
+  },
+  {
+    id: 'im-away-26-27-custom',
+    name: 'Inter Miami - Visitante - 26/27',
+    team: 'Inter Miami',
+    league: 'Otras Ligas',
+    season: '26/27',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1awNlfYjNRcTTbcpfxiONJ_Zg9vx5NWx7&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1HF2-i-xNWZCHQy9WnEr-l8ys_jtDJLWi&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1nhZhJgWRQwkNr2G3hiauYIHyYzPIpZkv&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1j2Culc3akKYG4aHIk8ssG7SCkSHc88Il&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1j2Culc3akKYG4aHIk8ssG7SCkSHc88Il&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'MLS', logo: 'https://drive.google.com/thumbnail?id=1WSzevdaZn_Borbj4SYRgup-V78TokUvO&sz=w200' }
+    ]
+  },
+  {
+    id: 'im-third-26-27-custom',
+    name: 'Inter Miami - Tercera - 26/27',
+    team: 'Inter Miami',
+    league: 'Otras Ligas',
+    season: '26/27',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1GjlwlF68kjL21nyuUkzBKLAn9Z5nCj2C&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=18NhPxnxCRDSSDy930-LkkMNAprW3RLtj&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=19z2Dts87DdCBxFEEnaGieVFhRKUxAkkC&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1j2Culc3akKYG4aHIk8ssG7SCkSHc88Il&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1j2Culc3akKYG4aHIk8ssG7SCkSHc88Il&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'MLS', logo: 'https://drive.google.com/thumbnail?id=1WSzevdaZn_Borbj4SYRgup-V78TokUvO&sz=w200' }
+    ]
+  },
+  {
     id: 'im-home-25-26-custom',
     name: 'Inter Miami - Local - 25/26',
     team: 'Inter Miami',
@@ -5147,28 +5686,73 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'MLS', logo: 'https://drive.google.com/thumbnail?id=1ajI01BxmtA3ESEDloGFADR_wHp7_mdXY&sz=w200' }
     ]
   },
+  // AJAX
   {
-    id: 'im-away-26-27-custom',
-    name: 'Inter Miami - Visitante - 26/27',
-    team: 'Inter Miami',
+    id: 'ajax-home-26-27-custom',
+    name: 'Ajax - Local - 26/27',
+    team: 'Ajax',
+    league: 'Otras Ligas',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1lVAfShzAo2Cgo0H6AOdRphjna5z6BMaU&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1xtq3a9tP1MyryFsYLZs7qFp81oM4crnA&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1rU413rfwDsfqxnhIIrHUMKkgHx6PYW8B&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=138sMWy2EMQvGxtzCnP-HqszvZo328w6K&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=138sMWy2EMQvGxtzCnP-HqszvZo328w6K&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Eredivisie', logo: 'https://drive.google.com/thumbnail?id=1GeVGFw2ELAqiK2Uqh2GQ5NI0C0KdvUqv&sz=w200' }
+    ]
+  },
+  {
+    id: 'ajax-away-26-27-custom',
+    name: 'Ajax - Visitante - 26/27',
+    team: 'Ajax',
     league: 'Otras Ligas',
     season: '26/27',
     type: 'Visitante',
     price: 30,
-    fanImage: 'https://drive.google.com/thumbnail?id=1ETyQBD2k1oraLOTQINVIbERHOh5-lqfJ&sz=w800',
-    playerImage: 'https://drive.google.com/thumbnail?id=1ljqvNueRB8DyM9KdbbUyhZWdnUukiqa9&sz=w800',
-    childImage: 'https://drive.google.com/thumbnail?id=183WZ3v2H_nIkDNxHqULLku2jySVoA3FM&sz=w800',
+    fanImage: 'https://drive.google.com/thumbnail?id=1U06VkMX-p73EPbCwxSCuXz76MNXjOzQD&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1jRZVbOcfPGCDkkzotHFgM8vet6_BwO7a&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1S2X3myUrtRAi7keBJuhnGvce3foStt03&sz=w800',
     fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
     playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
     childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
-    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1UM0ewhxV06LhHNj90T7-ZGE5j5PwVxiv&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=138sMWy2EMQvGxtzCnP-HqszvZo328w6K&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=138sMWy2EMQvGxtzCnP-HqszvZo328w6K&sz=w800',
     noLongSleeve: true,
     patches: [
       { name: 'Sin Parche', logo: null },
-      { name: 'MLS', logo: 'https://drive.google.com/thumbnail?id=1ajI01BxmtA3ESEDloGFADR_wHp7_mdXY&sz=w200' }
+      { name: 'Eredivisie', logo: 'https://drive.google.com/thumbnail?id=1GeVGFw2ELAqiK2Uqh2GQ5NI0C0KdvUqv&sz=w200' }
     ]
   },
-  // AJAX
+  {
+    id: 'ajax-third-26-27-custom',
+    name: 'Ajax - Tercera - 26/27',
+    team: 'Ajax',
+    league: 'Otras Ligas',
+    season: '26/27',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1IaBpoxPrKKihtvqb0yG2vdy4Kh6thxRK&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=15LgTb6YjFqIwuLAlMhYJxuGPOTchXCsl&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=12gN-5eTtYPnr9-DqDxdPpm-LkJYj6Plq&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=138sMWy2EMQvGxtzCnP-HqszvZo328w6K&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=138sMWy2EMQvGxtzCnP-HqszvZo328w6K&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Eredivisie', logo: 'https://drive.google.com/thumbnail?id=1GeVGFw2ELAqiK2Uqh2GQ5NI0C0KdvUqv&sz=w200' }
+    ]
+  },
   {
     id: 'ajax-home-25-26-custom',
     name: 'Ajax - Local - 25/26',
@@ -5259,6 +5843,67 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
   },
   // BOCA JUNIORS
   {
+    id: 'bj-home-26-27-custom',
+    name: 'Boca Juniors - Local - 26/27',
+    team: 'Boca Juniors',
+    league: 'Otras Ligas',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1jsETdjnBYJ_diKAVce1vBxJqtREY1QPx&sz=w800',
+    fanLongSleeveImage: 'https://drive.google.com/thumbnail?id=18P98dFPBmGPiPKMsc_WddMqUZZUGQ0YV&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1Cn4-Qz5OI6GUeiV3LWw1ziXeb796_EF-&sz=w800',
+    playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=18P98dFPBmGPiPKMsc_WddMqUZZUGQ0YV&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1oxbZ9ssXGQVidg2LujY5Ezai_uRNwsyE&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1oxbZ9ssXGQVidg2LujY5Ezai_uRNwsyE&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'LPF', logo: 'https://drive.google.com/thumbnail?id=1mF8UpXhocVOuCkiWEi6P_bGWyCtnwfWK&sz=w200' }
+    ]
+  },
+  {
+    id: 'bj-away-26-27-custom',
+    name: 'Boca Juniors - Visitante - 26/27',
+    team: 'Boca Juniors',
+    league: 'Otras Ligas',
+    season: '26/27',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1vW_CzUb7l1L--qJq_AZuucvbuV-_i0pt&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=12dI8SQOufRvv47Xgd6-8sjKk6jeeeGbd&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1oxbZ9ssXGQVidg2LujY5Ezai_uRNwsyE&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1oxbZ9ssXGQVidg2LujY5Ezai_uRNwsyE&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'LPF', logo: 'https://drive.google.com/thumbnail?id=1mF8UpXhocVOuCkiWEi6P_bGWyCtnwfWK&sz=w200' }
+    ]
+  },
+  {
+    id: 'bj-third-26-27-custom',
+    name: 'Boca Juniors - Tercera - 26/27',
+    team: 'Boca Juniors',
+    league: 'Otras Ligas',
+    season: '26/27',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1DhE0l9dC51o5MnY75iI2gbwwD9xdaqeG&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1taT9Z_-_73tNx89M7n5s2DZGI96RURiQ&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1oxbZ9ssXGQVidg2LujY5Ezai_uRNwsyE&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1oxbZ9ssXGQVidg2LujY5Ezai_uRNwsyE&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'LPF', logo: 'https://drive.google.com/thumbnail?id=1mF8UpXhocVOuCkiWEi6P_bGWyCtnwfWK&sz=w200' }
+    ]
+  },
+  {
     id: 'bj-home-25-26-custom',
     name: 'Boca Juniors - Local - 25/26',
     team: 'Boca Juniors',
@@ -5323,6 +5968,28 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     ]
   },
   // RIVER PLATE
+  {
+    id: 'rp-home-26-27-custom',
+    name: 'River Plate - Local - 26/27',
+    team: 'River Plate',
+    league: 'Otras Ligas',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://drive.google.com/thumbnail?id=1FdzaYlP1jFE3OycExfKHdANypmenr9dU&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1SuryZZo4umnDHT6yzlUQTCuIWbau15Qh&sz=w800',
+    childImage: 'https://drive.google.com/thumbnail?id=1drjYFXed4eQxtiLz19PcHziMu71NIp1b&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=13xu0yre5JZsi0mboxLs8PIY9ISLvn_2K&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=13xu0yre5JZsi0mboxLs8PIY9ISLvn_2K&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'LPF', logo: 'https://drive.google.com/thumbnail?id=1mF8UpXhocVOuCkiWEi6P_bGWyCtnwfWK&sz=w200' }
+    ]
+  },
   {
     id: 'rp-home-25-26-custom',
     name: 'River Plate - Local - 25/26',

@@ -1,26 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NP-NJ</title>
+    <title>No Pain-No Jersey</title>
     <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/11BBxuRfaiE9c4mQOKOc4xbn9WAxUH44h" />
     <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/11BBxuRfaiE9c4mQOKOc4xbn9WAxUH44h" media="(prefers-color-scheme: light)" />
     <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/14ikCftTeHdjUpPjryzogbe18Undx-s0o" media="(prefers-color-scheme: dark)" />
     <link id="manifest-link" rel="manifest" href="/manifest-light.json" />
     <script>
-      const manifestLink = document.getElementById('manifest-link');
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        manifestLink.href = '/manifest-dark.json';
-      }
+      (function() {
+        try {
+          const pref = localStorage.getItem('npnj_theme_preference');
+          const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (pref === 'dark' || (pref !== 'light' && systemDark)) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.style.colorScheme = 'dark';
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.style.colorScheme = 'light';
+          }
+          const manifestLink = document.getElementById('manifest-link');
+          if (manifestLink && (pref === 'dark' || (pref !== 'light' && systemDark))) {
+            manifestLink.href = '/manifest-dark.json';
+          }
+        } catch (e) {}
+      })();
     </script>
     <!-- Open Graph / Social Sharing -->
-    <meta property="og:title" content="NP-NJ" />
-    <meta property="og:description" content="Tu tienda de camisetas de fútbol de confianza." />
+    <meta property="og:title" content="No Pain-No Jersey" />
+    <meta property="og:description" content="Tienda online de camisetas de fútbol con catálogo en stock, encargos personalizados y carrito de compras para WhatsApp." />
     <meta property="og:image" content="https://lh3.googleusercontent.com/d/1SNYDAboBD9vP0PzVujqFPq5d7UMmEF3u" />
     <meta property="og:type" content="website" />
-    <!-- Preload critical images -->
-    <link rel="preload" as="image" href="https://drive.google.com/thumbnail?id=1QDifBYZdIrmOZ1C8Hr-EEchd9d5PElN_&sz=w200" />
+    <!-- Preload critical logos and banner -->
+    <link rel="preload" as="image" href="https://drive.google.com/thumbnail?id=1SNYDAboBD9vP0PzVujqFPq5d7UMmEF3u&sz=w800" />
+    <link rel="preload" as="image" href="https://drive.google.com/thumbnail?id=11D2087BrLkq2atuQejP3ak6F37Vg2fX8&sz=w800" />
     <link rel="preload" as="image" href="https://drive.google.com/thumbnail?id=1Z1mGwwNTio8wQRP3cEEtn5eqiLZW6dZ0&sz=w1920" />
   </head>
   <body>

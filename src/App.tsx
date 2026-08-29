@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, Link, Navigate } from 'react-router-dom';
-import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown, Check } from 'lucide-react';
+import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown, Check, Sun, Moon, Monitor } from 'lucide-react';
 import { JERSEYS, ENCARGO_JERSEYS, WHATSAPP_NUMBER, LEAGUES } from './constants';
 import { Jersey, EncargoJersey, EncargoOrder, CartItem } from './types';
 import { CartDrawer } from './components/CartDrawer';
+import { useTheme } from './context/ThemeContext';
 
 const LOGO_NAV_URL = "https://drive.google.com/thumbnail?id=1QDifBYZdIrmOZ1C8Hr-EEchd9d5PElN_&sz=w200";
 const LOGO_FOOTER_URL = "https://drive.google.com/thumbnail?id=17y8hAaeWVS3U659DmYeCgN52GPQPbNT2&sz=w200";
@@ -110,13 +111,14 @@ const Navbar = ({
   onOpenCart: () => void
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { themePreference, setThemePreference, toggleTheme, isDark } = useTheme();
 
   return (
-    <nav className="bg-secondary text-white sticky top-0 z-50 shadow-sm">
+    <nav className="bg-secondary text-white sticky top-0 z-50 shadow-sm border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-24">
           <Link to="/" className="flex items-center gap-3 md:gap-4 cursor-pointer">
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-[#ebd6ac] rounded-xl md:rounded-2xl flex items-center justify-center p-0 shadow-xl border-2 border-primary/20 overflow-hidden transform hover:scale-105 transition-transform">
+            <div className="w-12 h-12 md:w-16 md:h-16 bg-[#ebd6ac] rounded-xl md:rounded-2xl flex items-center justify-center p-0 shadow-xl border-2 border-primary/20 overflow-hidden transform hover:scale-105 transition-all">
               <img 
                 src={LOGO_NAV_URL} 
                 alt="No Pain No Jersey Logo" 
@@ -135,7 +137,7 @@ const Navbar = ({
           </Link>
           
           <div className="hidden lg:flex items-center gap-4">
-            <div className="flex items-center space-x-2 bg-black/20 p-1.5 rounded-full">
+            <div className="flex items-center space-x-2 bg-black/20 p-1.5 rounded-full border border-white/5">
               {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'].map((tab) => (
                 <Link
                   key={tab}
@@ -149,10 +151,51 @@ const Navbar = ({
               ))}
             </div>
 
+            {/* Desktop Theme Toggle Button with dynamic animation and color transformation */}
+            <motion.button
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.93 }}
+              onClick={toggleTheme}
+              className={`relative overflow-hidden flex items-center gap-2.5 px-4 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-colors duration-300 shadow-md cursor-pointer border select-none ${
+                isDark 
+                  ? 'bg-[#181920] text-primary border-primary/50 hover:bg-[#222430] hover:border-primary shadow-black/25' 
+                  : 'bg-primary text-secondary border-primary/60 hover:bg-[#d89c32] shadow-black/10'
+              }`}
+              title={isDark ? 'Cambiar a Modo Claro' : 'Cambiar a Modo Oscuro'}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {isDark ? (
+                  <motion.div
+                    key="dark-mode"
+                    initial={{ opacity: 0, y: -10, rotate: -45, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, rotate: 45, scale: 0.8 }}
+                    transition={{ duration: 0.22, ease: "easeOut" }}
+                    className="flex items-center gap-2"
+                  >
+                    <Moon className="w-4 h-4 fill-primary/30 text-primary drop-shadow-[0_0_8px_rgba(229,169,60,0.5)]" />
+                    <span className="font-black text-[11px] tracking-wider">Modo Oscuro</span>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="light-mode"
+                    initial={{ opacity: 0, y: -10, rotate: 45, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, rotate: -45, scale: 0.8 }}
+                    transition={{ duration: 0.22, ease: "easeOut" }}
+                    className="flex items-center gap-2"
+                  >
+                    <Sun className="w-4 h-4 fill-secondary/20 text-secondary drop-shadow-[0_0_8px_rgba(26,26,26,0.3)]" />
+                    <span className="font-black text-[11px] tracking-wider">Modo Claro</span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+
             {/* Desktop Cart Button */}
             <button
               onClick={onOpenCart}
-              className="relative flex items-center gap-2 bg-primary text-secondary px-5 py-2.5 rounded-full font-black text-xs uppercase tracking-wider hover:bg-primary/90 transition-all shadow-md active:scale-95 group"
+              className="relative flex items-center gap-2 bg-primary text-secondary px-5 py-2.5 rounded-full font-black text-xs uppercase tracking-wider hover:bg-primary/90 transition-all shadow-md active:scale-95 group cursor-pointer"
               title="Abrir Carrito de Compra"
             >
               <ShoppingCart className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -166,10 +209,47 @@ const Navbar = ({
           </div>
 
           <div className="lg:hidden flex items-center gap-2">
+            {/* Mobile Theme Toggle Button with dynamic animation and color transformation */}
+            <motion.button
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={toggleTheme}
+              className={`p-2.5 rounded-xl transition-colors duration-300 flex items-center justify-center cursor-pointer shadow-md border select-none ${
+                isDark 
+                  ? 'bg-[#181920] text-primary border-primary/50 hover:bg-[#222430]' 
+                  : 'bg-primary text-secondary border-primary/60 hover:bg-[#d89c32]'
+              }`}
+              title={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {isDark ? (
+                  <motion.div
+                    key="mobile-moon"
+                    initial={{ scale: 0.6, rotate: -60, opacity: 0 }}
+                    animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                    exit={{ scale: 0.6, rotate: 60, opacity: 0 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                  >
+                    <Moon className="w-4 h-4 fill-primary/30 text-primary drop-shadow-[0_0_6px_rgba(229,169,60,0.5)]" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="mobile-sun"
+                    initial={{ scale: 0.6, rotate: 60, opacity: 0 }}
+                    animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                    exit={{ scale: 0.6, rotate: -60, opacity: 0 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                  >
+                    <Sun className="w-4 h-4 fill-secondary/20 text-secondary drop-shadow-[0_0_6px_rgba(26,26,26,0.3)]" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+
             {/* Mobile Cart Button */}
             <button
               onClick={onOpenCart}
-              className="relative p-2.5 rounded-xl bg-primary text-secondary flex items-center justify-center active:scale-95 shadow-md"
+              className="relative p-2.5 rounded-xl bg-primary text-secondary flex items-center justify-center active:scale-95 shadow-md cursor-pointer"
               title="Ver Carrito"
             >
               <ShoppingCart className="w-4 h-4" />
@@ -181,7 +261,10 @@ const Navbar = ({
             </button>
 
             <span className="text-[10px] font-black uppercase tracking-widest text-primary/80 ml-1">Secciones</span>
-            <button onClick={() => setIsOpen(!isOpen)} className="p-2 rounded-xl bg-white/5 text-primary hover:bg-white/10 transition-colors">
+            <button 
+              onClick={() => setIsOpen(!isOpen)} 
+              className="p-2 rounded-xl bg-white/5 text-primary hover:bg-white/10 transition-colors cursor-pointer"
+            >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
@@ -196,7 +279,7 @@ const Navbar = ({
             exit={{ opacity: 0, y: -20 }}
             className="lg:hidden absolute top-16 left-4 right-4 bg-secondary/95 backdrop-blur-xl rounded-[1.5rem] border border-primary/20 shadow-2xl z-[60] overflow-hidden"
           >
-            <div className="p-4 space-y-1">
+            <div className="p-4 space-y-2">
               {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'].map((tab) => (
                 <Link
                   key={tab}
@@ -209,6 +292,43 @@ const Navbar = ({
                   {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : 'Contacto'}
                 </Link>
               ))}
+
+              {/* Mobile Drawer Theme Selector */}
+              <div className="pt-3 mt-2 border-t border-white/10">
+                <p className="text-[10px] font-bold text-white/50 uppercase tracking-wider text-center mb-2">Tema visual</p>
+                <div className="grid grid-cols-3 gap-2 bg-black/20 p-1.5 rounded-xl border border-white/10">
+                  <motion.button
+                    whileTap={{ scale: 0.94 }}
+                    onClick={() => setThemePreference('light')}
+                    className={`py-2 px-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                      themePreference === 'light' ? 'bg-primary text-secondary font-black shadow' : 'text-white/60 hover:text-white'
+                    }`}
+                  >
+                    <Sun className="w-3.5 h-3.5" />
+                    <span>Claro</span>
+                  </motion.button>
+                  <motion.button
+                    whileTap={{ scale: 0.94 }}
+                    onClick={() => setThemePreference('system')}
+                    className={`py-2 px-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                      themePreference === 'system' ? 'bg-primary text-secondary font-black shadow' : 'text-white/60 hover:text-white'
+                    }`}
+                  >
+                    <Monitor className="w-3.5 h-3.5" />
+                    <span>Auto</span>
+                  </motion.button>
+                  <motion.button
+                    whileTap={{ scale: 0.94 }}
+                    onClick={() => setThemePreference('dark')}
+                    className={`py-2 px-2 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                      themePreference === 'dark' ? 'bg-primary text-secondary font-black shadow' : 'text-white/60 hover:text-white'
+                    }`}
+                  >
+                    <Moon className="w-3.5 h-3.5" />
+                    <span>Oscuro</span>
+                  </motion.button>
+                </div>
+              </div>
             </div>
           </motion.div>
         )}
@@ -221,16 +341,16 @@ const FAQItem: React.FC<{ question: string, answer: React.ReactNode, index: numb
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div 
-      className={`bg-white rounded-lg md:rounded-[2rem] shadow-xl shadow-secondary/5 border transition-all duration-300 overflow-hidden ${isOpen ? 'border-primary/40 ring-1 ring-primary/10' : 'border-secondary/5 hover:border-primary/20'}`}
+      className={`bg-white dark:bg-[#181920] rounded-lg md:rounded-[2rem] shadow-xl shadow-secondary/5 dark:shadow-none border transition-all duration-300 overflow-hidden ${isOpen ? 'border-primary/40 ring-1 ring-primary/10' : 'border-secondary/5 dark:border-white/10 hover:border-primary/20'}`}
     >
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-2.5 md:p-8 flex items-center justify-between text-left group"
+        className="w-full p-2.5 md:p-8 flex items-center justify-between text-left group cursor-pointer"
       >
-        <h3 className="text-[12px] md:text-lg font-medium md:font-black text-secondary uppercase tracking-tight flex items-center gap-2 md:gap-4">
+        <h3 className="text-[12px] md:text-lg font-medium md:font-black text-secondary dark:text-white uppercase tracking-tight flex items-center gap-2 md:gap-4">
           <span className="text-primary text-[10px] md:text-sm font-black">0{index + 1}.</span> {question}
         </h3>
-        <div className={`p-1 md:p-2 rounded-full bg-secondary/5 group-hover:bg-primary/10 transition-colors ${isOpen ? 'rotate-180 bg-primary/10 text-primary' : 'text-secondary/40'}`}>
+        <div className={`p-1 md:p-2 rounded-full bg-secondary/5 dark:bg-white/5 group-hover:bg-primary/10 transition-colors ${isOpen ? 'rotate-180 bg-primary/10 text-primary' : 'text-secondary/40 dark:text-white/40'}`}>
           <ChevronDown className="w-3 h-3 md:w-5 md:h-5" />
         </div>
       </button>
@@ -243,14 +363,12 @@ const FAQItem: React.FC<{ question: string, answer: React.ReactNode, index: numb
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
             <div className="px-4 pb-4 md:px-8 md:pb-8 pt-0">
-              <div className="h-px bg-secondary/5 mb-4 md:mb-6" />
-              <div className="text-secondary/70 leading-relaxed font-medium text-xs md:text-lg">
+              <div className="h-px bg-secondary/5 dark:bg-white/10 mb-4 md:mb-6" />
+              <div className="text-secondary/70 dark:text-white/70 leading-relaxed font-medium text-xs md:text-lg">
                 {typeof answer === 'string' ? <p>{answer}</p> : (
                   <div className="faq-answer-container">
                     {React.Children.map(answer, child => {
                       if (React.isValidElement(child)) {
-                        // This is a bit complex for nested children, 
-                        // but let's assume the images are top-level or in a simple grid
                         return child;
                       }
                       return child;
@@ -291,16 +409,16 @@ const JerseyCard = ({ jersey, onAddToCart }: { jersey: Jersey, onAddToCart: (j: 
         layout
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className={`bg-white rounded-[3rem] overflow-hidden shadow-2xl shadow-secondary/5 group border flex flex-col hover:shadow-primary/10 transition-all duration-500 ${hasDiscount ? 'border-red-500/30 ring-2 ring-red-500/10' : 'border-secondary/5'}`}
+        className={`bg-white dark:bg-[#181920] rounded-[3rem] overflow-hidden shadow-2xl shadow-secondary/5 dark:shadow-none group border flex flex-col hover:shadow-primary/10 transition-all duration-500 ${hasDiscount ? 'border-red-500/30 ring-2 ring-red-500/10' : 'border-secondary/5 dark:border-white/10'}`}
       >
         <div 
-          className="relative overflow-hidden bg-accent/30 cursor-zoom-in"
+          className="relative overflow-hidden bg-accent/30 dark:bg-[#121318] cursor-zoom-in"
           onClick={() => setShowFullImage(true)}
         >
           {/* Loading Skeleton */}
           {!isLoaded && (
-            <div className="absolute inset-0 bg-secondary/5 animate-pulse flex items-center justify-center">
-              <Shirt className="w-8 h-8 text-secondary/10" />
+            <div className="absolute inset-0 bg-secondary/5 dark:bg-white/5 animate-pulse flex items-center justify-center">
+              <Shirt className="w-8 h-8 text-secondary/10 dark:text-white/10" />
             </div>
           )}
           
@@ -326,7 +444,7 @@ const JerseyCard = ({ jersey, onAddToCart }: { jersey: Jersey, onAddToCart: (j: 
                 <Clock className="w-2.5 h-2.5 md:w-3 h-3" />
                 <span>EN OFERTA</span>
               </div>
-              <div className="bg-white/95 backdrop-blur-sm text-red-600 font-black text-[7px] md:text-[9px] px-2 py-0.5 rounded-full shadow-sm uppercase tracking-widest border border-red-600/20">
+              <div className="bg-white/95 dark:bg-[#1C1D24]/95 backdrop-blur-sm text-red-600 dark:text-red-400 font-black text-[7px] md:text-[9px] px-2 py-0.5 rounded-full shadow-sm uppercase tracking-widest border border-red-600/20">
                 TERMINA EN <Countdown targetDate={jersey.discountEndDate!} variant="daysOnly" />
               </div>
             </div>
@@ -335,64 +453,64 @@ const JerseyCard = ({ jersey, onAddToCart }: { jersey: Jersey, onAddToCart: (j: 
         
         <div className="p-4 md:p-8 space-y-4 md:space-y-7 flex-grow flex flex-col items-center text-center">
           <div className="space-y-1 w-full">
-            <h3 className="font-sans font-black text-secondary text-base md:text-xl leading-tight uppercase tracking-tight min-h-[2.5rem] md:min-h-[3.5rem] flex items-center justify-center text-center w-full">
+            <h3 className="font-sans font-black text-secondary dark:text-white text-base md:text-xl leading-tight uppercase tracking-tight min-h-[2.5rem] md:min-h-[3.5rem] flex items-center justify-center text-center w-full">
               {jersey.team}
             </h3>
             <div className="flex items-center justify-center gap-2">
-              <span className="text-[8px] md:text-[10px] font-bold text-secondary/50 uppercase tracking-[0.1em]">{jersey.season}</span>
+              <span className="text-[8px] md:text-[10px] font-bold text-secondary/50 dark:text-white/50 uppercase tracking-[0.1em]">{jersey.season}</span>
               <span className="w-1 h-1 bg-primary rounded-full" />
               <span className="text-[8px] md:text-[10px] font-bold text-primary uppercase tracking-[0.1em]">{jersey.type}</span>
             </div>
           </div>
 
-          <div className="w-full grid grid-cols-2 gap-px bg-secondary/5 rounded-xl md:rounded-2xl overflow-hidden border border-secondary/5">
-            <div className="bg-white p-2 md:p-3.5 space-y-0.5 md:space-y-1">
-              <p className="text-[6px] md:text-[8px] font-black text-secondary/60 uppercase tracking-[0.25em]">Versión</p>
-              <p className="text-[10px] md:text-xs font-black text-secondary uppercase tracking-tight">{jersey.style}</p>
+          <div className="w-full grid grid-cols-2 gap-px bg-secondary/5 dark:bg-white/10 rounded-xl md:rounded-2xl overflow-hidden border border-secondary/5 dark:border-white/10">
+            <div className="bg-white dark:bg-[#15161C] p-2 md:p-3.5 space-y-0.5 md:space-y-1">
+              <p className="text-[6px] md:text-[8px] font-black text-secondary/60 dark:text-white/50 uppercase tracking-[0.25em]">Versión</p>
+              <p className="text-[10px] md:text-xs font-black text-secondary dark:text-white uppercase tracking-tight">{jersey.style}</p>
             </div>
-            <div className="bg-white p-2 md:p-3.5 space-y-0.5 md:space-y-1">
-              <p className="text-[6px] md:text-[8px] font-black text-secondary/60 uppercase tracking-[0.25em]">Talla</p>
+            <div className="bg-white dark:bg-[#15161C] p-2 md:p-3.5 space-y-0.5 md:space-y-1">
+              <p className="text-[6px] md:text-[8px] font-black text-secondary/60 dark:text-white/50 uppercase tracking-[0.25em]">Talla</p>
               <p className="text-[10px] md:text-xs font-black text-primary uppercase tracking-tight">{jersey.size}</p>
             </div>
           </div>
 
           <div className="w-full space-y-2 md:space-y-3.5 pt-1">
             <div className="flex flex-col items-center gap-0.5 md:gap-1">
-              <span className="text-[6px] md:text-[8px] font-black text-secondary/60 uppercase tracking-[0.25em]">Dorsal</span>
-              <p className="text-[10px] md:text-xs font-black text-secondary uppercase tracking-[0.05em]">
+              <span className="text-[6px] md:text-[8px] font-black text-secondary/60 dark:text-white/50 uppercase tracking-[0.25em]">Dorsal</span>
+              <p className="text-[10px] md:text-xs font-black text-secondary dark:text-white uppercase tracking-[0.05em]">
                 {jersey.playerName || 'Sin Nombre'} <span className="text-primary ml-1">#{jersey.number || '-'}</span>
               </p>
             </div>
             <div className="flex flex-col items-center gap-0.5 md:gap-1">
-              <span className="text-[6px] md:text-[8px] font-black text-secondary/60 uppercase tracking-[0.25em]">Parche</span>
-              <p className="text-[9px] md:text-[10px] font-bold text-secondary/80 uppercase tracking-tight italic">
+              <span className="text-[6px] md:text-[8px] font-black text-secondary/60 dark:text-white/50 uppercase tracking-[0.25em]">Parche</span>
+              <p className="text-[9px] md:text-[10px] font-bold text-secondary/80 dark:text-white/80 uppercase tracking-tight italic">
                 {jersey.patch || 'Sin Parche'}
               </p>
             </div>
           </div>
 
-          <div className="pt-4 md:pt-5 mt-auto border-t border-secondary/5 w-full space-y-4 md:space-y-5">
+          <div className="pt-4 md:pt-5 mt-auto border-t border-secondary/5 dark:border-white/10 w-full space-y-4 md:space-y-5">
             <div className="flex flex-col items-center justify-center gap-2">
               {hasDiscount && (
                 <span className="bg-red-600 text-white text-[10px] md:text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">-{discountPercentage}% DE DESCUENTO</span>
               )}
               <div className="flex items-center justify-center gap-2 md:gap-3">
-                <span className="text-[8px] md:text-[10px] font-bold text-secondary/40 uppercase tracking-[0.2em]">Precio</span>
+                <span className="text-[8px] md:text-[10px] font-bold text-secondary/40 dark:text-white/40 uppercase tracking-[0.2em]">Precio</span>
                 <div className="flex items-center gap-2">
                   {hasDiscount && (
-                    <span className="text-xs md:text-lg font-black text-red-600 line-through decoration-red-600/50 decoration-2 tracking-tighter leading-none pt-1 md:pt-2">${jersey.originalPrice}</span>
+                    <span className="text-xs md:text-lg font-black text-red-600 dark:text-red-400 line-through decoration-red-600/50 decoration-2 tracking-tighter leading-none pt-1 md:pt-2">${jersey.originalPrice}</span>
                   )}
-                  <span className="text-xl md:text-4xl font-sans font-black text-secondary tracking-tighter leading-none">${jersey.price}</span>
+                  <span className="text-xl md:text-4xl font-sans font-black text-secondary dark:text-white tracking-tighter leading-none">${jersey.price}</span>
                 </div>
               </div>
             </div>
             
             <button
               onClick={handleAdd}
-              className={`w-full py-2.5 md:py-4 rounded-lg md:rounded-2xl font-black text-[8px] md:text-[11px] transition-all shadow-xl flex items-center justify-center gap-2 md:gap-3 uppercase tracking-[0.15em] active:scale-95 ${
+              className={`w-full py-2.5 md:py-4 rounded-lg md:rounded-2xl font-black text-[8px] md:text-[11px] transition-all shadow-xl flex items-center justify-center gap-2 md:gap-3 uppercase tracking-[0.15em] active:scale-95 cursor-pointer ${
                 justAdded 
                   ? 'bg-[#25D366] text-white shadow-green-500/20' 
-                  : 'bg-secondary text-primary hover:bg-primary hover:text-secondary'
+                  : 'bg-secondary dark:bg-[#252836] text-primary hover:bg-primary hover:text-secondary dark:hover:bg-primary dark:hover:text-secondary'
               }`}
             >
               {justAdded ? (
@@ -418,7 +536,7 @@ const JerseyCard = ({ jersey, onAddToCart }: { jersey: Jersey, onAddToCart: (j: 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setShowFullImage(false)}
-            className="fixed inset-0 z-[110] bg-secondary/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-12 cursor-zoom-out"
+            className="fixed inset-0 z-[110] bg-secondary/95 dark:bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-12 cursor-zoom-out"
           >
             <button 
               onClick={() => setShowFullImage(false)}
@@ -450,12 +568,12 @@ const EncargoJerseyCard = ({ jersey, onOrder }: { jersey: EncargoJersey, onOrder
       layout
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-[3rem] overflow-hidden shadow-2xl shadow-secondary/5 group border border-secondary/5 flex flex-col hover:shadow-primary/10 transition-all duration-500"
+      className="bg-white dark:bg-[#181920] rounded-[3rem] overflow-hidden shadow-2xl shadow-secondary/5 dark:shadow-none group border border-secondary/5 dark:border-white/10 flex flex-col hover:shadow-primary/10 transition-all duration-500"
     >
-      <div className="relative overflow-hidden bg-accent/30 cursor-pointer aspect-square flex items-center justify-center" onClick={() => onOrder(jersey)}>
+      <div className="relative overflow-hidden bg-accent/30 dark:bg-[#121318] cursor-pointer aspect-square flex items-center justify-center" onClick={() => onOrder(jersey)}>
         {!isLoaded && (
-          <div className="absolute inset-0 bg-secondary/5 animate-pulse flex items-center justify-center">
-            <Shirt className="w-8 h-8 text-secondary/10" />
+          <div className="absolute inset-0 bg-secondary/5 dark:bg-white/5 animate-pulse flex items-center justify-center">
+            <Shirt className="w-8 h-8 text-secondary/10 dark:text-white/10" />
           </div>
         )}
         <img
@@ -472,12 +590,12 @@ const EncargoJerseyCard = ({ jersey, onOrder }: { jersey: EncargoJersey, onOrder
         <div className="flex-grow flex flex-col items-center">
           <div className="flex items-center justify-center gap-2 mb-1">
             <span className="text-[9px] md:text-[10px] font-black text-primary uppercase tracking-widest">{jersey.type}</span>
-            <span className="w-1 h-1 rounded-full bg-secondary/20"></span>
-            <span className="text-[9px] md:text-[10px] font-black text-secondary/40 uppercase tracking-widest">{jersey.season}</span>
+            <span className="w-1 h-1 rounded-full bg-secondary/20 dark:bg-white/20"></span>
+            <span className="text-[9px] md:text-[10px] font-black text-secondary/40 dark:text-white/40 uppercase tracking-widest">{jersey.season}</span>
           </div>
           <h3 
             onClick={() => onOrder(jersey)}
-            className="text-[15px] md:text-2xl font-sans font-black text-secondary leading-tight group-hover:text-primary transition-colors uppercase tracking-tight md:tracking-tighter cursor-pointer mb-4 min-h-[2.5rem] md:min-h-[3.5rem] flex items-center justify-center text-center"
+            className="text-[15px] md:text-2xl font-sans font-black text-secondary dark:text-white leading-tight group-hover:text-primary transition-colors uppercase tracking-tight md:tracking-tighter cursor-pointer mb-4 min-h-[2.5rem] md:min-h-[3.5rem] flex items-center justify-center text-center"
           >
             {jersey.team}
           </h3>
@@ -487,7 +605,7 @@ const EncargoJerseyCard = ({ jersey, onOrder }: { jersey: EncargoJersey, onOrder
               if (v === 'Niño') return !!jersey.childImage;
               return true;
             }).map(v => (
-              <span key={v} className="w-10 md:w-14 py-0.5 md:py-1 bg-secondary/5 rounded-md text-[7px] md:text-[8px] font-black text-secondary/40 uppercase tracking-widest border border-secondary/5 flex items-center justify-center">
+              <span key={v} className="w-10 md:w-14 py-0.5 md:py-1 bg-secondary/5 dark:bg-white/5 rounded-md text-[7px] md:text-[8px] font-black text-secondary/40 dark:text-white/40 uppercase tracking-widest border border-secondary/5 dark:border-white/5 flex items-center justify-center">
                 {v}
               </span>
             ))}
@@ -496,7 +614,7 @@ const EncargoJerseyCard = ({ jersey, onOrder }: { jersey: EncargoJersey, onOrder
         
         <button
           onClick={() => onOrder(jersey)}
-          className="w-full bg-secondary text-primary py-2 md:py-4 rounded-lg md:rounded-2xl font-black text-[8px] md:text-[11px] hover:bg-primary hover:text-secondary transition-all shadow-xl flex items-center justify-center gap-2 md:gap-3 uppercase tracking-[0.15em]"
+          className="w-full bg-secondary dark:bg-[#252836] text-primary py-2 md:py-4 rounded-lg md:rounded-2xl font-black text-[8px] md:text-[11px] hover:bg-primary hover:text-secondary dark:hover:bg-primary dark:hover:text-secondary transition-all shadow-xl flex items-center justify-center gap-2 md:gap-3 uppercase tracking-[0.15em] cursor-pointer"
         >
           <ClipboardList className="w-3.5 h-3.5 md:w-4 md:h-4 mb-0.5 ml-1.5" />
           <span>Personalizar Encargo</span>
@@ -537,31 +655,31 @@ const CustomOrderModal = ({ jersey, onClose, onAddToCart }: { jersey: Jersey, on
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-secondary/80 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-secondary/80 dark:bg-black/80 backdrop-blur-sm">
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="bg-accent rounded-3xl w-full max-w-md overflow-hidden shadow-2xl border border-primary/20"
+        className="bg-accent dark:bg-[#14151A] rounded-3xl w-full max-w-md overflow-hidden shadow-2xl border border-primary/20"
       >
         <div className="p-6">
           <div className="flex justify-between items-start mb-6">
             <div>
-              <h2 className="text-2xl font-sans font-bold text-secondary">Personalizar</h2>
-              <p className="text-secondary/60 text-sm">{jersey.name}</p>
+              <h2 className="text-2xl font-sans font-bold text-secondary dark:text-white">Personalizar</h2>
+              <p className="text-secondary/60 dark:text-white/60 text-sm">{jersey.name}</p>
             </div>
-            <button onClick={onClose} className="p-2 hover:bg-secondary/10 rounded-full"><X /></button>
+            <button onClick={onClose} className="p-2 hover:bg-secondary/10 dark:hover:bg-white/10 rounded-full text-secondary dark:text-white cursor-pointer"><X /></button>
           </div>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-secondary/40 uppercase tracking-widest mb-2">Talla</label>
+              <label className="block text-xs font-bold text-secondary/40 dark:text-white/40 uppercase tracking-widest mb-2">Talla</label>
               <div className="flex gap-2">
                 {['S', 'M', 'L', 'XL', 'XXL'].map(s => (
                   <button
                     key={s}
                     onClick={() => setForm({ ...form, size: s })}
-                    className={`flex-1 py-2 rounded-xl font-bold border-2 transition-all ${
-                      form.size === s ? 'border-primary bg-primary/10 text-primary' : 'border-secondary/5 text-secondary/40'
+                    className={`flex-1 py-2 rounded-xl font-bold border-2 transition-all cursor-pointer ${
+                      form.size === s ? 'border-primary bg-primary/10 text-primary' : 'border-secondary/5 dark:border-white/10 bg-white dark:bg-[#1C1D24] text-secondary/40 dark:text-white/40'
                     }`}
                   >
                     {s}
@@ -917,27 +1035,27 @@ const EncargoOrderModal = ({
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-accent overflow-hidden">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-accent dark:bg-[#0E0F13] overflow-hidden">
       <motion.div
         initial={{ y: '100%' }}
         animate={{ y: 0 }}
         className="w-full h-full flex flex-col relative"
       >
         {/* Header */}
-        <div className="bg-white border-b border-secondary/5 p-4 md:p-6 flex items-center justify-between z-50 shadow-sm shrink-0">
+        <div className="bg-white dark:bg-[#14151A] border-b border-secondary/5 dark:border-white/10 p-4 md:p-6 flex items-center justify-between z-50 shadow-sm shrink-0">
           <div className="flex items-center gap-4">
-            <button onClick={onClose} className="p-2 hover:bg-secondary/5 rounded-full transition-colors">
-              <X className="w-6 h-6 text-secondary" />
+            <button onClick={onClose} className="p-2 hover:bg-secondary/5 dark:hover:bg-white/10 rounded-full transition-colors cursor-pointer">
+              <X className="w-6 h-6 text-secondary dark:text-white" />
             </button>
             <div>
-              <h2 className="text-xl md:text-3xl font-sans font-black text-secondary uppercase tracking-wider leading-none">Personalizar</h2>
+              <h2 className="text-xl md:text-3xl font-sans font-black text-secondary dark:text-white uppercase tracking-wider leading-none">Personalizar</h2>
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-widest">
                 {jersey.id === 'rma-gk-third-25-custom' ? 'Real Madrid - Portero (Tercera) - 25/26' : jersey.name}
               </p>
             </div>
           </div>
           <div className="text-right flex flex-col justify-center min-h-[48px] md:min-h-[64px]">
-            <div className="text-2xl md:text-4xl font-sans font-black text-secondary leading-none">${totalPrice}</div>
+            <div className="text-2xl md:text-4xl font-sans font-black text-secondary dark:text-white leading-none">${totalPrice}</div>
             <div className="h-4">
               {form.sleeves === 'Larga' && form.version !== 'Niño' && (
                 <div className="text-[8px] md:text-[10px] font-bold text-primary uppercase tracking-widest mt-1">+ $3 Manga Larga</div>
@@ -947,15 +1065,15 @@ const EncargoOrderModal = ({
         </div>
 
         {/* Scrollable Content Area */}
-        <div className="flex-grow overflow-y-auto bg-accent scrollbar-hide">
+        <div className="flex-grow overflow-y-auto bg-accent dark:bg-[#0E0F13] scrollbar-hide">
           <div className="max-w-xl mx-auto p-6 md:p-10 space-y-10 pb-24">
             
             {/* 1. Jersey Photo */}
             <section className="h-[350px] md:h-[450px] flex items-center justify-center">
-              <div className="relative bg-white rounded-3xl overflow-hidden cursor-zoom-in group shadow-xl border border-secondary/5 mx-auto max-w-[400px]" onClick={() => onZoom(currentImage)}>
+              <div className="relative bg-white dark:bg-[#181920] rounded-3xl overflow-hidden cursor-zoom-in group shadow-xl border border-secondary/5 dark:border-white/10 mx-auto max-w-[400px]" onClick={() => onZoom(currentImage)}>
                 {!imagesLoaded.jersey && (
                   <div className="absolute inset-0 flex items-center justify-center animate-pulse">
-                    <Shirt className="w-12 h-12 text-secondary/10" />
+                    <Shirt className="w-12 h-12 text-secondary/10 dark:text-white/10" />
                   </div>
                 )}
                 <img 
@@ -968,15 +1086,15 @@ const EncargoOrderModal = ({
                   }}
                   referrerPolicy="no-referrer" 
                 />
-                <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <span className="bg-white/90 backdrop-blur-sm text-secondary text-[10px] font-black px-6 py-3 rounded-full uppercase tracking-widest shadow-2xl">Ver en grande</span>
+                <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 dark:group-hover:bg-white/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                  <span className="bg-white/90 dark:bg-[#14151A]/90 backdrop-blur-sm text-secondary dark:text-white text-[10px] font-black px-6 py-3 rounded-full uppercase tracking-widest shadow-2xl">Ver en grande</span>
                 </div>
               </div>
             </section>
 
             {/* 2. Version Selection */}
             <section>
-              <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-widest mb-4">Seleccionar Versión</label>
+              <label className="block text-[10px] font-black text-secondary/40 dark:text-white/40 uppercase tracking-widest mb-4">Seleccionar Versión</label>
               <div className={`grid ${jersey.isRetro ? 'grid-cols-2' : (jersey.playerImage ? 'grid-cols-3' : 'grid-cols-2')} gap-3`}>
                 {(jersey.isRetro ? ['Retro', 'Niño'] : ['Fan', 'Player', 'Niño']).filter(v => {
                   if (v === 'Player') return !!jersey.playerImage;
@@ -998,8 +1116,10 @@ const EncargoOrderModal = ({
                           sizeGuide: LOADED_IMAGES.has(nextSizeGuide || '') 
                         }));
                       }}
-                      className={`py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 transition-all ${
-                        form.version === v ? 'border-primary bg-primary/10 text-secondary shadow-lg' : 'border-secondary/5 bg-white text-secondary/40'
+                      className={`py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 transition-all cursor-pointer ${
+                        form.version === v 
+                          ? 'border-primary bg-primary/10 text-secondary dark:text-primary shadow-lg' 
+                          : 'border-secondary/5 dark:border-white/10 bg-white dark:bg-[#181920] text-secondary/40 dark:text-white/40 hover:text-secondary dark:hover:text-white'
                       }`}
                     >
                       {v}
@@ -1011,17 +1131,17 @@ const EncargoOrderModal = ({
             {/* 3. Sleeve Selection */}
             {(!hideLongSleeves || !hideShortSleeves) && (
               <section>
-                <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-widest mb-4">Tipo de Manga</label>
+                <label className="block text-[10px] font-black text-secondary/40 dark:text-white/40 uppercase tracking-widest mb-4">Tipo de Manga</label>
                 <div className="grid grid-cols-2 gap-3">
                   {form.version === 'Niño' || (hideLongSleeves && !hideShortSleeves) ? (
                     <button
-                      className="py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 border-primary bg-primary/10 text-secondary shadow-lg col-span-2 cursor-default"
+                      className="py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 border-primary bg-primary/10 text-secondary dark:text-primary shadow-lg col-span-2 cursor-default"
                     >
                       Manga Corta
                     </button>
                   ) : (!hideLongSleeves && hideShortSleeves) ? (
                     <button
-                      className="py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 border-primary bg-primary/10 text-secondary shadow-lg col-span-2 cursor-default"
+                      className="py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 border-primary bg-primary/10 text-secondary dark:text-primary shadow-lg col-span-2 cursor-default"
                     >
                       Manga Larga
                     </button>
@@ -1042,8 +1162,10 @@ const EncargoOrderModal = ({
                             setForm({ ...form, sleeves: m as any });
                             setImagesLoaded(prev => ({ ...prev, jersey: LOADED_IMAGES.has(nextImage || '') }));
                           }}
-                          className={`py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 transition-all ${
-                          form.sleeves === m ? 'border-primary bg-primary/10 text-secondary shadow-lg' : 'border-secondary/5 bg-white text-secondary/40'
+                          className={`py-5 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest border-2 transition-all cursor-pointer ${
+                          form.sleeves === m 
+                            ? 'border-primary bg-primary/10 text-secondary dark:text-primary shadow-lg' 
+                            : 'border-secondary/5 dark:border-white/10 bg-white dark:bg-[#181920] text-secondary/40 dark:text-white/40 hover:text-secondary dark:hover:text-white'
                         }`}
                       >
                         Manga {m}
@@ -1064,12 +1186,12 @@ const EncargoOrderModal = ({
 
             {/* 4. Size Guide Photo */}
             <section className="space-y-4">
-              <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-widest mb-2">Guía de Tallas ({form.version})</label>
+              <label className="block text-[10px] font-black text-secondary/40 dark:text-white/40 uppercase tracking-widest mb-2">Guía de Tallas ({form.version})</label>
               <div className="flex items-center justify-center">
-                <div className="relative cursor-zoom-in group shadow-lg rounded-2xl overflow-hidden max-w-[400px] mx-auto border border-secondary/5 w-fit" onClick={() => onZoom(currentSizeGuide)}>
+                <div className="relative cursor-zoom-in group shadow-lg rounded-2xl overflow-hidden max-w-[400px] mx-auto border border-secondary/5 dark:border-white/10 w-fit" onClick={() => onZoom(currentSizeGuide)}>
                   {!imagesLoaded.sizeGuide && (
-                    <div className="h-[120px] w-[200px] bg-white animate-pulse flex items-center justify-center">
-                      <Shirt className="w-6 h-6 text-secondary/10" />
+                    <div className="h-[120px] w-[200px] bg-white dark:bg-[#181920] animate-pulse flex items-center justify-center">
+                      <Shirt className="w-6 h-6 text-secondary/10 dark:text-white/10" />
                     </div>
                   )}
                   <img 
@@ -1082,8 +1204,8 @@ const EncargoOrderModal = ({
                     }}
                     referrerPolicy="no-referrer" 
                   />
-                  <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <span className="bg-white/90 backdrop-blur-sm text-secondary text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-xl">Ver Guía</span>
+                  <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 dark:group-hover:bg-white/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <span className="bg-white/90 dark:bg-[#14151A]/90 backdrop-blur-sm text-secondary dark:text-white text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-xl">Ver Guía</span>
                   </div>
                 </div>
               </div>
@@ -1091,14 +1213,16 @@ const EncargoOrderModal = ({
 
             {/* 5. Size Selector */}
             <section>
-              <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-widest mb-4">Seleccionar Talla</label>
+              <label className="block text-[10px] font-black text-secondary/40 dark:text-white/40 uppercase tracking-widest mb-4">Seleccionar Talla</label>
               <div className="flex flex-wrap gap-3">
                 {(form.version === 'Niño' ? ['16', '18', '20', '22', '24', '26', '28'] : ['S', 'M', 'L', 'XL', '2XL', '3XL']).map(s => (
                   <button
                     key={s}
                     onClick={() => setForm({ ...form, size: s })}
-                    className={`w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-2xl font-black text-xs border-2 transition-all ${
-                      form.size === s ? 'border-primary bg-primary/10 text-secondary shadow-lg' : 'border-secondary/5 bg-white text-secondary/40'
+                    className={`w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-2xl font-black text-xs border-2 transition-all cursor-pointer ${
+                      form.size === s 
+                        ? 'border-primary bg-primary/10 text-secondary dark:text-primary shadow-lg' 
+                        : 'border-secondary/5 dark:border-white/10 bg-white dark:bg-[#181920] text-secondary/40 dark:text-white/40 hover:text-secondary dark:hover:text-white'
                     }`}
                   >
                     {s}
@@ -1112,28 +1236,28 @@ const EncargoOrderModal = ({
               <section className="space-y-6">
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-widest mb-4">Nombre</label>
+                    <label className="block text-[10px] font-black text-secondary/40 dark:text-white/40 uppercase tracking-widest mb-4">Nombre</label>
                     <input
                       type="text"
                       placeholder="Ej: MESSI"
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value.toUpperCase() })}
-                      className="w-full p-5 rounded-2xl border-2 border-secondary/5 focus:border-primary outline-none uppercase bg-white font-black text-sm shadow-sm"
+                      className="w-full p-5 rounded-2xl border-2 border-secondary/5 dark:border-white/10 focus:border-primary outline-none uppercase bg-white dark:bg-[#181920] font-black text-sm shadow-sm text-secondary dark:text-white placeholder:text-secondary/30 dark:placeholder:text-white/30"
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-widest mb-4">Dorsal</label>
+                    <label className="block text-[10px] font-black text-secondary/40 dark:text-white/40 uppercase tracking-widest mb-4">Dorsal</label>
                     <input
                       type="text"
                       placeholder="Ej: 10"
                       value={form.number}
                       onChange={(e) => setForm({ ...form, number: e.target.value.replace(/\D/g, '') })}
-                      className="w-full p-5 rounded-2xl border-2 border-secondary/5 focus:border-primary outline-none bg-white font-black text-sm shadow-sm"
+                      className="w-full p-5 rounded-2xl border-2 border-secondary/5 dark:border-white/10 focus:border-primary outline-none bg-white dark:bg-[#181920] font-black text-sm shadow-sm text-secondary dark:text-white placeholder:text-secondary/30 dark:placeholder:text-white/30"
                     />
                   </div>
                 </div>
-                <div className="bg-primary/5 p-4 rounded-2xl border border-primary/10">
-                  <p className="text-[10px] md:text-xs font-bold text-secondary/70 leading-relaxed italic">
+                <div className="bg-primary/5 dark:bg-primary/10 p-4 rounded-2xl border border-primary/10 dark:border-primary/20">
+                  <p className="text-[10px] md:text-xs font-bold text-secondary/70 dark:text-white/70 leading-relaxed italic">
                     * Por favor, consulta exactamente cómo usa el jugador el nombre en su camiseta (ej: "L. MESSI" o "MESSI") para que se coloque correctamente. Si no deseas nombre o dorsal, puedes dejar estos campos en blanco.
                   </p>
                 </div>
@@ -1143,7 +1267,7 @@ const EncargoOrderModal = ({
             {/* 8. Patch Selector */}
             {jersey.id !== 'fcb-special-travis-24-custom' && !(PATCHES.length === 1 && PATCHES[0].name === 'Sin Parche') && (
               <section>
-                <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-widest mb-4">Seleccionar Parche</label>
+                <label className="block text-[10px] font-black text-secondary/40 dark:text-white/40 uppercase tracking-widest mb-4">Seleccionar Parche</label>
                 <div className="grid grid-cols-3 md:grid-cols-2 gap-2 md:gap-4">
                   {PATCHES.map(p => (
                     <button
@@ -1153,8 +1277,10 @@ const EncargoOrderModal = ({
                         setForm({ ...form, patch: p.name });
                         setImagesLoaded(prev => ({ ...prev, numbering: LOADED_IMAGES.has(nextNumbering || '') }));
                       }}
-                      className={`flex flex-col items-center gap-2 md:gap-4 p-2 md:p-6 rounded-2xl md:rounded-3xl border-2 transition-all min-h-0 md:min-h-[180px] ${
-                        form.patch === p.name ? 'border-primary bg-primary/10 text-secondary shadow-lg' : 'border-secondary/5 bg-white text-secondary/40'
+                      className={`flex flex-col items-center gap-2 md:gap-4 p-2 md:p-6 rounded-2xl md:rounded-3xl border-2 transition-all min-h-0 md:min-h-[180px] cursor-pointer ${
+                        form.patch === p.name 
+                          ? 'border-primary bg-primary/10 text-secondary dark:text-primary shadow-lg' 
+                          : 'border-secondary/5 dark:border-white/10 bg-white dark:bg-[#181920] text-secondary/40 dark:text-white/40 hover:text-secondary dark:hover:text-white'
                       }`}
                     >
                       {p.logo ? (
@@ -1162,7 +1288,7 @@ const EncargoOrderModal = ({
                           <img src={p.logo} alt={p.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
                         </div>
                       ) : (
-                        <div className="w-10 h-10 md:w-20 md:h-20 flex items-center justify-center border-2 border-dashed border-secondary/10 rounded-full">
+                        <div className="w-10 h-10 md:w-20 md:h-20 flex items-center justify-center border-2 border-dashed border-secondary/10 dark:border-white/10 rounded-full">
                           <X className="w-4 h-4 md:w-6 md:h-6 opacity-20" />
                         </div>
                       )}
@@ -1177,7 +1303,7 @@ const EncargoOrderModal = ({
             <section className="h-auto flex items-center justify-center pb-10">
               {currentNumbering ? (
                 <div className="space-y-4 w-full">
-                  <label className="block text-[10px] font-black text-secondary/40 uppercase tracking-widest mb-2 text-center">
+                  <label className="block text-[10px] font-black text-secondary/40 dark:text-white/40 uppercase tracking-widest mb-2 text-center">
                     {!showSpecificStyle 
                       ? 'Estilo de Dorsal' 
                       : (form.patch === 'Champions League' || form.patch.includes('Champions'))
@@ -1195,10 +1321,10 @@ const EncargoOrderModal = ({
                               : (form.patch === 'Supercopa de España' ? 'Estilo de Dorsal de Liga/Supercopa' : 'Estilo de Dorsal de Liga')
                     }
                   </label>
-                  <div className="relative cursor-zoom-in group shadow-lg rounded-2xl overflow-hidden max-w-[400px] mx-auto border border-secondary/5 w-fit" onClick={() => onZoom(currentNumbering)}>
+                  <div className="relative cursor-zoom-in group shadow-lg rounded-2xl overflow-hidden max-w-[400px] mx-auto border border-secondary/5 dark:border-white/10 w-fit" onClick={() => onZoom(currentNumbering)}>
                     {!imagesLoaded.numbering && (
-                      <div className="h-[120px] w-[200px] flex items-center justify-center bg-white animate-pulse">
-                        <Shirt className="w-8 h-8 text-secondary/10" />
+                      <div className="h-[120px] w-[200px] flex items-center justify-center bg-white dark:bg-[#181920] animate-pulse">
+                        <Shirt className="w-8 h-8 text-secondary/10 dark:text-white/10" />
                       </div>
                     )}
                     <img 
@@ -1211,20 +1337,20 @@ const EncargoOrderModal = ({
                       }}
                       referrerPolicy="no-referrer" 
                     />
-                    <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                      <span className="bg-white/90 backdrop-blur-sm text-secondary text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-xl">Ver Estilo</span>
+                    <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 dark:group-hover:bg-white/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <span className="bg-white/90 dark:bg-[#14151A]/90 backdrop-blur-sm text-secondary dark:text-white text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-xl">Ver Estilo</span>
                     </div>
                   </div>
                 </div>
               ) : (
-                <div className="text-[10px] font-black text-secondary/10 uppercase tracking-widest">Sin previsualización de dorsal</div>
+                <div className="text-[10px] font-black text-secondary/10 dark:text-white/10 uppercase tracking-widest">Sin previsualización de dorsal</div>
               )}
             </section>
 
             {/* Submit Button */}
             <button
               onClick={handleAddToCart}
-              className="w-full bg-secondary text-primary py-5 md:py-6 rounded-3xl font-black text-xs md:text-sm uppercase tracking-[0.25em] hover:bg-primary hover:text-secondary transition-all duration-300 shadow-2xl shadow-secondary/20 flex items-center justify-center gap-3 group active:scale-[0.99]"
+              className="w-full bg-secondary dark:bg-[#252836] text-primary py-5 md:py-6 rounded-3xl font-black text-xs md:text-sm uppercase tracking-[0.25em] hover:bg-primary hover:text-secondary dark:hover:bg-primary dark:hover:text-secondary transition-all duration-300 shadow-2xl shadow-secondary/20 flex items-center justify-center gap-3 group active:scale-[0.99] cursor-pointer"
             >
               <ShoppingCart className="w-5 h-5 group-hover:scale-110 transition-transform" />
               <span>Añadir al Carrito • ${totalPrice}</span>
@@ -1239,7 +1365,7 @@ const EncargoOrderModal = ({
 const ImageZoomModal = ({ src, onClose }: { src: string, onClose: () => void }) => {
   return (
     <div 
-      className="fixed inset-0 z-[200] flex items-center justify-center bg-secondary/95 backdrop-blur-xl p-4 cursor-zoom-out"
+      className="fixed inset-0 z-[200] flex items-center justify-center bg-secondary/95 dark:bg-black/95 backdrop-blur-xl p-4 cursor-zoom-out"
       onClick={onClose}
     >
       <motion.div
@@ -1255,7 +1381,7 @@ const ImageZoomModal = ({ src, onClose }: { src: string, onClose: () => void }) 
         />
         <button 
           onClick={onClose}
-          className="absolute top-0 right-0 p-4 text-primary hover:scale-110 transition-transform"
+          className="absolute top-0 right-0 p-4 text-primary hover:scale-110 transition-transform cursor-pointer"
         >
           <X className="w-8 h-8" />
         </button>
@@ -1332,6 +1458,7 @@ const Countdown = ({ targetDate, finishMessage = "¡Finalizado!", variant = "ful
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { isDark, currentLogoUrl } = useTheme();
   
   // Map path to tab - robust parsing handling trailing slashes
   const activeTab = location.pathname.split('/').filter(Boolean)[0] || 'home';
@@ -1382,6 +1509,7 @@ export default function App() {
     setCartItems(prev => {
       const existingIndex = prev.findIndex(i => 
         i.jerseyId === item.jerseyId &&
+        i.itemType === item.itemType &&
         i.version === item.version &&
         i.size === item.size &&
         (i.sleeves || 'Corta') === (item.sleeves || 'Corta') &&
@@ -1391,16 +1519,22 @@ export default function App() {
       );
 
       if (existingIndex > -1) {
+        // If it's a stock jersey, only 1 unit is available
+        if (item.itemType === 'stock') {
+          showToast(`¡"${item.team} ${item.type}" ya está en tu carrito (única unidad en stock)!`);
+          return prev;
+        }
         const copy = [...prev];
         copy[existingIndex] = {
           ...copy[existingIndex],
           quantity: copy[existingIndex].quantity + (item.quantity || 1)
         };
+        showToast(`¡"${item.team} ${item.type}" añadido al carrito!`);
         return copy;
       }
+      showToast(`¡"${item.team} ${item.type}" añadido al carrito!`);
       return [...prev, item];
     });
-    showToast(`¡"${item.team} ${item.type}" añadido al carrito!`);
   };
 
   const addStockJerseyToCart = (jersey: Jersey) => {
@@ -1647,10 +1781,10 @@ export default function App() {
                     className="max-w-2xl mx-auto lg:mx-0"
                   >
                     <h1 className="text-[42px] sm:text-7xl md:text-8xl lg:text-9xl font-sans font-black tracking-tighter leading-[0.8] mb-4 md:mb-6">
-                      <span className="text-secondary block lg:inline">No Pain </span>
+                      <span className="text-secondary dark:text-white block lg:inline">No Pain </span>
                       <span className="text-primary block lg:inline">No Jersey</span>
                     </h1>
-                    <p className="text-secondary font-sans italic text-sm md:text-3xl mb-4 md:mb-10 tracking-wide">
+                    <p className="text-secondary dark:text-white/80 font-sans italic text-sm md:text-3xl mb-4 md:mb-10 tracking-wide">
                       La pasión se vive con estilo
                     </p>
                     
@@ -1665,7 +1799,7 @@ export default function App() {
                       </Link>
                       <Link
                         to="/encargos"
-                        className="pill-button border-2 border-secondary text-secondary hover:bg-secondary hover:text-white text-[10px] py-2.5 px-5 w-[160px] justify-center"
+                        className="pill-button border-2 border-secondary dark:border-white/30 text-secondary dark:text-white hover:bg-secondary dark:hover:bg-white dark:hover:text-[#0E0F13] text-[10px] py-2.5 px-5 w-[160px] justify-center"
                       >
                         <ClipboardList className="w-4 h-4" />
                         Hacer Encargo
@@ -1682,7 +1816,7 @@ export default function App() {
                       </Link>
                       <Link
                         to="/encargos"
-                        className="pill-button border-2 border-secondary text-secondary hover:bg-secondary hover:text-white text-xs md:text-base py-4 md:py-5"
+                        className="pill-button border-2 border-secondary dark:border-white/30 text-secondary dark:text-white hover:bg-secondary dark:hover:bg-white dark:hover:text-[#0E0F13] text-xs md:text-base py-4 md:py-5"
                       >
                         <ClipboardList className="w-4 h-4 md:w-5 md:h-5" />
                         Hacer Encargo Personalizado
@@ -1702,20 +1836,20 @@ export default function App() {
                     referrerPolicy="no-referrer"
                   />
                   {/* Gradients */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-accent via-transparent to-transparent lg:bg-gradient-to-r lg:from-accent lg:via-transparent lg:to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 h-24 md:h-32 bg-gradient-to-t from-accent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-accent dark:from-[#0E0F13] via-transparent to-transparent lg:bg-gradient-to-r lg:from-accent dark:lg:from-[#0E0F13] lg:via-transparent lg:to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 h-24 md:h-32 bg-gradient-to-t from-accent dark:from-[#0E0F13] to-transparent" />
                 </div>
               </div>
             </section>
 
             {/* Why Choose Us Section */}
-            <section className="pt-0 pb-12 lg:py-24 bg-accent">
+            <section className="pt-0 pb-12 lg:py-24 bg-accent dark:bg-[#0E0F13]">
               <div className="max-w-7xl mx-auto px-4">
                 <motion.h2 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="text-3xl md:text-6xl font-sans font-black text-secondary text-center mb-12 md:mb-20 tracking-tighter"
+                  className="text-3xl md:text-6xl font-sans font-black text-secondary dark:text-white text-center mb-12 md:mb-20 tracking-tighter"
                 >
                   ¿Por qué elegirnos?
                 </motion.h2>
@@ -1755,8 +1889,8 @@ export default function App() {
                         {f.icon}
                       </div>
                       <div className="space-y-2 md:space-y-3">
-                        <h3 className="text-sm md:text-2xl font-sans font-bold text-secondary uppercase tracking-tight">{f.title}</h3>
-                        <p className="text-[10px] md:text-base text-secondary/70 leading-relaxed font-medium line-clamp-3 md:line-clamp-none">
+                        <h3 className="text-sm md:text-2xl font-sans font-bold text-secondary dark:text-white uppercase tracking-tight">{f.title}</h3>
+                        <p className="text-[10px] md:text-base text-secondary/70 dark:text-white/70 leading-relaxed font-medium line-clamp-3 md:line-clamp-none">
                           {f.desc}
                         </p>
                       </div>
@@ -1773,7 +1907,7 @@ export default function App() {
             <div className={`flex flex-col items-center ${activeTab === 'encargos' ? 'gap-6 md:gap-8 mb-10' : 'gap-12 mb-16'}`}>
               {/* Header Section Centered */}
               <div className="text-center space-y-2 md:space-y-4">
-                <h1 className="text-2xl md:text-5xl font-sans font-black text-secondary tracking-tighter uppercase leading-none">
+                <h1 className="text-2xl md:text-5xl font-sans font-black text-secondary dark:text-white tracking-tighter uppercase leading-none">
                   Catálogo {activeTab === 'stock' ? 'en Stock' : 'de Encargos'}
                 </h1>
                 <p className="font-black text-xs md:text-lg text-primary">
@@ -1802,7 +1936,7 @@ export default function App() {
                           setSelectedTeam(null);
                         }
                       }}
-                      className="w-full pl-12 md:pl-16 pr-4 md:pr-6 py-3 md:py-5 bg-white rounded-[1.5rem] md:rounded-[2rem] border-none shadow-2xl shadow-secondary/5 focus:ring-4 focus:ring-primary/20 outline-none transition-all text-sm md:text-lg font-bold text-secondary placeholder:text-secondary/50"
+                      className="w-full pl-12 md:pl-16 pr-4 md:pr-6 py-3 md:py-5 bg-white dark:bg-[#181920] rounded-[1.5rem] md:rounded-[2rem] border border-transparent dark:border-white/10 shadow-2xl shadow-secondary/5 focus:ring-4 focus:ring-primary/20 outline-none transition-all text-sm md:text-lg font-bold text-secondary dark:text-white placeholder:text-secondary/50 dark:placeholder:text-white/40"
                     />
                   </div>
 
@@ -1810,14 +1944,14 @@ export default function App() {
                     <div className="flex flex-col sm:flex-row gap-4 md:gap-6 items-center">
                       {/* Style Filter */}
                       <div className="space-y-2 md:space-y-3 w-full sm:w-auto">
-                        <label className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-secondary/60 ml-4">Estilo</label>
-                        <div className="flex bg-white p-1.5 md:p-2 rounded-2xl md:rounded-3xl shadow-xl shadow-secondary/5 border border-secondary/5">
+                        <label className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-secondary/60 dark:text-white/50 ml-4">Estilo</label>
+                        <div className="flex bg-white dark:bg-[#181920] p-1.5 md:p-2 rounded-2xl md:rounded-3xl shadow-xl shadow-secondary/5 border border-secondary/5 dark:border-white/10">
                           {['TODOS', 'FAN', 'PLAYER', 'RETRO'].map(style => (
                             <button
                               key={style}
                               onClick={() => setFilterStyle(style)}
                               className={`px-3 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl text-[8px] md:text-[10px] font-black uppercase tracking-widest transition-all ${
-                                filterStyle === style ? 'bg-secondary text-primary shadow-lg' : 'text-secondary/60 hover:text-secondary'
+                                filterStyle === style ? 'bg-secondary dark:bg-primary text-primary dark:text-secondary shadow-lg' : 'text-secondary/60 dark:text-white/50 hover:text-secondary dark:hover:text-white'
                               }`}
                             >
                               {style}
@@ -1828,14 +1962,14 @@ export default function App() {
 
                       {/* Size Filter */}
                       <div className="space-y-2 md:space-y-3 w-full sm:w-auto">
-                        <label className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-secondary/60 ml-4">Talla</label>
-                        <div className="flex bg-white p-1.5 md:p-2 rounded-2xl md:rounded-3xl shadow-xl shadow-secondary/5 border border-secondary/5">
+                        <label className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-secondary/60 dark:text-white/50 ml-4">Talla</label>
+                        <div className="flex bg-white dark:bg-[#181920] p-1.5 md:p-2 rounded-2xl md:rounded-3xl shadow-xl shadow-secondary/5 border border-secondary/5 dark:border-white/10">
                           {['TODAS', 'S', 'M', 'L', 'XL', 'XXL'].map(size => (
                             <button
                               key={size}
                               onClick={() => setFilterSize(size)}
                               className={`w-8 h-8 md:w-12 md:h-12 flex items-center justify-center rounded-lg md:rounded-2xl text-[8px] md:text-[10px] font-black transition-all ${
-                                filterSize === size ? 'bg-primary text-secondary shadow-lg' : 'text-secondary/60 hover:text-secondary'
+                                filterSize === size ? 'bg-primary text-secondary shadow-lg' : 'text-secondary/60 dark:text-white/50 hover:text-secondary dark:hover:text-white'
                               }`}
                             >
                               {size}
@@ -1861,14 +1995,18 @@ export default function App() {
                           }}
                           className={`flex flex-col items-center gap-1 md:gap-3 p-1.5 md:p-5 rounded-xl md:rounded-2xl border-2 transition-all duration-300 w-full md:w-[130px] h-auto md:aspect-auto ${
                             selectedLeague === league.name 
-                              ? 'border-primary bg-primary/10 text-secondary shadow-lg shadow-primary/10' 
-                              : 'border-secondary/5 bg-white text-secondary/60 hover:border-primary/30 hover:text-secondary'
+                              ? 'border-primary bg-primary/10 text-secondary dark:text-primary shadow-lg shadow-primary/10' 
+                              : 'border-secondary/5 dark:border-white/10 bg-white dark:bg-[#181920] text-secondary/60 dark:text-white/60 hover:border-primary/30 hover:text-secondary dark:hover:text-white'
                           }`}
                         >
                           <img 
                             src={league.logo} 
                             alt={league.name} 
-                            className="w-8 h-8 md:w-14 md:h-14 object-contain"
+                            className={`w-8 h-8 md:w-14 md:h-14 object-contain ${
+                              (league.name === 'Premier League' || league.name === 'Ligue 1' || league.name === 'Otras Ligas')
+                                ? 'dark:brightness-0 dark:invert'
+                                : ''
+                            }`}
                             referrerPolicy="no-referrer"
                           />
                           <span className="text-[6px] md:text-[11px] font-black uppercase tracking-wider text-center leading-tight">{league.name}</span>
@@ -1896,14 +2034,16 @@ export default function App() {
                               }}
                               className={`flex flex-col items-center gap-1.5 md:gap-2 p-1.5 md:p-4 rounded-xl transition-all w-full md:w-[110px] ${
                                 selectedTeam === team.name 
-                                  ? 'bg-secondary text-primary shadow-lg' 
-                                  : 'bg-secondary/5 text-secondary/60 hover:bg-secondary/10 hover:text-secondary'
+                                  ? 'bg-secondary dark:bg-primary text-primary dark:text-secondary shadow-lg' 
+                                  : 'bg-secondary/5 dark:bg-white/5 text-secondary/60 dark:text-white/60 hover:bg-secondary/10 dark:hover:bg-white/10 hover:text-secondary dark:hover:text-white'
                               }`}
                             >
                               <img 
                                 src={team.logo} 
                                 alt={team.name} 
-                                className="w-6 h-6 md:w-12 md:h-12 object-contain"
+                                className={`w-6 h-6 md:w-12 md:h-12 object-contain ${
+                                  team.name === 'Otros' ? 'dark:brightness-0 dark:invert' : ''
+                                }`}
                                 referrerPolicy="no-referrer"
                               />
                               <span className="text-[6px] md:text-[10px] font-bold uppercase text-center leading-tight">{team.name}</span>
@@ -1920,9 +2060,9 @@ export default function App() {
                           className="pt-1 md:pt-8 space-y-4 md:space-y-8"
                         >
                           <div className="flex items-center gap-4">
-                            <div className="h-px bg-secondary/10 flex-grow" />
-                            <h2 className="text-xl md:text-3xl font-sans font-black text-secondary uppercase tracking-tighter">Destacadas de hoy</h2>
-                            <div className="h-px bg-secondary/10 flex-grow" />
+                            <div className="h-px bg-secondary/10 dark:bg-white/10 flex-grow" />
+                            <h2 className="text-xl md:text-3xl font-sans font-black text-secondary dark:text-white uppercase tracking-tighter">Destacadas de hoy</h2>
+                            <div className="h-px bg-secondary/10 dark:bg-white/10 flex-grow" />
                           </div>
                           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             {featuredJerseys.map(jersey => (
@@ -1953,24 +2093,24 @@ export default function App() {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-12 md:py-24 bg-white rounded-3xl md:rounded-[3rem] border border-secondary/5 shadow-inner px-6">
+                <div className="text-center py-12 md:py-24 bg-white dark:bg-[#181920] rounded-3xl md:rounded-[3rem] border border-secondary/5 dark:border-white/10 shadow-inner px-6">
                   <Shirt className="w-10 h-10 md:w-16 md:h-16 text-primary/20 mx-auto mb-6" />
-                  <h3 className="text-lg md:text-2xl font-sans font-black text-secondary mb-4 uppercase tracking-tight">
+                  <h3 className="text-lg md:text-2xl font-sans font-black text-secondary dark:text-white mb-4 uppercase tracking-tight">
                     ¿No encuentras tu camiseta?
                   </h3>
-                  <p className="text-secondary/60 text-sm md:text-lg mb-8 max-w-md mx-auto">
+                  <p className="text-secondary/60 dark:text-white/60 text-sm md:text-lg mb-8 max-w-md mx-auto">
                     Si no encuentra la camiseta que desea puede encargarla directamente con nosotros.
                   </p>
                   <Link 
                     to="/encargos"
-                    className="bg-secondary text-primary px-6 py-3 md:px-10 md:py-4 rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest hover:bg-primary hover:text-secondary transition-all shadow-xl inline-block"
+                    className="bg-secondary dark:bg-primary text-primary dark:text-secondary px-6 py-3 md:px-10 md:py-4 rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest hover:bg-primary hover:text-secondary dark:hover:bg-primary/90 transition-all shadow-xl inline-block"
                   >
                     Ir a la sección de encargos
                   </Link>
                   <div className="mt-8">
                     <button 
                       onClick={() => { setStockSearchQuery(''); setFilterSize('TODAS'); setFilterStyle('TODOS'); }}
-                      className="text-secondary/40 font-bold uppercase tracking-widest text-[10px] hover:text-primary transition-colors"
+                      className="text-secondary/40 dark:text-white/40 font-bold uppercase tracking-widest text-[10px] hover:text-primary transition-colors cursor-pointer"
                     >
                       O limpiar filtros de búsqueda
                     </button>
@@ -2008,17 +2148,17 @@ export default function App() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                      className="text-center py-6 md:py-10 bg-white rounded-3xl md:rounded-[2rem] border border-secondary/5 shadow-sm px-6 max-w-3xl mx-auto"
+                      className="text-center py-6 md:py-10 bg-white dark:bg-[#181920] rounded-3xl md:rounded-[2rem] border border-secondary/5 dark:border-white/10 shadow-sm px-6 max-w-3xl mx-auto"
                     >
                       <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         className="space-y-4 md:space-y-6"
                       >
-                      <h3 className="text-base md:text-xl font-sans font-black text-secondary uppercase tracking-tight">
+                      <h3 className="text-base md:text-xl font-sans font-black text-secondary dark:text-white uppercase tracking-tight">
                         ¿No encuentra la camiseta que busca?
                       </h3>
-                      <p className="text-secondary/60 text-[10px] md:text-sm leading-relaxed max-w-xl mx-auto">
+                      <p className="text-secondary/60 dark:text-white/60 text-[10px] md:text-sm leading-relaxed max-w-xl mx-auto">
                         Si no encuentras la camiseta que buscas, puedes consultarnos por WhatsApp para revisar disponibilidad, tenemos muchas camisetas que todavía no aparecen en el catálogo. Dinos el equipo, la temporada y los detalles que prefieras.
                       </p>
                       <button 
@@ -2029,7 +2169,7 @@ export default function App() {
                             : `¡Hola! Quiero consultar disponibilidad de modelos que no están en el catálogo. ¿Qué otros modelos tienen?`;
                           window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
                         }}
-                        className="bg-secondary text-primary px-5 py-2.5 md:px-7 md:py-3.5 rounded-xl md:rounded-2xl font-black text-[9px] md:text-xs uppercase tracking-widest hover:bg-primary hover:text-secondary transition-all shadow-lg flex items-center gap-2.5 mx-auto"
+                        className="bg-secondary dark:bg-[#252836] text-primary px-5 py-2.5 md:px-7 md:py-3.5 rounded-xl md:rounded-2xl font-black text-[9px] md:text-xs uppercase tracking-widest hover:bg-primary hover:text-secondary dark:hover:bg-primary dark:hover:text-secondary transition-all shadow-lg flex items-center gap-2.5 mx-auto cursor-pointer"
                       >
                         <svg className="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.396.015 12.03c0 2.12.553 4.189 1.606 6.06L0 24l6.104-1.601a11.803 11.803 0 005.943 1.603h.005c6.634 0 12.032-5.396 12.035-12.03a11.85 11.85 0 00-3.529-8.511z"/>
@@ -2054,16 +2194,16 @@ export default function App() {
             >
               {/* Header Section Centered */}
               <div className="text-center space-y-2 md:space-y-4">
-                <h1 className="text-2xl md:text-5xl font-sans font-black text-secondary tracking-tighter uppercase">Nosotros</h1>
+                <h1 className="text-2xl md:text-5xl font-sans font-black text-secondary dark:text-white tracking-tighter uppercase">Nosotros</h1>
                 <p className="text-primary text-xs md:text-lg font-black">Nuestra Historia</p>
               </div>
 
               {/* Content Grid */}
               <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-12 items-stretch">
                 {/* Logo with background box - First on mobile */}
-                <div className="order-1 md:order-2 bg-[#ebd6ac] p-6 md:p-10 rounded-3xl md:rounded-[3rem] shadow-2xl shadow-secondary/5 border border-secondary/5 flex items-center justify-center">
+                <div className="order-1 md:order-2 bg-[#ebd6ac] dark:bg-[#181920] p-6 md:p-10 rounded-3xl md:rounded-[3rem] shadow-2xl shadow-secondary/5 border border-secondary/5 dark:border-white/10 flex items-center justify-center">
                   <img 
-                    src="https://drive.google.com/thumbnail?id=1o9b1FebufUYMasAyZmPF7KOEcjLDbAe4&sz=w800" 
+                    src={isDark ? "https://drive.google.com/thumbnail?id=1Se647d331cMw5qYjEn56h8i_-g6aLUEL&sz=w800" : "https://drive.google.com/thumbnail?id=1o9b1FebufUYMasAyZmPF7KOEcjLDbAe4&sz=w800"} 
                     alt="Logo Sobre Nosotros" 
                     className="w-full max-w-[320px] md:max-w-md h-auto object-contain transform hover:scale-105 transition-transform duration-500" 
                     referrerPolicy="no-referrer" 
@@ -2071,7 +2211,7 @@ export default function App() {
                 </div>
 
                 {/* Text - Second on mobile */}
-                <div className="order-2 md:order-1 space-y-4 md:space-y-8 text-sm md:text-xl text-secondary/80 leading-relaxed text-left bg-white p-6 md:p-10 rounded-3xl md:rounded-[3rem] shadow-2xl shadow-secondary/5 border border-secondary/5 flex flex-col justify-center">
+                <div className="order-2 md:order-1 space-y-4 md:space-y-8 text-sm md:text-xl text-secondary/80 dark:text-white/80 leading-relaxed text-left bg-white dark:bg-[#181920] p-6 md:p-10 rounded-3xl md:rounded-[3rem] shadow-2xl shadow-secondary/5 border border-secondary/5 dark:border-white/10 flex flex-col justify-center">
                   <p>
                     En <span className="text-primary font-black">No Pain No Jersey</span> llevamos más de un año convirtiendo una idea sencilla en una comunidad: que la pasión por el fútbol se pueda vestir sin que sea un lujo. Somos dos jóvenes matanceros que crecimos entre partidos, historias de equipos y camisetas que significan mucho más que una prenda.
                   </p>
@@ -2083,7 +2223,7 @@ export default function App() {
 
               {/* Centered Quote */}
               <div className="text-center">
-                <p className="text-lg md:text-3xl font-sans font-black text-secondary italic uppercase tracking-tight">
+                <p className="text-lg md:text-3xl font-sans font-black text-secondary dark:text-white italic uppercase tracking-tight">
                   "la pasión se vive con estilo"
                 </p>
               </div>
@@ -2099,7 +2239,7 @@ export default function App() {
               className="space-y-8 md:space-y-12"
             >
               <div className="text-center space-y-2 md:space-y-4">
-                <h1 className="text-2xl md:text-5xl font-sans font-black text-secondary uppercase tracking-tighter">Preguntas</h1>
+                <h1 className="text-2xl md:text-5xl font-sans font-black text-secondary dark:text-white uppercase tracking-tighter">Preguntas</h1>
                 <p className="text-primary text-xs md:text-lg font-black">Resolvemos tus preguntas más comunes para que compres con total confianza.</p>
               </div>
 
@@ -2118,28 +2258,28 @@ export default function App() {
                           <img 
                             src="https://drive.google.com/thumbnail?id=1CO3rEhecYEGJXvHDCX42QqX6eRvf_fF4&sz=w800" 
                             alt="Diferencia 1" 
-                            className="rounded-2xl border border-secondary/10 w-full cursor-zoom-in" 
+                            className="rounded-2xl border border-secondary/10 dark:border-white/10 w-full cursor-zoom-in" 
                             referrerPolicy="no-referrer" 
                             onClick={() => setZoomedImage("https://drive.google.com/thumbnail?id=1CO3rEhecYEGJXvHDCX42QqX6eRvf_fF4&sz=w1600")}
                           />
                           <img 
                             src="https://drive.google.com/thumbnail?id=1nKviH8ENgKsHgqPvi0o4TOBGvv4C72Zt&sz=w800" 
                             alt="Diferencia 2" 
-                            className="rounded-2xl border border-secondary/10 w-full cursor-zoom-in" 
+                            className="rounded-2xl border border-secondary/10 dark:border-white/10 w-full cursor-zoom-in" 
                             referrerPolicy="no-referrer" 
                             onClick={() => setZoomedImage("https://drive.google.com/thumbnail?id=1nKviH8ENgKsHgqPvi0o4TOBGvv4C72Zt&sz=w1600")}
                           />
                           <img 
                             src="https://drive.google.com/thumbnail?id=1IDPj1CwvZGB0EpZ-I0ouoFPtFXL4Yvcw&sz=w800" 
                             alt="Diferencia 3" 
-                            className="rounded-2xl border border-secondary/10 w-full cursor-zoom-in" 
+                            className="rounded-2xl border border-secondary/10 dark:border-white/10 w-full cursor-zoom-in" 
                             referrerPolicy="no-referrer" 
                             onClick={() => setZoomedImage("https://drive.google.com/thumbnail?id=1IDPj1CwvZGB0EpZ-I0ouoFPtFXL4Yvcw&sz=w1600")}
                           />
                           <img 
                             src="https://drive.google.com/thumbnail?id=1Bk9Vx3SXVUn49EdSpo2JLbPYFTIX4sff&sz=w800" 
                             alt="Diferencia 4" 
-                            className="rounded-2xl border border-secondary/10 w-full cursor-zoom-in" 
+                            className="rounded-2xl border border-secondary/10 dark:border-white/10 w-full cursor-zoom-in" 
                             referrerPolicy="no-referrer" 
                             onClick={() => setZoomedImage("https://drive.google.com/thumbnail?id=1Bk9Vx3SXVUn49EdSpo2JLbPYFTIX4sff&sz=w1600")}
                           />
@@ -2166,31 +2306,31 @@ export default function App() {
                         <p>Puede consultar nuestras guías de talla para las diferentes versiones, le recomendamos medir algún pullover que le guste como le guste y comparar con las guías.</p>
                         <div className="grid gap-8">
                           <div className="space-y-2">
-                            <p className="font-bold text-secondary uppercase text-sm">Versiones Fan / Retro:</p>
+                            <p className="font-bold text-secondary dark:text-white uppercase text-sm">Versiones Fan / Retro:</p>
                             <img 
                               src="https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800" 
                               alt="Guía Fan/Retro" 
-                              className="rounded-2xl border border-secondary/10 w-full cursor-zoom-in" 
+                              className="rounded-2xl border border-secondary/10 dark:border-white/10 w-full cursor-zoom-in" 
                               referrerPolicy="no-referrer" 
                               onClick={() => setZoomedImage("https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w1600")}
                             />
                           </div>
                           <div className="space-y-2">
-                            <p className="font-bold text-secondary uppercase text-sm">Versiones Player:</p>
+                            <p className="font-bold text-secondary dark:text-white uppercase text-sm">Versiones Player:</p>
                             <img 
                               src="https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800" 
                               alt="Guía Player" 
-                              className="rounded-2xl border border-secondary/10 w-full cursor-zoom-in" 
+                              className="rounded-2xl border border-secondary/10 dark:border-white/10 w-full cursor-zoom-in" 
                               referrerPolicy="no-referrer" 
                               onClick={() => setZoomedImage("https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w1600")}
                             />
                           </div>
                           <div className="space-y-2">
-                            <p className="font-bold text-secondary uppercase text-sm">Niños:</p>
+                            <p className="font-bold text-secondary dark:text-white uppercase text-sm">Niños:</p>
                             <img 
                               src="https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800" 
                               alt="Guía Niños" 
-                              className="rounded-2xl border border-secondary/10 w-full cursor-zoom-in" 
+                              className="rounded-2xl border border-secondary/10 dark:border-white/10 w-full cursor-zoom-in" 
                               referrerPolicy="no-referrer" 
                               onClick={() => setZoomedImage("https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w1600")}
                             />
@@ -2220,25 +2360,25 @@ export default function App() {
             >
               {/* Header Section */}
               <div className="space-y-2 md:space-y-4">
-                <h1 className="text-2xl md:text-5xl font-sans font-black text-secondary tracking-tighter uppercase">Contacto</h1>
+                <h1 className="text-2xl md:text-5xl font-sans font-black text-secondary dark:text-white tracking-tighter uppercase">Contacto</h1>
                 <p className="text-primary text-xs md:text-lg font-black italic">Estamos a un mensaje de distancia</p>
               </div>
 
-              <div className="bg-white p-6 md:p-12 rounded-3xl md:rounded-[3rem] shadow-2xl shadow-secondary/5 border border-secondary/5 space-y-6 md:space-y-10">
-                <p className="text-sm md:text-xl text-secondary/70 leading-relaxed max-w-2xl mx-auto font-medium">
+              <div className="bg-white dark:bg-[#181920] p-6 md:p-12 rounded-3xl md:rounded-[3rem] shadow-2xl shadow-secondary/5 border border-secondary/5 dark:border-white/10 space-y-6 md:space-y-10">
+                <p className="text-sm md:text-xl text-secondary/70 dark:text-white/70 leading-relaxed max-w-2xl mx-auto font-medium">
                   Si tienes alguna duda general, te recomendamos visitar primero nuestra sección de <Link to="/preguntas" className="text-primary font-black hover:underline">Preguntas Frecuentes</Link>.
                 </p>
                 
-                <div className="h-px bg-secondary/5 w-16 md:w-24 mx-auto" />
+                <div className="h-px bg-secondary/5 dark:bg-white/10 w-16 md:w-24 mx-auto" />
 
-                <p className="text-sm md:text-xl text-secondary/80 leading-relaxed max-w-2xl mx-auto font-bold">
+                <p className="text-sm md:text-xl text-secondary/80 dark:text-white/80 leading-relaxed max-w-2xl mx-auto font-bold">
                   ¿Quieres hacer un pedido de una camiseta que no está en nuestro catálogo o todavía tienes dudas específicas?
                 </p>
 
                 <div className="pt-2 md:pt-4">
                   <button 
                     onClick={() => window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank')}
-                    className="w-full md:w-auto inline-flex items-center justify-center gap-3 bg-secondary text-primary px-8 md:px-12 py-4 md:py-5 rounded-xl md:rounded-2xl font-sans font-black text-[9px] md:text-[11px] hover:bg-primary hover:text-secondary transition-all shadow-xl uppercase tracking-[0.15em] group"
+                    className="w-full md:w-auto inline-flex items-center justify-center gap-3 bg-secondary dark:bg-[#252836] text-primary px-8 md:px-12 py-4 md:py-5 rounded-xl md:rounded-2xl font-sans font-black text-[9px] md:text-[11px] hover:bg-primary hover:text-secondary dark:hover:bg-primary dark:hover:text-secondary transition-all shadow-xl uppercase tracking-[0.15em] group cursor-pointer"
                   >
                     <svg className="w-4 h-4 mb-0.5 group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.396.015 12.03c0 2.12.553 4.189 1.606 6.06L0 24l6.104-1.601a11.803 11.803 0 005.943 1.603h.005c6.634 0 12.032-5.396 12.035-12.03a11.85 11.85 0 00-3.529-8.511z"/>
@@ -2248,13 +2388,13 @@ export default function App() {
                 </div>
 
                 <div className="pt-8 flex flex-wrap justify-center gap-8">
-                  <div className="flex items-center gap-3 text-secondary/40 font-black uppercase tracking-widest text-[10px] md:text-xs">
+                  <div className="flex items-center gap-3 text-secondary/40 dark:text-white/40 font-black uppercase tracking-widest text-[10px] md:text-xs">
                     <MapPin className="w-4 h-4 text-primary" />
                     Matanzas, Cuba
                   </div>
                   <button 
                     onClick={() => window.open("https://www.instagram.com/no_pain_no_jersey", "_blank")}
-                    className="flex items-center gap-3 text-secondary/40 font-black uppercase tracking-widest text-[10px] md:text-xs hover:text-primary transition-colors"
+                    className="flex items-center gap-3 text-secondary/40 dark:text-white/40 font-black uppercase tracking-widest text-[10px] md:text-xs hover:text-primary transition-colors cursor-pointer"
                   >
                     <Instagram className="w-4 h-4 text-primary" />
                     @nopain_nojersey
@@ -2372,7 +2512,7 @@ export default function App() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsCartOpen(true)}
-            className="fixed bottom-6 right-6 z-40 bg-primary text-secondary p-3.5 md:p-4 rounded-full shadow-2xl flex items-center gap-3 border-2 border-secondary font-black group cursor-pointer"
+            className="fixed bottom-6 right-6 z-40 bg-primary text-secondary p-3.5 md:p-4 rounded-full shadow-2xl flex items-center gap-3 border-2 border-secondary dark:border-[#181920] font-black group cursor-pointer"
             title="Ver carrito de compras"
           >
             <div className="relative">
@@ -2404,7 +2544,7 @@ export default function App() {
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-secondary text-white px-5 py-3 md:px-6 md:py-3.5 rounded-2xl shadow-2xl border border-primary/30 flex items-center gap-3 text-xs md:text-sm font-black uppercase tracking-wider"
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-secondary dark:bg-[#181920] text-white px-5 py-3 md:px-6 md:py-3.5 rounded-2xl shadow-2xl border border-primary/30 flex items-center gap-3 text-xs md:text-sm font-black uppercase tracking-wider"
           >
             <span className="w-2 h-2 rounded-full bg-primary animate-ping" />
             <span>{toastMessage}</span>
