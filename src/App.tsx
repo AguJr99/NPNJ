@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, Link, Navigate } from 'react-router-dom';
-import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown, Check, Sun, Moon, Monitor } from 'lucide-react';
+import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown, Check, Sun, Moon, Monitor, Trophy, Gift, Share2, CheckCircle2, Copy, Camera, Users, Send } from 'lucide-react';
 import { JERSEYS, ENCARGO_JERSEYS, WHATSAPP_NUMBER, LEAGUES } from './constants';
 import { Jersey, EncargoJersey, EncargoOrder, CartItem } from './types';
 import { CartDrawer } from './components/CartDrawer';
@@ -138,7 +138,7 @@ const Navbar = ({
           
           <div className="hidden lg:flex items-center gap-4">
             <div className="flex items-center space-x-2 bg-black/20 p-1.5 rounded-full border border-white/5">
-              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'].map((tab) => (
+              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto', 'sorteo'].map((tab) => (
                 <Link
                   key={tab}
                   to={tab === 'home' ? '/' : `/${tab}`}
@@ -146,7 +146,7 @@ const Navbar = ({
                     activeTab === tab ? 'bg-primary text-secondary shadow-lg' : 'text-white/70 hover:text-white'
                   }`}
                 >
-                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : 'Contacto'}
+                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : tab === 'contacto' ? 'Contacto' : 'Sorteo'}
                 </Link>
               ))}
             </div>
@@ -280,7 +280,7 @@ const Navbar = ({
             className="lg:hidden absolute top-16 left-4 right-4 bg-secondary/95 backdrop-blur-xl rounded-[1.5rem] border border-primary/20 shadow-2xl z-[60] overflow-hidden"
           >
             <div className="p-4 space-y-2">
-              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'].map((tab) => (
+              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto', 'sorteo'].map((tab) => (
                 <Link
                   key={tab}
                   to={tab === 'home' ? '/' : `/${tab}`}
@@ -289,7 +289,7 @@ const Navbar = ({
                     activeTab === tab ? 'bg-primary text-secondary' : 'text-accent/60 hover:text-primary'
                   }`}
                 >
-                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : 'Contacto'}
+                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : tab === 'contacto' ? 'Contacto' : 'Sorteo'}
                 </Link>
               ))}
 
@@ -1481,6 +1481,8 @@ export default function App() {
   const [selectedLeague, setSelectedLeague] = useState<string | null>(null);
   const [participantName, setParticipantName] = useState('');
   const [participantPhone, setParticipantPhone] = useState('');
+  const [copiedStatusText, setCopiedStatusText] = useState(false);
+  const [sorteoFormError, setSorteoFormError] = useState('');
 
   // Cart State & Persistence
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
@@ -2404,6 +2406,338 @@ export default function App() {
             </motion.div>
           </div>
         )}
+
+        {activeTab === 'sorteo' && (() => {
+          const sorteoParticipants: string[] = [];
+
+          const WHATSAPP_STATUS_MESSAGE = `🔥 ¡SORTEO en No Pain-No Jersey! 🏆⚽\n¡Están regalando una camiseta totalmente GRATIS!\n\n📲 Entra a la web y participa:\nhttps://nopain-nojersey.vercel.app/sorteo`;
+
+          const steps = [
+            {
+              step: '01',
+              title: 'Estar en el Grupo de WhatsApp y Añadir 3 Personas',
+              description: 'Únete a nuestro grupo oficial de WhatsApp y agrega al menos a 3 personas/amigos amantes del fútbol o las camisetas deportivas.',
+              screenshotNote: 'Haz captura de pantalla donde se vea que estás en el grupo y que añadiste a las 3 personas.',
+              action: {
+                label: 'Unirse al Grupo de WhatsApp',
+                url: 'https://chat.whatsapp.com/H3iHglLv0YDInSZsupsb8W',
+                icon: Users
+              }
+            },
+            {
+              step: '02',
+              title: 'Seguirnos en Instagram',
+              description: 'Sigue a nuestra cuenta oficial @no_pain_no_jersey en Instagram para estar al tanto de las novedades, llegadas de stock y el sorteo.',
+              screenshotNote: 'Haz captura de pantalla demostrando que sigues nuestra cuenta oficial de Instagram.',
+              action: {
+                label: 'Seguir en Instagram',
+                url: 'https://www.instagram.com/no_pain_no_jersey?igsh=b21ibmE3ZWE4cWo5&utm_source=qr',
+                icon: Instagram
+              }
+            },
+            {
+              step: '03',
+              title: 'Publicar el Mensaje del Sorteo en tu Estado de WhatsApp',
+              description: 'Copia el texto del sorteo y súbelo a tu estado de WhatsApp durante 24 horas para que todos tus contactos se enteren.',
+              screenshotNote: 'Haz captura de pantalla de tu estado de WhatsApp publicado donde se aprecie claramente el mensaje.',
+              action: null,
+              isStatusStep: true
+            }
+          ];
+
+          const handleCopyStatusMessage = () => {
+            navigator.clipboard.writeText(WHATSAPP_STATUS_MESSAGE);
+            setCopiedStatusText(true);
+            setTimeout(() => setCopiedStatusText(false), 2500);
+          };
+
+          const getSorteoMessageText = (name: string, phone: string) => {
+            return `¡Hola! 👋 Quiero participar en el sorteo de No Pain-No Jersey. 🎁⚽\n\n` +
+              `📋 *MIS DATOS:*\n` +
+              `• Nombre: ${name.trim()}\n` +
+              `• Número: ${phone.trim()}\n\n` +
+              `📸 *Adjunto a este chat las 3 capturas de pantalla de los pasos cumplidos:*`;
+          };
+
+          const handleSorteoSubmit = (e: React.FormEvent) => {
+            e.preventDefault();
+            if (!participantName.trim() || !participantPhone.trim()) {
+              setSorteoFormError('Por favor completa tu nombre y número antes de enviar.');
+              return;
+            }
+            setSorteoFormError('');
+
+            const msg = getSorteoMessageText(participantName, participantPhone);
+
+            // Copiamos automáticamente el mensaje al portapapeles
+            if (navigator?.clipboard?.writeText) {
+              navigator.clipboard.writeText(msg).catch(() => {});
+            }
+
+            // Usamos api.whatsapp.com directamente para evitar la redirección de wa.me que corrompe los emojis UTF-8 en ciertos navegadores
+            const targetUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(msg)}`;
+            window.open(targetUrl, '_blank');
+          };
+
+          return (
+            <div className="max-w-4xl mx-auto px-3 sm:px-4 pt-4 sm:pt-8 pb-10 sm:pb-12 md:py-20">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="space-y-6 sm:space-y-8 md:space-y-12"
+              >
+                {/* Header Section */}
+                <div className="space-y-1.5 md:space-y-4 text-center">
+                  <h1 className="text-2xl sm:text-3xl md:text-6xl font-sans font-black text-secondary dark:text-white tracking-tighter uppercase">Sorteo</h1>
+                  <p className="text-primary text-[11px] sm:text-xs md:text-xl font-black italic uppercase tracking-wider md:tracking-widest">¡Participa y gana tu camiseta favorita!</p>
+                </div>
+
+                {/* Prize / Announcement Card */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white dark:bg-[#181920] p-4 sm:p-6 md:p-12 rounded-2xl md:rounded-[3rem] shadow-xl md:shadow-2xl border border-primary/20 dark:border-white/10 space-y-4 md:space-y-6 text-center"
+                >
+                  <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-primary/10 rounded-full mb-1">
+                    <Gift className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-primary" />
+                  </div>
+                  
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-primary/15 text-primary text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider">
+                      Premio Oficial
+                    </span>
+                    <h2 className="text-lg sm:text-2xl md:text-4xl font-black text-secondary dark:text-white uppercase tracking-tight leading-tight">
+                      1 Camiseta a Elección Totalmente Gratis
+                    </h2>
+                  </div>
+
+                  <p className="text-secondary/70 dark:text-white/70 font-bold text-xs sm:text-sm md:text-lg leading-relaxed max-w-2xl mx-auto">
+                    El ganador podrá elegir una camiseta en stock o realizar un encargo totalmente personalizable.
+                  </p>
+                </motion.div>
+
+                {/* Steps Section */}
+                <div className="space-y-4 md:space-y-6">
+                  <div className="text-center space-y-1.5 md:space-y-2">
+                    <h2 className="text-lg sm:text-xl md:text-3xl font-black text-secondary dark:text-white uppercase tracking-tight">
+                      Pasos para Participar
+                    </h2>
+                    <p className="text-primary text-[11px] sm:text-xs md:text-base font-bold">
+                      Completa los 3 pasos, toma captura de cada uno y envíalos en el cuestionario
+                    </p>
+                  </div>
+
+                  <div className="grid md:grid-cols-3 gap-3.5 sm:gap-4 md:gap-6">
+                    {steps.map((item, idx) => {
+                      const ActionIcon = item.action?.icon;
+                      return (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, y: 15 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: idx * 0.1 }}
+                          className="bg-white dark:bg-[#181920] p-4 sm:p-6 rounded-2xl md:rounded-3xl border border-secondary/10 dark:border-white/10 shadow-md md:shadow-lg flex flex-col justify-between space-y-4 md:space-y-5"
+                        >
+                          <div className="space-y-3 sm:space-y-4">
+                            <div className="flex items-center justify-between">
+                              <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-primary/20 text-primary font-black text-xs sm:text-sm flex items-center justify-center">
+                                {item.step}
+                              </span>
+                              <span className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-black text-primary bg-primary/10 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full uppercase tracking-wider">
+                                <Camera className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                                Captura
+                              </span>
+                            </div>
+
+                            <h3 className="text-sm sm:text-base md:text-lg font-black text-secondary dark:text-white uppercase tracking-tight leading-snug">
+                              {item.title}
+                            </h3>
+
+                            <p className="text-xs sm:text-sm text-secondary/70 dark:text-white/70 font-medium leading-relaxed">
+                              {item.description}
+                            </p>
+
+                            {item.isStatusStep && (
+                              <div className="space-y-2 pt-1">
+                                <div className="p-2.5 sm:p-3 bg-secondary/5 dark:bg-white/5 rounded-xl border border-secondary/10 dark:border-white/10 text-[11px] sm:text-xs font-mono text-secondary/90 dark:text-white/90 leading-relaxed select-all break-words">
+                                  {WHATSAPP_STATUS_MESSAGE}
+                                </div>
+                                <button
+                                  type="button"
+                                  id="copy-status-msg-btn"
+                                  onClick={handleCopyStatusMessage}
+                                  className="w-full flex items-center justify-center gap-2 bg-primary text-secondary font-black text-[11px] sm:text-xs uppercase tracking-wider py-2.5 px-3 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow cursor-pointer"
+                                >
+                                  {copiedStatusText ? (
+                                    <>
+                                      <Check className="w-3.5 h-3.5 text-green-800" />
+                                      ¡Mensaje Copiado!
+                                    </>
+                                  ) : (
+                                    <>
+                                      <Copy className="w-3.5 h-3.5" />
+                                      Copiar Mensaje
+                                    </>
+                                  )}
+                                </button>
+                              </div>
+                            )}
+
+                            {/* Required Screenshot Badge */}
+                            <div className="p-2.5 sm:p-3 rounded-xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/20 dark:border-amber-400/20 text-amber-900 dark:text-amber-200 text-[11px] sm:text-xs font-bold leading-relaxed flex items-start gap-2">
+                              <Camera className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 mt-0.5 text-amber-600 dark:text-amber-400" />
+                              <span>{item.screenshotNote}</span>
+                            </div>
+                          </div>
+
+                          {item.action && ActionIcon && (
+                            <a
+                              href={item.action.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center justify-center gap-2 bg-secondary/5 dark:bg-white/5 hover:bg-primary hover:text-secondary text-secondary dark:text-white font-bold text-[11px] sm:text-xs uppercase tracking-wider py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl border border-secondary/10 dark:border-white/10 transition-all w-full text-center"
+                            >
+                              <ActionIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                              {item.action.label}
+                            </a>
+                          )}
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Questionnaire / Registration Form */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white dark:bg-[#181920] p-4 sm:p-6 md:p-10 rounded-2xl md:rounded-[3rem] shadow-xl md:shadow-2xl border-2 border-primary/30 dark:border-white/10 space-y-4 sm:space-y-6"
+                >
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left">
+                    <div className="w-11 h-11 sm:w-14 sm:h-14 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
+                      <ClipboardList className="w-5 h-5 sm:w-7 sm:h-7 text-primary" />
+                    </div>
+                    <div>
+                      <h2 className="text-lg sm:text-xl md:text-3xl font-black text-secondary dark:text-white uppercase tracking-tight">
+                        Cuestionario para Participar
+                      </h2>
+                      <p className="text-[11px] sm:text-xs md:text-sm text-secondary/70 dark:text-white/70 font-medium mt-0.5 sm:mt-1">
+                        Ingresa tus datos a continuación para enviar tu mensaje de registro por WhatsApp con tus 3 capturas.
+                      </p>
+                    </div>
+                  </div>
+
+                  <form onSubmit={handleSorteoSubmit} className="space-y-4 sm:space-y-5">
+                    <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+                      <div className="space-y-1.5 sm:space-y-2">
+                        <label htmlFor="sorteo-nombre" className="block text-[11px] sm:text-xs md:text-sm font-black text-secondary dark:text-white uppercase tracking-wider">
+                          Nombre *
+                        </label>
+                        <input
+                          id="sorteo-nombre"
+                          type="text"
+                          required
+                          value={participantName}
+                          onChange={(e) => {
+                            setParticipantName(e.target.value);
+                            if (sorteoFormError) setSorteoFormError('');
+                          }}
+                          placeholder="Ej: Carlos"
+                          className="w-full bg-secondary/5 dark:bg-white/5 border border-secondary/20 dark:border-white/15 focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl sm:rounded-2xl px-3.5 py-2.5 sm:py-3.5 text-xs sm:text-sm font-medium text-secondary dark:text-white placeholder:text-secondary/40 dark:placeholder:text-white/40 outline-none transition-all"
+                        />
+                      </div>
+
+                      <div className="space-y-1.5 sm:space-y-2">
+                        <label htmlFor="sorteo-telefono" className="block text-[11px] sm:text-xs md:text-sm font-black text-secondary dark:text-white uppercase tracking-wider">
+                          Número *
+                        </label>
+                        <input
+                          id="sorteo-telefono"
+                          type="tel"
+                          required
+                          value={participantPhone}
+                          onChange={(e) => {
+                            setParticipantPhone(e.target.value);
+                            if (sorteoFormError) setSorteoFormError('');
+                          }}
+                          placeholder="Ej: 58632612"
+                          className="w-full bg-secondary/5 dark:bg-white/5 border border-secondary/20 dark:border-white/15 focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl sm:rounded-2xl px-3.5 py-2.5 sm:py-3.5 text-xs sm:text-sm font-medium text-secondary dark:text-white placeholder:text-secondary/40 dark:placeholder:text-white/40 outline-none transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Screenshot Reminder Callout */}
+                    <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-primary/10 border border-primary/20 text-secondary dark:text-white space-y-1 sm:space-y-2">
+                      <div className="flex items-center gap-1.5 font-black text-[11px] sm:text-xs md:text-sm uppercase tracking-wider text-primary">
+                        <Camera className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                        Recordatorio de las 3 Capturas
+                      </div>
+                      <p className="text-[11px] sm:text-xs md:text-sm font-medium leading-relaxed opacity-90">
+                        Al pulsar el botón de abajo se abrirá WhatsApp con tus datos listos. En ese mismo chat deberás adjuntar las <strong>3 capturas de pantalla</strong> (Grupo WhatsApp con 3 añadidos, Seguir en Instagram y Estado de WhatsApp).
+                      </p>
+                    </div>
+
+                    {sorteoFormError && (
+                      <div className="p-2.5 sm:p-3 bg-red-500/10 border border-red-500/20 text-red-500 text-xs md:text-sm font-bold rounded-xl text-center">
+                        {sorteoFormError}
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      id="btn-enviar-sorteo-whatsapp"
+                      className="w-full inline-flex items-center justify-center gap-2 sm:gap-3 bg-primary text-secondary font-black uppercase tracking-wider text-xs sm:text-sm py-3.5 sm:py-4 md:py-5 px-4 sm:px-6 rounded-xl sm:rounded-2xl shadow-lg md:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer text-center"
+                    >
+                      <Send className="w-4 h-4 md:w-5 md:h-5" />
+                      Enviar Mensaje a WhatsApp para Participar
+                    </button>
+                  </form>
+                </motion.div>
+
+                {/* Participants Card */}
+                <div className="grid md:grid-cols-1 gap-4 sm:gap-6 md:gap-10">
+                  <div className="bg-secondary dark:bg-[#181920] p-4 sm:p-6 md:p-10 rounded-2xl md:rounded-[3rem] shadow-xl md:shadow-2xl shadow-primary/10 border border-white/5 dark:border-white/10 flex flex-col">
+                    <div className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-8">
+                      <div className="w-9 h-9 sm:w-12 sm:h-12 bg-white/10 rounded-xl sm:rounded-2xl flex items-center justify-center">
+                        <ClipboardList className="w-4 h-4 sm:w-6 sm:h-6 text-primary" />
+                      </div>
+                      <h2 className="text-base sm:text-xl md:text-2xl font-black text-white uppercase tracking-tight">Participantes</h2>
+                    </div>
+
+                    <div className="space-y-1 pr-1 sm:pr-2">
+                      {sorteoParticipants.map((name, i) => (
+                        <div key={i} className="flex items-center justify-between p-2 md:p-3 bg-white/5 rounded-xl border border-white/5">
+                          <div className="flex items-center gap-2.5 sm:gap-3">
+                            <span className="text-[10px] font-black text-primary/50">#{String(i + 1).padStart(2, '0')}</span>
+                            <span className="text-xs md:text-sm font-bold text-white/90">{name}</span>
+                          </div>
+                          <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(235,214,172,0.5)]" />
+                        </div>
+                      ))}
+
+                      {sorteoParticipants.length === 0 && (
+                        <div className="text-center py-8 sm:py-12 space-y-2.5 sm:space-y-3">
+                          <div className="flex justify-center">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/5 rounded-full flex items-center justify-center">
+                              <ClipboardList className="w-5 h-5 sm:w-6 sm:h-6 text-white/20" />
+                            </div>
+                          </div>
+                          <p className="text-white/40 font-bold text-xs md:text-sm italic">Esperando primeros participantes...</p>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/10">
+                      <p className="text-[10px] md:text-xs text-white/40 font-black uppercase tracking-[0.2em] text-center">
+                        Total Participantes: <span className="text-primary">{sorteoParticipants.length}</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          );
+        })()}
       </main>
 
       <footer className="bg-secondary text-white py-12 md:py-24 border-t-4 border-primary">
@@ -2430,6 +2764,7 @@ export default function App() {
                   <li><Link to="/nosotros" className="hover:text-primary transition-colors">Nosotros</Link></li>
                   <li><Link to="/preguntas" className="hover:text-primary transition-colors">Preguntas</Link></li>
                   <li><Link to="/contacto" className="hover:text-primary transition-colors">Contacto</Link></li>
+                  <li><Link to="/sorteo" className="hover:text-primary transition-colors">Sorteo</Link></li>
                 </ul>
               </div>
 

@@ -19,11 +19,21 @@ export function generateWhatsAppOrderUrl(items: CartItem[]): string {
   const totalCount = items.reduce((acc, item) => acc + item.quantity, 0);
   const totalPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
-  let message = `¡Hola! Quiero realizar el siguiente pedido:\n\n`;
-  message += `🛒 *RESUMEN DEL PEDIDO* (${totalCount} ${totalCount === 1 ? 'camiseta' : 'camisetas'})\n`;
-  message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+  // Desglosar artículos si se pide más de 1 unidad del mismo modelo
+  const expandedItems: CartItem[] = [];
+  items.forEach(item => {
+    for (let i = 0; i < item.quantity; i++) {
+      expandedItems.push(item);
+    }
+  });
 
-  items.forEach((item, index) => {
+  let message = `¡Hola! Quiero realizar el siguiente pedido:\n\n`;
+  if (totalCount > 1) {
+    message += `🛒 *RESUMEN DEL PEDIDO* (${totalCount} camisetas)\n`;
+    message += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+  }
+
+  expandedItems.forEach((item, index) => {
     const isStock = item.itemType === 'stock';
     message += `*${index + 1}. ${item.team}* (${item.type} - ${item.season}) [${isStock ? 'Stock Inmediato' : 'Encargo'}]\n`;
     message += `• Versión: ${item.version}\n`;
@@ -38,13 +48,14 @@ export function generateWhatsAppOrderUrl(items: CartItem[]): string {
     message += `• Dorsal: ${playerDetails}\n`;
 
     message += `• Parche: ${item.patch || 'Sin Parche'}\n`;
-    message += `• Cantidad: ${item.quantity} ($${item.price} c/u)\n`;
-    message += `• Subtotal: $${item.price * item.quantity}\n\n`;
+    if (totalCount > 1) {
+      message += `• Subtotal: $${item.price}\n`;
+    }
+    message += `\n`;
   });
 
   message += `━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `💰 *TOTAL A PAGAR: $${totalPrice}*\n\n`;
-  message += `¿Cómo procedemos con el pago y la entrega?`;
+  message += `💰 *TOTAL A PAGAR: $${totalPrice}*`;
 
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
