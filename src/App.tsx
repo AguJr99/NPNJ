@@ -2414,7 +2414,10 @@ export default function App() {
           }
 
           const sorteoParticipants: SorteoParticipant[] = [
-            { name: 'Moreira', phone: '55215996' }
+            { name: 'Moreira', phone: '55215996' },
+            { name: 'Maxdiel', phone: '55428695' },
+            { name: 'Michel', phone: '52588841' },
+            { name: 'Cristian', phone: '56877603' }
           ];
 
           const WHATSAPP_STATUS_MESSAGE = `🔥 ¡SORTEO en No Pain-No Jersey! 🏆⚽\n¡Están regalando una camiseta totalmente GRATIS!\n\n📲 Entra a la web y participa:\nhttps://nopain-nojersey.vercel.app/sorteo`;
