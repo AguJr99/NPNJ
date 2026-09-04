@@ -2417,7 +2417,13 @@ export default function App() {
             { name: 'Moreira', phone: '55215996' },
             { name: 'Maxdiel', phone: '55428695' },
             { name: 'Michel', phone: '52588841' },
-            { name: 'Cristian', phone: '56877603' }
+            { name: 'Cristian', phone: '56877603' },
+            { name: 'Julio César', phone: '55210930' },
+            { name: 'Alejandro', phone: '59242513' },
+            { name: 'Jhon Maikol', phone: '59619071' },
+            { name: 'Jose Luis', phone: '54265735' },
+            { name: 'Cristian', phone: '58161314' },
+            { name: 'Anel', phone: '53534405' }
           ];
 
           const WHATSAPP_STATUS_MESSAGE = `🔥 ¡SORTEO en No Pain-No Jersey! 🏆⚽\n¡Están regalando una camiseta totalmente GRATIS!\n\n📲 Entra a la web y participa:\nhttps://nopain-nojersey.vercel.app/sorteo`;
