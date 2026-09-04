@@ -2408,7 +2408,14 @@ export default function App() {
         )}
 
         {activeTab === 'sorteo' && (() => {
-          const sorteoParticipants: string[] = [];
+          interface SorteoParticipant {
+            name: string;
+            phone?: string;
+          }
+
+          const sorteoParticipants: SorteoParticipant[] = [
+            { name: 'Moreira', phone: '55215996' }
+          ];
 
           const WHATSAPP_STATUS_MESSAGE = `🔥 ¡SORTEO en No Pain-No Jersey! 🏆⚽\n¡Están regalando una camiseta totalmente GRATIS!\n\n📲 Entra a la web y participa:\nhttps://nopain-nojersey.vercel.app/sorteo`;
 
@@ -2696,41 +2703,71 @@ export default function App() {
 
                 {/* Participants Card */}
                 <div className="grid md:grid-cols-1 gap-4 sm:gap-6 md:gap-10">
-                  <div className="bg-secondary dark:bg-[#181920] p-4 sm:p-6 md:p-10 rounded-2xl md:rounded-[3rem] shadow-xl md:shadow-2xl shadow-primary/10 border border-white/5 dark:border-white/10 flex flex-col">
-                    <div className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-8">
-                      <div className="w-9 h-9 sm:w-12 sm:h-12 bg-white/10 rounded-xl sm:rounded-2xl flex items-center justify-center">
-                        <ClipboardList className="w-4 h-4 sm:w-6 sm:h-6 text-primary" />
+                  <div className="bg-white dark:bg-[#181920] p-4 sm:p-6 md:p-10 rounded-2xl md:rounded-[3rem] shadow-xl md:shadow-2xl border border-secondary/10 dark:border-white/10 flex flex-col">
+                    <div className="flex items-center gap-2.5 sm:gap-4 mb-4 sm:mb-6">
+                      <div className="w-9 h-9 sm:w-11 sm:h-11 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
+                        <ClipboardList className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                       </div>
-                      <h2 className="text-base sm:text-xl md:text-2xl font-black text-white uppercase tracking-tight">Participantes</h2>
+                      <div>
+                        <h2 className="text-base sm:text-xl md:text-2xl font-black text-secondary dark:text-white uppercase tracking-tight">
+                          Lista de Participantes
+                        </h2>
+                        <p className="text-[11px] sm:text-xs text-secondary/60 dark:text-white/60 font-medium">
+                          Números oficiales asignados para el sorteo
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="space-y-1 pr-1 sm:pr-2">
-                      {sorteoParticipants.map((name, i) => (
-                        <div key={i} className="flex items-center justify-between p-2 md:p-3 bg-white/5 rounded-xl border border-white/5">
-                          <div className="flex items-center gap-2.5 sm:gap-3">
-                            <span className="text-[10px] font-black text-primary/50">#{String(i + 1).padStart(2, '0')}</span>
-                            <span className="text-xs md:text-sm font-bold text-white/90">{name}</span>
+                    <div className="space-y-2">
+                      {sorteoParticipants.map((p, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center justify-between p-2.5 sm:p-3.5 bg-secondary/[0.03] dark:bg-white/[0.04] hover:bg-secondary/[0.06] dark:hover:bg-white/[0.07] rounded-xl sm:rounded-2xl border border-secondary/10 dark:border-white/10 transition-colors gap-2"
+                        >
+                          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                            <span className="shrink-0 text-xs sm:text-sm font-black text-primary bg-primary/15 px-2 py-0.5 rounded-md font-mono">
+                              #{String(i + 1).padStart(2, '0')}
+                            </span>
+                            <span className="text-xs sm:text-base font-black text-secondary dark:text-white truncate">
+                              {p.name}
+                            </span>
+                            {p.phone && (
+                              <span className="shrink-0 text-[10px] sm:text-xs font-mono font-semibold text-secondary/60 dark:text-white/60 bg-secondary/5 dark:bg-white/5 border border-secondary/10 dark:border-white/10 px-1.5 sm:px-2 py-0.5 rounded-md">
+                                ••••{p.phone.slice(-4)}
+                              </span>
+                            )}
                           </div>
-                          <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(235,214,172,0.5)]" />
+
+                          <div className="shrink-0">
+                            <span className="inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/20 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                              <span>Confirmado</span>
+                            </span>
+                          </div>
                         </div>
                       ))}
 
                       {sorteoParticipants.length === 0 && (
                         <div className="text-center py-8 sm:py-12 space-y-2.5 sm:space-y-3">
                           <div className="flex justify-center">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/5 rounded-full flex items-center justify-center">
-                              <ClipboardList className="w-5 h-5 sm:w-6 sm:h-6 text-white/20" />
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary/5 dark:bg-white/5 rounded-full flex items-center justify-center">
+                              <ClipboardList className="w-5 h-5 sm:w-6 sm:h-6 text-secondary/30 dark:text-white/30" />
                             </div>
                           </div>
-                          <p className="text-white/40 font-bold text-xs md:text-sm italic">Esperando primeros participantes...</p>
+                          <p className="text-secondary/40 dark:text-white/40 font-bold text-xs sm:text-sm italic">
+                            Esperando primeros participantes...
+                          </p>
                         </div>
                       )}
                     </div>
 
-                    <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/10">
-                      <p className="text-[10px] md:text-xs text-white/40 font-black uppercase tracking-[0.2em] text-center">
-                        Total Participantes: <span className="text-primary">{sorteoParticipants.length}</span>
+                    <div className="mt-5 sm:mt-8 pt-4 sm:pt-6 border-t border-secondary/10 dark:border-white/10 flex items-center justify-between">
+                      <p className="text-[11px] sm:text-xs text-secondary/60 dark:text-white/50 font-black uppercase tracking-wider">
+                        Total Participantes
                       </p>
+                      <span className="text-xs sm:text-sm font-black text-primary font-mono bg-primary/10 px-2.5 py-0.5 rounded-md">
+                        {sorteoParticipants.length}
+                      </span>
                     </div>
                   </div>
                 </div>
