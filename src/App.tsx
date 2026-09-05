@@ -2543,7 +2543,13 @@ export default function App() {
             { name: 'Luis Daniel', phone: '50177995' },
             { name: 'Steffanie', phone: '56107940' },
             { name: 'Daniela', phone: '51300332' },
-            { name: 'Daynier', phone: '59415888' }
+            { name: 'Daynier', phone: '59415888' },
+            { name: 'Daniela', phone: '52718928' },
+            { name: 'Thalía', phone: '55859735' },
+            { name: 'Dainelys', phone: '51151113' },
+            { name: 'Dayana', phone: '56877939' },
+            { name: 'Amy', phone: '51152809' },
+            { name: 'Alina', phone: '53903370' }
           ];
 
           const WHATSAPP_STATUS_MESSAGE = `🔥 ¡SORTEO en No Pain-No Jersey! 🏆⚽\n¡Están regalando una camiseta totalmente GRATIS!\n\n📲 Entra a la web y participa:\nhttps://nopain-nojersey.vercel.app/sorteo`;
@@ -2840,10 +2846,18 @@ export default function App() {
                       <div className="w-9 h-9 sm:w-11 sm:h-11 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
                         <ClipboardList className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                       </div>
-                      <div>
-                        <h2 className="text-base sm:text-xl md:text-2xl font-black text-secondary dark:text-white uppercase tracking-tight">
-                          Lista de Participantes
-                        </h2>
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+                          <h2 className="text-base sm:text-xl md:text-2xl font-black text-secondary dark:text-white uppercase tracking-tight">
+                            Lista de Participantes
+                          </h2>
+                          <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-black text-primary font-mono bg-primary/15 border border-primary/25 px-2.5 py-0.5 rounded-lg shrink-0">
+                            <span className="text-[10px] sm:text-[11px] uppercase font-sans font-black text-secondary/70 dark:text-white/70 tracking-wider">
+                              Total:
+                            </span>
+                            {sorteoParticipants.length}
+                          </span>
+                        </div>
                         <p className="text-[11px] sm:text-xs text-secondary/60 dark:text-white/60 font-medium">
                           Números oficiales asignados para el sorteo
                         </p>
@@ -2891,15 +2905,6 @@ export default function App() {
                           </p>
                         </div>
                       )}
-                    </div>
-
-                    <div className="mt-5 sm:mt-8 pt-4 sm:pt-6 border-t border-secondary/10 dark:border-white/10 flex items-center justify-between">
-                      <p className="text-[11px] sm:text-xs text-secondary/60 dark:text-white/50 font-black uppercase tracking-wider">
-                        Total Participantes
-                      </p>
-                      <span className="text-xs sm:text-sm font-black text-primary font-mono bg-primary/10 px-2.5 py-0.5 rounded-md">
-                        {sorteoParticipants.length}
-                      </span>
                     </div>
                   </div>
                 </div>
