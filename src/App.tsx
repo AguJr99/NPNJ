@@ -1456,95 +1456,61 @@ const Countdown = ({ targetDate, finishMessage = "¡Finalizado!", variant = "ful
 };
 
 const SorteoCountdown = () => {
-  // 14 de septiembre de 2026 a las 12:00:00 PM (mediodía) hora de Cuba (UTC-4)
-  const targetDate = '2026-09-14T12:00:00-04:00';
-  const [timeLeft, setTimeLeft] = useState<{
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-    isFinished: boolean;
-  }>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-    isFinished: false
-  });
-
-  useEffect(() => {
-    const calculate = () => {
-      const difference = +new Date(targetDate) - Date.now();
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((difference / (1000 * 60)) % 60);
-        const seconds = Math.floor((difference / 1000) % 60);
-        setTimeLeft({ days, hours, minutes, seconds, isFinished: false });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0, isFinished: true });
-      }
-    };
-    calculate();
-    const interval = setInterval(calculate, 1000);
-    return () => clearInterval(interval);
-  }, [targetDate]);
-
-  if (timeLeft.isFinished) {
-    return (
-      <div className="bg-white dark:bg-[#181920] p-5 sm:p-7 rounded-2xl md:rounded-3xl border border-red-500/20 shadow-xl text-center space-y-2">
-        <span className="inline-block px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-xs font-black uppercase tracking-wider">
-          Sorteo Finalizado
-        </span>
-        <h3 className="text-lg sm:text-2xl font-black text-secondary dark:text-white uppercase tracking-tight">
-          ¡El plazo de participación ha concluido!
-        </h3>
-        <p className="text-xs sm:text-sm text-secondary/60 dark:text-white/60">
-          El sorteo concluyó el 14 de septiembre a las 12:00 PM. ¡Mucha suerte a todos los participantes!
-        </p>
-      </div>
-    );
-  }
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-[#181920] p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-[2.5rem] shadow-xl md:shadow-2xl border border-primary/30 dark:border-primary/20 text-center relative overflow-hidden"
+      className="bg-white dark:bg-[#181920] p-5 sm:p-7 md:p-9 rounded-2xl md:rounded-[2.5rem] shadow-xl md:shadow-2xl border-2 border-primary/40 dark:border-primary/30 text-center relative overflow-hidden space-y-4 sm:space-y-5"
     >
-      {/* Glow effect */}
-      <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-80 h-32 bg-primary/15 rounded-full blur-3xl pointer-events-none" />
+      {/* Ambient glow */}
+      <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-96 h-36 bg-primary/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 space-y-3 sm:space-y-4">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 text-primary text-[10px] sm:text-xs font-black uppercase tracking-wider">
-            <Clock className="w-3.5 h-3.5" />
-            Cuenta Regresiva
-          </span>
-          <span className="text-[11px] sm:text-xs font-bold text-secondary/70 dark:text-white/70">
-            Finaliza el 14 de septiembre a las 12:00 PM
-          </span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 text-red-500 text-[11px] sm:text-xs font-black uppercase tracking-wider">
+          <Clock className="w-3.5 h-3.5" />
+          Plazo de Inscripción Finalizado
         </div>
 
-        <div className="grid grid-cols-4 gap-2 sm:gap-4 max-w-md mx-auto pt-1">
-          {[
-            { label: 'Días', value: timeLeft.days },
-            { label: 'Horas', value: timeLeft.hours },
-            { label: 'Min', value: timeLeft.minutes },
-            { label: 'Seg', value: timeLeft.seconds },
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="bg-secondary/[0.03] dark:bg-white/[0.04] border border-secondary/10 dark:border-white/10 rounded-xl sm:rounded-2xl p-2.5 sm:p-4 flex flex-col items-center justify-center"
-            >
-              <span className="text-xl sm:text-3xl md:text-4xl font-black text-secondary dark:text-white font-mono tabular-nums leading-none">
-                {String(item.value).padStart(2, '0')}
+        <div className="space-y-1.5 sm:space-y-2 max-w-2xl mx-auto">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-secondary dark:text-white uppercase tracking-tight leading-tight">
+            ¡El plazo para inscribirse ha terminado!
+          </h3>
+          <p className="text-sm sm:text-base md:text-lg font-black text-primary uppercase tracking-wide">
+            En 1 hora damos a conocer el ganador
+          </p>
+        </div>
+
+        {/* Stats & Call to check assigned number */}
+        <div className="grid sm:grid-cols-2 gap-3 max-w-xl mx-auto pt-1">
+          <div className="bg-secondary/[0.03] dark:bg-white/[0.04] border border-secondary/10 dark:border-white/10 rounded-xl sm:rounded-2xl p-3.5 flex items-center justify-center gap-3">
+            <Users className="w-5 h-5 text-primary shrink-0" />
+            <div className="text-left">
+              <span className="text-[10px] uppercase font-black text-secondary/60 dark:text-white/60 block tracking-wider">
+                Total Registrados
               </span>
-              <span className="text-[9px] sm:text-[11px] font-black uppercase tracking-wider text-secondary/50 dark:text-white/50 mt-1 sm:mt-1.5">
-                {item.label}
+              <span className="text-base sm:text-lg font-black text-secondary dark:text-white font-mono">
+                71 Participantes
               </span>
             </div>
-          ))}
+          </div>
+
+          <div className="bg-secondary/[0.03] dark:bg-white/[0.04] border border-secondary/10 dark:border-white/10 rounded-xl sm:rounded-2xl p-3.5 flex items-center justify-center gap-3">
+            <ClipboardList className="w-5 h-5 text-amber-500 shrink-0" />
+            <div className="text-left">
+              <span className="text-[10px] uppercase font-black text-secondary/60 dark:text-white/60 block tracking-wider">
+                Verifica tu Número
+              </span>
+              <span className="text-xs sm:text-sm font-black text-secondary dark:text-white">
+                Revisa la lista oficial abajo
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-primary/10 border border-primary/20 max-w-2xl mx-auto text-center">
+          <p className="text-xs sm:text-sm text-secondary/90 dark:text-white/90 font-bold leading-relaxed">
+            ⚠️ <strong>Importante:</strong> Son <strong>71 participantes</strong>. Cada participante debe revisar en la lista de abajo su número asignado (es el número oficial con el que participas en el sorteo). ¡Mucha suerte a todos!
+          </p>
         </div>
       </div>
     </motion.div>
@@ -2579,7 +2545,8 @@ export default function App() {
             { name: 'Janiel', phone: '59018351' },
             { name: 'Rodríguez', phone: '53520686' },
             { name: 'Yahinilin', phone: '58207024' },
-            { name: 'Emanuel', phone: '53706006' }
+            { name: 'Emanuel', phone: '53706006' },
+            { name: 'Alejan', phone: '56714124' }
           ];
 
           const WHATSAPP_STATUS_MESSAGE = `🔥 ¡SORTEO en No Pain-No Jersey! 🏆⚽\n¡Están regalando una camiseta totalmente GRATIS!\n\n📲 Entra a la web y participa:\nhttps://nopain-nojersey.vercel.app/sorteo`;
@@ -2664,6 +2631,9 @@ export default function App() {
                   <p className="text-primary text-[11px] sm:text-xs md:text-xl font-black italic uppercase tracking-wider md:tracking-widest">¡Participa y gana tu camiseta favorita!</p>
                 </div>
 
+                {/* Sorteo Official Announcement Card */}
+                <SorteoCountdown />
+
                 {/* Prize / Announcement Card */}
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
@@ -2687,9 +2657,6 @@ export default function App() {
                     El ganador podrá elegir una camiseta en stock o realizar un encargo totalmente personalizable.
                   </p>
                 </motion.div>
-
-                {/* Sorteo Countdown Timer */}
-                <SorteoCountdown />
 
                 {/* Steps Section */}
                 <div className="space-y-4 md:space-y-6">
