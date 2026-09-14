@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, Link, Navigate } from 'react-router-dom';
-import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown, Check, Sun, Moon, Monitor, Trophy, Gift, Share2, CheckCircle2, Copy, Camera, Users, Send } from 'lucide-react';
+import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown, Check, Sun, Moon, Monitor, Trophy, Gift, Share2, CheckCircle2, Copy, Camera, Users, Send, Play } from 'lucide-react';
 import { JERSEYS, ENCARGO_JERSEYS, WHATSAPP_NUMBER, LEAGUES } from './constants';
 import { Jersey, EncargoJersey, EncargoOrder, CartItem } from './types';
 import { CartDrawer } from './components/CartDrawer';
@@ -1455,61 +1455,74 @@ const Countdown = ({ targetDate, finishMessage = "¡Finalizado!", variant = "ful
   );
 };
 
-const SorteoCountdown = () => {
+const SorteoWinnerHero = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-[#181920] p-5 sm:p-7 md:p-9 rounded-2xl md:rounded-[2.5rem] shadow-xl md:shadow-2xl border-2 border-primary/40 dark:border-primary/30 text-center relative overflow-hidden space-y-4 sm:space-y-5"
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="bg-white dark:bg-[#181920] p-5 sm:p-8 md:p-12 rounded-2xl md:rounded-[3rem] shadow-2xl border-2 border-amber-500/50 text-center relative overflow-hidden space-y-5 sm:space-y-6 md:space-y-8"
     >
-      {/* Ambient glow */}
-      <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-96 h-36 bg-primary/15 rounded-full blur-3xl pointer-events-none" />
+      {/* Golden ambient glow */}
+      <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-96 sm:w-[36rem] h-48 bg-amber-500/20 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 space-y-3 sm:space-y-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 text-red-500 text-[11px] sm:text-xs font-black uppercase tracking-wider">
-          <Clock className="w-3.5 h-3.5" />
-          Plazo de Inscripción Finalizado
+      <div className="relative z-10 space-y-4 md:space-y-6">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-900 dark:text-amber-200 text-xs sm:text-sm font-black uppercase tracking-wider shadow-sm">
+          <Trophy className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+          ¡Sorteo Oficial Finalizado y Cerrado!
         </div>
 
-        <div className="space-y-1.5 sm:space-y-2 max-w-2xl mx-auto">
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-secondary dark:text-white uppercase tracking-tight leading-tight">
-            ¡El plazo para inscribirse ha terminado!
-          </h3>
-          <p className="text-sm sm:text-base md:text-lg font-black text-primary uppercase tracking-wide">
-            En 1 hora damos a conocer el ganador
+        <div className="space-y-2 max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-secondary dark:text-white uppercase tracking-tight leading-tight">
+            ¡Felicidades al Ganador!
+          </h2>
+          <p className="text-sm sm:text-base md:text-xl font-bold text-amber-800 dark:text-amber-300">
+            La ruleta oficial ha determinado al afortunado ganador de la camiseta
           </p>
         </div>
 
-        {/* Stats & Call to check assigned number */}
-        <div className="grid sm:grid-cols-2 gap-3 max-w-xl mx-auto pt-1">
-          <div className="bg-secondary/[0.03] dark:bg-white/[0.04] border border-secondary/10 dark:border-white/10 rounded-xl sm:rounded-2xl p-3.5 flex items-center justify-center gap-3">
-            <Users className="w-5 h-5 text-primary shrink-0" />
-            <div className="text-left">
-              <span className="text-[10px] uppercase font-black text-secondary/60 dark:text-white/60 block tracking-wider">
-                Total Registrados
+        {/* Winner Highlight Box */}
+        <div className="max-w-xl mx-auto p-5 sm:p-7 md:p-8 rounded-2xl md:rounded-3xl bg-gradient-to-b from-amber-500/20 via-amber-500/10 to-amber-500/5 border-2 border-amber-500/60 shadow-xl space-y-3 sm:space-y-4">
+          <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-amber-500 text-secondary rounded-2xl shadow-lg shadow-amber-500/30">
+            <Trophy className="w-8 h-8 text-secondary" />
+          </div>
+
+          <div className="space-y-1">
+            <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-amber-800 dark:text-amber-300 block">
+              Número Ganador Oficial
+            </span>
+            <div className="flex items-center justify-center gap-3 flex-wrap">
+              <span className="text-4xl sm:text-5xl md:text-6xl font-black text-amber-600 dark:text-amber-400 font-mono tracking-tight">
+                #05
               </span>
-              <span className="text-base sm:text-lg font-black text-secondary dark:text-white font-mono">
-                71 Participantes
-              </span>
+              <div className="text-left">
+                <h3 className="text-xl sm:text-3xl font-black text-secondary dark:text-white flex items-center gap-1.5">
+                  Julio César 🏆
+                </h3>
+                <span className="text-xs sm:text-sm font-mono font-bold text-secondary/60 dark:text-white/60">
+                  ••••0930
+                </span>
+              </div>
             </div>
           </div>
 
-          <div className="bg-secondary/[0.03] dark:bg-white/[0.04] border border-secondary/10 dark:border-white/10 rounded-xl sm:rounded-2xl p-3.5 flex items-center justify-center gap-3">
-            <ClipboardList className="w-5 h-5 text-amber-500 shrink-0" />
-            <div className="text-left">
-              <span className="text-[10px] uppercase font-black text-secondary/60 dark:text-white/60 block tracking-wider">
-                Verifica tu Número
-              </span>
-              <span className="text-xs sm:text-sm font-black text-secondary dark:text-white">
-                Revisa la lista oficial abajo
-              </span>
-            </div>
+          <div className="pt-3 border-t border-amber-500/20 space-y-1">
+            <span className="inline-block px-3.5 py-1 rounded-lg bg-amber-500/25 text-amber-950 dark:text-amber-100 text-xs sm:text-sm font-black">
+              🎁 Premio: 1 Camiseta a Elección Totalmente Gratis
+            </span>
+            <p className="text-[11px] sm:text-xs text-secondary/70 dark:text-white/70 font-medium">
+              Podrá elegir cualquier camiseta de nuestro stock o encargarla personalizada con su dorsal y parches oficiales.
+            </p>
           </div>
         </div>
 
-        <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-primary/10 border border-primary/20 max-w-2xl mx-auto text-center">
-          <p className="text-xs sm:text-sm text-secondary/90 dark:text-white/90 font-bold leading-relaxed">
-            ⚠️ <strong>Importante:</strong> Son <strong>71 participantes</strong>. Cada participante debe revisar en la lista de abajo su número asignado (es el número oficial con el que participas en el sorteo). ¡Mucha suerte a todos!
+        {/* Gratitude & Upcoming Promotions */}
+        <div className="max-w-2xl mx-auto p-4 sm:p-5 rounded-2xl bg-secondary/[0.03] dark:bg-white/[0.04] border border-secondary/10 dark:border-white/10 space-y-2 text-center">
+          <h4 className="text-xs sm:text-sm font-black uppercase tracking-wider text-secondary dark:text-white flex items-center justify-center gap-2">
+            <Award className="w-4 h-4 text-primary" />
+            ¡Gracias a todos los participantes!
+          </h4>
+          <p className="text-xs sm:text-sm text-secondary/80 dark:text-white/80 font-medium leading-relaxed">
+            Agradecemos enormemente a los <strong>71 participantes</strong> que se sumaron con tanto entusiasmo y compartieron la pasión por las camisetas de fútbol. Si esta vez no te tocó, ¡no te desanimes! Sigue muy pendiente de nuestra web y de nuestras redes oficiales, porque muy pronto vendrán <strong>nuevas promociones, ofertas exclusivas y próximos sorteos</strong>.
           </p>
         </div>
       </div>
@@ -1541,10 +1554,6 @@ export default function App() {
   const [selectedEncargoJersey, setSelectedEncargoJersey] = useState<EncargoJersey | null>(null);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   const [selectedLeague, setSelectedLeague] = useState<string | null>(null);
-  const [participantName, setParticipantName] = useState('');
-  const [participantPhone, setParticipantPhone] = useState('');
-  const [copiedStatusText, setCopiedStatusText] = useState(false);
-  const [sorteoFormError, setSorteoFormError] = useState('');
 
   // Cart State & Persistence
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
@@ -2549,75 +2558,6 @@ export default function App() {
             { name: 'Alejan', phone: '56714124' }
           ];
 
-          const WHATSAPP_STATUS_MESSAGE = `🔥 ¡SORTEO en No Pain-No Jersey! 🏆⚽\n¡Están regalando una camiseta totalmente GRATIS!\n\n📲 Entra a la web y participa:\nhttps://nopain-nojersey.vercel.app/sorteo`;
-
-          const steps = [
-            {
-              step: '01',
-              title: 'Estar en el Grupo de WhatsApp y Añadir 3 Personas',
-              description: 'Únete a nuestro grupo oficial de WhatsApp y agrega al menos a 3 personas/amigos amantes del fútbol o las camisetas deportivas.',
-              screenshotNote: 'Haz captura de pantalla donde se vea que estás en el grupo y que añadiste a las 3 personas.',
-              action: {
-                label: 'Unirse al Grupo de WhatsApp',
-                url: 'https://chat.whatsapp.com/H3iHglLv0YDInSZsupsb8W',
-                icon: Users
-              }
-            },
-            {
-              step: '02',
-              title: 'Seguirnos en Instagram',
-              description: 'Sigue a nuestra cuenta oficial @no_pain_no_jersey en Instagram para estar al tanto de las novedades, llegadas de stock y el sorteo.',
-              screenshotNote: 'Haz captura de pantalla demostrando que sigues nuestra cuenta oficial de Instagram.',
-              action: {
-                label: 'Seguir en Instagram',
-                url: 'https://www.instagram.com/no_pain_no_jersey?igsh=b21ibmE3ZWE4cWo5&utm_source=qr',
-                icon: Instagram
-              }
-            },
-            {
-              step: '03',
-              title: 'Publicar el Mensaje del Sorteo en tu Estado de WhatsApp',
-              description: 'Copia el texto del sorteo y súbelo a tu estado de WhatsApp durante 24 horas para que todos tus contactos se enteren.',
-              screenshotNote: 'Haz captura de pantalla de tu estado de WhatsApp publicado donde se aprecie claramente el mensaje.',
-              action: null,
-              isStatusStep: true
-            }
-          ];
-
-          const handleCopyStatusMessage = () => {
-            navigator.clipboard.writeText(WHATSAPP_STATUS_MESSAGE);
-            setCopiedStatusText(true);
-            setTimeout(() => setCopiedStatusText(false), 2500);
-          };
-
-          const getSorteoMessageText = (name: string, phone: string) => {
-            return `¡Hola! 👋 Quiero participar en el sorteo de No Pain-No Jersey. 🎁⚽\n\n` +
-              `📋 *MIS DATOS:*\n` +
-              `• Nombre: ${name.trim()}\n` +
-              `• Número: ${phone.trim()}\n\n` +
-              `📸 *Adjunto a este chat las 3 capturas de pantalla de los pasos cumplidos:*`;
-          };
-
-          const handleSorteoSubmit = (e: React.FormEvent) => {
-            e.preventDefault();
-            if (!participantName.trim() || !participantPhone.trim()) {
-              setSorteoFormError('Por favor completa tu nombre y número antes de enviar.');
-              return;
-            }
-            setSorteoFormError('');
-
-            const msg = getSorteoMessageText(participantName, participantPhone);
-
-            // Copiamos automáticamente el mensaje al portapapeles
-            if (navigator?.clipboard?.writeText) {
-              navigator.clipboard.writeText(msg).catch(() => {});
-            }
-
-            // Usamos api.whatsapp.com directamente para evitar la redirección de wa.me que corrompe los emojis UTF-8 en ciertos navegadores
-            const targetUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(msg)}`;
-            window.open(targetUrl, '_blank');
-          };
-
           return (
             <div className="max-w-4xl mx-auto px-3 sm:px-4 pt-4 sm:pt-8 pb-10 sm:pb-12 md:py-20">
               <motion.div
@@ -2628,212 +2568,43 @@ export default function App() {
                 {/* Header Section */}
                 <div className="space-y-1.5 md:space-y-4 text-center">
                   <h1 className="text-2xl sm:text-3xl md:text-6xl font-sans font-black text-secondary dark:text-white tracking-tighter uppercase">Sorteo</h1>
-                  <p className="text-primary text-[11px] sm:text-xs md:text-xl font-black italic uppercase tracking-wider md:tracking-widest">¡Participa y gana tu camiseta favorita!</p>
+                  <p className="text-primary text-[11px] sm:text-xs md:text-xl font-black italic uppercase tracking-wider md:tracking-widest">¡Sorteo Finalizado • Tenemos Ganador Oficial!</p>
                 </div>
 
-                {/* Sorteo Official Announcement Card */}
-                <SorteoCountdown />
+                {/* Winner Celebration & Announcement Card */}
+                <SorteoWinnerHero />
 
-                {/* Prize / Announcement Card */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-white dark:bg-[#181920] p-4 sm:p-6 md:p-12 rounded-2xl md:rounded-[3rem] shadow-xl md:shadow-2xl border border-primary/20 dark:border-white/10 space-y-4 md:space-y-6 text-center"
-                >
-                  <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-primary/10 rounded-full mb-1">
-                    <Gift className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-primary" />
-                  </div>
-                  
-                  <div className="space-y-1.5 sm:space-y-2">
-                    <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-primary/15 text-primary text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider">
-                      Premio Oficial
-                    </span>
-                    <h2 className="text-lg sm:text-2xl md:text-4xl font-black text-secondary dark:text-white uppercase tracking-tight leading-tight">
-                      1 Camiseta a Elección Totalmente Gratis
-                    </h2>
-                  </div>
-
-                  <p className="text-secondary/70 dark:text-white/70 font-bold text-xs sm:text-sm md:text-lg leading-relaxed max-w-2xl mx-auto">
-                    El ganador podrá elegir una camiseta en stock o realizar un encargo totalmente personalizable.
-                  </p>
-                </motion.div>
-
-                {/* Steps Section */}
-                <div className="space-y-4 md:space-y-6">
-                  <div className="text-center space-y-1.5 md:space-y-2">
-                    <h2 className="text-lg sm:text-xl md:text-3xl font-black text-secondary dark:text-white uppercase tracking-tight">
-                      Pasos para Participar
-                    </h2>
-                    <p className="text-primary text-[11px] sm:text-xs md:text-base font-bold">
-                      Completa los 3 pasos, toma captura de cada uno y envíalos en el cuestionario
-                    </p>
-                  </div>
-
-                  <div className="grid md:grid-cols-3 gap-3.5 sm:gap-4 md:gap-6">
-                    {steps.map((item, idx) => {
-                      const ActionIcon = item.action?.icon;
-                      return (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, y: 15 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: idx * 0.1 }}
-                          className="bg-white dark:bg-[#181920] p-4 sm:p-6 rounded-2xl md:rounded-3xl border border-secondary/10 dark:border-white/10 shadow-md md:shadow-lg flex flex-col justify-between space-y-4 md:space-y-5"
-                        >
-                          <div className="space-y-3 sm:space-y-4">
-                            <div className="flex items-center justify-between">
-                              <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-primary/20 text-primary font-black text-xs sm:text-sm flex items-center justify-center">
-                                {item.step}
-                              </span>
-                              <span className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-black text-primary bg-primary/10 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full uppercase tracking-wider">
-                                <Camera className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                                Captura
-                              </span>
-                            </div>
-
-                            <h3 className="text-sm sm:text-base md:text-lg font-black text-secondary dark:text-white uppercase tracking-tight leading-snug">
-                              {item.title}
-                            </h3>
-
-                            <p className="text-xs sm:text-sm text-secondary/70 dark:text-white/70 font-medium leading-relaxed">
-                              {item.description}
-                            </p>
-
-                            {item.isStatusStep && (
-                              <div className="space-y-2 pt-1">
-                                <div className="p-2.5 sm:p-3 bg-secondary/5 dark:bg-white/5 rounded-xl border border-secondary/10 dark:border-white/10 text-[11px] sm:text-xs font-mono text-secondary/90 dark:text-white/90 leading-relaxed select-all break-words">
-                                  {WHATSAPP_STATUS_MESSAGE}
-                                </div>
-                                <button
-                                  type="button"
-                                  id="copy-status-msg-btn"
-                                  onClick={handleCopyStatusMessage}
-                                  className="w-full flex items-center justify-center gap-2 bg-primary text-secondary font-black text-[11px] sm:text-xs uppercase tracking-wider py-2.5 px-3 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow cursor-pointer"
-                                >
-                                  {copiedStatusText ? (
-                                    <>
-                                      <Check className="w-3.5 h-3.5 text-green-800" />
-                                      ¡Mensaje Copiado!
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Copy className="w-3.5 h-3.5" />
-                                      Copiar Mensaje
-                                    </>
-                                  )}
-                                </button>
-                              </div>
-                            )}
-
-                            {/* Required Screenshot Badge */}
-                            <div className="p-2.5 sm:p-3 rounded-xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/20 dark:border-amber-400/20 text-amber-900 dark:text-amber-200 text-[11px] sm:text-xs font-bold leading-relaxed flex items-start gap-2">
-                              <Camera className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 mt-0.5 text-amber-600 dark:text-amber-400" />
-                              <span>{item.screenshotNote}</span>
-                            </div>
-                          </div>
-
-                          {item.action && ActionIcon && (
-                            <a
-                              href={item.action.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center justify-center gap-2 bg-secondary/5 dark:bg-white/5 hover:bg-primary hover:text-secondary text-secondary dark:text-white font-bold text-[11px] sm:text-xs uppercase tracking-wider py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl border border-secondary/10 dark:border-white/10 transition-all w-full text-center"
-                            >
-                              <ActionIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                              {item.action.label}
-                            </a>
-                          )}
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Questionnaire / Registration Form */}
+                {/* Roulette Video Card */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-white dark:bg-[#181920] p-4 sm:p-6 md:p-10 rounded-2xl md:rounded-[3rem] shadow-xl md:shadow-2xl border-2 border-primary/30 dark:border-white/10 space-y-4 sm:space-y-6"
+                  className="bg-white dark:bg-[#181920] p-4 sm:p-6 md:p-10 rounded-2xl md:rounded-[3rem] shadow-xl md:shadow-2xl border border-secondary/10 dark:border-white/10 space-y-4 md:space-y-6 text-center"
                 >
-                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left">
-                    <div className="w-11 h-11 sm:w-14 sm:h-14 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
-                      <ClipboardList className="w-5 h-5 sm:w-7 sm:h-7 text-primary" />
+                  <div className="space-y-1.5 md:space-y-2">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/15 text-primary text-[11px] sm:text-xs font-black uppercase tracking-wider">
+                      <Play className="w-3.5 h-3.5" />
+                      Ruleta en Vivo
                     </div>
-                    <div>
-                      <h2 className="text-lg sm:text-xl md:text-3xl font-black text-secondary dark:text-white uppercase tracking-tight">
-                        Cuestionario para Participar
-                      </h2>
-                      <p className="text-[11px] sm:text-xs md:text-sm text-secondary/70 dark:text-white/70 font-medium mt-0.5 sm:mt-1">
-                        Ingresa tus datos a continuación para enviar tu mensaje de registro por WhatsApp con tus 3 capturas.
-                      </p>
-                    </div>
+                    <h2 className="text-lg sm:text-2xl md:text-3xl font-black text-secondary dark:text-white uppercase tracking-tight">
+                      Video del Sorteo (Ruleta de Ganador)
+                    </h2>
+                    <p className="text-xs sm:text-sm md:text-base text-secondary/70 dark:text-white/70 max-w-xl mx-auto">
+                      Mira la grabación oficial de la ruleta girando entre los 71 participantes hasta detenerse en el número 5:
+                    </p>
                   </div>
 
-                  <form onSubmit={handleSorteoSubmit} className="space-y-4 sm:space-y-5">
-                    <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
-                      <div className="space-y-1.5 sm:space-y-2">
-                        <label htmlFor="sorteo-nombre" className="block text-[11px] sm:text-xs md:text-sm font-black text-secondary dark:text-white uppercase tracking-wider">
-                          Nombre *
-                        </label>
-                        <input
-                          id="sorteo-nombre"
-                          type="text"
-                          required
-                          value={participantName}
-                          onChange={(e) => {
-                            setParticipantName(e.target.value);
-                            if (sorteoFormError) setSorteoFormError('');
-                          }}
-                          placeholder="Ej: Carlos"
-                          className="w-full bg-secondary/5 dark:bg-white/5 border border-secondary/20 dark:border-white/15 focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl sm:rounded-2xl px-3.5 py-2.5 sm:py-3.5 text-xs sm:text-sm font-medium text-secondary dark:text-white placeholder:text-secondary/40 dark:placeholder:text-white/40 outline-none transition-all"
-                        />
-                      </div>
-
-                      <div className="space-y-1.5 sm:space-y-2">
-                        <label htmlFor="sorteo-telefono" className="block text-[11px] sm:text-xs md:text-sm font-black text-secondary dark:text-white uppercase tracking-wider">
-                          Número *
-                        </label>
-                        <input
-                          id="sorteo-telefono"
-                          type="tel"
-                          required
-                          value={participantPhone}
-                          onChange={(e) => {
-                            setParticipantPhone(e.target.value);
-                            if (sorteoFormError) setSorteoFormError('');
-                          }}
-                          placeholder="Ej: 58632612"
-                          className="w-full bg-secondary/5 dark:bg-white/5 border border-secondary/20 dark:border-white/15 focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl sm:rounded-2xl px-3.5 py-2.5 sm:py-3.5 text-xs sm:text-sm font-medium text-secondary dark:text-white placeholder:text-secondary/40 dark:placeholder:text-white/40 outline-none transition-all"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Screenshot Reminder Callout */}
-                    <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-primary/10 border border-primary/20 text-secondary dark:text-white space-y-1 sm:space-y-2">
-                      <div className="flex items-center gap-1.5 font-black text-[11px] sm:text-xs md:text-sm uppercase tracking-wider text-primary">
-                        <Camera className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                        Recordatorio de las 3 Capturas
-                      </div>
-                      <p className="text-[11px] sm:text-xs md:text-sm font-medium leading-relaxed opacity-90">
-                        Al pulsar el botón de abajo se abrirá WhatsApp con tus datos listos. En ese mismo chat deberás adjuntar las <strong>3 capturas de pantalla</strong> (Grupo WhatsApp con 3 añadidos, Seguir en Instagram y Estado de WhatsApp).
-                      </p>
-                    </div>
-
-                    {sorteoFormError && (
-                      <div className="p-2.5 sm:p-3 bg-red-500/10 border border-red-500/20 text-red-500 text-xs md:text-sm font-bold rounded-xl text-center">
-                        {sorteoFormError}
-                      </div>
-                    )}
-
-                    <button
-                      type="submit"
-                      id="btn-enviar-sorteo-whatsapp"
-                      className="w-full inline-flex items-center justify-center gap-2 sm:gap-3 bg-primary text-secondary font-black uppercase tracking-wider text-xs sm:text-sm py-3.5 sm:py-4 md:py-5 px-4 sm:px-6 rounded-xl sm:rounded-2xl shadow-lg md:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer text-center"
+                  <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto rounded-2xl md:rounded-3xl overflow-hidden bg-black shadow-2xl border-2 border-secondary/20 dark:border-white/20">
+                    <video
+                      controls
+                      playsInline
+                      preload="metadata"
+                      poster="/sorteo-poster.jpg"
+                      className="w-full h-auto max-h-[520px] sm:max-h-[580px] object-contain mx-auto bg-black rounded-2xl md:rounded-3xl"
                     >
-                      <Send className="w-4 h-4 md:w-5 md:h-5" />
-                      Enviar Mensaje a WhatsApp para Participar
-                    </button>
-                  </form>
+                      <source src="/sorteo-ruleta.mp4" type="video/mp4" />
+                      Tu navegador no soporta la reproducción de video HTML5.
+                    </video>
+                  </div>
                 </motion.div>
 
                 {/* Participants Card */}
@@ -2846,7 +2617,7 @@ export default function App() {
                       <div className="min-w-0">
                         <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
                           <h2 className="text-base sm:text-xl md:text-2xl font-black text-secondary dark:text-white uppercase tracking-tight">
-                            Lista de Participantes
+                            Lista Oficial de Participantes
                           </h2>
                           <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-black text-primary font-mono bg-primary/15 border border-primary/25 px-2.5 py-0.5 rounded-lg shrink-0">
                             <span className="text-[10px] sm:text-[11px] uppercase font-sans font-black text-secondary/70 dark:text-white/70 tracking-wider">
@@ -2856,39 +2627,72 @@ export default function App() {
                           </span>
                         </div>
                         <p className="text-[11px] sm:text-xs text-secondary/60 dark:text-white/60 font-medium">
-                          Números oficiales asignados para el sorteo
+                          El número 5 resultó ganador del sorteo
                         </p>
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      {sorteoParticipants.map((p, i) => (
-                        <div
-                          key={i}
-                          className="flex items-center justify-between p-2.5 sm:p-3.5 bg-secondary/[0.03] dark:bg-white/[0.04] hover:bg-secondary/[0.06] dark:hover:bg-white/[0.07] rounded-xl sm:rounded-2xl border border-secondary/10 dark:border-white/10 transition-colors gap-2"
-                        >
-                          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                            <span className="shrink-0 text-xs sm:text-sm font-black text-primary bg-primary/15 px-2 py-0.5 rounded-md font-mono">
-                              #{String(i + 1).padStart(2, '0')}
-                            </span>
-                            <span className="text-xs sm:text-base font-black text-secondary dark:text-white truncate">
-                              {p.name}
-                            </span>
-                            {p.phone && (
-                              <span className="shrink-0 text-[10px] sm:text-xs font-mono font-semibold text-secondary/60 dark:text-white/60 bg-secondary/5 dark:bg-white/5 border border-secondary/10 dark:border-white/10 px-1.5 sm:px-2 py-0.5 rounded-md">
-                                ••••{p.phone.slice(-4)}
+                      {sorteoParticipants.map((p, i) => {
+                        const isWinner = (i + 1) === 5;
+                        return (
+                          <div
+                            key={i}
+                            className={`flex items-center justify-between p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl transition-all gap-2 ${
+                              isWinner
+                                ? 'bg-amber-500/20 dark:bg-amber-500/25 border-2 border-amber-500 ring-4 ring-amber-500/25 shadow-lg shadow-amber-500/10'
+                                : 'bg-secondary/[0.03] dark:bg-white/[0.04] hover:bg-secondary/[0.06] dark:hover:bg-white/[0.07] border border-secondary/10 dark:border-white/10'
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                              <span
+                                className={`shrink-0 text-xs sm:text-sm font-mono px-2 py-0.5 rounded-md ${
+                                  isWinner
+                                    ? 'text-amber-950 dark:text-amber-100 bg-amber-400 font-black shadow-sm'
+                                    : 'font-black text-primary bg-primary/15'
+                                }`}
+                              >
+                                #{String(i + 1).padStart(2, '0')}
                               </span>
-                            )}
-                          </div>
+                              <span
+                                className={`text-xs sm:text-base font-black truncate flex items-center gap-1.5 ${
+                                  isWinner
+                                    ? 'text-amber-950 dark:text-amber-200 text-sm sm:text-lg'
+                                    : 'text-secondary dark:text-white'
+                                }`}
+                              >
+                                {p.name}
+                                {isWinner && <Trophy className="w-4 h-4 text-amber-500 shrink-0 inline" />}
+                              </span>
+                              {p.phone && (
+                                <span
+                                  className={`shrink-0 text-[10px] sm:text-xs font-mono font-semibold px-1.5 sm:px-2 py-0.5 rounded-md ${
+                                    isWinner
+                                      ? 'text-amber-900 dark:text-amber-200 bg-amber-500/30 border border-amber-500/40 font-bold'
+                                      : 'text-secondary/60 dark:text-white/60 bg-secondary/5 dark:bg-white/5 border border-secondary/10 dark:border-white/10'
+                                  }`}
+                                >
+                                  ••••{p.phone.slice(-4)}
+                                </span>
+                              )}
+                            </div>
 
-                          <div className="shrink-0">
-                            <span className="inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/20 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full">
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                              <span>Confirmado</span>
-                            </span>
+                            <div className="shrink-0">
+                              {isWinner ? (
+                                <span className="inline-flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs font-black text-amber-950 dark:text-amber-100 bg-amber-500 px-2.5 sm:px-3 py-1 rounded-full shadow-md">
+                                  <Trophy className="w-3.5 h-3.5 shrink-0" />
+                                  <span>¡GANADOR!</span>
+                                </span>
+                              ) : (
+                                <span className="inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/20 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                                  <span>Participante</span>
+                                </span>
+                              )}
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
 
                       {sorteoParticipants.length === 0 && (
                         <div className="text-center py-8 sm:py-12 space-y-2.5 sm:space-y-3">
