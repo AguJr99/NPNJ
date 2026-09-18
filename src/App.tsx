@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, Link, Navigate } from 'react-router-dom';
-import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown, Check, Sun, Moon, Monitor, Trophy, Gift, Share2, CheckCircle2, Copy, Camera, Users, Send, Play } from 'lucide-react';
+import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown, ChevronLeft, ChevronRight, Check, Sun, Moon, Monitor, Trophy, Gift, Share2, CheckCircle2, Copy, Camera, Users, Send, Play, Flame } from 'lucide-react';
 import { JERSEYS, ENCARGO_JERSEYS, WHATSAPP_NUMBER, LEAGUES } from './constants';
 import { Jersey, EncargoJersey, EncargoOrder, CartItem } from './types';
 import { CartDrawer } from './components/CartDrawer';
@@ -66,7 +66,7 @@ const LEAGUES_DATA = [
     teams: [
       { name: 'PSG', logo: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg' },
       { name: 'Mónaco', logo: 'https://drive.google.com/thumbnail?id=1oLx-8tL1nhbIEcuqP9ks8X0tyobc-DYi&sz=w200' },
-      { name: 'Marseille', logo: 'https://drive.google.com/thumbnail?id=1_zIK18FJVwkPZ1BB0s-8kgesiS5CrQWh&sz=w200' },
+      { name: 'Marseille', logo: 'https://drive.google.com/thumbnail?id=1dageSCLNwHFPndZtzR6dNW-Lysp0Kl3f&sz=w200' },
       { name: 'Otros', logo: 'https://drive.google.com/thumbnail?id=1-BuZ9jOVI5Uduxg-9dXCrcnvgtK12F4y&sz=w200' }
     ]
   },
@@ -138,7 +138,7 @@ const Navbar = ({
           
           <div className="hidden lg:flex items-center gap-4">
             <div className="flex items-center space-x-2 bg-black/20 p-1.5 rounded-full border border-white/5">
-              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto', 'sorteo'].map((tab) => (
+              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'].map((tab) => (
                 <Link
                   key={tab}
                   to={tab === 'home' ? '/' : `/${tab}`}
@@ -146,7 +146,7 @@ const Navbar = ({
                     activeTab === tab ? 'bg-primary text-secondary shadow-lg' : 'text-white/70 hover:text-white'
                   }`}
                 >
-                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : tab === 'contacto' ? 'Contacto' : 'Sorteo'}
+                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : 'Contacto'}
                 </Link>
               ))}
             </div>
@@ -280,7 +280,7 @@ const Navbar = ({
             className="lg:hidden absolute top-16 left-4 right-4 bg-secondary/95 backdrop-blur-xl rounded-[1.5rem] border border-primary/20 shadow-2xl z-[60] overflow-hidden"
           >
             <div className="p-4 space-y-2">
-              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto', 'sorteo'].map((tab) => (
+              {['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'].map((tab) => (
                 <Link
                   key={tab}
                   to={tab === 'home' ? '/' : `/${tab}`}
@@ -289,7 +289,7 @@ const Navbar = ({
                     activeTab === tab ? 'bg-primary text-secondary' : 'text-accent/60 hover:text-primary'
                   }`}
                 >
-                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : tab === 'contacto' ? 'Contacto' : 'Sorteo'}
+                  {tab === 'home' ? 'Inicio' : tab === 'stock' ? 'Stock' : tab === 'encargos' ? 'Encargos' : tab === 'nosotros' ? 'Nosotros' : tab === 'preguntas' ? 'Preguntas' : 'Contacto'}
                 </Link>
               ))}
 
@@ -384,15 +384,79 @@ const FAQItem: React.FC<{ question: string, answer: React.ReactNode, index: numb
   );
 };
 
+const useLazyObserver = (options: IntersectionObserverInit = { rootMargin: '150px 0px', threshold: 0.01 }) => {
+  const [isInView, setIsInView] = useState(false);
+  const elementRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const el = elementRef.current;
+    if (!el || isInView) return;
+
+    if (typeof IntersectionObserver === 'undefined') {
+      setIsInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsInView(true);
+        observer.disconnect();
+      }
+    }, options);
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [isInView, options.rootMargin, options.threshold]);
+
+  return { isInView, elementRef };
+};
+
 const JerseyCard = ({ jersey, onAddToCart }: { jersey: Jersey, onAddToCart: (j: Jersey) => void, key?: string }) => {
   const [showFullImage, setShowFullImage] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [loadedIndices, setLoadedIndices] = useState<Record<number, boolean>>({});
   const [justAdded, setJustAdded] = useState(false);
+  const { isInView, elementRef } = useLazyObserver({ rootMargin: '150px 0px', threshold: 0.01 });
+
+  const isCurrentLoaded = !!loadedIndices[currentImageIndex];
   
+  const imageList = useMemo(() => {
+    if (jersey.images && jersey.images.length > 0) {
+      return jersey.images;
+    }
+    return [jersey.image];
+  }, [jersey.images, jersey.image]);
+
+  const currentImage = imageList[currentImageIndex] || jersey.image;
+
   // Optimized thumbnail URL for Google Drive
-  const thumbnailUrl = jersey.image.includes('googleusercontent.com/d/') 
-    ? `https://drive.google.com/thumbnail?id=${jersey.image.split('/d/')[1]}&sz=w600` 
-    : jersey.image;
+  const currentThumbnailUrl = currentImage.includes('googleusercontent.com/d/') 
+    ? `https://drive.google.com/thumbnail?id=${currentImage.split('/d/')[1]}&sz=w800` 
+    : currentImage;
+
+  const paginate = (newDirection: number) => {
+    setDirection(newDirection);
+    setCurrentImageIndex((prev) => prev + newDirection);
+  };
+
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? '100%' : dir < 0 ? '-100%' : 0,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir < 0 ? '100%' : '-100%',
+      opacity: 0,
+    }),
+  };
 
   const hasDiscount = jersey.discountEndDate && new Date(jersey.discountEndDate) > new Date();
   const discountPercentage = jersey.originalPrice ? Math.round(((jersey.originalPrice - jersey.price) / jersey.originalPrice) * 100) : 0;
@@ -407,47 +471,106 @@ const JerseyCard = ({ jersey, onAddToCart }: { jersey: Jersey, onAddToCart: (j: 
     <>
       <motion.div
         layout
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className={`bg-white dark:bg-[#181920] rounded-[3rem] overflow-hidden shadow-2xl shadow-secondary/5 dark:shadow-none group border flex flex-col hover:shadow-primary/10 transition-all duration-500 ${hasDiscount ? 'border-red-500/30 ring-2 ring-red-500/10' : 'border-secondary/5 dark:border-white/10'}`}
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+        transition={{ 
+          duration: 0.45, 
+          ease: [0.21, 0.47, 0.32, 0.98] 
+        }}
+        className={`bg-white dark:bg-[#181920] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl shadow-secondary/5 dark:shadow-none group border flex flex-col flex-grow hover:shadow-primary/10 transition-all duration-500 ${hasDiscount ? 'border-red-500/30 ring-2 ring-red-500/10' : 'border-secondary/5 dark:border-white/10'}`}
       >
         <div 
-          className="relative overflow-hidden bg-accent/30 dark:bg-[#121318] cursor-zoom-in"
+          ref={elementRef}
+          className="relative overflow-hidden bg-accent/30 dark:bg-[#121318] aspect-[20/23] w-full flex items-center justify-center cursor-zoom-in select-none group/img"
           onClick={() => setShowFullImage(true)}
         >
-          {/* Loading Skeleton */}
-          {!isLoaded && (
-            <div className="absolute inset-0 bg-secondary/5 dark:bg-white/5 animate-pulse flex items-center justify-center">
-              <Shirt className="w-8 h-8 text-secondary/10 dark:text-white/10" />
-            </div>
+            {/* Tarjetica pequeña de descuento arriba a la izquierda en la foto */}
+            {hasDiscount && (
+              <div className="absolute top-2.5 left-2.5 sm:top-3.5 sm:left-3.5 z-20 bg-red-600 text-white font-black text-[9px] sm:text-[11px] md:text-xs px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg sm:rounded-xl shadow-lg uppercase tracking-tight border border-white/20 select-none pointer-events-none">
+                -{discountPercentage}%
+              </div>
+            )}
+
+            {/* Loading Skeleton */}
+            {!isCurrentLoaded && (
+              <div className="absolute inset-0 bg-secondary/5 dark:bg-white/5 animate-pulse flex items-center justify-center z-0">
+                <Shirt className="w-8 h-8 text-secondary/10 dark:text-white/10" />
+              </div>
+            )}
+          
+          {isInView && (
+            <AnimatePresence initial={false} custom={direction} mode="popLayout">
+              <motion.div
+                key={currentImageIndex}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: 'spring', stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.22 }
+                }}
+                className="w-full h-full flex items-center justify-center overflow-hidden"
+              >
+                <img
+                  ref={(img) => {
+                    if (img && img.complete && !isCurrentLoaded) {
+                      setLoadedIndices(prev => ({ ...prev, [currentImageIndex]: true }));
+                    }
+                  }}
+                  src={currentThumbnailUrl}
+                  alt={`${jersey.name} - ${currentImageIndex === 0 ? 'Frontal' : 'Atrás'}`}
+                  onLoad={() => setLoadedIndices(prev => ({ ...prev, [currentImageIndex]: true }))}
+                  className={`w-full h-full object-contain blur-up ${
+                    isCurrentLoaded ? 'blur-up-loaded' : 'blur-up-loading'
+                  }`}
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = `https://picsum.photos/seed/${jersey.id}-${currentImageIndex}/400/600`;
+                    setLoadedIndices(prev => ({ ...prev, [currentImageIndex]: true }));
+                  }}
+                />
+              </motion.div>
+            </AnimatePresence>
           )}
           
-          <img
-            src={thumbnailUrl}
-            alt={jersey.name}
-            loading="lazy"
-            onLoad={() => setIsLoaded(true)}
-            className={`w-full h-auto object-contain transition-all duration-700 group-hover:scale-110 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-            referrerPolicy="no-referrer"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = `https://picsum.photos/seed/${jersey.id}/400/600`;
-              setIsLoaded(true);
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-            <Search className="text-white w-8 h-8 drop-shadow-lg" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+            <Search className="text-white w-8 h-8 drop-shadow-lg opacity-80" />
           </div>
-          
-          {hasDiscount && (
-            <div className="absolute top-2 left-2 md:top-4 md:left-4 z-10 flex flex-col gap-1 items-start">
-              <div className="bg-red-600 text-white font-black text-[8px] md:text-xs px-2 py-1 rounded-full shadow-lg uppercase tracking-widest flex items-center gap-1">
-                <Clock className="w-2.5 h-2.5 md:w-3 h-3" />
-                <span>EN OFERTA</span>
-              </div>
-              <div className="bg-white/95 dark:bg-[#1C1D24]/95 backdrop-blur-sm text-red-600 dark:text-red-400 font-black text-[7px] md:text-[9px] px-2 py-0.5 rounded-full shadow-sm uppercase tracking-widest border border-red-600/20">
-                TERMINA EN <Countdown targetDate={jersey.discountEndDate!} variant="daysOnly" />
-              </div>
-            </div>
+
+          {/* Solo flechas de navegación para cambiar entre frontal y dorsal */}
+          {imageList.length > 1 && (
+            <>
+              {currentImageIndex > 0 && (
+                <button
+                  type="button"
+                  aria-label="Ver foto anterior"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    paginate(-1);
+                  }}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/25 hover:bg-black/50 text-white/90 hover:text-white backdrop-blur-[2px] flex items-center justify-center transition-all shadow-md hover:scale-110 active:scale-95 border border-white/20 cursor-pointer"
+                >
+                  <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 drop-shadow-md" />
+                </button>
+              )}
+
+              {currentImageIndex < imageList.length - 1 && (
+                <button
+                  type="button"
+                  aria-label="Ver foto siguiente"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    paginate(1);
+                  }}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/25 hover:bg-black/50 text-white/90 hover:text-white backdrop-blur-[2px] flex items-center justify-center transition-all shadow-md hover:scale-110 active:scale-95 border border-white/20 cursor-pointer"
+                >
+                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 drop-shadow-md" />
+                </button>
+              )}
+            </>
           )}
         </div>
         
@@ -490,18 +613,13 @@ const JerseyCard = ({ jersey, onAddToCart }: { jersey: Jersey, onAddToCart: (j: 
           </div>
 
           <div className="pt-4 md:pt-5 mt-auto border-t border-secondary/5 dark:border-white/10 w-full space-y-4 md:space-y-5">
-            <div className="flex flex-col items-center justify-center gap-2">
-              {hasDiscount && (
-                <span className="bg-red-600 text-white text-[10px] md:text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">-{discountPercentage}% DE DESCUENTO</span>
-              )}
-              <div className="flex items-center justify-center gap-2 md:gap-3">
-                <span className="text-[8px] md:text-[10px] font-bold text-secondary/40 dark:text-white/40 uppercase tracking-[0.2em]">Precio</span>
-                <div className="flex items-center gap-2">
-                  {hasDiscount && (
-                    <span className="text-xs md:text-lg font-black text-red-600 dark:text-red-400 line-through decoration-red-600/50 decoration-2 tracking-tighter leading-none pt-1 md:pt-2">${jersey.originalPrice}</span>
-                  )}
-                  <span className="text-xl md:text-4xl font-sans font-black text-secondary dark:text-white tracking-tighter leading-none">${jersey.price}</span>
-                </div>
+            <div className="flex items-center justify-center gap-2 md:gap-3">
+              <span className="text-[8px] md:text-[10px] font-bold text-secondary/40 dark:text-white/40 uppercase tracking-[0.2em]">Precio</span>
+              <div className="flex items-center gap-2">
+                {hasDiscount && (
+                  <span className="text-xs md:text-lg font-black text-red-600 dark:text-red-400 line-through decoration-red-600/50 decoration-2 tracking-tighter leading-none pt-1 md:pt-2">${jersey.originalPrice}</span>
+                )}
+                <span className="text-xl md:text-4xl font-sans font-black text-secondary dark:text-white tracking-tighter leading-none">${jersey.price}</span>
               </div>
             </div>
             
@@ -536,23 +654,63 @@ const JerseyCard = ({ jersey, onAddToCart }: { jersey: Jersey, onAddToCart: (j: 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setShowFullImage(false)}
-            className="fixed inset-0 z-[110] bg-secondary/95 dark:bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-12 cursor-zoom-out"
+            className="fixed inset-0 z-[110] bg-secondary/95 dark:bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 md:p-10 cursor-zoom-out"
           >
             <button 
               onClick={() => setShowFullImage(false)}
-              className="absolute top-8 right-8 text-white hover:text-primary transition-colors p-2"
+              className="absolute top-6 right-6 text-white hover:text-primary transition-colors p-2 z-30 cursor-pointer"
             >
-              <X className="w-10 h-10" />
+              <X className="w-8 h-8 md:w-10 md:h-10" />
             </button>
-            <motion.img
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              src={jersey.image}
-              alt={jersey.name}
-              className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl border border-white/10"
-              referrerPolicy="no-referrer"
-            />
+
+            <div 
+              className="relative max-w-full max-h-[85vh] flex items-center justify-center overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                <motion.img
+                  key={currentImageIndex}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: 'spring', stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.22 }
+                  }}
+                  src={currentImage}
+                  alt={`${jersey.name} - ${currentImageIndex === 0 ? 'Frontal' : 'Atrás'}`}
+                  className="max-w-full max-h-[82vh] object-contain rounded-2xl shadow-2xl border border-white/10"
+                  referrerPolicy="no-referrer"
+                />
+              </AnimatePresence>
+
+              {imageList.length > 1 && (
+                <>
+                  {currentImageIndex > 0 && (
+                    <button
+                      type="button"
+                      aria-label="Ver foto anterior"
+                      onClick={() => paginate(-1)}
+                      className="absolute left-2 sm:left-4 md:-left-12 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/35 hover:bg-black/60 text-white/90 hover:text-white backdrop-blur-[2px] flex items-center justify-center transition-all shadow-2xl border border-white/20 cursor-pointer z-30"
+                    >
+                      <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 drop-shadow-md" />
+                    </button>
+                  )}
+                  {currentImageIndex < imageList.length - 1 && (
+                    <button
+                      type="button"
+                      aria-label="Ver foto siguiente"
+                      onClick={() => paginate(1)}
+                      className="absolute right-2 sm:right-4 md:-right-12 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/35 hover:bg-black/60 text-white/90 hover:text-white backdrop-blur-[2px] flex items-center justify-center transition-all shadow-2xl border border-white/20 cursor-pointer z-30"
+                    >
+                      <ChevronRight className="w-5 h-5 md:w-6 md:h-6 drop-shadow-md" />
+                    </button>
+                  )}
+                </>
+              )}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -562,28 +720,46 @@ const JerseyCard = ({ jersey, onAddToCart }: { jersey: Jersey, onAddToCart: (j: 
 
 const EncargoJerseyCard = ({ jersey, onOrder }: { jersey: EncargoJersey, onOrder: (j: EncargoJersey) => void, key?: string }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const { isInView, elementRef } = useLazyObserver({ rootMargin: '150px 0px', threshold: 0.01 });
   
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 35 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+      transition={{ 
+        duration: 0.45, 
+        ease: [0.21, 0.47, 0.32, 0.98] 
+      }}
       className="bg-white dark:bg-[#181920] rounded-[3rem] overflow-hidden shadow-2xl shadow-secondary/5 dark:shadow-none group border border-secondary/5 dark:border-white/10 flex flex-col hover:shadow-primary/10 transition-all duration-500"
     >
-      <div className="relative overflow-hidden bg-accent/30 dark:bg-[#121318] cursor-pointer aspect-square flex items-center justify-center" onClick={() => onOrder(jersey)}>
+      <div 
+        ref={elementRef}
+        className="relative overflow-hidden bg-accent/30 dark:bg-[#121318] cursor-pointer aspect-square flex items-center justify-center group/img" 
+        onClick={() => onOrder(jersey)}
+      >
         {!isLoaded && (
-          <div className="absolute inset-0 bg-secondary/5 dark:bg-white/5 animate-pulse flex items-center justify-center">
+          <div className="absolute inset-0 bg-secondary/5 dark:bg-white/5 animate-pulse flex items-center justify-center z-0">
             <Shirt className="w-8 h-8 text-secondary/10 dark:text-white/10" />
           </div>
         )}
-        <img
-          src={jersey.fanImage}
-          alt={jersey.name}
-          loading="lazy"
-          onLoad={() => setIsLoaded(true)}
-          className={`w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-110 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-          referrerPolicy="no-referrer"
-        />
+        {isInView && (
+          <img
+            ref={(img) => {
+              if (img && img.complete && !isLoaded) {
+                setIsLoaded(true);
+              }
+            }}
+            src={jersey.fanImage}
+            alt={jersey.name}
+            onLoad={() => setIsLoaded(true)}
+            className={`w-full h-full object-cover object-top blur-up group-hover-zoom ${
+              isLoaded ? 'blur-up-loaded' : 'blur-up-loading'
+            }`}
+            referrerPolicy="no-referrer"
+          />
+        )}
       </div>
       
       <div className="p-6 md:p-8 flex flex-col flex-grow items-center text-center">
@@ -1455,75 +1631,90 @@ const Countdown = ({ targetDate, finishMessage = "¡Finalizado!", variant = "ful
   );
 };
 
-const SorteoWinnerHero = () => {
+const StockPromoBanner = ({ targetDate = "2026-09-26T23:59:59-04:00" }: { targetDate?: string }) => {
+  const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
+
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const difference = +new Date(targetDate) - +new Date();
+      if (difference > 0) {
+        const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const h = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const m = Math.floor((difference / 1000 / 60) % 60);
+        const s = Math.floor((difference / 1000) % 60);
+        setTimeLeft({ days: d, hours: h, minutes: m, seconds: s });
+      } else {
+        setTimeLeft(null);
+      }
+    };
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+    return () => clearInterval(timer);
+  }, [targetDate]);
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="bg-white dark:bg-[#181920] p-5 sm:p-8 md:p-12 rounded-2xl md:rounded-[3rem] shadow-2xl border-2 border-amber-500/50 text-center relative overflow-hidden space-y-5 sm:space-y-6 md:space-y-8"
+      className="w-full max-w-4xl mx-auto rounded-3xl md:rounded-[2.5rem] bg-white dark:bg-[#15161C] text-secondary dark:text-white p-5 sm:p-7 md:p-9 shadow-2xl relative overflow-hidden border-2 border-primary/30 dark:border-primary/40 text-center select-none"
     >
-      {/* Golden ambient glow */}
-      <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-96 sm:w-[36rem] h-48 bg-amber-500/20 rounded-full blur-3xl pointer-events-none" />
+      {/* Dynamic ambient highlights using brand gold */}
+      <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-80 sm:w-[32rem] h-40 bg-primary/20 dark:bg-primary/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-16 right-4 w-64 h-36 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
 
-      <div className="relative z-10 space-y-4 md:space-y-6">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-900 dark:text-amber-200 text-xs sm:text-sm font-black uppercase tracking-wider shadow-sm">
-          <Trophy className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-          ¡Sorteo Oficial Finalizado y Cerrado!
+      <div className="relative z-10 flex flex-col items-center gap-3 sm:gap-4 md:gap-5">
+        {/* Glowing badge */}
+        <div className="inline-flex items-center gap-2 bg-primary/10 dark:bg-primary/20 border border-primary/30 px-3.5 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider text-primary shadow-sm">
+          <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary fill-primary animate-pulse" />
+          <span>¡OFERTA ESPECIAL EN TODO EL STOCK!</span>
         </div>
 
-        <div className="space-y-2 max-w-2xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-secondary dark:text-white uppercase tracking-tight leading-tight">
-            ¡Felicidades al Ganador!
+        {/* Central Titles */}
+        <div className="space-y-2 max-w-2xl">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-sans font-black uppercase tracking-tight leading-none text-secondary dark:text-white drop-shadow-sm">
+            ¡TODO EL STOCK EN OFERTA!
           </h2>
-          <p className="text-sm sm:text-base md:text-xl font-bold text-amber-800 dark:text-amber-300">
-            La ruleta oficial ha determinado al afortunado ganador de la camiseta
-          </p>
+          <div className="inline-block bg-primary text-secondary dark:text-secondary font-black text-xs sm:text-lg md:text-2xl px-4 sm:px-6 py-1 sm:py-1.5 rounded-full uppercase tracking-wider shadow-lg shadow-primary/20 border border-primary/40">
+            ENTRE 40% Y 60% DE DESCUENTO
+          </div>
         </div>
 
-        {/* Winner Highlight Box */}
-        <div className="max-w-xl mx-auto p-5 sm:p-7 md:p-8 rounded-2xl md:rounded-3xl bg-gradient-to-b from-amber-500/20 via-amber-500/10 to-amber-500/5 border-2 border-amber-500/60 shadow-xl space-y-3 sm:space-y-4">
-          <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-amber-500 text-secondary rounded-2xl shadow-lg shadow-amber-500/30">
-            <Trophy className="w-8 h-8 text-secondary" />
-          </div>
+        <p className="text-[11px] sm:text-sm md:text-base font-bold text-secondary/70 dark:text-white/80 max-w-lg leading-relaxed">
+          Aprovecha los precios rebajados en todas las camisetas disponibles para entrega inmediata en Matanzas.
+        </p>
 
-          <div className="space-y-1">
-            <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-amber-800 dark:text-amber-300 block">
-              Número Ganador Oficial
-            </span>
-            <div className="flex items-center justify-center gap-3 flex-wrap">
-              <span className="text-4xl sm:text-5xl md:text-6xl font-black text-amber-600 dark:text-amber-400 font-mono tracking-tight">
-                #05
-              </span>
-              <div className="text-left">
-                <h3 className="text-xl sm:text-3xl font-black text-secondary dark:text-white flex items-center gap-1.5">
-                  Julio César 🏆
-                </h3>
-                <span className="text-xs sm:text-sm font-mono font-bold text-secondary/60 dark:text-white/60">
-                  ••••0930
-                </span>
-              </div>
+        {/* Countdown Box with business theme */}
+        <div className="w-full max-w-md pt-1">
+          <div className="bg-secondary/5 dark:bg-black/40 backdrop-blur-md rounded-2xl md:rounded-3xl p-3 sm:p-4 border border-secondary/10 dark:border-white/10 flex flex-col items-center gap-2.5 shadow-inner">
+            <div className="flex items-center gap-1.5 text-[9px] sm:text-[11px] font-black uppercase tracking-widest text-primary">
+              <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary" />
+              <span>TERMINA EL DÍA 26 DE SEPTIEMBRE</span>
             </div>
-          </div>
 
-          <div className="pt-3 border-t border-amber-500/20 space-y-1">
-            <span className="inline-block px-3.5 py-1 rounded-lg bg-amber-500/25 text-amber-950 dark:text-amber-100 text-xs sm:text-sm font-black">
-              🎁 Premio: 1 Camiseta a Elección Totalmente Gratis
-            </span>
-            <p className="text-[11px] sm:text-xs text-secondary/70 dark:text-white/70 font-medium">
-              Podrá elegir cualquier camiseta de nuestro stock o encargarla personalizada con su dorsal y parches oficiales.
-            </p>
+            {timeLeft ? (
+              <div className="flex items-center justify-center gap-2 sm:gap-3">
+                {[
+                  { label: 'DÍAS', value: timeLeft.days },
+                  { label: 'HORAS', value: timeLeft.hours },
+                  { label: 'MINUTOS', value: timeLeft.minutes },
+                  { label: 'SEGUNDOS', value: timeLeft.seconds },
+                ].map((item, i) => (
+                  <div key={i} className="flex flex-col items-center min-w-[52px] sm:min-w-[66px] md:min-w-[74px] bg-white dark:bg-[#1E2028] border border-primary/20 dark:border-primary/30 rounded-xl sm:rounded-2xl py-1.5 sm:py-2 px-1 shadow-sm">
+                    <span className="text-xl sm:text-2xl md:text-3xl font-mono font-black text-primary leading-tight tabular-nums">
+                      {String(item.value).padStart(2, '0')}
+                    </span>
+                    <span className="text-[7px] sm:text-[8px] md:text-[9px] uppercase font-bold tracking-wider text-secondary/60 dark:text-white/60">
+                      {item.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <span className="text-xs sm:text-sm font-black uppercase tracking-widest text-secondary dark:text-white py-1">
+                ¡OFERTA FINALIZADA!
+              </span>
+            )}
           </div>
-        </div>
-
-        {/* Gratitude & Upcoming Promotions */}
-        <div className="max-w-2xl mx-auto p-4 sm:p-5 rounded-2xl bg-secondary/[0.03] dark:bg-white/[0.04] border border-secondary/10 dark:border-white/10 space-y-2 text-center">
-          <h4 className="text-xs sm:text-sm font-black uppercase tracking-wider text-secondary dark:text-white flex items-center justify-center gap-2">
-            <Award className="w-4 h-4 text-primary" />
-            ¡Gracias a todos los participantes!
-          </h4>
-          <p className="text-xs sm:text-sm text-secondary/80 dark:text-white/80 font-medium leading-relaxed">
-            Agradecemos enormemente a los <strong>71 participantes</strong> que se sumaron con tanto entusiasmo y compartieron la pasión por las camisetas de fútbol. Si esta vez no te tocó, ¡no te desanimes! Sigue muy pendiente de nuestra web y de nuestras redes oficiales, porque muy pronto vendrán <strong>nuevas promociones, ofertas exclusivas y próximos sorteos</strong>.
-          </p>
         </div>
       </div>
     </motion.div>
@@ -1544,11 +1735,16 @@ export default function App() {
 
   // Redirect invalid routes to home
   useEffect(() => {
-    const validTabs = ['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto', 'sorteo'];
+    const validTabs = ['home', 'stock', 'encargos', 'nosotros', 'preguntas', 'contacto'];
     if (!validTabs.includes(activeTab)) {
       navigate('/', { replace: true });
     }
   }, [activeTab, navigate]);
+
+  // Scroll to top smoothly on section change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [activeTab]);
 
   const [selectedJersey, setSelectedJersey] = useState<Jersey | null>(null);
   const [selectedEncargoJersey, setSelectedEncargoJersey] = useState<EncargoJersey | null>(null);
@@ -1841,8 +2037,17 @@ export default function App() {
         onOpenCart={() => setIsCartOpen(true)}
       />
 
-      <main className="flex-grow">
-        {activeTab === 'home' && (
+      <main className="flex-grow relative">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -14 }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full"
+          >
+            {activeTab === 'home' && (
           <div className="space-y-0">
             {/* Hero Section Split Layout */}
             <section className="relative lg:min-h-[calc(100vh-6rem)] flex flex-col lg:flex-row items-center overflow-hidden">
@@ -1853,6 +2058,16 @@ export default function App() {
                     animate={{ x: 0, opacity: 1 }}
                     className="max-w-2xl mx-auto lg:mx-0"
                   >
+                    {/* Promo Pill Badge */}
+                    <Link
+                      to="/stock"
+                      className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/15 border border-primary/30 text-secondary dark:text-primary text-[10px] sm:text-xs font-black uppercase tracking-wider mb-3 sm:mb-4 hover:bg-primary/25 transition-all shadow-sm group"
+                    >
+                      <Flame className="w-3.5 h-3.5 text-primary fill-primary group-hover:scale-110 transition-transform animate-pulse" />
+                      <span>¡TODO EL STOCK EN OFERTA: 40% - 60% DE DESCUENTO!</span>
+                      <ChevronRight className="w-3 h-3 text-primary group-hover:translate-x-0.5 transition-transform" />
+                    </Link>
+
                     <h1 className="text-[42px] sm:text-7xl md:text-8xl lg:text-9xl font-sans font-black tracking-tighter leading-[0.8] mb-4 md:mb-6">
                       <span className="text-secondary dark:text-white block lg:inline">No Pain </span>
                       <span className="text-primary block lg:inline">No Jersey</span>
@@ -1989,6 +2204,11 @@ export default function App() {
                     : 'Tú la sueñas, nosotros te la conseguimos.'}
                 </p>
               </div>
+
+              {/* Banner llamativo central de oferta en stock con cuenta regresiva */}
+              {activeTab === 'stock' && (
+                <StockPromoBanner targetDate="2026-09-26T23:59:59-04:00" />
+              )}
 
               {/* Search and Filters Section Aligned */}
               <div className={`w-full flex flex-col items-center ${activeTab === 'encargos' ? 'gap-6 md:gap-8' : 'gap-8 md:gap-12'}`}>
@@ -2157,7 +2377,7 @@ export default function App() {
             {activeTab === 'stock' ? (
               filteredJerseys.length > 0 ? (
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                  {filteredJerseys.map(jersey => (
+                  {filteredJerseys.map((jersey) => (
                     <JerseyCard
                       key={jersey.id}
                       jersey={jersey}
@@ -2478,241 +2698,8 @@ export default function App() {
           </div>
         )}
 
-        {activeTab === 'sorteo' && (() => {
-          interface SorteoParticipant {
-            name: string;
-            phone?: string;
-          }
-
-          const sorteoParticipants: SorteoParticipant[] = [
-            { name: 'Moreira', phone: '55215996' },
-            { name: 'Maxdiel', phone: '55428695' },
-            { name: 'Michel', phone: '52588841' },
-            { name: 'Cristian', phone: '56877603' },
-            { name: 'Julio César', phone: '55210930' },
-            { name: 'Alejandro', phone: '59242513' },
-            { name: 'Jhon Maikol', phone: '59619071' },
-            { name: 'Jose Luis', phone: '54265735' },
-            { name: 'Cristian', phone: '58161314' },
-            { name: 'Anel', phone: '53534405' },
-            { name: 'Alejandro', phone: '51341323' },
-            { name: 'Antoine', phone: '51921999' },
-            { name: 'Anthony', phone: '58781151' },
-            { name: 'Aliandys', phone: '55791593' },
-            { name: 'Odduan', phone: '58665864' },
-            { name: 'Isabella', phone: '56203357' },
-            { name: 'Alejandra', phone: '58785886' },
-            { name: 'Alberto Alejandro', phone: '51766904' },
-            { name: 'Yosuan', phone: '53763592' },
-            { name: 'Dervis', phone: '52560701' },
-            { name: 'Yunier', phone: '54557343' },
-            { name: 'Williams', phone: '58683912' },
-            { name: 'José Carlos', phone: '53039141' },
-            { name: 'Kevin', phone: '59245883' },
-            { name: 'Samuelito', phone: '52598990' },
-            { name: 'Alfredo Enrique', phone: '59140860' },
-            { name: 'Alejandro', phone: '59247173' },
-            { name: 'Liety', phone: '52365176' },
-            { name: 'Luciano', phone: '50094111' },
-            { name: 'Osvaldo', phone: '58348799' },
-            { name: 'Luis Daniel', phone: '50177995' },
-            { name: 'Steffanie', phone: '56107940' },
-            { name: 'Daniela', phone: '51300332' },
-            { name: 'Daynier', phone: '59415888' },
-            { name: 'Daniela', phone: '52718928' },
-            { name: 'Thalía', phone: '55859735' },
-            { name: 'Dainelys', phone: '51151113' },
-            { name: 'Dayana', phone: '56877939' },
-            { name: 'Amy', phone: '51152809' },
-            { name: 'Alina', phone: '53903370' },
-            { name: 'Maria Claudia', phone: '55495629' },
-            { name: 'Arliet', phone: '50628772' },
-            { name: 'Mel', phone: '58922219' },
-            { name: 'Maricel', phone: '5839208' },
-            { name: 'Dorellys', phone: '53955404' },
-            { name: 'Enzo', phone: '51629676' },
-            { name: 'Lyamze', phone: '58783345' },
-            { name: 'Carlos Alejandro', phone: '56108800' },
-            { name: 'Abel', phone: '51628807' },
-            { name: 'Angel', phone: '53520279' },
-            { name: 'Anthony', phone: '51454473' },
-            { name: 'Fabio', phone: '59250400' },
-            { name: 'Endry', phone: '52481714' },
-            { name: 'Yosvel', phone: '56409703' },
-            { name: 'Kevin', phone: '52773256' },
-            { name: 'Katherin', phone: '53762554' },
-            { name: 'Adán', phone: '50622259' },
-            { name: 'Jairo', phone: '50174769' },
-            { name: 'Brayan', phone: '52584152' },
-            { name: 'Liana', phone: '59618191' },
-            { name: 'Cinthya', phone: '58781044' },
-            { name: 'Dyan Durian', phone: '51502081' },
-            { name: 'Yoney', phone: '58208505' },
-            { name: 'Meibys', phone: '52685571' },
-            { name: 'Robert', phone: '54122752' },
-            { name: 'Melani Rachel', phone: '51623245' },
-            { name: 'Janiel', phone: '59018351' },
-            { name: 'Rodríguez', phone: '53520686' },
-            { name: 'Yahinilin', phone: '58207024' },
-            { name: 'Emanuel', phone: '53706006' },
-            { name: 'Alejan', phone: '56714124' }
-          ];
-
-          return (
-            <div className="max-w-4xl mx-auto px-3 sm:px-4 pt-4 sm:pt-8 pb-10 sm:pb-12 md:py-20">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="space-y-6 sm:space-y-8 md:space-y-12"
-              >
-                {/* Header Section */}
-                <div className="space-y-1.5 md:space-y-4 text-center">
-                  <h1 className="text-2xl sm:text-3xl md:text-6xl font-sans font-black text-secondary dark:text-white tracking-tighter uppercase">Sorteo</h1>
-                  <p className="text-primary text-[11px] sm:text-xs md:text-xl font-black italic uppercase tracking-wider md:tracking-widest">¡Sorteo Finalizado • Tenemos Ganador Oficial!</p>
-                </div>
-
-                {/* Winner Celebration & Announcement Card */}
-                <SorteoWinnerHero />
-
-                {/* Roulette Video Card */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-white dark:bg-[#181920] p-4 sm:p-6 md:p-10 rounded-2xl md:rounded-[3rem] shadow-xl md:shadow-2xl border border-secondary/10 dark:border-white/10 space-y-4 md:space-y-6 text-center"
-                >
-                  <div className="space-y-1.5 md:space-y-2">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/15 text-primary text-[11px] sm:text-xs font-black uppercase tracking-wider">
-                      <Play className="w-3.5 h-3.5" />
-                      Ruleta en Vivo
-                    </div>
-                    <h2 className="text-lg sm:text-2xl md:text-3xl font-black text-secondary dark:text-white uppercase tracking-tight">
-                      Video del Sorteo (Ruleta de Ganador)
-                    </h2>
-                    <p className="text-xs sm:text-sm md:text-base text-secondary/70 dark:text-white/70 max-w-xl mx-auto">
-                      Mira la grabación oficial de la ruleta girando entre los 71 participantes hasta detenerse en el número 5:
-                    </p>
-                  </div>
-
-                  <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto rounded-2xl md:rounded-3xl overflow-hidden bg-black shadow-2xl border-2 border-secondary/20 dark:border-white/20">
-                    <video
-                      controls
-                      playsInline
-                      preload="metadata"
-                      poster="/sorteo-poster.jpg"
-                      className="w-full h-auto max-h-[520px] sm:max-h-[580px] object-contain mx-auto bg-black rounded-2xl md:rounded-3xl"
-                    >
-                      <source src="/sorteo-ruleta.mp4" type="video/mp4" />
-                      Tu navegador no soporta la reproducción de video HTML5.
-                    </video>
-                  </div>
-                </motion.div>
-
-                {/* Participants Card */}
-                <div className="grid md:grid-cols-1 gap-4 sm:gap-6 md:gap-10">
-                  <div className="bg-white dark:bg-[#181920] p-4 sm:p-6 md:p-10 rounded-2xl md:rounded-[3rem] shadow-xl md:shadow-2xl border border-secondary/10 dark:border-white/10 flex flex-col">
-                    <div className="flex items-center gap-2.5 sm:gap-4 mb-4 sm:mb-6">
-                      <div className="w-9 h-9 sm:w-11 sm:h-11 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0">
-                        <ClipboardList className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
-                          <h2 className="text-base sm:text-xl md:text-2xl font-black text-secondary dark:text-white uppercase tracking-tight">
-                            Lista Oficial de Participantes
-                          </h2>
-                          <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-black text-primary font-mono bg-primary/15 border border-primary/25 px-2.5 py-0.5 rounded-lg shrink-0">
-                            <span className="text-[10px] sm:text-[11px] uppercase font-sans font-black text-secondary/70 dark:text-white/70 tracking-wider">
-                              Total:
-                            </span>
-                            {sorteoParticipants.length}
-                          </span>
-                        </div>
-                        <p className="text-[11px] sm:text-xs text-secondary/60 dark:text-white/60 font-medium">
-                          El número 5 resultó ganador del sorteo
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      {sorteoParticipants.map((p, i) => {
-                        const isWinner = (i + 1) === 5;
-                        return (
-                          <div
-                            key={i}
-                            className={`flex items-center justify-between p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl transition-all gap-2 ${
-                              isWinner
-                                ? 'bg-amber-500/20 dark:bg-amber-500/25 border-2 border-amber-500 ring-4 ring-amber-500/25 shadow-lg shadow-amber-500/10'
-                                : 'bg-secondary/[0.03] dark:bg-white/[0.04] hover:bg-secondary/[0.06] dark:hover:bg-white/[0.07] border border-secondary/10 dark:border-white/10'
-                            }`}
-                          >
-                            <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                              <span
-                                className={`shrink-0 text-xs sm:text-sm font-mono px-2 py-0.5 rounded-md ${
-                                  isWinner
-                                    ? 'text-amber-950 dark:text-amber-100 bg-amber-400 font-black shadow-sm'
-                                    : 'font-black text-primary bg-primary/15'
-                                }`}
-                              >
-                                #{String(i + 1).padStart(2, '0')}
-                              </span>
-                              <span
-                                className={`text-xs sm:text-base font-black truncate flex items-center gap-1.5 ${
-                                  isWinner
-                                    ? 'text-amber-950 dark:text-amber-200 text-sm sm:text-lg'
-                                    : 'text-secondary dark:text-white'
-                                }`}
-                              >
-                                {p.name}
-                                {isWinner && <Trophy className="w-4 h-4 text-amber-500 shrink-0 inline" />}
-                              </span>
-                              {p.phone && (
-                                <span
-                                  className={`shrink-0 text-[10px] sm:text-xs font-mono font-semibold px-1.5 sm:px-2 py-0.5 rounded-md ${
-                                    isWinner
-                                      ? 'text-amber-900 dark:text-amber-200 bg-amber-500/30 border border-amber-500/40 font-bold'
-                                      : 'text-secondary/60 dark:text-white/60 bg-secondary/5 dark:bg-white/5 border border-secondary/10 dark:border-white/10'
-                                  }`}
-                                >
-                                  ••••{p.phone.slice(-4)}
-                                </span>
-                              )}
-                            </div>
-
-                            <div className="shrink-0">
-                              {isWinner ? (
-                                <span className="inline-flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs font-black text-amber-950 dark:text-amber-100 bg-amber-500 px-2.5 sm:px-3 py-1 rounded-full shadow-md">
-                                  <Trophy className="w-3.5 h-3.5 shrink-0" />
-                                  <span>¡GANADOR!</span>
-                                </span>
-                              ) : (
-                                <span className="inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/20 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                                  <span>Participante</span>
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
-
-                      {sorteoParticipants.length === 0 && (
-                        <div className="text-center py-8 sm:py-12 space-y-2.5 sm:space-y-3">
-                          <div className="flex justify-center">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary/5 dark:bg-white/5 rounded-full flex items-center justify-center">
-                              <ClipboardList className="w-5 h-5 sm:w-6 sm:h-6 text-secondary/30 dark:text-white/30" />
-                            </div>
-                          </div>
-                          <p className="text-secondary/40 dark:text-white/40 font-bold text-xs sm:text-sm italic">
-                            Esperando primeros participantes...
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          );
-        })()}
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       <footer className="bg-secondary text-white py-12 md:py-24 border-t-4 border-primary">
@@ -2739,7 +2726,6 @@ export default function App() {
                   <li><Link to="/nosotros" className="hover:text-primary transition-colors">Nosotros</Link></li>
                   <li><Link to="/preguntas" className="hover:text-primary transition-colors">Preguntas</Link></li>
                   <li><Link to="/contacto" className="hover:text-primary transition-colors">Contacto</Link></li>
-                  <li><Link to="/sorteo" className="hover:text-primary transition-colors">Sorteo</Link></li>
                 </ul>
               </div>
 

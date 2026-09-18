@@ -5,6 +5,7 @@ export interface Jersey {
   league: string;
   price: number;
   image: string;
+  images?: string[];
   isBestSeller?: boolean;
   style: 'Fan' | 'Player' | 'Retro';
   size: string;
