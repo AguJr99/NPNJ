@@ -283,28 +283,6 @@ export const JERSEYS: Jersey[] = [
     number: '9',
     patch: 'Champions'
   },
-  // Temporada 13/14
-  {
-    id: 'rma-retro-13-ramos',
-    name: 'Real Madrid - Local - 13/14',
-    team: 'Real Madrid',
-    league: 'La Liga',
-    price: 20,
-    originalPrice: 35,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
-    image: 'https://lh3.googleusercontent.com/d/1dkhOCl2mdcictPKg5T_w6Y4nBLCm6PWa',
-    images: [
-      'https://lh3.googleusercontent.com/d/1dkhOCl2mdcictPKg5T_w6Y4nBLCm6PWa',
-      'https://lh3.googleusercontent.com/d/1N1-nrremPttzo7GInizfT1Pm53RK9oeW'
-    ],
-    style: 'Retro',
-    size: 'L',
-    season: '13/14',
-    type: 'Local',
-    playerName: 'SERGIO RAMOS',
-    number: '4',
-    patch: 'Champions'
-  },
   // Temporada 05/06
   {
     id: 'ars-retro-05-henry',
@@ -1322,6 +1300,27 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     ]
   },
   {
+    id: 'atm-third-26-custom',
+    name: 'Atlético de Madrid - Tercera - 26/27',
+    team: 'Atlético de Madrid',
+    league: 'La Liga',
+    season: '26/27',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1otsTNAtBfNiHj2r9Q4MaRWL8ADur-XVS',
+    playerImage: 'https://lh3.googleusercontent.com/d/1rjJ81C7X8Pj_J-5k8hsSLLtIF53HAFVT',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1psnVZQ4_kVvVWWKNaDGM_ySvqboRlDCf&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1obCcngnJtweiBopq1avgSZCoHbTmqU55&sz=w800',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'La Liga', logo: 'https://drive.google.com/thumbnail?id=1QieZfAEl1-KYnmAiLOdhQHmbbgdrH_lV&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1O1r_VzUJp9y0ULfPtr9-DwMt5eoco-k0&sz=w200' }
+    ]
+  },
+  {
     id: 'atm-home-25-custom',
     name: 'Atlético de Madrid - Local - 25/26',
     team: 'Atlético de Madrid',
@@ -1579,6 +1578,45 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'Sin Parche', logo: null },
       { name: 'La Liga', logo: 'https://drive.google.com/thumbnail?id=1QieZfAEl1-KYnmAiLOdhQHmbbgdrH_lV&sz=w200' },
       { name: 'Europa League', logo: 'https://drive.google.com/thumbnail?id=14o1SfNQOGFBxUC-AJloEE3DvLD8XcqqN&sz=w200' }
+    ]
+  },
+  // OTROS LA LIGA - DEPORTIVO Y RAYO VALLECANO
+  {
+    id: 'dep-home-26-custom',
+    name: 'Deportivo - Local - 26/27',
+    team: 'Deportivo',
+    league: 'La Liga',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1-KxEKeBZn4HZR17zfO3tLlF0Y_IDy-ni',
+    childImage: 'https://lh3.googleusercontent.com/d/1c0xnoxooXGeVTtM52X7bBXn2l_ZtUaNr',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1-tujiFMi1epOyHct2e4fQnTCDPO3wf4i',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'La Liga', logo: 'https://lh3.googleusercontent.com/d/12zKKstps55o3vySxn4Wt7mXemramgH85' }
+    ]
+  },
+  {
+    id: 'ray-home-26-custom',
+    name: 'Rayo Vallecano - Local - 26/27',
+    team: 'Rayo Vallecano',
+    league: 'La Liga',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1hfueRCcYi-JyFXH_h7L5DIynz-doTvUH',
+    childImage: 'https://lh3.googleusercontent.com/d/180d050Mux-egpQs9yKoAov6ON5aBEaYC',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1ohUy2tQNuw5CrUVEQX8bqaHZDJ6Zr0-s',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'La Liga', logo: 'https://lh3.googleusercontent.com/d/12zKKstps55o3vySxn4Wt7mXemramgH85' }
     ]
   },
   {
@@ -1945,6 +1983,30 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     playerImage: 'https://drive.google.com/thumbnail?id=1FHib6UbSGSIzii3VubDRlG5WyaPFbXAt&sz=w800',
     playerLongSleeveImage: 'https://drive.google.com/thumbnail?id=1IJtshU-EVpc8BnSnrY8rattqbJePntVm&sz=w800',
     childImage: 'https://drive.google.com/thumbnail?id=1RJmV0fvSNmkQBIBFHvkMaI2_3FCaA7Nr&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1-URb1x53BDNw5cr51TWhgwbMTivBdj-o&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=176ZMlS3rTYg_Xj-23W2kCVH0EdwFrD7m&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Premier League', logo: 'https://drive.google.com/thumbnail?id=1O5gndPMMwG7pwMWWBD4EV98-s2xNmgwN&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=18C3rgJZtUTn-4kPaX4nUGjyOhA5xg3r9&sz=w200' }
+    ]
+  },
+  {
+    id: 'liv-third-26-custom',
+    name: 'Liverpool - Tercera - 26/27',
+    team: 'Liverpool',
+    league: 'Premier League',
+    season: '26/27',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1PSdUcRCZUwhdrtfTN8H-rBh96NUclQRM',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1iEEirCsJGpnCKAG6JJ0IttA6-kDh8VOT',
+    playerImage: 'https://lh3.googleusercontent.com/d/1xBP8lV1aXFpLdMTWEWBEl3dzB4DBNr4R',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1khSj35DSHVH_LJXKuDdLoVDLb1uwZMzJ',
+    childImage: 'https://lh3.googleusercontent.com/d/1v26i-1bgSBk-EHKszW4KJ5Jrm20LxJAs',
     fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
     playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
     childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
@@ -5454,6 +5516,48 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
   },
   // AL-NASSR
   {
+    id: 'aln-home-26-custom',
+    name: 'Al-Nassr - Local - 26/27',
+    team: 'Al-Nassr',
+    league: 'Otras Ligas',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1-6tDn9nP6aRPqnfb_vp0dRaioskXTere',
+    playerImage: 'https://lh3.googleusercontent.com/d/16wOuCsnmkNufHsNy2kmDRtYBDPljetF9',
+    childImage: 'https://lh3.googleusercontent.com/d/1X4Dlo4aTHEC5IVUAyTJisvYk5mlsQS6Q',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/11AZdfZhQ7mkUKJmOmsz8kYqCdBVT4FW6',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Roshn Saudi League', logo: 'https://lh3.googleusercontent.com/d/157I2_O3DidVEH-zHsdIRAmvV_LHxRGaV' }
+    ]
+  },
+  {
+    id: 'aln-away-26-custom',
+    name: 'Al-Nassr - Visitante - 26/27',
+    team: 'Al-Nassr',
+    league: 'Otras Ligas',
+    season: '26/27',
+    type: 'Visitante',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/12hzXZlTELtLAbQa8f8sNoJgHNUnKGDjP',
+    playerImage: 'https://lh3.googleusercontent.com/d/1FOJmjx-kT3zyzmSyd4VAxaDabjcuz2YY',
+    childImage: 'https://lh3.googleusercontent.com/d/1l2zm_OmG1gBfX2Q_Y3MUcfmKB_cwkRJ9',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    childSizeGuide: 'https://drive.google.com/thumbnail?id=1LM40HshR2TghNB0qFuGrHXzvaF1vKXQC&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/11AZdfZhQ7mkUKJmOmsz8kYqCdBVT4FW6',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Roshn Saudi League', logo: 'https://lh3.googleusercontent.com/d/157I2_O3DidVEH-zHsdIRAmvV_LHxRGaV' }
+    ]
+  },
+  {
     id: 'aln-home-25-26-custom',
     name: 'Al-Nassr - Local - 25/26',
     team: 'Al-Nassr',
@@ -6532,7 +6636,8 @@ export const LEAGUES_DATA = [
     teams: [
       { name: 'Real Madrid', logo: 'https://drive.google.com/thumbnail?id=1UtV9rWSqUu5i8MUdGYHOFio4ssY01m9I&sz=w200' },
       { name: 'Barcelona', logo: 'https://drive.google.com/thumbnail?id=15-u5D0AvhJgrjQwUmcCHWZfUOgaAk_59&sz=w200' },
-      { name: 'Atlético de Madrid', logo: 'https://drive.google.com/thumbnail?id=1ta7tkJUgwkYaXXxiRBAXTHU_iHSWHfOw&sz=w200' }
+      { name: 'Atlético de Madrid', logo: 'https://drive.google.com/thumbnail?id=1ta7tkJUgwkYaXXxiRBAXTHU_iHSWHfOw&sz=w200' },
+      { name: 'Otros', logo: 'https://drive.google.com/thumbnail?id=1-BuZ9jOVI5Uduxg-9dXCrcnvgtK12F4y&sz=w200' }
     ]
   },
   {
@@ -6549,6 +6654,7 @@ export const LEAGUES_DATA = [
   {
     name: 'Selecciones',
     logo: 'https://drive.google.com/thumbnail?id=1SN6j0_ItHXTVteBqZCfYYZ8TXRNEHS9O&sz=w200',
+    darkLogo: 'https://lh3.googleusercontent.com/d/1f7k1TvWHRt4fINVHh31y4vJOHCRpo_dP',
     teams: [
       { name: 'España', logo: 'https://drive.google.com/thumbnail?id=1-n1x8vEhYMmf7v2xkz0YNAWIU2dLOPWd&sz=w200' },
       { name: 'Alemania', logo: 'https://drive.google.com/thumbnail?id=1SN6j0_ItHXTVteBqZCfYYZ8TXRNEHS9O&sz=w200' },

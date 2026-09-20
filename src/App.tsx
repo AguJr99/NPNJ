@@ -73,6 +73,7 @@ const LEAGUES_DATA = [
   {
     name: 'Selecciones',
     logo: 'https://drive.google.com/thumbnail?id=1oYgHnDKjpIlAuHAQTxyNG8FVnfOfyaZd&sz=w200',
+    darkLogo: 'https://lh3.googleusercontent.com/d/1f7k1TvWHRt4fINVHh31y4vJOHCRpo_dP',
     teams: [
       { name: 'España', logo: 'https://drive.google.com/thumbnail?id=1-n1x8vEhYMmf7v2xkz0YNAWIU2dLOPWd&sz=w200' },
       { name: 'Argentina', logo: 'https://drive.google.com/thumbnail?id=12p0dm2-Rnw7SQnYqhhoVgpAb7iNaFSdA&sz=w200' },
@@ -2292,16 +2293,33 @@ export default function App() {
                               : 'border-secondary/5 dark:border-white/10 bg-white dark:bg-[#181920] text-secondary/60 dark:text-white/60 hover:border-primary/30 hover:text-secondary dark:hover:text-white'
                           }`}
                         >
-                          <img 
-                            src={league.logo} 
-                            alt={league.name} 
-                            className={`w-8 h-8 md:w-14 md:h-14 object-contain ${
-                              (league.name === 'Premier League' || league.name === 'Ligue 1' || league.name === 'Otras Ligas')
-                                ? 'dark:brightness-0 dark:invert'
-                                : ''
-                            }`}
-                            referrerPolicy="no-referrer"
-                          />
+                          {'darkLogo' in league && (league as any).darkLogo ? (
+                            <>
+                              <img 
+                                src={league.logo} 
+                                alt={league.name} 
+                                className="w-8 h-8 md:w-14 md:h-14 object-contain dark:hidden"
+                                referrerPolicy="no-referrer"
+                              />
+                              <img 
+                                src={(league as any).darkLogo} 
+                                alt={league.name} 
+                                className="w-8 h-8 md:w-14 md:h-14 object-contain hidden dark:block"
+                                referrerPolicy="no-referrer"
+                              />
+                            </>
+                          ) : (
+                            <img 
+                              src={league.logo} 
+                              alt={league.name} 
+                              className={`w-8 h-8 md:w-14 md:h-14 object-contain ${
+                                (league.name === 'Premier League' || league.name === 'Ligue 1' || league.name === 'Otras Ligas')
+                                  ? 'dark:brightness-0 dark:invert'
+                                  : ''
+                              }`}
+                              referrerPolicy="no-referrer"
+                            />
+                          )}
                           <span className="text-[6px] md:text-[11px] font-black uppercase tracking-wider text-center leading-tight">{league.name}</span>
                         </button>
                       ))}
@@ -2335,7 +2353,7 @@ export default function App() {
                                 src={team.logo} 
                                 alt={team.name} 
                                 className={`w-6 h-6 md:w-12 md:h-12 object-contain ${
-                                  team.name === 'Otros' ? 'dark:brightness-0 dark:invert' : ''
+                                  team.name === 'Otros' || team.name === 'Juventus' ? 'dark:brightness-0 dark:invert' : ''
                                 }`}
                                 referrerPolicy="no-referrer"
                               />
