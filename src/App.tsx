@@ -1889,7 +1889,8 @@ export default function App() {
     const baseFiltered = ENCARGO_JERSEYS.filter(j => {
       const search = normalizeText(encargoSearchQuery);
       const matchesSearch = encargoSearchQuery ? (normalizeText(j.team).includes(search) ||
-                           normalizeText(j.name).includes(search)) : true;
+                           normalizeText(j.name).includes(search) ||
+                           (j.team === 'Richmond' && (search.includes('lasso') || search.includes('ted')))) : true;
       
       const leagueData = LEAGUES_DATA.find(l => l.name === j.league);
       const mainTeams = leagueData?.teams.filter(t => t.name !== 'Otros').map(t => t.name) || [];

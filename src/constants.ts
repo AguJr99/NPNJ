@@ -2587,6 +2587,24 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'Carabao Cup', logo: 'https://drive.google.com/thumbnail?id=1sPS69POXEpBmKjHcINobfpVKlpsNwg2h&sz=w200' }
     ]
   },
+  // OTROS PREMIER LEAGUE - RICHMOND (TED LASSO)
+  {
+    id: 'ric-home-26-custom',
+    name: 'Richmond - Local - 26/27',
+    team: 'Richmond',
+    league: 'Premier League',
+    season: '26/27',
+    type: 'Local',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/12PnScsf2asl5lg4uTt0OKcz1sl-kTbmN',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1eg5sry_s3TMtZS1KjKGj8Z-m9_MDvVDd',
+    noLongSleeve: true,
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Premier League', logo: 'https://lh3.googleusercontent.com/d/10t9SBB0tGgenhUDABtONea4wQCwewzQV' }
+    ]
+  },
   // INTER DE MILÁN
   {
     id: 'int-home-26-custom',
@@ -4652,6 +4670,25 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     ]
   },
   {
+    id: 'arg-special-despedida-messi-2027-custom',
+    name: 'Argentina - Especial (Despedida Messi) - 2027',
+    team: 'Argentina',
+    league: 'Selecciones',
+    season: '2027',
+    type: 'Especial',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1I094BM_wo91xca39CTLwBLeu9hlt7D8K',
+    playerImage: 'https://lh3.googleusercontent.com/d/1pljvoIE_U8lqbjVb4kKVUnPBRFf5Nxop',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1jpjytPnf2fcwsR_L-tvcib28HJuSAN2E',
+    noLongSleeve: true,
+    noPatches: true,
+    patches: [
+      { name: 'Sin Parche', logo: null }
+    ]
+  },
+  {
     id: 'arg-special-50-2025-custom',
     name: 'Argentina - Especial (50 aniversario) - 2025',
     team: 'Argentina',
@@ -4990,6 +5027,26 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'Sin Parche', logo: null },
       { name: 'Clasificatoria al mundial', logo: 'https://lh3.googleusercontent.com/d/1JsKHawpzMKbbORhPNCYWAspxifR6Ecoq' },
       { name: 'Mundial', logo: 'https://lh3.googleusercontent.com/d/157TfmE-VjxqZa3NkyxStZEqs7C_nTvJR' }
+    ]
+  },
+  {
+    id: 'ger-third-2026-custom',
+    name: 'Alemania - Tercera - 2026',
+    team: 'Alemania',
+    league: 'Selecciones',
+    season: '2026',
+    type: 'Tercera',
+    price: 30,
+    fanImage: 'https://lh3.googleusercontent.com/d/1H5H0EQ3SPdRlfyp6jGBgdNYkzhz66rIE',
+    fanLongSleeveImage: 'https://lh3.googleusercontent.com/d/1f6vhzT_wtJCehNIqc-xtL3FcQ8uc_e10',
+    playerImage: 'https://lh3.googleusercontent.com/d/1-xpuWnIZnCkFTAXZe5VpWojnQk42c9ug',
+    playerLongSleeveImage: 'https://lh3.googleusercontent.com/d/1f6vhzT_wtJCehNIqc-xtL3FcQ8uc_e10',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://lh3.googleusercontent.com/d/1KFW9gV-uUQvZveCD9Kwjq_KpBIoHzqGU',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'Nations League', logo: 'https://lh3.googleusercontent.com/d/1c6q7m7Eym1A8aGSsqSwO4ZipQF99Pilz' }
     ]
   },
   {
@@ -6648,7 +6705,8 @@ export const LEAGUES_DATA = [
       { name: 'Arsenal', logo: 'https://drive.google.com/thumbnail?id=1pCySf3QhJlulDzv_8WhJfE5po7Sgz5J6&sz=w200' },
       { name: 'Liverpool', logo: 'https://drive.google.com/thumbnail?id=18vVZDuTB8OuXS_ZwAPvIZJiq0GUNnA9z&sz=w200' },
       { name: 'Manchester United', logo: 'https://drive.google.com/thumbnail?id=1pCySf3QhJlulDzv_8WhJfE5po7Sgz5J6&sz=w200' },
-      { name: 'Chelsea', logo: 'https://drive.google.com/thumbnail?id=1pCySf3QhJlulDzv_8WhJfE5po7Sgz5J6&sz=w200' }
+      { name: 'Chelsea', logo: 'https://drive.google.com/thumbnail?id=1pCySf3QhJlulDzv_8WhJfE5po7Sgz5J6&sz=w200' },
+      { name: 'Otros', logo: 'https://drive.google.com/thumbnail?id=1-BuZ9jOVI5Uduxg-9dXCrcnvgtK12F4y&sz=w200' }
     ]
   },
   {
