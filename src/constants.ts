@@ -12,7 +12,7 @@ export const JERSEYS: Jersey[] = [
     league: 'La Liga',
     price: 20,
     originalPrice: 35,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
+    discountEndDate: '2026-10-10T23:59:59-04:00',
     image: 'https://lh3.googleusercontent.com/d/15AhKlCl1liCocg1Dzlcrvo66UV5H7DXN',
     images: [
       'https://lh3.googleusercontent.com/d/15AhKlCl1liCocg1Dzlcrvo66UV5H7DXN',
@@ -34,7 +34,7 @@ export const JERSEYS: Jersey[] = [
     league: 'La Liga',
     price: 15,
     originalPrice: 30,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
+    discountEndDate: '2026-10-10T23:59:59-04:00',
     image: 'https://lh3.googleusercontent.com/d/1Iz_pR1I9R8hkq2Q4mV0N-EhSxFEmc8su',
     images: [
       'https://lh3.googleusercontent.com/d/1Iz_pR1I9R8hkq2Q4mV0N-EhSxFEmc8su',
@@ -55,7 +55,7 @@ export const JERSEYS: Jersey[] = [
     league: 'La Liga',
     price: 15,
     originalPrice: 30,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
+    discountEndDate: '2026-10-10T23:59:59-04:00',
     image: 'https://lh3.googleusercontent.com/d/1R7Ts5MlObJyR_4u_HQmn9-r9CBYZ4i9B',
     images: [
       'https://lh3.googleusercontent.com/d/1R7Ts5MlObJyR_4u_HQmn9-r9CBYZ4i9B',
@@ -76,7 +76,7 @@ export const JERSEYS: Jersey[] = [
     league: 'La Liga',
     price: 15,
     originalPrice: 35,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
+    discountEndDate: '2026-10-10T23:59:59-04:00',
     image: 'https://lh3.googleusercontent.com/d/1raPCJEASi9JDhh1gkH7H1pefiJ55jKf1',
     images: [
       'https://lh3.googleusercontent.com/d/1raPCJEASi9JDhh1gkH7H1pefiJ55jKf1',
@@ -97,7 +97,7 @@ export const JERSEYS: Jersey[] = [
     league: 'MLS',
     price: 15,
     originalPrice: 35,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
+    discountEndDate: '2026-10-10T23:59:59-04:00',
     image: 'https://lh3.googleusercontent.com/d/1i0GCiYym74e5RKQhZioFZ2fWf1AYiZ64',
     images: [
       'https://lh3.googleusercontent.com/d/1i0GCiYym74e5RKQhZioFZ2fWf1AYiZ64',
@@ -112,34 +112,13 @@ export const JERSEYS: Jersey[] = [
     patch: 'MLS'
   },
   {
-    id: 'psg-home-25-dembele',
-    name: 'PSG - Local - 25/26',
-    team: 'PSG',
-    league: 'Ligue 1',
-    price: 15,
-    originalPrice: 35,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
-    image: 'https://lh3.googleusercontent.com/d/1lCN6xLhvQn95BB-mdteIzPIjU5JjeQD3',
-    images: [
-      'https://lh3.googleusercontent.com/d/1lCN6xLhvQn95BB-mdteIzPIjU5JjeQD3',
-      'https://lh3.googleusercontent.com/d/1To05WGV2aA6VQE9wFu1Dw80UOuiRS6Zy'
-    ],
-    style: 'Player',
-    size: 'L',
-    season: '25/26',
-    type: 'Local',
-    playerName: 'DEMBÉLÉ',
-    number: '10',
-    patch: 'Champions'
-  },
-  {
     id: 'rma-home-25-bellingham',
     name: 'Real Madrid - Local - 25/26',
     team: 'Real Madrid',
     league: 'La Liga',
     price: 15,
     originalPrice: 35,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
+    discountEndDate: '2026-10-10T23:59:59-04:00',
     image: 'https://lh3.googleusercontent.com/d/1pJUIc6YZOHXctr1lNt4d8tPs4z3-bB9L',
     images: [
       'https://lh3.googleusercontent.com/d/1pJUIc6YZOHXctr1lNt4d8tPs4z3-bB9L',
@@ -160,7 +139,7 @@ export const JERSEYS: Jersey[] = [
     league: 'La Liga',
     price: 15,
     originalPrice: 35,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
+    discountEndDate: '2026-10-10T23:59:59-04:00',
     image: 'https://lh3.googleusercontent.com/d/1Gj9mhuP0PTfQrv9PX9IXBv6Ep-sB6Gah',
     images: [
       'https://lh3.googleusercontent.com/d/1Gj9mhuP0PTfQrv9PX9IXBv6Ep-sB6Gah',
@@ -182,7 +161,7 @@ export const JERSEYS: Jersey[] = [
     league: 'La Liga',
     price: 15,
     originalPrice: 30,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
+    discountEndDate: '2026-10-10T23:59:59-04:00',
     image: 'https://lh3.googleusercontent.com/d/1BkkyoRyQo-uWAKN2iS4MW1KRbOnMY1tg',
     images: [
       'https://lh3.googleusercontent.com/d/1BkkyoRyQo-uWAKN2iS4MW1KRbOnMY1tg',
@@ -204,7 +183,7 @@ export const JERSEYS: Jersey[] = [
     league: 'Selecciones',
     price: 15,
     originalPrice: 30,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
+    discountEndDate: '2026-10-10T23:59:59-04:00',
     image: 'https://lh3.googleusercontent.com/d/17C57WuSpyAcAvt0dpp6HLIhiFZ-lhi_v',
     images: [
       'https://lh3.googleusercontent.com/d/17C57WuSpyAcAvt0dpp6HLIhiFZ-lhi_v',
@@ -226,7 +205,7 @@ export const JERSEYS: Jersey[] = [
     league: 'Ligue 1',
     price: 15,
     originalPrice: 30,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
+    discountEndDate: '2026-10-10T23:59:59-04:00',
     image: 'https://lh3.googleusercontent.com/d/15XaNvu99hMMrsqefyF6FonW91dPM39gX',
     images: [
       'https://lh3.googleusercontent.com/d/15XaNvu99hMMrsqefyF6FonW91dPM39gX',
@@ -248,7 +227,7 @@ export const JERSEYS: Jersey[] = [
     league: 'La Liga',
     price: 20,
     originalPrice: 35,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
+    discountEndDate: '2026-10-10T23:59:59-04:00',
     image: 'https://lh3.googleusercontent.com/d/1y_2HkFoydtagWFwVfBWL_lRkNEA-f1Bx',
     images: [
       'https://lh3.googleusercontent.com/d/1y_2HkFoydtagWFwVfBWL_lRkNEA-f1Bx',
@@ -269,7 +248,7 @@ export const JERSEYS: Jersey[] = [
     league: 'La Liga',
     price: 20,
     originalPrice: 35,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
+    discountEndDate: '2026-10-10T23:59:59-04:00',
     image: 'https://lh3.googleusercontent.com/d/1KQ3EmLCcVI02pNiQ5XxeQf4P_9B5ikCD',
     images: [
       'https://lh3.googleusercontent.com/d/1KQ3EmLCcVI02pNiQ5XxeQf4P_9B5ikCD',
@@ -291,7 +270,7 @@ export const JERSEYS: Jersey[] = [
     league: 'Premier League',
     price: 20,
     originalPrice: 35,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
+    discountEndDate: '2026-10-10T23:59:59-04:00',
     image: 'https://lh3.googleusercontent.com/d/1CGp3c6WFiP_Ome1Iq1JLmuK1yuVd9wjn',
     images: [
       'https://lh3.googleusercontent.com/d/1CGp3c6WFiP_Ome1Iq1JLmuK1yuVd9wjn',
@@ -313,7 +292,7 @@ export const JERSEYS: Jersey[] = [
     league: 'Selecciones',
     price: 20,
     originalPrice: 35,
-    discountEndDate: '2026-09-26T23:59:59-04:00',
+    discountEndDate: '2026-10-10T23:59:59-04:00',
     image: 'https://lh3.googleusercontent.com/d/1kHCktEWyGBkgTKxJGho7KBXrrb7SQAml',
     images: [
       'https://lh3.googleusercontent.com/d/1kHCktEWyGBkgTKxJGho7KBXrrb7SQAml',

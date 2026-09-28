@@ -1632,7 +1632,7 @@ const Countdown = ({ targetDate, finishMessage = "¡Finalizado!", variant = "ful
   );
 };
 
-const StockPromoBanner = ({ targetDate = "2026-09-26T23:59:59-04:00" }: { targetDate?: string }) => {
+const StockPromoBanner = ({ targetDate = "2026-10-10T23:59:59-04:00" }: { targetDate?: string }) => {
   const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
 
   useEffect(() => {
@@ -1689,7 +1689,7 @@ const StockPromoBanner = ({ targetDate = "2026-09-26T23:59:59-04:00" }: { target
           <div className="bg-secondary/5 dark:bg-black/40 backdrop-blur-md rounded-2xl md:rounded-3xl p-3 sm:p-4 border border-secondary/10 dark:border-white/10 flex flex-col items-center gap-2.5 shadow-inner">
             <div className="flex items-center gap-1.5 text-[9px] sm:text-[11px] font-black uppercase tracking-widest text-primary">
               <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary" />
-              <span>TERMINA EL DÍA 26 DE SEPTIEMBRE</span>
+              <span>TERMINA EL DÍA 10 DE OCTUBRE</span>
             </div>
 
             {timeLeft ? (
@@ -2209,7 +2209,7 @@ export default function App() {
 
               {/* Banner llamativo central de oferta en stock con cuenta regresiva */}
               {activeTab === 'stock' && (
-                <StockPromoBanner targetDate="2026-09-26T23:59:59-04:00" />
+                <StockPromoBanner targetDate="2026-10-10T23:59:59-04:00" />
               )}
 
               {/* Search and Filters Section Aligned */}
