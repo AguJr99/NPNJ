@@ -6,13 +6,68 @@ export const WHATSAPP_NUMBER_DISPLAY = '+1 (937) 982-1877';
 export const JERSEYS: Jersey[] = [
   // Temporada 26/27
   {
+    id: 'rma-home-26-mbappe-l',
+    name: 'Real Madrid - Local - 26/27',
+    team: 'Real Madrid',
+    league: 'La Liga',
+    price: 30,
+    image: 'https://lh3.googleusercontent.com/d/1ab4KpkdQxgMlM-CGrIq-tnOziryMMQYy',
+    images: [
+      'https://lh3.googleusercontent.com/d/1ab4KpkdQxgMlM-CGrIq-tnOziryMMQYy',
+      'https://lh3.googleusercontent.com/d/13Hb5-PPj4NeSujKu1sRlsV_cs6VzXErb'
+    ],
+    style: 'Fan',
+    size: 'L',
+    season: '26/27',
+    type: 'Local',
+    playerName: 'MBAPPÉ',
+    number: '10',
+    patch: 'Champions'
+  },
+  {
+    id: 'bar-away-26-raphinha-xl',
+    name: 'Barcelona - Visitante - 26/27',
+    team: 'Barcelona',
+    league: 'La Liga',
+    price: 30,
+    image: 'https://lh3.googleusercontent.com/d/1QuuFeIXLCFWiSoZG0jB7GFg8RUAjFecC',
+    images: [
+      'https://lh3.googleusercontent.com/d/1QuuFeIXLCFWiSoZG0jB7GFg8RUAjFecC',
+      'https://lh3.googleusercontent.com/d/1vW4vy_xK920vzOiR2-a2Xd_4DYzzPSPT'
+    ],
+    style: 'Fan',
+    size: 'XL',
+    season: '26/27',
+    type: 'Visitante',
+    playerName: 'RAPHINHA',
+    number: '11',
+    patch: 'Champions'
+  },
+  {
+    id: 'bar-home-26-lamine-l',
+    name: 'Barcelona - Local - 26/27',
+    team: 'Barcelona',
+    league: 'La Liga',
+    price: 30,
+    image: 'https://lh3.googleusercontent.com/d/138wppsFxCPQhKyWMiRyVWwm7WShoZowL',
+    images: [
+      'https://lh3.googleusercontent.com/d/138wppsFxCPQhKyWMiRyVWwm7WShoZowL',
+      'https://lh3.googleusercontent.com/d/1g3T3fOL47Lak0rXvlfR8V1UThAUgj1Wx'
+    ],
+    style: 'Fan',
+    size: 'L',
+    season: '26/27',
+    type: 'Local',
+    playerName: 'LAMINE YAMAL',
+    number: '10',
+    patch: 'Champions'
+  },
+  {
     id: 'bar-home-26-messi',
     name: 'Barcelona - Local - 26/27',
     team: 'Barcelona',
     league: 'La Liga',
-    price: 20,
-    originalPrice: 35,
-    discountEndDate: '2026-10-10T23:59:59-04:00',
+    price: 35,
     image: 'https://lh3.googleusercontent.com/d/15AhKlCl1liCocg1Dzlcrvo66UV5H7DXN',
     images: [
       'https://lh3.googleusercontent.com/d/15AhKlCl1liCocg1Dzlcrvo66UV5H7DXN',
@@ -32,9 +87,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Barcelona - Visitante - 25/26',
     team: 'Barcelona',
     league: 'La Liga',
-    price: 15,
-    originalPrice: 30,
-    discountEndDate: '2026-10-10T23:59:59-04:00',
+    price: 30,
     image: 'https://lh3.googleusercontent.com/d/1Iz_pR1I9R8hkq2Q4mV0N-EhSxFEmc8su',
     images: [
       'https://lh3.googleusercontent.com/d/1Iz_pR1I9R8hkq2Q4mV0N-EhSxFEmc8su',
@@ -53,9 +106,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Real Madrid - Local - 25/26',
     team: 'Real Madrid',
     league: 'La Liga',
-    price: 15,
-    originalPrice: 30,
-    discountEndDate: '2026-10-10T23:59:59-04:00',
+    price: 30,
     image: 'https://lh3.googleusercontent.com/d/1R7Ts5MlObJyR_4u_HQmn9-r9CBYZ4i9B',
     images: [
       'https://lh3.googleusercontent.com/d/1R7Ts5MlObJyR_4u_HQmn9-r9CBYZ4i9B',
@@ -74,9 +125,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Barcelona - Local - 25/26',
     team: 'Barcelona',
     league: 'La Liga',
-    price: 15,
-    originalPrice: 35,
-    discountEndDate: '2026-10-10T23:59:59-04:00',
+    price: 35,
     image: 'https://lh3.googleusercontent.com/d/1raPCJEASi9JDhh1gkH7H1pefiJ55jKf1',
     images: [
       'https://lh3.googleusercontent.com/d/1raPCJEASi9JDhh1gkH7H1pefiJ55jKf1',
@@ -95,9 +144,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Inter de Miami - Tercera - 25/26',
     team: 'Inter de Miami',
     league: 'MLS',
-    price: 15,
-    originalPrice: 35,
-    discountEndDate: '2026-10-10T23:59:59-04:00',
+    price: 35,
     image: 'https://lh3.googleusercontent.com/d/1i0GCiYym74e5RKQhZioFZ2fWf1AYiZ64',
     images: [
       'https://lh3.googleusercontent.com/d/1i0GCiYym74e5RKQhZioFZ2fWf1AYiZ64',
@@ -116,9 +163,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Real Madrid - Local - 25/26',
     team: 'Real Madrid',
     league: 'La Liga',
-    price: 15,
-    originalPrice: 35,
-    discountEndDate: '2026-10-10T23:59:59-04:00',
+    price: 35,
     image: 'https://lh3.googleusercontent.com/d/1pJUIc6YZOHXctr1lNt4d8tPs4z3-bB9L',
     images: [
       'https://lh3.googleusercontent.com/d/1pJUIc6YZOHXctr1lNt4d8tPs4z3-bB9L',
@@ -137,9 +182,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Barcelona - Local - 25/26',
     team: 'Barcelona',
     league: 'La Liga',
-    price: 15,
-    originalPrice: 35,
-    discountEndDate: '2026-10-10T23:59:59-04:00',
+    price: 35,
     image: 'https://lh3.googleusercontent.com/d/1Gj9mhuP0PTfQrv9PX9IXBv6Ep-sB6Gah',
     images: [
       'https://lh3.googleusercontent.com/d/1Gj9mhuP0PTfQrv9PX9IXBv6Ep-sB6Gah',
@@ -159,9 +202,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Barcelona - Local - 24/25',
     team: 'Barcelona',
     league: 'La Liga',
-    price: 15,
-    originalPrice: 30,
-    discountEndDate: '2026-10-10T23:59:59-04:00',
+    price: 30,
     image: 'https://lh3.googleusercontent.com/d/1BkkyoRyQo-uWAKN2iS4MW1KRbOnMY1tg',
     images: [
       'https://lh3.googleusercontent.com/d/1BkkyoRyQo-uWAKN2iS4MW1KRbOnMY1tg',
@@ -181,9 +222,7 @@ export const JERSEYS: Jersey[] = [
     name: 'España - Local - 2024',
     team: 'España',
     league: 'Selecciones',
-    price: 15,
-    originalPrice: 30,
-    discountEndDate: '2026-10-10T23:59:59-04:00',
+    price: 30,
     image: 'https://lh3.googleusercontent.com/d/17C57WuSpyAcAvt0dpp6HLIhiFZ-lhi_v',
     images: [
       'https://lh3.googleusercontent.com/d/17C57WuSpyAcAvt0dpp6HLIhiFZ-lhi_v',
@@ -203,9 +242,7 @@ export const JERSEYS: Jersey[] = [
     name: 'PSG - Local - 22/23',
     team: 'PSG',
     league: 'Ligue 1',
-    price: 15,
-    originalPrice: 30,
-    discountEndDate: '2026-10-10T23:59:59-04:00',
+    price: 30,
     image: 'https://lh3.googleusercontent.com/d/15XaNvu99hMMrsqefyF6FonW91dPM39gX',
     images: [
       'https://lh3.googleusercontent.com/d/15XaNvu99hMMrsqefyF6FonW91dPM39gX',
@@ -225,9 +262,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Real Madrid - Local - 14/15',
     team: 'Real Madrid',
     league: 'La Liga',
-    price: 20,
-    originalPrice: 35,
-    discountEndDate: '2026-10-10T23:59:59-04:00',
+    price: 35,
     image: 'https://lh3.googleusercontent.com/d/1y_2HkFoydtagWFwVfBWL_lRkNEA-f1Bx',
     images: [
       'https://lh3.googleusercontent.com/d/1y_2HkFoydtagWFwVfBWL_lRkNEA-f1Bx',
@@ -246,9 +281,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Barcelona - Local - 14/15',
     team: 'Barcelona',
     league: 'La Liga',
-    price: 20,
-    originalPrice: 35,
-    discountEndDate: '2026-10-10T23:59:59-04:00',
+    price: 35,
     image: 'https://lh3.googleusercontent.com/d/1KQ3EmLCcVI02pNiQ5XxeQf4P_9B5ikCD',
     images: [
       'https://lh3.googleusercontent.com/d/1KQ3EmLCcVI02pNiQ5XxeQf4P_9B5ikCD',
@@ -268,9 +301,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Arsenal - Local - 05/06',
     team: 'Arsenal',
     league: 'Premier League',
-    price: 20,
-    originalPrice: 35,
-    discountEndDate: '2026-10-10T23:59:59-04:00',
+    price: 35,
     image: 'https://lh3.googleusercontent.com/d/1CGp3c6WFiP_Ome1Iq1JLmuK1yuVd9wjn',
     images: [
       'https://lh3.googleusercontent.com/d/1CGp3c6WFiP_Ome1Iq1JLmuK1yuVd9wjn',
@@ -290,9 +321,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Alemania - Local - 1990',
     team: 'Alemania',
     league: 'Selecciones',
-    price: 20,
-    originalPrice: 35,
-    discountEndDate: '2026-10-10T23:59:59-04:00',
+    price: 35,
     image: 'https://lh3.googleusercontent.com/d/1kHCktEWyGBkgTKxJGho7KBXrrb7SQAml',
     images: [
       'https://lh3.googleusercontent.com/d/1kHCktEWyGBkgTKxJGho7KBXrrb7SQAml',

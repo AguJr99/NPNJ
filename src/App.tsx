@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, Link, Navigate } from 'react-router-dom';
-import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown, ChevronLeft, ChevronRight, Check, Sun, Moon, Monitor, Trophy, Gift, Share2, CheckCircle2, Copy, Camera, Users, Send, Play, Flame } from 'lucide-react';
+import { ShoppingCart, Package, ClipboardList, Menu, X, Instagram, Phone, Award, Shirt, Clock, Headphones, Search, Filter, MapPin, ChevronDown, ChevronLeft, ChevronRight, Check, Sun, Moon, Monitor, Trophy, Gift, Share2, CheckCircle2, Copy, Camera, Users, Send, Play } from 'lucide-react';
 import { JERSEYS, ENCARGO_JERSEYS, WHATSAPP_NUMBER, LEAGUES } from './constants';
 import { Jersey, EncargoJersey, EncargoOrder, CartItem } from './types';
 import { CartDrawer } from './components/CartDrawer';
@@ -1632,96 +1632,6 @@ const Countdown = ({ targetDate, finishMessage = "¡Finalizado!", variant = "ful
   );
 };
 
-const StockPromoBanner = ({ targetDate = "2026-10-10T23:59:59-04:00" }: { targetDate?: string }) => {
-  const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
-
-  useEffect(() => {
-    const calculateTimeLeft = () => {
-      const difference = +new Date(targetDate) - +new Date();
-      if (difference > 0) {
-        const d = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const h = Math.floor((difference / (1000 * 60 * 60)) % 24);
-        const m = Math.floor((difference / 1000 / 60) % 60);
-        const s = Math.floor((difference / 1000) % 60);
-        setTimeLeft({ days: d, hours: h, minutes: m, seconds: s });
-      } else {
-        setTimeLeft(null);
-      }
-    };
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
-    return () => clearInterval(timer);
-  }, [targetDate]);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.98 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className="w-full max-w-4xl mx-auto rounded-3xl md:rounded-[2.5rem] bg-white dark:bg-[#15161C] text-secondary dark:text-white p-5 sm:p-7 md:p-9 shadow-2xl relative overflow-hidden border-2 border-primary/30 dark:border-primary/40 text-center select-none"
-    >
-      {/* Dynamic ambient highlights using brand gold */}
-      <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-80 sm:w-[32rem] h-40 bg-primary/20 dark:bg-primary/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-16 right-4 w-64 h-36 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
-
-      <div className="relative z-10 flex flex-col items-center gap-3 sm:gap-4 md:gap-5">
-        {/* Glowing badge */}
-        <div className="inline-flex items-center gap-2 bg-primary/10 dark:bg-primary/20 border border-primary/30 px-3.5 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider text-primary shadow-sm">
-          <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary fill-primary animate-pulse" />
-          <span>¡OFERTA ESPECIAL EN TODO EL STOCK!</span>
-        </div>
-
-        {/* Central Titles */}
-        <div className="space-y-2 max-w-2xl">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-sans font-black uppercase tracking-tight leading-none text-secondary dark:text-white drop-shadow-sm">
-            ¡TODO EL STOCK EN OFERTA!
-          </h2>
-          <div className="inline-block bg-primary text-secondary dark:text-secondary font-black text-xs sm:text-lg md:text-2xl px-4 sm:px-6 py-1 sm:py-1.5 rounded-full uppercase tracking-wider shadow-lg shadow-primary/20 border border-primary/40">
-            ENTRE 40% Y 60% DE DESCUENTO
-          </div>
-        </div>
-
-        <p className="text-[11px] sm:text-sm md:text-base font-bold text-secondary/70 dark:text-white/80 max-w-lg leading-relaxed">
-          Aprovecha los precios rebajados en todas las camisetas disponibles para entrega inmediata en Matanzas.
-        </p>
-
-        {/* Countdown Box with business theme */}
-        <div className="w-full max-w-md pt-1">
-          <div className="bg-secondary/5 dark:bg-black/40 backdrop-blur-md rounded-2xl md:rounded-3xl p-3 sm:p-4 border border-secondary/10 dark:border-white/10 flex flex-col items-center gap-2.5 shadow-inner">
-            <div className="flex items-center gap-1.5 text-[9px] sm:text-[11px] font-black uppercase tracking-widest text-primary">
-              <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary" />
-              <span>TERMINA EL DÍA 10 DE OCTUBRE</span>
-            </div>
-
-            {timeLeft ? (
-              <div className="flex items-center justify-center gap-2 sm:gap-3">
-                {[
-                  { label: 'DÍAS', value: timeLeft.days },
-                  { label: 'HORAS', value: timeLeft.hours },
-                  { label: 'MINUTOS', value: timeLeft.minutes },
-                  { label: 'SEGUNDOS', value: timeLeft.seconds },
-                ].map((item, i) => (
-                  <div key={i} className="flex flex-col items-center min-w-[52px] sm:min-w-[66px] md:min-w-[74px] bg-white dark:bg-[#1E2028] border border-primary/20 dark:border-primary/30 rounded-xl sm:rounded-2xl py-1.5 sm:py-2 px-1 shadow-sm">
-                    <span className="text-xl sm:text-2xl md:text-3xl font-mono font-black text-primary leading-tight tabular-nums">
-                      {String(item.value).padStart(2, '0')}
-                    </span>
-                    <span className="text-[7px] sm:text-[8px] md:text-[9px] uppercase font-bold tracking-wider text-secondary/60 dark:text-white/60">
-                      {item.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <span className="text-xs sm:text-sm font-black uppercase tracking-widest text-secondary dark:text-white py-1">
-                ¡OFERTA FINALIZADA!
-              </span>
-            )}
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -2060,15 +1970,6 @@ export default function App() {
                     animate={{ x: 0, opacity: 1 }}
                     className="max-w-2xl mx-auto lg:mx-0"
                   >
-                    {/* Promo Pill Badge */}
-                    <Link
-                      to="/stock"
-                      className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/15 border border-primary/30 text-secondary dark:text-primary text-[10px] sm:text-xs font-black uppercase tracking-wider mb-3 sm:mb-4 hover:bg-primary/25 transition-all shadow-sm group"
-                    >
-                      <Flame className="w-3.5 h-3.5 text-primary fill-primary group-hover:scale-110 transition-transform animate-pulse" />
-                      <span>¡TODO EL STOCK EN OFERTA: 40% - 60% DE DESCUENTO!</span>
-                      <ChevronRight className="w-3 h-3 text-primary group-hover:translate-x-0.5 transition-transform" />
-                    </Link>
 
                     <h1 className="text-[42px] sm:text-7xl md:text-8xl lg:text-9xl font-sans font-black tracking-tighter leading-[0.8] mb-4 md:mb-6">
                       <span className="text-secondary dark:text-white block lg:inline">No Pain </span>
@@ -2149,7 +2050,7 @@ export default function App() {
                     { 
                       icon: <Award className="w-6 h-6 md:w-8 md:h-8" />, 
                       title: 'Calidad Premium', 
-                      desc: 'Calidad AAA, con acabados de alta gama y gran nivel de detalle.' 
+                      desc: 'Calidad 1:1, idénticas a camisetas originales, con acabados de alta gama y gran nivel de detalle.' 
                     },
                     { 
                       icon: <Shirt className="w-6 h-6 md:w-8 md:h-8" />, 
@@ -2206,11 +2107,6 @@ export default function App() {
                     : 'Tú la sueñas, nosotros te la conseguimos.'}
                 </p>
               </div>
-
-              {/* Banner llamativo central de oferta en stock con cuenta regresiva */}
-              {activeTab === 'stock' && (
-                <StockPromoBanner targetDate="2026-10-10T23:59:59-04:00" />
-              )}
 
               {/* Search and Filters Section Aligned */}
               <div className={`w-full flex flex-col items-center ${activeTab === 'encargos' ? 'gap-6 md:gap-8' : 'gap-8 md:gap-12'}`}>
