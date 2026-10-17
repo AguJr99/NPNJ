@@ -2050,7 +2050,7 @@ export default function App() {
                     { 
                       icon: <Award className="w-6 h-6 md:w-8 md:h-8" />, 
                       title: 'Calidad Premium', 
-                      desc: 'Calidad 1:1, idénticas a camisetas originales, con acabados de alta gama y gran nivel de detalle.' 
+                      desc: 'Calidad 1:1, idénticas a camisetas originales, con acabados de alta gama.' 
                     },
                     { 
                       icon: <Shirt className="w-6 h-6 md:w-8 md:h-8" />, 
