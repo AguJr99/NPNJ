@@ -1477,52 +1477,54 @@ const EncargoOrderModal = ({
             )}
 
             {/* 9. Numbering Style Photo (Moved below patches) */}
-            <section className="h-auto flex items-center justify-center pb-10">
-              {currentNumbering ? (
-                <div className="space-y-4 w-full">
-                  <label className="block text-[10px] font-black text-secondary/40 dark:text-white/40 uppercase tracking-widest mb-2 text-center">
-                    {!showSpecificStyle 
-                      ? 'Estilo de Dorsal' 
-                      : (form.patch === 'Champions League' || form.patch.includes('Champions'))
-                        ? 'Estilo de Dorsal de Champions'
-                        : (form.patch === 'Europa League' || form.patch.includes('Europa'))
-                          ? 'Estilo de Dorsal de Europa League'
-                          : (form.patch === 'Sin Parche')
-                            ? (PATCHES.find(p => p.name.includes('Champions')) 
-                                ? 'Estilo de Dorsal de Champions' 
-                                : PATCHES.find(p => p.name.includes('Europa'))
-                                  ? 'Estilo de Dorsal de Europa League'
-                                  : 'Estilo de Dorsal de Liga')
-                            : (jersey.league === 'Premier League' && form.patch === 'Carabao Cup')
-                              ? (jersey.team === 'Manchester United' ? 'Estilo de Dorsal de Copa' : 'Estilo de Dorsal de Champions')
-                              : (form.patch === 'Supercopa de España' ? 'Estilo de Dorsal de Liga/Supercopa' : 'Estilo de Dorsal de Liga')
-                    }
-                  </label>
-                  <div className="relative cursor-zoom-in group shadow-lg rounded-2xl overflow-hidden max-w-[400px] mx-auto border border-secondary/5 dark:border-white/10 w-fit" onClick={() => onZoom(currentNumbering)}>
-                    {!imagesLoaded.numbering && (
-                      <div className="h-[120px] w-[200px] flex items-center justify-center bg-white dark:bg-[#181920] animate-pulse">
-                        <Shirt className="w-8 h-8 text-secondary/10 dark:text-white/10" />
+            {!jersey.noCustomization && (
+              <section className="h-auto flex items-center justify-center pb-10">
+                {currentNumbering ? (
+                  <div className="space-y-4 w-full">
+                    <label className="block text-[10px] font-black text-secondary/40 dark:text-white/40 uppercase tracking-widest mb-2 text-center">
+                      {!showSpecificStyle 
+                        ? 'Estilo de Dorsal' 
+                        : (form.patch === 'Champions League' || form.patch.includes('Champions'))
+                          ? 'Estilo de Dorsal de Champions'
+                          : (form.patch === 'Europa League' || form.patch.includes('Europa'))
+                            ? 'Estilo de Dorsal de Europa League'
+                            : (form.patch === 'Sin Parche')
+                              ? (PATCHES.find(p => p.name.includes('Champions')) 
+                                  ? 'Estilo de Dorsal de Champions' 
+                                  : PATCHES.find(p => p.name.includes('Europa'))
+                                    ? 'Estilo de Dorsal de Europa League'
+                                    : 'Estilo de Dorsal de Liga')
+                              : (jersey.league === 'Premier League' && form.patch === 'Carabao Cup')
+                                ? (jersey.team === 'Manchester United' ? 'Estilo de Dorsal de Copa' : 'Estilo de Dorsal de Champions')
+                                : (form.patch === 'Supercopa de España' ? 'Estilo de Dorsal de Liga/Supercopa' : 'Estilo de Dorsal de Liga')
+                      }
+                    </label>
+                    <div className="relative cursor-zoom-in group shadow-lg rounded-2xl overflow-hidden max-w-[400px] mx-auto border border-secondary/5 dark:border-white/10 w-fit" onClick={() => onZoom(currentNumbering)}>
+                      {!imagesLoaded.numbering && (
+                        <div className="h-[120px] w-[200px] flex items-center justify-center bg-white dark:bg-[#181920] animate-pulse">
+                          <Shirt className="w-8 h-8 text-secondary/10 dark:text-white/10" />
+                        </div>
+                      )}
+                      <img 
+                        src={currentNumbering} 
+                        alt="Dorsal" 
+                        className={`block max-w-full max-h-[180px] md:max-h-[300px] h-auto transition-opacity duration-300 ${imagesLoaded.numbering ? 'opacity-100' : 'opacity-0'}`}
+                        onLoad={() => {
+                          LOADED_IMAGES.add(currentNumbering);
+                          setImagesLoaded(prev => ({ ...prev, numbering: true }));
+                        }}
+                        referrerPolicy="no-referrer" 
+                      />
+                      <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 dark:group-hover:bg-white/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <span className="bg-white/90 dark:bg-[#14151A]/90 backdrop-blur-sm text-secondary dark:text-white text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-xl">Ver Estilo</span>
                       </div>
-                    )}
-                    <img 
-                      src={currentNumbering} 
-                      alt="Dorsal" 
-                      className={`block max-w-full max-h-[180px] md:max-h-[300px] h-auto transition-opacity duration-300 ${imagesLoaded.numbering ? 'opacity-100' : 'opacity-0'}`}
-                      onLoad={() => {
-                        LOADED_IMAGES.add(currentNumbering);
-                        setImagesLoaded(prev => ({ ...prev, numbering: true }));
-                      }}
-                      referrerPolicy="no-referrer" 
-                    />
-                    <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 dark:group-hover:bg-white/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                      <span className="bg-white/90 dark:bg-[#14151A]/90 backdrop-blur-sm text-secondary dark:text-white text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-xl">Ver Estilo</span>
                     </div>
                   </div>
-                </div>
-              ) : (
-                <div className="text-[10px] font-black text-secondary/10 dark:text-white/10 uppercase tracking-widest">Sin previsualización de dorsal</div>
-              )}
-            </section>
+                ) : (
+                  <div className="text-[10px] font-black text-secondary/10 dark:text-white/10 uppercase tracking-widest">Sin previsualización de dorsal</div>
+                )}
+              </section>
+            )}
 
             {/* Submit Button */}
             <button

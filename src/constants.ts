@@ -366,6 +366,28 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
     ]
   },
   {
+    id: 'fcb-home-special-golf-26-custom',
+    name: 'Barcelona - Local Especial GOLF - 26/27',
+    team: 'Barcelona',
+    league: 'La Liga',
+    season: '26/27',
+    type: 'Especial',
+    price: 30,
+    noLongSleeve: true,
+    noChild: true,
+    fanImage: 'https://drive.google.com/thumbnail?id=1yZe3x3Y-qxy594akLJ0rxjFjN9e9KIHA&sz=w800',
+    playerImage: 'https://drive.google.com/thumbnail?id=1EQ24uqO0uXoVSfItKPdj0wYzEVSujt7j&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    playerSizeGuide: 'https://drive.google.com/thumbnail?id=1oxhEwRYXV8qJqH33Fugidbsl70MPyOmX&sz=w800',
+    ligaNumberingImage: 'https://drive.google.com/thumbnail?id=1CAZrx3-9lOw3cp8IqQYl6RYlgEg0y-mm&sz=w800',
+    championsNumberingImage: 'https://drive.google.com/thumbnail?id=1nRl5685vdOlJrHqobPmx2ZTHVjdJ733G&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null },
+      { name: 'La Liga', logo: 'https://drive.google.com/thumbnail?id=1AfS24tRLp5ia68jDgE5OAkT5DbgmRpKD&sz=w200' },
+      { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1xfmHXjm0UZtRPU5o0yka-D0X1rjFWQaE&sz=w200' }
+    ]
+  },
+  {
     id: 'fcb-away-26-custom',
     name: 'Barcelona - Visitante - 26/27',
     team: 'Barcelona',
@@ -434,6 +456,24 @@ export const ENCARGO_JERSEYS: EncargoJersey[] = [
       { name: 'Sin Parche', logo: null },
       { name: 'La Liga', logo: 'https://drive.google.com/thumbnail?id=1AfS24tRLp5ia68jDgE5OAkT5DbgmRpKD&sz=w200' },
       { name: 'Champions League', logo: 'https://drive.google.com/thumbnail?id=1xfmHXjm0UZtRPU5o0yka-D0X1rjFWQaE&sz=w200' }
+    ]
+  },
+  {
+    id: 'fcb-special-golf-26-custom',
+    name: 'Barcelona - Especial GOLF - 26/27',
+    team: 'Barcelona',
+    league: 'La Liga',
+    season: '26/27',
+    type: 'Especial',
+    price: 30,
+    noLongSleeve: true,
+    noChild: true,
+    noCustomization: true,
+    noPatches: true,
+    fanImage: 'https://drive.google.com/thumbnail?id=13IdFDWUm1ZLLJfGNRcwOtREZpmzlyhaa&sz=w800',
+    fanSizeGuide: 'https://drive.google.com/thumbnail?id=181qCa4uT14HLyJSSTFYPSAoB0SFG792e&sz=w800',
+    patches: [
+      { name: 'Sin Parche', logo: null }
     ]
   },
   {
