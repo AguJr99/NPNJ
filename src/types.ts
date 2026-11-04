@@ -16,6 +16,7 @@ export interface Jersey {
   patch?: string;
   originalPrice?: number;
   discountEndDate?: string;
+  discountPercentage?: number;
 }
 
 export interface EncargoJersey {
