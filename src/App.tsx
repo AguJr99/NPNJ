@@ -2108,16 +2108,6 @@ export default function App() {
                     ? 'Camisetas únicas disponibles para entrega inmediata.' 
                     : 'Tú la sueñas, nosotros te la conseguimos.'}
                 </p>
-                {activeTab === 'stock' && (
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600/10 via-red-500/15 to-red-600/10 border border-red-500/30 px-3.5 py-1.5 md:px-5 md:py-2 rounded-full text-[10px] md:text-xs font-black text-red-600 dark:text-red-400 uppercase tracking-wider shadow-sm mt-1"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                    <span>🔥 15% de descuento en camisetas en stock del Barcelona hasta el 10 de noviembre</span>
-                  </motion.div>
-                )}
               </div>
 
               {/* Search and Filters Section Aligned */}

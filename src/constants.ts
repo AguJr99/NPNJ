@@ -29,10 +29,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Barcelona - Visitante - 26/27',
     team: 'Barcelona',
     league: 'La Liga',
-    price: 25,
-    originalPrice: 30,
-    discountPercentage: 15,
-    discountEndDate: '2026-11-10T23:59:59-05:00',
+    price: 30,
     image: 'https://lh3.googleusercontent.com/d/1QuuFeIXLCFWiSoZG0jB7GFg8RUAjFecC',
     images: [
       'https://lh3.googleusercontent.com/d/1QuuFeIXLCFWiSoZG0jB7GFg8RUAjFecC',
@@ -47,36 +44,11 @@ export const JERSEYS: Jersey[] = [
     patch: 'Champions'
   },
   {
-    id: 'bar-home-26-lamine-l',
-    name: 'Barcelona - Local - 26/27',
-    team: 'Barcelona',
-    league: 'La Liga',
-    price: 25,
-    originalPrice: 30,
-    discountPercentage: 15,
-    discountEndDate: '2026-11-10T23:59:59-05:00',
-    image: 'https://lh3.googleusercontent.com/d/138wppsFxCPQhKyWMiRyVWwm7WShoZowL',
-    images: [
-      'https://lh3.googleusercontent.com/d/138wppsFxCPQhKyWMiRyVWwm7WShoZowL',
-      'https://lh3.googleusercontent.com/d/1g3T3fOL47Lak0rXvlfR8V1UThAUgj1Wx'
-    ],
-    style: 'Fan',
-    size: 'L',
-    season: '26/27',
-    type: 'Local',
-    playerName: 'LAMINE YAMAL',
-    number: '10',
-    patch: 'Champions'
-  },
-  {
     id: 'bar-home-26-messi',
     name: 'Barcelona - Local - 26/27',
     team: 'Barcelona',
     league: 'La Liga',
-    price: 30,
-    originalPrice: 35,
-    discountPercentage: 15,
-    discountEndDate: '2026-11-10T23:59:59-05:00',
+    price: 35,
     image: 'https://lh3.googleusercontent.com/d/15AhKlCl1liCocg1Dzlcrvo66UV5H7DXN',
     images: [
       'https://lh3.googleusercontent.com/d/15AhKlCl1liCocg1Dzlcrvo66UV5H7DXN',
@@ -96,10 +68,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Barcelona - Visitante - 25/26',
     team: 'Barcelona',
     league: 'La Liga',
-    price: 25,
-    originalPrice: 30,
-    discountPercentage: 15,
-    discountEndDate: '2026-11-10T23:59:59-05:00',
+    price: 30,
     image: 'https://lh3.googleusercontent.com/d/1Iz_pR1I9R8hkq2Q4mV0N-EhSxFEmc8su',
     images: [
       'https://lh3.googleusercontent.com/d/1Iz_pR1I9R8hkq2Q4mV0N-EhSxFEmc8su',
@@ -137,10 +106,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Barcelona - Local - 25/26',
     team: 'Barcelona',
     league: 'La Liga',
-    price: 30,
-    originalPrice: 35,
-    discountPercentage: 15,
-    discountEndDate: '2026-11-10T23:59:59-05:00',
+    price: 35,
     image: 'https://lh3.googleusercontent.com/d/1raPCJEASi9JDhh1gkH7H1pefiJ55jKf1',
     images: [
       'https://lh3.googleusercontent.com/d/1raPCJEASi9JDhh1gkH7H1pefiJ55jKf1',
@@ -192,38 +158,13 @@ export const JERSEYS: Jersey[] = [
     number: '5',
     patch: 'Champions'
   },
-  {
-    id: 'bar-home-25-lamine',
-    name: 'Barcelona - Local - 25/26',
-    team: 'Barcelona',
-    league: 'La Liga',
-    price: 30,
-    originalPrice: 35,
-    discountPercentage: 15,
-    discountEndDate: '2026-11-10T23:59:59-05:00',
-    image: 'https://lh3.googleusercontent.com/d/1Gj9mhuP0PTfQrv9PX9IXBv6Ep-sB6Gah',
-    images: [
-      'https://lh3.googleusercontent.com/d/1Gj9mhuP0PTfQrv9PX9IXBv6Ep-sB6Gah',
-      'https://lh3.googleusercontent.com/d/1TAGuQBbi9XCOIpoaV_1wOc_7ZOE-wEnJ'
-    ],
-    style: 'Player',
-    size: 'XXL',
-    season: '25/26',
-    type: 'Local',
-    playerName: 'LAMINE YAMAL',
-    number: '10',
-    patch: 'Champions'
-  },
   // Temporada 24/25
   {
     id: 'bar-home-24-lewandowski',
     name: 'Barcelona - Local - 24/25',
     team: 'Barcelona',
     league: 'La Liga',
-    price: 25,
-    originalPrice: 30,
-    discountPercentage: 15,
-    discountEndDate: '2026-11-10T23:59:59-05:00',
+    price: 30,
     image: 'https://lh3.googleusercontent.com/d/1BkkyoRyQo-uWAKN2iS4MW1KRbOnMY1tg',
     images: [
       'https://lh3.googleusercontent.com/d/1BkkyoRyQo-uWAKN2iS4MW1KRbOnMY1tg',
@@ -302,10 +243,7 @@ export const JERSEYS: Jersey[] = [
     name: 'Barcelona - Local - 14/15',
     team: 'Barcelona',
     league: 'La Liga',
-    price: 30,
-    originalPrice: 35,
-    discountPercentage: 15,
-    discountEndDate: '2026-11-10T23:59:59-05:00',
+    price: 35,
     image: 'https://lh3.googleusercontent.com/d/1KQ3EmLCcVI02pNiQ5XxeQf4P_9B5ikCD',
     images: [
       'https://lh3.googleusercontent.com/d/1KQ3EmLCcVI02pNiQ5XxeQf4P_9B5ikCD',
